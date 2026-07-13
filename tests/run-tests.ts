@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { findConflicts } from "@/lib/conflicts";
 import { generateIcs } from "@/lib/ics";
 import { decodeSharePlan, encodeSharePlan } from "@/lib/share-plan";
+import { buildSocialPost } from "@/lib/social-post";
 import { artistsById, manifest, scheduleItems, stagesById } from "@/lib/data";
 import type { ScheduleItem, SelectionMap, Stage } from "@/lib/schemas";
 
@@ -38,12 +39,19 @@ const stages: Stage[] = [
   }
 ];
 
-function item(id: string, stageId: string, start: string, end: string): ScheduleItem {
+function item(
+  id: string,
+  stageId: string,
+  start: string,
+  end: string,
+  artistId = id,
+  date: ScheduleItem["date"] = "2026-07-24"
+): ScheduleItem {
   return {
     id,
-    artistId: id,
+    artistId,
     stageId,
-    date: "2026-07-24",
+    date,
     start,
     end,
     kind: "artist",
@@ -100,6 +108,26 @@ function testSharePlan() {
   });
 }
 
+function testSocialPost() {
+  const socialArtists = {
+    "brother-wallace": { name: "Brother Wallace" },
+    "courtney-marie-andrews": { name: "Courtney Marie Andrews" }
+  };
+  const picks = [
+    item("2026-07-24-courtney-marie-andrews", "b", "2026-07-24T12:05:00-04:00", "2026-07-24T12:50:00-04:00", "courtney-marie-andrews"),
+    item("2026-07-24-brother-wallace", "a", "2026-07-24T11:05:00-04:00", "2026-07-24T11:50:00-04:00", "brother-wallace")
+  ];
+
+  assert.equal(
+    buildSocialPost(picks, socialArtists),
+    "My Newport Folk 2026 schedule:\nFri: Brother Wallace -> Courtney Marie Andrews\n#NewportFolk"
+  );
+
+  const compact = buildSocialPost(picks, socialArtists, 80);
+  assert.match(compact, /Fri: Brother Wallace -> \+1 more/);
+  assert.ok(compact.length <= 80);
+}
+
 function testIcs() {
   const selected = { [scheduleItems[0].id]: "must" as const };
   const ics = generateIcs(scheduleItems, selected, {
@@ -118,6 +146,7 @@ function testIcs() {
 
 testConflicts();
 testSharePlan();
+testSocialPost();
 testIcs();
 
 console.log("Unit smoke tests passed.");

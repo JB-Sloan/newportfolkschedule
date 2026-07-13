@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import { findConflicts, getConflictTypeForSet, priorityLabel } from "@/lib/conflicts";
 import { encodeSharePlan, decodeSharePlan } from "@/lib/share-plan";
+import { buildSocialPost } from "@/lib/social-post";
 import { generateIcs } from "@/lib/ics";
 import {
   FESTIVAL_DAYS,
@@ -59,6 +60,7 @@ const tabLabels = [
 ] as const;
 
 type TabId = (typeof tabLabels)[number]["id"];
+type SocialPlatform = "x" | "facebook";
 
 function classNames(...values: Array<string | false | undefined>) {
   return values.filter(Boolean).join(" ");
@@ -203,6 +205,8 @@ export function FolkPlannerApp({
   const [stageDetailId, setStageDetailId] = useState<string | undefined>();
   const [sharedPlan, setSharedPlan] = useState<SharedPlan | undefined>();
   const [copied, setCopied] = useState(false);
+  const [postCopied, setPostCopied] = useState(false);
+  const [shareOrigin, setShareOrigin] = useState("https://www.newportfolkschedule.com");
   const online = useOnlineStatus();
 
   const { artistsById, stagesById } = useMemo(() => buildMaps(artists, stages), [artists, stages]);
@@ -214,6 +218,10 @@ export function FolkPlannerApp({
   useEffect(() => {
     savePlan(plan);
   }, [plan]);
+
+  useEffect(() => {
+    setShareOrigin(window.location.origin);
+  }, []);
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
@@ -245,6 +253,22 @@ export function FolkPlannerApp({
   const selectedItems = useMemo(
     () => scheduleItems.filter((item) => plan.selections[item.id]).sort(compareSets),
     [scheduleItems, plan.selections]
+  );
+
+  const shareUrl = useMemo(() => {
+    const encoded = encodeSharePlan({
+      version: manifest.scheduleVersion,
+      selections: plan.selections,
+      transitionBufferMinutes: plan.transitionBufferMinutes
+    });
+    const url = new URL("/", shareOrigin);
+    url.searchParams.set("plan", encoded);
+    return url.toString();
+  }, [manifest.scheduleVersion, plan.selections, plan.transitionBufferMinutes, shareOrigin]);
+
+  const socialPost = useMemo(
+    () => buildSocialPost(selectedItems, artistsById),
+    [artistsById, selectedItems]
   );
 
   const visibleItems = useMemo(() => {
@@ -308,17 +332,46 @@ export function FolkPlannerApp({
   }
 
   async function copyShareLink() {
-    const encoded = encodeSharePlan({
-      version: manifest.scheduleVersion,
-      selections: plan.selections,
-      transitionBufferMinutes: plan.transitionBufferMinutes
-    });
-    const url = new URL(window.location.href);
-    url.pathname = "/";
-    url.search = `?plan=${encoded}`;
-    await navigator.clipboard.writeText(url.toString());
+    await navigator.clipboard.writeText(shareUrl);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1600);
+  }
+
+  async function copySocialPost() {
+    await navigator.clipboard.writeText(`${socialPost}\n\n${shareUrl}`);
+    setPostCopied(true);
+    window.setTimeout(() => setPostCopied(false), 1600);
+  }
+
+  async function shareSocialPost() {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "My Newport Folk 2026 schedule",
+          text: socialPost,
+          url: shareUrl
+        });
+        return;
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+      }
+    }
+    await copySocialPost();
+  }
+
+  function openSocialShare(platform: SocialPlatform) {
+    if (!selectedItems.length) return;
+    const url =
+      platform === "x"
+        ? new URL("https://twitter.com/intent/tweet")
+        : new URL("https://www.facebook.com/sharer/sharer.php");
+    if (platform === "x") {
+      url.searchParams.set("text", socialPost);
+      url.searchParams.set("url", shareUrl);
+    } else {
+      url.searchParams.set("u", shareUrl);
+    }
+    window.open(url.toString(), "_blank", "noopener,noreferrer");
   }
 
   function downloadIcs() {
@@ -478,7 +531,13 @@ export function FolkPlannerApp({
                 onCycle={cycleSelection}
                 onDownloadIcs={downloadIcs}
                 onCopyShare={copyShareLink}
+                socialPost={socialPost}
+                shareUrl={shareUrl}
+                onCopySocialPost={copySocialPost}
+                onNativeShare={shareSocialPost}
+                onOpenSocialShare={openSocialShare}
                 copied={copied}
+                postCopied={postCopied}
               />
             ) : null}
 
@@ -509,8 +568,10 @@ export function FolkPlannerApp({
               selections={plan.selections}
               conflicts={conflicts}
               onCopyShare={copyShareLink}
+              onCopySocialPost={copySocialPost}
               onDownloadIcs={downloadIcs}
               copied={copied}
+              postCopied={postCopied}
             />
             <PolicyCard policies={policies} />
           </aside>
@@ -949,7 +1010,13 @@ function MyPlan({
   onCycle,
   onDownloadIcs,
   onCopyShare,
-  copied
+  socialPost,
+  shareUrl,
+  onCopySocialPost,
+  onNativeShare,
+  onOpenSocialShare,
+  copied,
+  postCopied
 }: {
   selectedItems: ScheduleItem[];
   artistsById: Record<string, Artist>;
@@ -962,7 +1029,13 @@ function MyPlan({
   onCycle: (setId: string) => void;
   onDownloadIcs: () => void;
   onCopyShare: () => void;
+  socialPost: string;
+  shareUrl: string;
+  onCopySocialPost: () => void | Promise<void>;
+  onNativeShare: () => void | Promise<void>;
+  onOpenSocialShare: (platform: SocialPlatform) => void;
   copied: boolean;
+  postCopied: boolean;
 }) {
   return (
     <section className="space-y-4">
@@ -997,6 +1070,17 @@ function MyPlan({
           </button>
         </div>
       </div>
+
+      {selectedItems.length > 0 ? (
+        <SocialPostCard
+          postText={socialPost}
+          shareUrl={shareUrl}
+          copied={postCopied}
+          onCopy={onCopySocialPost}
+          onNativeShare={onNativeShare}
+          onOpenSocialShare={onOpenSocialShare}
+        />
+      ) : null}
 
       {selectedItems.length === 0 ? (
         <div className="rounded-3xl bg-white p-8 text-center shadow-soft">
@@ -1036,6 +1120,57 @@ function MyPlan({
           );
         })
       )}
+    </section>
+  );
+}
+
+
+function SocialPostCard({
+  postText,
+  shareUrl,
+  copied,
+  onCopy,
+  onNativeShare,
+  onOpenSocialShare
+}: {
+  postText: string;
+  shareUrl: string;
+  copied: boolean;
+  onCopy: () => void | Promise<void>;
+  onNativeShare: () => void | Promise<void>;
+  onOpenSocialShare: (platform: SocialPlatform) => void;
+}) {
+  return (
+    <section className="rounded-3xl bg-white p-4 shadow-soft">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h3 className="text-xl font-black">Social post</h3>
+          <p className="text-sm text-ink/60">{postText.length} characters</p>
+        </div>
+        <a className="rounded-full bg-ink/8 px-3 py-2 text-sm font-bold" href={shareUrl} target="_blank" rel="noreferrer">
+          Open share link
+        </a>
+      </div>
+      <textarea
+        aria-label="Generated social post"
+        className="mt-3 min-h-32 w-full resize-y rounded-2xl border border-ink/12 bg-paper p-3 font-mono text-sm leading-relaxed text-ink outline-none focus:border-bay"
+        readOnly
+        value={postText}
+      />
+      <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <button className="min-h-11 rounded-2xl bg-bay px-3 font-bold text-white" onClick={onCopy}>
+          {copied ? "Post copied" : "Copy post"}
+        </button>
+        <button className="min-h-11 rounded-2xl bg-ink px-3 font-bold text-paper" onClick={onNativeShare}>
+          Share
+        </button>
+        <button className="min-h-11 rounded-2xl bg-ink/8 px-3 font-bold" onClick={() => onOpenSocialShare("x")}>
+          X
+        </button>
+        <button className="min-h-11 rounded-2xl bg-ink/8 px-3 font-bold" onClick={() => onOpenSocialShare("facebook")}>
+          Facebook
+        </button>
+      </div>
     </section>
   );
 }
@@ -1203,15 +1338,19 @@ function PlanSummary({
   selections,
   conflicts,
   onCopyShare,
+  onCopySocialPost,
   onDownloadIcs,
-  copied
+  copied,
+  postCopied
 }: {
   selectedItems: ScheduleItem[];
   selections: SelectionMap;
   conflicts: ReturnType<typeof findConflicts>;
   onCopyShare: () => void;
+  onCopySocialPost: () => void | Promise<void>;
   onDownloadIcs: () => void;
   copied: boolean;
+  postCopied: boolean;
 }) {
   const mustCount = Object.values(selections).filter((priority) => priority === "must").length;
   return (
@@ -1225,6 +1364,7 @@ function PlanSummary({
       <div className="mt-4 flex flex-col gap-2">
         <button className="rounded-2xl bg-bay px-4 py-3 font-bold text-white" onClick={onDownloadIcs}>Download .ics</button>
         <a className="rounded-2xl bg-ink px-4 py-3 text-center font-bold text-paper" href="/print" target="_blank">Print pocket plan</a>
+        <button className="rounded-2xl bg-sunset px-4 py-3 font-bold text-ink disabled:bg-ink/10 disabled:text-ink/40" disabled={selectedItems.length === 0} onClick={onCopySocialPost}>{postCopied ? "Post copied" : "Copy social post"}</button>
         <button className="rounded-2xl bg-ink/8 px-4 py-3 font-bold" onClick={onCopyShare}>{copied ? "Link copied" : "Copy share URL"}</button>
       </div>
     </section>
