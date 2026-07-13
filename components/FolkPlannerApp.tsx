@@ -753,8 +753,8 @@ function ScheduleControls({
 }
 
 const TIMELINE_INTERVAL_MINUTES = 30;
-const TIMELINE_STAGE_MIN_WIDTH = 230;
-const TIMELINE_RAIL_WIDTH = 72;
+const TIMELINE_STAGE_MIN_WIDTH = 150;
+const TIMELINE_RAIL_WIDTH = 62;
 
 function getFestivalMinuteOfDay(iso: string) {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -774,6 +774,32 @@ function formatTimelineMinute(minuteOfDay: number) {
   const hour12 = hour24 % 12 || 12;
   const suffix = hour24 >= 12 ? "PM" : "AM";
   return `${hour12}:${minute.toString().padStart(2, "0")} ${suffix}`;
+}
+
+function getTimelineSuffix(minuteOfDay: number) {
+  return Math.floor(minuteOfDay / 60) >= 12 ? "PM" : "AM";
+}
+
+function formatTimelineClock(minuteOfDay: number) {
+  const hour24 = Math.floor(minuteOfDay / 60) % 24;
+  const minute = minuteOfDay % 60;
+  const hour12 = hour24 % 12 || 12;
+  return `${hour12}:${minute.toString().padStart(2, "0")}`;
+}
+
+function formatCompactSuffix(minuteOfDay: number) {
+  return getTimelineSuffix(minuteOfDay).toLowerCase()[0];
+}
+
+function formatSetTimeRange(startIso: string, endIso: string) {
+  const start = getFestivalMinuteOfDay(startIso);
+  const end = getFestivalMinuteOfDay(endIso);
+  const startSuffix = formatCompactSuffix(start);
+  const endSuffix = formatCompactSuffix(end);
+  if (startSuffix === endSuffix) {
+    return `${formatTimelineClock(start)}-${formatTimelineClock(end)}${endSuffix}`;
+  }
+  return `${formatTimelineClock(start)}${startSuffix}-${formatTimelineClock(end)}${endSuffix}`;
 }
 
 function buildTimelineTicks(startMinute: number, endMinute: number) {
@@ -822,7 +848,7 @@ function ScheduleGrid({
   const endMinutes = items.map((item) => getFestivalMinuteOfDay(item.end));
   const timelineStart = Math.floor(Math.min(...startMinutes) / TIMELINE_INTERVAL_MINUTES) * TIMELINE_INTERVAL_MINUTES;
   const timelineEnd = Math.ceil(Math.max(...endMinutes) / TIMELINE_INTERVAL_MINUTES) * TIMELINE_INTERVAL_MINUTES;
-  const pixelsPerMinute = density === "compact" ? 2.15 : 2.6;
+  const pixelsPerMinute = density === "compact" ? 1.85 : 2.15;
   const timelineHeight = Math.max(260, (timelineEnd - timelineStart) * pixelsPerMinute);
   const ticks = buildTimelineTicks(timelineStart, timelineEnd);
   const gridTemplateColumns = `${TIMELINE_RAIL_WIDTH}px repeat(${stageIds.length}, minmax(${TIMELINE_STAGE_MIN_WIDTH}px, 1fr))`;
@@ -848,7 +874,7 @@ function ScheduleGrid({
             className="sticky top-0 z-20 grid border-b border-ink/10 bg-white"
             style={{ gridTemplateColumns }}
           >
-            <div className="sticky left-0 z-30 border-r border-ink/10 bg-white px-3 py-3 text-xs font-black uppercase tracking-[0.16em] text-ink/45">
+            <div className="sticky left-0 z-30 border-r border-ink/10 bg-white px-2 py-3 text-[11px] font-black uppercase tracking-[0.12em] text-ink/45">
               Time
             </div>
             {stageIds.map((stageId) => {
@@ -856,10 +882,10 @@ function ScheduleGrid({
               return (
                 <button
                   key={stageId}
-                  className="border-r border-ink/10 px-4 py-3 text-left last:border-r-0"
+                  className="border-r border-ink/10 px-3 py-3 text-left last:border-r-0"
                   onClick={() => onOpenStage(stageId)}
                 >
-                  <span className="block text-lg font-black leading-tight">{stage?.name ?? stageId}</span>
+                  <span className="block text-sm font-black leading-tight sm:text-base">{stage?.name ?? stageId}</span>
                   <span className="mt-1 inline-block rounded-full bg-ink/8 px-2 py-1 text-xs font-bold text-ink/60">details</span>
                 </button>
               );
@@ -943,7 +969,7 @@ function SetCard({
   return (
     <article
       className={classNames(
-        "absolute left-2 right-2 overflow-hidden rounded-xl border p-2 shadow-sm transition hover:shadow-soft",
+        "absolute left-1.5 right-1.5 overflow-hidden rounded-lg border p-1.5 shadow-sm transition hover:shadow-soft sm:left-2 sm:right-2 sm:p-2",
         priority === "must" && "border-bay bg-bay/10",
         priority === "interested" && "border-quad bg-quad/10",
         !priority && "border-ink/12 bg-white/90",
@@ -953,18 +979,18 @@ function SetCard({
       style={style}
     >
       <div className="flex h-full min-h-0 flex-col gap-1 overflow-hidden">
-        <div className="flex min-h-0 items-start gap-2">
+        <div className="flex min-h-0 items-start gap-1.5">
           <button className="min-w-0 flex-1 text-left" onClick={onOpen}>
-            <span className="block whitespace-nowrap font-mono text-[11px] font-bold leading-none text-ink/60 tabular-nums">
-              {formatTime(item.start)} - {formatTime(item.end)}
+            <span className="block whitespace-nowrap font-mono text-[10px] font-bold leading-none text-ink/60 tabular-nums sm:text-[11px]">
+              {formatSetTimeRange(item.start, item.end)}
             </span>
-            <span className={classNames("mt-1 block font-black leading-tight", density === "compact" ? "text-sm" : "text-base", isShortSet ? "line-clamp-1" : "line-clamp-2")}>
+            <span className={classNames("mt-1 block font-black leading-tight", density === "compact" ? "text-xs sm:text-sm" : "text-sm sm:text-base", isShortSet ? "line-clamp-1" : "line-clamp-2")}>
               {item.titleOverride ?? artist.name}
             </span>
           </button>
           <button
             className={classNames(
-              "min-h-8 min-w-8 shrink-0 rounded-full px-2 text-sm font-black",
+              "min-h-7 min-w-7 shrink-0 rounded-full px-2 text-xs font-black sm:min-h-8 sm:min-w-8 sm:text-sm",
               priority === "must" ? "bg-bay text-white" : priority === "interested" ? "bg-quad text-white" : "bg-paper"
             )}
             aria-label={`Set ${artist.name} priority. Current: ${selection}`}
@@ -974,9 +1000,9 @@ function SetCard({
           </button>
         </div>
         {!isShortSet ? (
-          <p className="truncate text-xs text-ink/60">{artist.genres.slice(0, 2).join(" / ")}</p>
+          <p className="truncate text-[11px] text-ink/60 sm:text-xs">{artist.genres.slice(0, 2).join(" / ")}</p>
         ) : null}
-        <div className="mt-auto flex flex-wrap gap-1 text-[11px]">
+        <div className="mt-auto flex flex-wrap gap-1 text-[10px] sm:text-[11px]">
           <span className="rounded-full bg-white/80 px-2 py-0.5">{selection}</span>
           {conflictType !== "none" ? (
             <span className={classNames("rounded-full px-2 py-0.5 font-bold", conflictType === "overlap" ? "bg-red-100 text-red-800" : "bg-amber-100 text-amber-900")}>
