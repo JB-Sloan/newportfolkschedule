@@ -1,0 +1,12 @@
+{
+  "festival": "Newport Folk Festival",
+  "year": 2026,
+  "timezone": "America/New_York",
+  "officialScheduleUrl": "https://newportfolk.org/schedule",
+  "officialInfoUrl": "https://newportfolk.org/info",
+  "scheduleVersion": "2026.placeholder.1",
+  "publishedAt": "2026-07-13T09:00:00-04:00",
+  "verifiedAt": "2026-07-13T09:00:00-04:00",
+  "verifiedBy": ["placeholder"],
+  "notes": "Placeholder schedule for app development. Replace immediately when Newport Folk publishes the official 2026 schedule."
+}

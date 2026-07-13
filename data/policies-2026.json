@@ -1,0 +1,56 @@
+[
+  {
+    "id": "blankets",
+    "category": "blankets",
+    "title": "Blankets",
+    "summary": "Blankets are allowed at 6 by 8 feet or smaller. Stage-specific placement should still be verified.",
+    "officialSourceUrl": "https://newportfolk.org/info",
+    "verifiedAt": "2026-07-13",
+    "scheduleVersion": "2026.placeholder.1"
+  },
+  {
+    "id": "chairs",
+    "category": "chairs",
+    "title": "Chairs",
+    "summary": "Chairs must be under 34 inches high. Chairs under 30 inches are allowed outside no-chair zones; 30–34 inch chairs belong farthest from stages or in designated shade areas.",
+    "officialSourceUrl": "https://newportfolk.org/info",
+    "verifiedAt": "2026-07-13",
+    "scheduleVersion": "2026.placeholder.1"
+  },
+  {
+    "id": "shade",
+    "category": "shade",
+    "title": "Shade and umbrellas",
+    "summary": "Personal shade tents are allowed at the back of performance areas when they do not impede others. Umbrellas must be closed during performances.",
+    "officialSourceUrl": "https://newportfolk.org/info",
+    "verifiedAt": "2026-07-13",
+    "scheduleVersion": "2026.placeholder.1"
+  },
+  {
+    "id": "water",
+    "category": "water",
+    "title": "Water",
+    "summary": "Empty refillable water bottles are allowed and refill stations are available.",
+    "officialSourceUrl": "https://newportfolk.org/info",
+    "verifiedAt": "2026-07-13",
+    "scheduleVersion": "2026.placeholder.1"
+  },
+  {
+    "id": "accessibility-hub",
+    "category": "accessibility",
+    "title": "Accessibility Hub",
+    "summary": "The Accessibility Hub offers shade, water, a restricted bathroom, mobility-device charging, and accessibility volunteers.",
+    "officialSourceUrl": "https://newportfolk.org/info/accessibility",
+    "verifiedAt": "2026-07-13",
+    "scheduleVersion": "2026.placeholder.1"
+  },
+  {
+    "id": "weather",
+    "category": "weather",
+    "title": "Weather and changes",
+    "summary": "The festival is rain or shine. All artists, set times, and stages are subject to change.",
+    "officialSourceUrl": "https://newportfolk.org/info",
+    "verifiedAt": "2026-07-13",
+    "scheduleVersion": "2026.placeholder.1"
+  }
+]

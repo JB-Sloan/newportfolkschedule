@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Folk Planner icon">
+  <rect width="512" height="512" rx="112" fill="#17231d"/>
+  <circle cx="142" cy="168" r="48" fill="#fff9ec"/>
+  <circle cx="256" cy="168" r="48" fill="#e06d3d"/>
+  <circle cx="370" cy="168" r="48" fill="#126a73"/>
+  <path d="M128 300h256v44H128zM128 376h180v44H128z" fill="#fff9ec"/>
+</svg>

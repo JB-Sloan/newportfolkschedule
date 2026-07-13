@@ -1,0 +1,273 @@
+[
+  {
+    "id": "fort-welcome",
+    "name": "Placeholder Fort Welcome",
+    "sortName": "Placeholder Fort Welcome",
+    "shortBio": "A temporary opening set used to verify schedule layout, artist detail sheets, and export behavior before official data arrives.",
+    "genres": ["folk", "americana"],
+    "tags": ["acoustic", "storytelling", "warm"],
+    "moods": ["reflective", "mid-tempo"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "harbor-harmonies",
+    "name": "Harbor Harmonies",
+    "shortBio": "Placeholder harmony-forward folk with close vocals and gentle acoustic arrangements.",
+    "genres": ["folk", "indie-folk"],
+    "tags": ["harmony-led", "acoustic", "vocal-led"],
+    "moods": ["quiet", "reflective"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "quad-song-swap",
+    "name": "Quad Song Swap",
+    "shortBio": "A placeholder collaborative round meant to test special-set handling and grouped recommendation language.",
+    "genres": ["singer-songwriter", "folk"],
+    "tags": ["collaborative", "storytelling", "solo"],
+    "moods": ["intimate", "reflective"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "tidewater-trio",
+    "name": "Tidewater Trio",
+    "shortBio": "Placeholder roots trio with breezy rhythms, upright bass, and relaxed coastal energy.",
+    "genres": ["americana", "roots-rock"],
+    "tags": ["band", "guitar-led", "mid-tempo"],
+    "moods": ["upbeat", "warm"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "cedar-lane-stringband",
+    "name": "Cedar Lane Stringband",
+    "shortBio": "Placeholder stringband data for bluegrass, fiddle, and banjo recommendation testing.",
+    "genres": ["bluegrass", "traditional"],
+    "tags": ["stringband", "fiddle", "banjo", "high-energy"],
+    "moods": ["upbeat", "danceable"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "brass-and-banjos",
+    "name": "Brass & Banjos",
+    "shortBio": "Placeholder brass-meets-roots ensemble for testing eclectic discovery suggestions.",
+    "genres": ["americana", "jazz"],
+    "tags": ["brass", "banjo", "rhythmic", "collaborative"],
+    "moods": ["upbeat", "danceable"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "electric-dulcimer-union",
+    "name": "Electric Dulcimer Union",
+    "shortBio": "Placeholder experimental folk-rock that adds amplified textures to traditional instruments.",
+    "genres": ["experimental", "indie-rock", "folk"],
+    "tags": ["electric", "instrumental", "textural", "band"],
+    "moods": ["high-energy", "exploratory"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "lantern-choir",
+    "name": "Lantern Choir",
+    "shortBio": "Placeholder vocal ensemble with gospel-adjacent harmonies and a calm festival-lawn feel.",
+    "genres": ["gospel", "folk", "soul"],
+    "tags": ["harmony-led", "vocal-led", "choral"],
+    "moods": ["uplifting", "reflective"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "quiet-matinee",
+    "name": "Quiet Matinee",
+    "shortBio": "Placeholder low-volume songwriter set for testing relaxed gaps and accessibility-friendly copy.",
+    "genres": ["singer-songwriter", "folk"],
+    "tags": ["solo", "acoustic", "intimate"],
+    "moods": ["quiet", "reflective"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "sunrise-revue",
+    "name": "Sunrise Revue",
+    "shortBio": "Placeholder revue with bright arrangements, handclaps, and classic folk-rock momentum.",
+    "genres": ["roots-rock", "americana"],
+    "tags": ["band", "anthemic", "guitar-led"],
+    "moods": ["upbeat", "high-energy"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "field-recorders",
+    "name": "The Field Recorders",
+    "shortBio": "Placeholder act built around found sounds, banjo patterns, and field-recording textures.",
+    "genres": ["experimental", "folk"],
+    "tags": ["textural", "banjo", "improvisational"],
+    "moods": ["exploratory", "quiet"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "porchlight-poets",
+    "name": "Porchlight Poets",
+    "shortBio": "Placeholder narrative songwriting with soft harmonies and lyric-first arrangements.",
+    "genres": ["singer-songwriter", "indie-folk"],
+    "tags": ["storytelling", "harmony-led", "acoustic"],
+    "moods": ["intimate", "reflective"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "saltwind-sisters",
+    "name": "Saltwind Sisters",
+    "shortBio": "Placeholder sister-duo harmonies with country-folk pacing and polished choruses.",
+    "genres": ["country", "folk"],
+    "tags": ["harmony-led", "vocal-led", "guitar-led"],
+    "moods": ["warm", "mid-tempo"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "old-road-ensemble",
+    "name": "Old Road Ensemble",
+    "shortBio": "Placeholder full-band Americana with fiddle, drums, and a road-tested roots-rock pulse.",
+    "genres": ["americana", "roots-rock"],
+    "tags": ["band", "fiddle", "guitar-led", "established"],
+    "moods": ["upbeat", "anthemic"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "cedar-synth-workshop",
+    "name": "Cedar Synth Workshop",
+    "shortBio": "Placeholder workshop exploring how folk melodies change when routed through modular synth textures.",
+    "genres": ["experimental", "electronic", "folk"],
+    "tags": ["workshop", "textural", "instrumental"],
+    "moods": ["exploratory", "quiet"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "sea-to-shining-sea",
+    "name": "Sea to Shining Sea",
+    "shortBio": "Placeholder special set designed to verify long titles, collaborative metadata, and print layout.",
+    "genres": ["folk", "americana"],
+    "tags": ["special-project", "collaborative", "anthemic"],
+    "moods": ["uplifting", "mid-tempo"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "harbor-collab",
+    "name": "Harbor Collaboration",
+    "shortBio": "Placeholder cross-artist collaboration used to test special-set details and conflict clusters.",
+    "genres": ["folk", "soul", "americana"],
+    "tags": ["collaborative", "vocal-led", "rare-collaboration"],
+    "moods": ["uplifting", "warm"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "fiddle-futures",
+    "name": "Fiddle Futures",
+    "shortBio": "Placeholder fiddle-forward set with traditional tunes, rhythmic bowing, and modern arrangements.",
+    "genres": ["traditional", "bluegrass"],
+    "tags": ["fiddle", "instrumental", "rhythmic"],
+    "moods": ["danceable", "high-energy"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "gospel-tent-reprise",
+    "name": "Gospel Tent Reprise",
+    "shortBio": "Placeholder Sunday set for testing policy questions, uplifting tags, and morning schedule states.",
+    "genres": ["gospel", "soul"],
+    "tags": ["vocal-led", "harmony-led", "choral"],
+    "moods": ["uplifting", "high-energy"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "story-keepers",
+    "name": "Story Keepers",
+    "shortBio": "Placeholder spoken-song ensemble where narrative, acoustic guitar, and soft percussion carry the set.",
+    "genres": ["folk", "singer-songwriter"],
+    "tags": ["storytelling", "acoustic", "collaborative"],
+    "moods": ["intimate", "reflective"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "blue-horizon-duo",
+    "name": "Blue Horizon Duo",
+    "shortBio": "Placeholder blues-folk duo with slide guitar, close harmony, and relaxed harbor pacing.",
+    "genres": ["blues", "folk"],
+    "tags": ["guitar-led", "harmony-led", "duo"],
+    "moods": ["warm", "mid-tempo"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "windward-circle",
+    "name": "Windward Circle",
+    "shortBio": "Placeholder circular song-trading set for testing plan-builder recommendations and stage constraints.",
+    "genres": ["folk", "americana"],
+    "tags": ["collaborative", "storytelling", "acoustic"],
+    "moods": ["warm", "reflective"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "accordion-weather",
+    "name": "Accordion Weather",
+    "shortBio": "Placeholder world-folk set with accordion lines, hand percussion, and playful dance rhythms.",
+    "genres": ["world", "traditional", "folk"],
+    "tags": ["accordion", "rhythmic", "danceable"],
+    "moods": ["upbeat", "danceable"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "rock-maple-revue",
+    "name": "Rock Maple Revue",
+    "shortBio": "Placeholder roots-rock act with big choruses, electric guitar, and festival-ready momentum.",
+    "genres": ["roots-rock", "indie-rock"],
+    "tags": ["band", "electric", "anthemic"],
+    "moods": ["high-energy", "upbeat"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "farewell-singalong",
+    "name": "Farewell Singalong",
+    "shortBio": "Placeholder closing collaboration that helps verify dense selected plans and print-friendly summaries.",
+    "genres": ["folk", "americana"],
+    "tags": ["special-project", "collaborative", "harmony-led"],
+    "moods": ["uplifting", "anthemic"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "dance-tent-placeholder",
+    "name": "Dance Tent Placeholder",
+    "shortBio": "Placeholder high-energy set for testing active recommendations and non-conflicting alternatives.",
+    "genres": ["folk", "world"],
+    "tags": ["rhythmic", "danceable", "band"],
+    "moods": ["danceable", "high-energy"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  },
+  {
+    "id": "harbor-lullabies",
+    "name": "Harbor Lullabies",
+    "shortBio": "Placeholder gentle Sunday closer with quiet arrangements and spacious vocal lines.",
+    "genres": ["indie-folk", "singer-songwriter"],
+    "tags": ["quiet", "acoustic", "vocal-led"],
+    "moods": ["quiet", "reflective"],
+    "metadataConfidence": "draft",
+    "metadataSources": []
+  }
+]

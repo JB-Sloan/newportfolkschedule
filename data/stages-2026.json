@@ -1,0 +1,143 @@
+[
+  {
+    "id": "fort",
+    "name": "Fort Stage",
+    "shortName": "Fort",
+    "description": "Large main-stage placeholder record. Stage-specific audience conditions should be verified before launch.",
+    "seating": {
+      "summary": "Unknown — verify whether any seating is supplied outside the official accessibility area.",
+      "status": "unknown"
+    },
+    "shade": {
+      "summary": "Unknown — verify fixed shade, audience tenting, and designated shade areas.",
+      "status": "unknown"
+    },
+    "blankets": {
+      "summary": "Festival-wide 6×8-foot blanket maximum applies; stage-specific no-blanket zones still need verification.",
+      "status": "official"
+    },
+    "chairs": {
+      "summary": "Festival-wide chair rules apply; no-chair-zone boundaries still need verification.",
+      "status": "official"
+    },
+    "surface": {
+      "summary": "Unknown — verify grass, paved, and mixed audience areas.",
+      "status": "unknown"
+    },
+    "accessibility": {
+      "summary": "Reserved accessibility area beside the sound board; seating is not supplied, and each patron may be accompanied by one guest because space is limited.",
+      "status": "official"
+    },
+    "amenities": ["Accessibility route from entrance via paved road should be confirmed for 2026."],
+    "transitions": {
+      "harbor": 8,
+      "quad": 8
+    },
+    "sources": [
+      {
+        "url": "https://newportfolk.org/info/accessibility",
+        "label": "Official accessibility information",
+        "verifiedAt": "2026-07-13"
+      },
+      {
+        "url": "https://newportfolk.org/info",
+        "label": "Official festival information",
+        "verifiedAt": "2026-07-13"
+      }
+    ]
+  },
+  {
+    "id": "harbor",
+    "name": "Harbor Stage",
+    "shortName": "Harbor",
+    "description": "Secondary-stage placeholder record. Verify seating, shade, surface, and practical transition paths before launch.",
+    "seating": {
+      "summary": "Unknown — verify whether seating is supplied and whether standing zones exist.",
+      "status": "unknown"
+    },
+    "shade": {
+      "summary": "Unknown — verify whether the audience area is under cover, partly covered, or exposed.",
+      "status": "unknown"
+    },
+    "blankets": {
+      "summary": "Festival-wide 6×8-foot blanket maximum applies; practical placement still needs verification.",
+      "status": "official"
+    },
+    "chairs": {
+      "summary": "Festival-wide chair rules apply; local no-chair zones still need verification.",
+      "status": "official"
+    },
+    "surface": {
+      "summary": "Unknown — verify ground and mobility-device conditions.",
+      "status": "unknown"
+    },
+    "accessibility": {
+      "summary": "Accessibility-specific chairs are available to wristbanded patrons, but seating availability is not guaranteed and chairs should not be saved for absent guests.",
+      "status": "official"
+    },
+    "amenities": [],
+    "transitions": {
+      "fort": 8,
+      "quad": 6
+    },
+    "sources": [
+      {
+        "url": "https://newportfolk.org/info/accessibility",
+        "label": "Official accessibility information",
+        "verifiedAt": "2026-07-13"
+      },
+      {
+        "url": "https://newportfolk.org/info",
+        "label": "Official festival information",
+        "verifiedAt": "2026-07-13"
+      }
+    ]
+  },
+  {
+    "id": "quad",
+    "name": "Quad Stage",
+    "shortName": "Quad",
+    "description": "Compact-stage placeholder record. Verify coverage, surface, sightlines, and practical blanket/chair placement before launch.",
+    "seating": {
+      "summary": "Unknown — verify supplied seating and standing conditions.",
+      "status": "unknown"
+    },
+    "shade": {
+      "summary": "Unknown — verify audience coverage and edge exposure.",
+      "status": "unknown"
+    },
+    "blankets": {
+      "summary": "Festival-wide 6×8-foot blanket maximum applies; practical placement still needs verification.",
+      "status": "official"
+    },
+    "chairs": {
+      "summary": "Festival-wide chair rules apply; local no-chair zones still need verification.",
+      "status": "official"
+    },
+    "surface": {
+      "summary": "Unknown — verify grass, flooring, or mixed surface.",
+      "status": "unknown"
+    },
+    "accessibility": {
+      "summary": "Accessibility-specific chairs are available to wristbanded patrons, but seating availability is not guaranteed and chairs should not be saved for absent guests.",
+      "status": "official"
+    },
+    "amenities": [],
+    "transitions": {
+      "fort": 8,
+      "harbor": 6
+    },
+    "sources": [
+      {
+        "url": "https://newportfolk.org/info/accessibility",
+        "label": "Official accessibility information",
+        "verifiedAt": "2026-07-13"
+      },
+      {
+        "url": "https://newportfolk.org/info",
+        "label": "Official festival information",
+        "verifiedAt": "2026-07-13"
+      }
+    ]
+  }
+]

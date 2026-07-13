@@ -1,0 +1,26 @@
+[
+  {
+    "id": "fort",
+    "name": "Fort Stage",
+    "shortName": "Fort",
+    "description": "Stage-specific details must be verified for 2026.",
+    "seating": { "summary": "Not yet verified.", "status": "unknown" },
+    "shade": { "summary": "Not yet verified.", "status": "unknown" },
+    "blankets": { "summary": "Festival-wide blanket policy applies; stage-specific placement is not yet verified.", "status": "official" },
+    "chairs": { "summary": "Festival-wide chair policy applies; no-chair-zone boundaries are not yet verified.", "status": "official" },
+    "surface": { "summary": "Not yet verified.", "status": "unknown" },
+    "accessibility": {
+      "summary": "Reserved area beside the sound board; seating is not supplied, so guests should bring lawn chairs. Confirm current official details.",
+      "status": "official"
+    },
+    "amenities": [],
+    "transitions": {},
+    "sources": [
+      {
+        "url": "https://newportfolk.org/info/accessibility",
+        "label": "Official accessibility information",
+        "verifiedAt": "2026-07-13"
+      }
+    ]
+  }
+]
