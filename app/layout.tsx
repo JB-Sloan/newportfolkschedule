@@ -9,6 +9,13 @@ export const metadata: Metadata = {
     capable: true,
     title: "Folk Planner"
   },
+  icons: {
+    icon: "/icons/icon.svg",
+    apple: "/icons/icon.svg"
+  },
+  other: {
+    "mobile-web-app-capable": "yes"
+  },
   openGraph: {
     title: "Folk Planner 2026",
     description: "Build a personal Newport Folk itinerary, spot conflicts, and export a plan.",

@@ -36,6 +36,9 @@ export const ArtistSchema = z.object({
   spotifyUrl: z.string().url().optional(),
   officialUrl: z.string().url().optional(),
   lineupUrl: z.string().url().optional(),
+  imageUrl: z.string().min(1).optional(),
+  imageCredit: z.string().min(1).optional(),
+  imageSourceUrl: z.string().url().optional(),
   metadataConfidence: z.enum(["verified", "reviewed", "draft"]),
   metadataSources: z.array(z.string().url()).default([])
 });

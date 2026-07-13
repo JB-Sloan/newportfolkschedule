@@ -1,273 +1,1808 @@
 [
   {
-    "id": "fort-welcome",
-    "name": "Placeholder Fort Welcome",
-    "sortName": "Placeholder Fort Welcome",
-    "shortBio": "A temporary opening set used to verify schedule layout, artist detail sheets, and export behavior before official data arrives.",
-    "genres": ["folk", "americana"],
-    "tags": ["acoustic", "storytelling", "warm"],
-    "moods": ["reflective", "mid-tempo"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "amble",
+    "name": "Amble",
+    "shortBio": "Irish folk trio (Robbie Cunningham, Ross McNerney, Oisín McCaffrey) with soaring three-part harmonies and cinematic acoustic songs that became a fast-rising live draw.",
+    "genres": [
+      "folk",
+      "indie-folk"
+    ],
+    "tags": [
+      "harmony-led",
+      "acoustic",
+      "band"
+    ],
+    "moods": [
+      "warm",
+      "uplifting"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Amble_%28band%29"
+    ]
   },
   {
-    "id": "harbor-harmonies",
-    "name": "Harbor Harmonies",
-    "shortBio": "Placeholder harmony-forward folk with close vocals and gentle acoustic arrangements.",
-    "genres": ["folk", "indie-folk"],
-    "tags": ["harmony-led", "acoustic", "vocal-led"],
-    "moods": ["quiet", "reflective"],
+    "id": "belle-blue",
+    "name": "Belle Blue",
+    "shortBio": "A rising songwriter bringing intimate, melodic folk to the Bike Stage.",
+    "genres": [
+      "indie-folk",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "acoustic",
+      "emerging",
+      "vocal-led"
+    ],
+    "moods": [
+      "quiet",
+      "intimate"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
-    "id": "quad-song-swap",
-    "name": "Quad Song Swap",
-    "shortBio": "A placeholder collaborative round meant to test special-set handling and grouped recommendation language.",
-    "genres": ["singer-songwriter", "folk"],
-    "tags": ["collaborative", "storytelling", "solo"],
-    "moods": ["intimate", "reflective"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "brandi-carlile",
+    "name": "Brandi Carlile",
+    "shortBio": "Nine-time Grammy winner and Newport favorite, a powerhouse Americana voice and festival curator; her 'Returning to Myself' set spotlights new work.",
+    "genres": [
+      "americana",
+      "folk-rock"
+    ],
+    "tags": [
+      "vocal-led",
+      "anthemic",
+      "band",
+      "iconic"
+    ],
+    "moods": [
+      "anthemic",
+      "uplifting"
+    ],
+    "officialUrl": "https://brandicarlile.com",
+    "imageUrl": "/images/artists/brandi-carlile.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Brandi_Carlile",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Brandi_Carlile"
+    ]
   },
   {
-    "id": "tidewater-trio",
-    "name": "Tidewater Trio",
-    "shortBio": "Placeholder roots trio with breezy rhythms, upright bass, and relaxed coastal energy.",
-    "genres": ["americana", "roots-rock"],
-    "tags": ["band", "guitar-led", "mid-tempo"],
-    "moods": ["upbeat", "warm"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "brandon-flowers",
+    "name": "Brandon Flowers",
+    "shortBio": "Frontman of The Killers, bringing widescreen, heartland-tinged rock anthems and a commanding stage presence to his solo material.",
+    "genres": [
+      "rock",
+      "pop-rock"
+    ],
+    "tags": [
+      "vocal-led",
+      "anthemic",
+      "band"
+    ],
+    "moods": [
+      "anthemic",
+      "high-energy"
+    ],
+    "imageUrl": "/images/artists/brandon-flowers.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Brandon_Flowers",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Brandon_Flowers"
+    ]
   },
   {
-    "id": "cedar-lane-stringband",
-    "name": "Cedar Lane Stringband",
-    "shortBio": "Placeholder stringband data for bluegrass, fiddle, and banjo recommendation testing.",
-    "genres": ["bluegrass", "traditional"],
-    "tags": ["stringband", "fiddle", "banjo", "high-energy"],
-    "moods": ["upbeat", "danceable"],
+    "id": "brittany-davis",
+    "name": "Brittany Davis",
+    "shortBio": "Seattle multi-instrumentalist and songwriter whose genre-fluid soul, funk and spoken word is fierce and cinematic; performing with Black Thunder.",
+    "genres": [
+      "soul",
+      "funk",
+      "r-and-b"
+    ],
+    "tags": [
+      "vocal-led",
+      "band",
+      "soulful"
+    ],
+    "moods": [
+      "high-energy",
+      "uplifting"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
-    "id": "brass-and-banjos",
-    "name": "Brass & Banjos",
-    "shortBio": "Placeholder brass-meets-roots ensemble for testing eclectic discovery suggestions.",
-    "genres": ["americana", "jazz"],
-    "tags": ["brass", "banjo", "rhythmic", "collaborative"],
-    "moods": ["upbeat", "danceable"],
+    "id": "brother-wallace",
+    "name": "Brother Wallace",
+    "shortBio": "Georgia-raised soul artist who began playing piano in church, teaming with The Heavy's Dan Taylor for heartfelt, gospel-touched soul.",
+    "genres": [
+      "soul",
+      "r-and-b"
+    ],
+    "tags": [
+      "vocal-led",
+      "soulful",
+      "emerging"
+    ],
+    "moods": [
+      "uplifting",
+      "warm"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
-    "id": "electric-dulcimer-union",
-    "name": "Electric Dulcimer Union",
-    "shortBio": "Placeholder experimental folk-rock that adds amplified textures to traditional instruments.",
-    "genres": ["experimental", "indie-rock", "folk"],
-    "tags": ["electric", "instrumental", "textural", "band"],
-    "moods": ["high-energy", "exploratory"],
+    "id": "case-oats",
+    "name": "Case Oats",
+    "shortBio": "A Chicago country and honky-tonk band fronted by songwriter Casey Walker, with warm, classic-leaning twang.",
+    "genres": [
+      "country",
+      "americana"
+    ],
+    "tags": [
+      "band",
+      "guitar-led",
+      "twang"
+    ],
+    "moods": [
+      "warm",
+      "mid-tempo"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
-    "id": "lantern-choir",
-    "name": "Lantern Choir",
-    "shortBio": "Placeholder vocal ensemble with gospel-adjacent harmonies and a calm festival-lawn feel.",
-    "genres": ["gospel", "folk", "soul"],
-    "tags": ["harmony-led", "vocal-led", "choral"],
-    "moods": ["uplifting", "reflective"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "cat-power",
+    "name": "Cat Power",
+    "shortBio": "Chan Marshall's revered indie project, spanning smoky soul, spare folk and reinventions of classic songbooks over three decades.",
+    "genres": [
+      "indie-rock",
+      "folk",
+      "soul"
+    ],
+    "tags": [
+      "vocal-led",
+      "guitar-led",
+      "iconic"
+    ],
+    "moods": [
+      "reflective",
+      "quiet"
+    ],
+    "imageUrl": "/images/artists/cat-power.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Cat_Power",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Cat_Power"
+    ]
   },
   {
-    "id": "quiet-matinee",
-    "name": "Quiet Matinee",
-    "shortBio": "Placeholder low-volume songwriter set for testing relaxed gaps and accessibility-friendly copy.",
-    "genres": ["singer-songwriter", "folk"],
-    "tags": ["solo", "acoustic", "intimate"],
-    "moods": ["quiet", "reflective"],
+    "id": "clover-county",
+    "name": "Clover County",
+    "shortBio": "A roots and country band delivering easy, harmony-rich Americana.",
+    "genres": [
+      "country",
+      "americana"
+    ],
+    "tags": [
+      "band",
+      "harmony-led",
+      "guitar-led"
+    ],
+    "moods": [
+      "warm",
+      "mid-tempo"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
-    "id": "sunrise-revue",
-    "name": "Sunrise Revue",
-    "shortBio": "Placeholder revue with bright arrangements, handclaps, and classic folk-rock momentum.",
-    "genres": ["roots-rock", "americana"],
-    "tags": ["band", "anthemic", "guitar-led"],
-    "moods": ["upbeat", "high-energy"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "cmat",
+    "name": "CMAT",
+    "shortBio": "Irish pop sensation Ciara Mary-Alice Thompson, delivering witty, theatrical country-pop with huge hooks and bigger personality.",
+    "genres": [
+      "country-pop",
+      "pop"
+    ],
+    "tags": [
+      "vocal-led",
+      "witty",
+      "band"
+    ],
+    "moods": [
+      "upbeat",
+      "danceable"
+    ],
+    "imageUrl": "/images/artists/cmat.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/CMAT",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/CMAT_%28singer%29"
+    ]
   },
   {
-    "id": "field-recorders",
-    "name": "The Field Recorders",
-    "shortBio": "Placeholder act built around found sounds, banjo patterns, and field-recording textures.",
-    "genres": ["experimental", "folk"],
-    "tags": ["textural", "banjo", "improvisational"],
-    "moods": ["exploratory", "quiet"],
+    "id": "community-chapstick",
+    "name": "Community Chapstick",
+    "shortBio": "A collaborative Foundation Stage set from the festival's community and education programming.",
+    "genres": [
+      "folk",
+      "americana"
+    ],
+    "tags": [
+      "collaborative",
+      "emerging"
+    ],
+    "moods": [
+      "warm",
+      "uplifting"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
-    "id": "porchlight-poets",
-    "name": "Porchlight Poets",
-    "shortBio": "Placeholder narrative songwriting with soft harmonies and lyric-first arrangements.",
-    "genres": ["singer-songwriter", "indie-folk"],
-    "tags": ["storytelling", "harmony-led", "acoustic"],
-    "moods": ["intimate", "reflective"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "courtney-barnett",
+    "name": "Courtney Barnett",
+    "shortBio": "Australian singer-songwriter celebrated for deadpan, stream-of-consciousness lyrics and loose garage-rock guitar. A festival favorite since her breakout 'Sometimes I Sit and Think...'",
+    "genres": [
+      "indie-rock",
+      "garage-rock"
+    ],
+    "tags": [
+      "guitar-led",
+      "witty",
+      "band"
+    ],
+    "moods": [
+      "upbeat",
+      "reflective"
+    ],
+    "officialUrl": "https://courtneybarnett.com.au",
+    "imageUrl": "/images/artists/courtney-barnett.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Courtney_Barnett",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Courtney_Barnett"
+    ]
   },
   {
-    "id": "saltwind-sisters",
-    "name": "Saltwind Sisters",
-    "shortBio": "Placeholder sister-duo harmonies with country-folk pacing and polished choruses.",
-    "genres": ["country", "folk"],
-    "tags": ["harmony-led", "vocal-led", "guitar-led"],
-    "moods": ["warm", "mid-tempo"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "courtney-marie-andrews",
+    "name": "Courtney Marie Andrews",
+    "shortBio": "Arizona-born songwriter with a crystalline voice and country-folk songs about longing and the American West. A Grammy-nominated storyteller.",
+    "genres": [
+      "country",
+      "folk",
+      "americana"
+    ],
+    "tags": [
+      "vocal-led",
+      "storytelling",
+      "guitar-led"
+    ],
+    "moods": [
+      "reflective",
+      "warm"
+    ],
+    "imageUrl": "/images/artists/courtney-marie-andrews.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Courtney_Marie_Andrews",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Courtney_Marie_Andrews"
+    ]
   },
   {
-    "id": "old-road-ensemble",
-    "name": "Old Road Ensemble",
-    "shortBio": "Placeholder full-band Americana with fiddle, drums, and a road-tested roots-rock pulse.",
-    "genres": ["americana", "roots-rock"],
-    "tags": ["band", "fiddle", "guitar-led", "established"],
-    "moods": ["upbeat", "anthemic"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "dawes",
+    "name": "Dawes",
+    "shortBio": "Los Angeles band led by brothers Taylor and Griffin Goldsmith, torchbearers of Laurel Canyon folk-rock with sharp songwriting; performing here as a duo.",
+    "genres": [
+      "folk-rock",
+      "americana"
+    ],
+    "tags": [
+      "band",
+      "guitar-led",
+      "harmony-led"
+    ],
+    "moods": [
+      "warm",
+      "mid-tempo"
+    ],
+    "imageUrl": "/images/artists/dawes.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Dawes_(band)",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Dawes_%28band%29"
+    ]
   },
   {
-    "id": "cedar-synth-workshop",
-    "name": "Cedar Synth Workshop",
-    "shortBio": "Placeholder workshop exploring how folk melodies change when routed through modular synth textures.",
-    "genres": ["experimental", "electronic", "folk"],
-    "tags": ["workshop", "textural", "instrumental"],
-    "moods": ["exploratory", "quiet"],
+    "id": "deer-tick",
+    "name": "Deer Tick",
+    "shortBio": "Providence, RI's beloved ragged rock-and-roots band led by John McCauley; a Newport staple whose 'and Friends' sets are famous for guest-packed chaos.",
+    "genres": [
+      "rock",
+      "americana",
+      "folk-rock"
+    ],
+    "tags": [
+      "band",
+      "guitar-led",
+      "local"
+    ],
+    "moods": [
+      "high-energy",
+      "upbeat"
+    ],
+    "imageUrl": "/images/artists/deer-tick.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Deer_Tick_(band)",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Deer_Tick_%28band%29"
+    ]
+  },
+  {
+    "id": "dove-ellis",
+    "name": "Dove Ellis",
+    "shortBio": "An emerging songwriter bringing soulful folk to the Quad Stage.",
+    "genres": [
+      "folk",
+      "soul",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "vocal-led",
+      "emerging",
+      "acoustic"
+    ],
+    "moods": [
+      "warm",
+      "reflective"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "evan-honer",
+    "name": "Evan Honer",
+    "shortBio": "Arizona-raised songwriter blending modern country and folk, who built a big audience online before hitting festival stages.",
+    "genres": [
+      "country",
+      "folk"
+    ],
+    "tags": [
+      "guitar-led",
+      "vocal-led",
+      "band"
+    ],
+    "moods": [
+      "mid-tempo",
+      "reflective"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "for-petes-sake",
+    "name": "For Pete's Sake",
+    "shortBio": "A morning Foundation Stage gathering in the spirit of Pete Seeger — communal singing and songs led by a rotating host.",
+    "genres": [
+      "folk",
+      "traditional"
+    ],
+    "tags": [
+      "singalong",
+      "community",
+      "acoustic"
+    ],
+    "moods": [
+      "uplifting",
+      "warm"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "fruit-bats",
+    "name": "Fruit Bats",
+    "shortBio": "Eric D. Johnson's long-running indie-folk project, trading in bright melodies, warm keyboards and road-worn Americana. Also a member of Bonny Light Horseman.",
+    "genres": [
+      "indie-folk",
+      "folk-rock"
+    ],
+    "tags": [
+      "band",
+      "guitar-led",
+      "melodic"
+    ],
+    "moods": [
+      "warm",
+      "upbeat"
+    ],
+    "imageUrl": "/images/artists/fruit-bats.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Fruit_Bats_(band)",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Fruit_Bats_%28band%29"
+    ]
+  },
+  {
+    "id": "gillian-welch-david-rawlings",
+    "name": "Gillian Welch & David Rawlings",
+    "shortBio": "The revered Americana duo of Gillian Welch and David Rawlings, masters of spare Appalachian harmony, here reinterpreting the Grateful Dead's acoustic songbook.",
+    "genres": [
+      "americana",
+      "folk",
+      "old-time"
+    ],
+    "tags": [
+      "harmony-led",
+      "guitar-led",
+      "duo"
+    ],
+    "moods": [
+      "reflective",
+      "warm"
+    ],
+    "imageUrl": "/images/artists/gillian-welch-david-rawlings.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Gillian_Welch",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Gillian_Welch"
+    ]
+  },
+  {
+    "id": "gwenifer-raymond",
+    "name": "Gwenifer Raymond",
+    "shortBio": "Welsh guitarist and banjoist working in the American Primitive tradition, spinning intense, virtuosic solo instrumentals.",
+    "genres": [
+      "american-primitive",
+      "folk",
+      "instrumental"
+    ],
+    "tags": [
+      "instrumental",
+      "guitar-led",
+      "banjo"
+    ],
+    "moods": [
+      "exploratory",
+      "reflective"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Gwenifer_Raymond"
+    ]
+  },
+  {
+    "id": "heynderickx-garcia-conover",
+    "name": "Haley Heynderickx & Max García Conover",
+    "shortBio": "Portland songwriter Haley Heynderickx and Maine folk artist Max García Conover, whose collaborative record trades intimate, intertwined guitar and voice.",
+    "genres": [
+      "indie-folk",
+      "folk"
+    ],
+    "tags": [
+      "acoustic",
+      "harmony-led",
+      "collaborative"
+    ],
+    "moods": [
+      "intimate",
+      "reflective"
+    ],
+    "imageUrl": "/images/artists/heynderickx-garcia-conover.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Haley_Heynderickx",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Haley_Heynderickx"
+    ]
+  },
+  {
+    "id": "hayley-williams",
+    "name": "Hayley Williams",
+    "shortBio": "Frontwoman of Paramore and acclaimed solo artist, bringing pop-punk energy and confessional pop songwriting. Her Newport 'and Friends' set promises collaborations.",
+    "genres": [
+      "pop-rock",
+      "alternative"
+    ],
+    "tags": [
+      "vocal-led",
+      "anthemic",
+      "band"
+    ],
+    "moods": [
+      "high-energy",
+      "upbeat"
+    ],
+    "officialUrl": "https://www.hayleywilliams.com",
+    "imageUrl": "/images/artists/hayley-williams.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Hayley_Williams",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Hayley_Williams"
+    ]
+  },
+  {
+    "id": "honest-charlie",
+    "name": "Honest Charlie",
+    "shortBio": "A roots and folk artist bringing warm, unhurried songs to open the Fort Stage.",
+    "genres": [
+      "folk",
+      "americana"
+    ],
+    "tags": [
+      "acoustic",
+      "guitar-led",
+      "emerging"
+    ],
+    "moods": [
+      "warm",
+      "reflective"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "hot-tuna",
+    "name": "Hot Tuna",
+    "shortBio": "The long-running blues and roots duo/band of Jorma Kaukonen and Jack Casady, founding members of Jefferson Airplane, playing electric and acoustic Americana since 1969.",
+    "genres": [
+      "blues",
+      "folk-rock",
+      "americana"
+    ],
+    "tags": [
+      "guitar-led",
+      "legendary",
+      "band"
+    ],
+    "moods": [
+      "mid-tempo",
+      "warm"
+    ],
+    "imageUrl": "/images/artists/hot-tuna.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Hot_Tuna",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Hot_Tuna"
+    ]
+  },
+  {
+    "id": "hudson-freeman",
+    "name": "Hudson Freeman",
+    "shortBio": "A young singer-songwriter and Newport mentee, part of the festival's education programming, with earnest acoustic songs.",
+    "genres": [
+      "folk",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "acoustic",
+      "emerging",
+      "vocal-led"
+    ],
+    "moods": [
+      "warm",
+      "reflective"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "infinity-song",
+    "name": "Infinity Song",
+    "shortBio": "New York soft-rock band of siblings Abraham, Angel, Israel and Momo Boyd, signed to Roc Nation, known for shimmering harmonies and a viral hit in 'Hater's Anthem.'",
+    "genres": [
+      "soft-rock",
+      "soul",
+      "folk"
+    ],
+    "tags": [
+      "harmony-led",
+      "vocal-led",
+      "band",
+      "family"
+    ],
+    "moods": [
+      "uplifting",
+      "warm"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Infinity_Song"
+    ]
+  },
+  {
+    "id": "jackie-evans",
+    "name": "Jackie Evans",
+    "shortBio": "An emerging songwriter featured in the festival's Foundation Stage programming.",
+    "genres": [
+      "folk",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "acoustic",
+      "emerging",
+      "vocal-led"
+    ],
+    "moods": [
+      "reflective",
+      "warm"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "john-r-miller",
+    "name": "John R. Miller",
+    "shortBio": "West Virginia songwriter and guitarist writing weathered, detail-rich country and folk in a classic honky-tonk tradition.",
+    "genres": [
+      "country",
+      "folk",
+      "americana"
+    ],
+    "tags": [
+      "guitar-led",
+      "storytelling",
+      "band"
+    ],
+    "moods": [
+      "mid-tempo",
+      "reflective"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/John_R._Miller_%28musician%29"
+    ]
+  },
+  {
+    "id": "jonathan-bernstein",
+    "name": "Jonathan Bernstein",
+    "shortBio": "A songwriter featured on the Foundation Stage.",
+    "genres": [
+      "folk",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "acoustic",
+      "emerging",
+      "vocal-led"
+    ],
+    "moods": [
+      "reflective",
+      "warm"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "jordan-klepper",
+    "name": "Jordan Klepper",
+    "shortBio": "Comedian and 'The Daily Show' correspondent, bringing a talk-and-comedy set to the Foundation Stage.",
+    "genres": [
+      "comedy",
+      "spoken-word"
+    ],
+    "tags": [
+      "comedy",
+      "talk",
+      "spoken-word"
+    ],
+    "moods": [
+      "upbeat",
+      "witty"
+    ],
+    "imageUrl": "/images/artists/jordan-klepper.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Jordan_Klepper",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Jordan_Klepper"
+    ]
+  },
+  {
+    "id": "kathleen-edwards",
+    "name": "Kathleen Edwards",
+    "shortBio": "Canadian alt-country songwriter known for sharp, emotionally direct songs and a return to music after stepping away to run a coffee shop.",
+    "genres": [
+      "alt-country",
+      "americana",
+      "folk-rock"
+    ],
+    "tags": [
+      "vocal-led",
+      "guitar-led",
+      "storytelling"
+    ],
+    "moods": [
+      "reflective",
+      "mid-tempo"
+    ],
+    "imageUrl": "/images/artists/kathleen-edwards.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Kathleen_Edwards",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Kathleen_Edwards"
+    ]
+  },
+  {
+    "id": "kirby",
+    "name": "Kirby",
+    "shortBio": "A soul and R&B singer-songwriter (and acclaimed hitmaker) with a rich, classic voice.",
+    "genres": [
+      "soul",
+      "r-and-b"
+    ],
+    "tags": [
+      "vocal-led",
+      "soulful"
+    ],
+    "moods": [
+      "warm",
+      "uplifting"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Kirby_%28singer%29"
+    ]
+  },
+  {
+    "id": "leif-vollebekk",
+    "name": "Leif Vollebekk",
+    "shortBio": "Montreal songwriter crafting hushed, soulful piano-and-guitar folk with a jazz-inflected sense of space and groove.",
+    "genres": [
+      "folk",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "piano-led",
+      "vocal-led",
+      "soulful"
+    ],
+    "moods": [
+      "intimate",
+      "reflective"
+    ],
+    "imageUrl": "/images/artists/leif-vollebekk.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Leif_Vollebekk",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Leif_Vollebekk"
+    ]
+  },
+  {
+    "id": "lily-fitts",
+    "name": "Lily Fitts",
+    "shortBio": "A young songwriter and emerging talent playing a short Bike Stage set.",
+    "genres": [
+      "folk",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "acoustic",
+      "emerging",
+      "vocal-led"
+    ],
+    "moods": [
+      "warm",
+      "reflective"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "lizzy-mcalpine",
+    "name": "Lizzy McAlpine",
+    "shortBio": "Philadelphia singer-songwriter whose intimate, jazz-tinged folk-pop and the hit 'ceilings' made her a streaming and touring phenomenon.",
+    "genres": [
+      "indie-folk",
+      "folk-pop"
+    ],
+    "tags": [
+      "vocal-led",
+      "acoustic",
+      "band"
+    ],
+    "moods": [
+      "intimate",
+      "reflective"
+    ],
+    "imageUrl": "/images/artists/lizzy-mcalpine.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Lizzy_McAlpine",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Lizzy_McAlpine"
+    ]
+  },
+  {
+    "id": "lucy-dacus",
+    "name": "Lucy Dacus",
+    "shortBio": "Virginia-raised indie-rock songwriter and boygenius member known for literate, slow-burning songs and a warm alto. Her 2025 album 'Forever Is a Feeling' widened her sound toward lush chamber-pop.",
+    "genres": [
+      "indie-rock",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "guitar-led",
+      "literary",
+      "band"
+    ],
+    "moods": [
+      "reflective",
+      "warm"
+    ],
+    "officialUrl": "https://lucydacus.com",
+    "imageUrl": "/images/artists/lucy-dacus.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Lucy_Dacus",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Lucy_Dacus"
+    ]
+  },
+  {
+    "id": "madi-diaz",
+    "name": "Madi Diaz",
+    "shortBio": "Nashville songwriter whose unflinching heartbreak songs and clear voice earned acclaim and high-profile touring with Harry Styles.",
+    "genres": [
+      "indie-folk",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "vocal-led",
+      "guitar-led",
+      "confessional"
+    ],
+    "moods": [
+      "reflective",
+      "intimate"
+    ],
+    "imageUrl": "/images/artists/madi-diaz.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Madi_Diaz",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Madi_Diaz"
+    ]
+  },
+  {
+    "id": "mark-cutler",
+    "name": "Mark Cutler",
+    "shortBio": "A pillar of the Rhode Island music scene, singer-songwriter Mark Cutler brings decades of local roots-rock craft.",
+    "genres": [
+      "rock",
+      "americana",
+      "folk-rock"
+    ],
+    "tags": [
+      "guitar-led",
+      "local",
+      "band"
+    ],
+    "moods": [
+      "mid-tempo",
+      "warm"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "matt-quinn",
+    "name": "Matt Quinn",
+    "shortBio": "A songwriter delivering easygoing, melodic folk-rock on the Harbor Stage.",
+    "genres": [
+      "folk-rock",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "guitar-led",
+      "band",
+      "emerging"
+    ],
+    "moods": [
+      "mid-tempo",
+      "warm"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "medium-build",
+    "name": "Medium Build",
+    "shortBio": "Alaska-raised, Atlanta-based Nick Carpenter's indie-rock project, mixing raw confessional lyrics with big, textured production.",
+    "genres": [
+      "indie-rock",
+      "indie-folk"
+    ],
+    "tags": [
+      "band",
+      "guitar-led",
+      "vocal-led"
+    ],
+    "moods": [
+      "high-energy",
+      "reflective"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Medium_Build"
+    ]
+  },
+  {
+    "id": "met-lab-students",
+    "name": "MET Lab Students",
+    "shortBio": "Young musicians from the Newport Festivals Foundation's education programming, performing with mentor Hudson Freeman.",
+    "genres": [
+      "folk",
+      "varied"
+    ],
+    "tags": [
+      "education",
+      "emerging",
+      "community"
+    ],
+    "moods": [
+      "warm",
+      "uplifting"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "shannon-narducy-rem",
+    "name": "Michael Shannon & Jason Narducy and Friends Play R.E.M.",
+    "shortBio": "Actor Michael Shannon and musician Jason Narducy lead a rotating band performing R.E.M. albums in full — a joyful, faithful tribute.",
+    "genres": [
+      "rock",
+      "alternative",
+      "tribute"
+    ],
+    "tags": [
+      "band",
+      "tribute",
+      "guitar-led"
+    ],
+    "moods": [
+      "upbeat",
+      "anthemic"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "morgan-nagler",
+    "name": "Morgan Nagler",
+    "shortBio": "Songwriter and frontperson of Whispertown, writing candid, melodic indie-folk.",
+    "genres": [
+      "indie-folk",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "guitar-led",
+      "vocal-led"
+    ],
+    "moods": [
+      "reflective",
+      "warm"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "ms-lauryn-hill",
+    "name": "Ms. Lauryn Hill",
+    "shortBio": "Grammy-winning icon whose 'The Miseducation of Lauryn Hill' reshaped hip-hop and soul. A rare festival appearance from one of music's defining voices.",
+    "genres": [
+      "hip-hop",
+      "soul",
+      "r-and-b"
+    ],
+    "tags": [
+      "vocal-led",
+      "iconic",
+      "band"
+    ],
+    "moods": [
+      "uplifting",
+      "high-energy"
+    ],
+    "imageUrl": "/images/artists/ms-lauryn-hill.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Lauryn_Hill",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Lauryn_Hill"
+    ]
+  },
+  {
+    "id": "music-lab-students",
+    "name": "Music Lab Students",
+    "shortBio": "Students from the festival's music-education Lab take the Foundation Stage with mentor Taylor Goldsmith of Dawes.",
+    "genres": [
+      "folk",
+      "varied"
+    ],
+    "tags": [
+      "education",
+      "emerging",
+      "community"
+    ],
+    "moods": [
+      "warm",
+      "uplifting"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "nabeel",
+    "name": "Nabeel",
+    "shortBio": "An emerging singer-songwriter closing out the Bike Stage lineup.",
+    "genres": [
+      "folk",
+      "singer-songwriter",
+      "pop"
+    ],
+    "tags": [
+      "acoustic",
+      "emerging",
+      "vocal-led"
+    ],
+    "moods": [
+      "warm",
+      "reflective"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "nathaniel-rateliff",
+    "name": "Nathaniel Rateliff",
+    "shortBio": "Denver soul-rock singer, with and without The Night Sweats, whose gravelly voice powers barn-burners like 'S.O.B.' and tender solo balladry.",
+    "genres": [
+      "soul",
+      "rock",
+      "americana"
+    ],
+    "tags": [
+      "vocal-led",
+      "band",
+      "anthemic"
+    ],
+    "moods": [
+      "high-energy",
+      "warm"
+    ],
+    "imageUrl": "/images/artists/nathaniel-rateliff.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Nathaniel_Rateliff",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Nathaniel_Rateliff"
+    ]
+  },
+  {
+    "id": "open-mic",
+    "name": "Open Mic",
+    "shortBio": "The Bike Stage's daily open-mic slot, giving festivalgoers and up-and-comers a chance to play a few songs to start the day.",
+    "genres": [
+      "folk",
+      "varied"
+    ],
+    "tags": [
+      "open-mic",
+      "community",
+      "acoustic"
+    ],
+    "moods": [
+      "warm",
+      "upbeat"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "rowan-grisman-hull-campbell-williams",
+    "name": "Peter Rowan / Sam Grisman / Sierra Hull / Larry Campbell & Teresa Williams",
+    "shortBio": "A bluegrass and roots summit uniting Peter Rowan, Sam Grisman, mandolin virtuoso Sierra Hull, and the duo Larry Campbell & Teresa Williams.",
+    "genres": [
+      "bluegrass",
+      "folk",
+      "americana"
+    ],
+    "tags": [
+      "stringband",
+      "collaborative",
+      "virtuosic"
+    ],
+    "moods": [
+      "warm",
+      "uplifting"
+    ],
+    "imageUrl": "/images/artists/rowan-grisman-hull-campbell-williams.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Peter_Rowan",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Peter_Rowan"
+    ]
+  },
+  {
+    "id": "princess-june",
+    "name": "Princess June",
+    "shortBio": "An up-and-coming act opening the Fort Stage with bright, melodic songs.",
+    "genres": [
+      "indie-folk",
+      "pop"
+    ],
+    "tags": [
+      "emerging",
+      "vocal-led",
+      "guitar-led"
+    ],
+    "moods": [
+      "warm",
+      "upbeat"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "punch-brothers",
+    "name": "Punch Brothers",
+    "shortBio": "Genre-bending acoustic quintet led by mandolinist Chris Thile, pushing bluegrass into classical, jazz and pop with dazzling interplay.",
+    "genres": [
+      "bluegrass",
+      "progressive-bluegrass"
+    ],
+    "tags": [
+      "stringband",
+      "mandolin",
+      "virtuosic",
+      "band"
+    ],
+    "moods": [
+      "exploratory",
+      "upbeat"
+    ],
+    "imageUrl": "/images/artists/punch-brothers.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Punch_Brothers",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Punch_Brothers"
+    ]
+  },
+  {
+    "id": "ryan-davis-roadhouse-band",
+    "name": "Ryan Davis & The Roadhouse Band",
+    "shortBio": "Louisville songwriter Ryan Davis (State Champion) leading sprawling, wry, guitar-driven country-rock epics.",
+    "genres": [
+      "alt-country",
+      "indie-rock"
+    ],
+    "tags": [
+      "band",
+      "guitar-led",
+      "witty"
+    ],
+    "moods": [
+      "mid-tempo",
+      "reflective"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
+  },
+  {
+    "id": "sally-rose",
+    "name": "Sally Rose",
+    "shortBio": "A songwriter bringing heartfelt Americana to the Bike Stage.",
+    "genres": [
+      "americana",
+      "folk",
+      "country"
+    ],
+    "tags": [
+      "acoustic",
+      "vocal-led",
+      "emerging"
+    ],
+    "moods": [
+      "warm",
+      "reflective"
+    ],
+    "metadataConfidence": "draft",
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
     "id": "sea-to-shining-sea",
     "name": "Sea to Shining Sea",
-    "shortBio": "Placeholder special set designed to verify long titles, collaborative metadata, and print layout.",
-    "genres": ["folk", "americana"],
-    "tags": ["special-project", "collaborative", "anthemic"],
-    "moods": ["uplifting", "mid-tempo"],
+    "shortBio": "A Newport special set gathering artists for a collaborative journey through American song — the kind of one-off the festival is known for.",
+    "genres": [
+      "folk",
+      "americana"
+    ],
+    "tags": [
+      "collaborative",
+      "special-project",
+      "anthemic"
+    ],
+    "moods": [
+      "uplifting",
+      "mid-tempo"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
-    "id": "harbor-collab",
-    "name": "Harbor Collaboration",
-    "shortBio": "Placeholder cross-artist collaboration used to test special-set details and conflict clusters.",
-    "genres": ["folk", "soul", "americana"],
-    "tags": ["collaborative", "vocal-led", "rare-collaboration"],
-    "moods": ["uplifting", "warm"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "searows",
+    "name": "Searows",
+    "shortBio": "Alec Duckart's project, hushed and devastating indie-folk built on fingerpicked guitar and whispered, diaristic lyrics.",
+    "genres": [
+      "indie-folk",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "acoustic",
+      "vocal-led",
+      "confessional"
+    ],
+    "moods": [
+      "quiet",
+      "intimate"
+    ],
+    "imageUrl": "/images/artists/searows.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Searows",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Searows"
+    ]
   },
   {
-    "id": "fiddle-futures",
-    "name": "Fiddle Futures",
-    "shortBio": "Placeholder fiddle-forward set with traditional tunes, rhythmic bowing, and modern arrangements.",
-    "genres": ["traditional", "bluegrass"],
-    "tags": ["fiddle", "instrumental", "rhythmic"],
-    "moods": ["danceable", "high-energy"],
+    "id": "snacktime",
+    "name": "Snacktime",
+    "shortBio": "A Philadelphia brass-and-groove collective known for joyful, danceable street-band energy.",
+    "genres": [
+      "funk",
+      "brass",
+      "soul"
+    ],
+    "tags": [
+      "brass",
+      "rhythmic",
+      "band"
+    ],
+    "moods": [
+      "danceable",
+      "upbeat"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
-    "id": "gospel-tent-reprise",
-    "name": "Gospel Tent Reprise",
-    "shortBio": "Placeholder Sunday set for testing policy questions, uplifting tags, and morning schedule states.",
-    "genres": ["gospel", "soul"],
-    "tags": ["vocal-led", "harmony-led", "choral"],
-    "moods": ["uplifting", "high-energy"],
+    "id": "stephen-covell",
+    "name": "Stephen Covell",
+    "shortBio": "A veteran and songwriter performing through Operation Encore, the program supporting military-veteran musicians.",
+    "genres": [
+      "folk",
+      "singer-songwriter",
+      "americana"
+    ],
+    "tags": [
+      "acoustic",
+      "vocal-led",
+      "storytelling"
+    ],
+    "moods": [
+      "reflective",
+      "warm"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
-    "id": "story-keepers",
-    "name": "Story Keepers",
-    "shortBio": "Placeholder spoken-song ensemble where narrative, acoustic guitar, and soft percussion carry the set.",
-    "genres": ["folk", "singer-songwriter"],
-    "tags": ["storytelling", "acoustic", "collaborative"],
-    "moods": ["intimate", "reflective"],
+    "id": "strongboi",
+    "name": "Strongboi",
+    "shortBio": "An indie-pop duo with playful, hook-forward songs and a quirky charm.",
+    "genres": [
+      "indie-pop",
+      "pop"
+    ],
+    "tags": [
+      "band",
+      "vocal-led",
+      "quirky"
+    ],
+    "moods": [
+      "upbeat",
+      "danceable"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
-    "id": "blue-horizon-duo",
-    "name": "Blue Horizon Duo",
-    "shortBio": "Placeholder blues-folk duo with slide guitar, close harmony, and relaxed harbor pacing.",
-    "genres": ["blues", "folk"],
-    "tags": ["guitar-led", "harmony-led", "duo"],
-    "moods": ["warm", "mid-tempo"],
+    "id": "taylor-hollingsworth",
+    "name": "Taylor Hollingsworth",
+    "shortBio": "Alabama guitarist and songwriter (a Conor Oberst collaborator) with scrappy, garage-leaning country-rock.",
+    "genres": [
+      "country-rock",
+      "garage-rock"
+    ],
+    "tags": [
+      "guitar-led",
+      "band"
+    ],
+    "moods": [
+      "upbeat",
+      "high-energy"
+    ],
     "metadataConfidence": "draft",
-    "metadataSources": []
+    "metadataSources": [
+      "https://newportfolk.org/lineup"
+    ]
   },
   {
-    "id": "windward-circle",
-    "name": "Windward Circle",
-    "shortBio": "Placeholder circular song-trading set for testing plan-builder recommendations and stage constraints.",
-    "genres": ["folk", "americana"],
-    "tags": ["collaborative", "storytelling", "acoustic"],
-    "moods": ["warm", "reflective"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "tedeschi-trucks-band",
+    "name": "Tedeschi Trucks Band",
+    "shortBio": "The 12-piece blues-rock juggernaut led by Susan Tedeschi and Derek Trucks, fusing soul, gospel and jam-band improvisation.",
+    "genres": [
+      "blues-rock",
+      "soul",
+      "jam"
+    ],
+    "tags": [
+      "band",
+      "guitar-led",
+      "virtuosic"
+    ],
+    "moods": [
+      "high-energy",
+      "uplifting"
+    ],
+    "imageUrl": "/images/artists/tedeschi-trucks-band.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Tedeschi_Trucks_Band",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Tedeschi_Trucks_Band"
+    ]
   },
   {
-    "id": "accordion-weather",
-    "name": "Accordion Weather",
-    "shortBio": "Placeholder world-folk set with accordion lines, hand percussion, and playful dance rhythms.",
-    "genres": ["world", "traditional", "folk"],
-    "tags": ["accordion", "rhythmic", "danceable"],
-    "moods": ["upbeat", "danceable"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "the-barr-brothers",
+    "name": "The Barr Brothers",
+    "shortBio": "Montreal band led by Brad and Andrew Barr, blending fingerstyle folk, blues and harp-driven chamber textures into atmospheric rock.",
+    "genres": [
+      "folk-rock",
+      "indie-folk"
+    ],
+    "tags": [
+      "band",
+      "guitar-led",
+      "textural"
+    ],
+    "moods": [
+      "reflective",
+      "warm"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/The_Barr_Brothers"
+    ]
   },
   {
-    "id": "rock-maple-revue",
-    "name": "Rock Maple Revue",
-    "shortBio": "Placeholder roots-rock act with big choruses, electric guitar, and festival-ready momentum.",
-    "genres": ["roots-rock", "indie-rock"],
-    "tags": ["band", "electric", "anthemic"],
-    "moods": ["high-energy", "upbeat"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "the-fearless-flyers",
+    "name": "The Fearless Flyers",
+    "shortBio": "Instrumental funk supergroup from the Vulf family — Cory Wong, Joe Dart, Mark Lettieri and Nate Smith — locked into irresistible grooves.",
+    "genres": [
+      "funk",
+      "instrumental"
+    ],
+    "tags": [
+      "instrumental",
+      "rhythmic",
+      "band",
+      "virtuosic"
+    ],
+    "moods": [
+      "danceable",
+      "upbeat"
+    ],
+    "imageUrl": "/images/artists/the-fearless-flyers.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/The_Fearless_Flyers",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/The_Fearless_Flyers"
+    ]
   },
   {
-    "id": "farewell-singalong",
-    "name": "Farewell Singalong",
-    "shortBio": "Placeholder closing collaboration that helps verify dense selected plans and print-friendly summaries.",
-    "genres": ["folk", "americana"],
-    "tags": ["special-project", "collaborative", "harmony-led"],
-    "moods": ["uplifting", "anthemic"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "the-lumineers",
+    "name": "The Lumineers",
+    "shortBio": "Denver folk-rock band behind stadium-sized singalongs like 'Ho Hey' and 'Ophelia,' blending stomping acoustic anthems with intimate storytelling.",
+    "genres": [
+      "folk-rock",
+      "americana"
+    ],
+    "tags": [
+      "band",
+      "anthemic",
+      "guitar-led"
+    ],
+    "moods": [
+      "anthemic",
+      "upbeat"
+    ],
+    "officialUrl": "https://www.thelumineers.com",
+    "imageUrl": "/images/artists/the-lumineers.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/The_Lumineers",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/The_Lumineers"
+    ]
   },
   {
-    "id": "dance-tent-placeholder",
-    "name": "Dance Tent Placeholder",
-    "shortBio": "Placeholder high-energy set for testing active recommendations and non-conflicting alternatives.",
-    "genres": ["folk", "world"],
-    "tags": ["rhythmic", "danceable", "band"],
-    "moods": ["danceable", "high-energy"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "the-olllam",
+    "name": "The Olllam",
+    "shortBio": "Transatlantic collective co-founded by uilleann piper John McSherry and multi-instrumentalist Tyler Duncan, weaving trance-like Celtic melodies with jazz and funk.",
+    "genres": [
+      "celtic",
+      "folk",
+      "instrumental"
+    ],
+    "tags": [
+      "instrumental",
+      "textural",
+      "band"
+    ],
+    "moods": [
+      "exploratory",
+      "uplifting"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/The_Olllam"
+    ]
   },
   {
-    "id": "harbor-lullabies",
-    "name": "Harbor Lullabies",
-    "shortBio": "Placeholder gentle Sunday closer with quiet arrangements and spacious vocal lines.",
-    "genres": ["indie-folk", "singer-songwriter"],
-    "tags": ["quiet", "acoustic", "vocal-led"],
-    "moods": ["quiet", "reflective"],
-    "metadataConfidence": "draft",
-    "metadataSources": []
+    "id": "this-is-lorelei",
+    "name": "This Is Lorelei",
+    "shortBio": "The solo project of Nate Amos (Water From Your Eyes), swerving from lo-fi bedroom pop to warped country on the acclaimed 'Box for Buddy, Box for Star.'",
+    "genres": [
+      "indie-rock",
+      "bedroom-pop",
+      "alt-country"
+    ],
+    "tags": [
+      "guitar-led",
+      "lo-fi",
+      "experimental"
+    ],
+    "moods": [
+      "reflective",
+      "upbeat"
+    ],
+    "imageUrl": "/images/artists/this-is-lorelei.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Nate_Amos",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/This_Is_Lorelei"
+    ]
+  },
+  {
+    "id": "tim-bernardes",
+    "name": "Tim Bernardes",
+    "shortBio": "Brazilian songwriter and O Terno frontman crafting gorgeous, orchestral MPB folk with a delicate falsetto; a Fleet Foxes and Devendra Banhart collaborator.",
+    "genres": [
+      "mpb",
+      "folk",
+      "indie-folk"
+    ],
+    "tags": [
+      "vocal-led",
+      "guitar-led",
+      "orchestral"
+    ],
+    "moods": [
+      "intimate",
+      "reflective"
+    ],
+    "imageUrl": "/images/artists/tim-bernardes.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/O_Terno",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Tim_Bernardes"
+    ]
+  },
+  {
+    "id": "tiny-habits",
+    "name": "Tiny Habits",
+    "shortBio": "A Boston-formed trio built on tight three-part harmony and gentle acoustic arrangements, who grew a following from viral cover videos into original indie-folk.",
+    "genres": [
+      "indie-folk",
+      "folk"
+    ],
+    "tags": [
+      "harmony-led",
+      "acoustic",
+      "vocal-led"
+    ],
+    "moods": [
+      "warm",
+      "quiet"
+    ],
+    "imageUrl": "/images/artists/tiny-habits.png",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Tiny_Habits",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Tiny_Habits"
+    ]
+  },
+  {
+    "id": "tom-morello",
+    "name": "Tom Morello",
+    "shortBio": "Rage Against the Machine and Audioslave guitarist and activist, reinventing protest music through electrified riffs and, increasingly, acoustic folk.",
+    "genres": [
+      "rock",
+      "folk"
+    ],
+    "tags": [
+      "guitar-led",
+      "virtuosic",
+      "iconic"
+    ],
+    "moods": [
+      "high-energy",
+      "anthemic"
+    ],
+    "imageUrl": "/images/artists/tom-morello.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Tom_Morello",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Tom_Morello"
+    ]
+  },
+  {
+    "id": "trousdale",
+    "name": "Trousdale",
+    "shortBio": "Los Angeles trio prized for airtight harmonies and folk-pop songwriting, built from years of singing together.",
+    "genres": [
+      "folk-pop",
+      "pop"
+    ],
+    "tags": [
+      "harmony-led",
+      "vocal-led",
+      "band"
+    ],
+    "moods": [
+      "warm",
+      "upbeat"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Trousdale_%28band%29"
+    ]
+  },
+  {
+    "id": "victoria-canal",
+    "name": "Victoria Canal",
+    "shortBio": "Spanish-American singer-songwriter and Ivor Novello winner writing soulful, piano-driven pop with candid lyricism about identity and disability.",
+    "genres": [
+      "pop",
+      "soul",
+      "singer-songwriter"
+    ],
+    "tags": [
+      "piano-led",
+      "vocal-led",
+      "soulful"
+    ],
+    "moods": [
+      "reflective",
+      "uplifting"
+    ],
+    "imageUrl": "/images/artists/victoria-canal.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Victoria_Canal",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Victoria_Canal"
+    ]
+  },
+  {
+    "id": "vulfpeck",
+    "name": "Vulfpeck",
+    "shortBio": "Ann Arbor funk band famous for pocket grooves, minimalist production and joyful live shows that turned a studio project into arena-fillers.",
+    "genres": [
+      "funk",
+      "soul"
+    ],
+    "tags": [
+      "band",
+      "rhythmic",
+      "instrumental"
+    ],
+    "moods": [
+      "danceable",
+      "upbeat"
+    ],
+    "imageUrl": "/images/artists/vulfpeck.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Vulfpeck",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Vulfpeck"
+    ]
+  },
+  {
+    "id": "wednesday",
+    "name": "Wednesday",
+    "shortBio": "Asheville, NC band fusing shoegaze, alt-country and 90s indie into loud, lap-steel-soaked rock. Fronted by songwriter Karly Hartzman.",
+    "genres": [
+      "indie-rock",
+      "shoegaze",
+      "alt-country"
+    ],
+    "tags": [
+      "band",
+      "guitar-led",
+      "lap-steel"
+    ],
+    "moods": [
+      "high-energy",
+      "reflective"
+    ],
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Wednesday_%28band%29"
+    ]
+  },
+  {
+    "id": "williams-tyler",
+    "name": "Yasmin Williams & William Tyler",
+    "shortBio": "A meeting of two of instrumental guitar's most inventive voices — Yasmin Williams' percussive, lap-tapped playing and William Tyler's cinematic fingerstyle.",
+    "genres": [
+      "instrumental",
+      "folk",
+      "american-primitive"
+    ],
+    "tags": [
+      "instrumental",
+      "guitar-led",
+      "collaborative"
+    ],
+    "moods": [
+      "exploratory",
+      "reflective"
+    ],
+    "imageUrl": "/images/artists/williams-tyler.jpg",
+    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
+    "imageSourceUrl": "https://en.wikipedia.org/wiki/Yasmin_Williams",
+    "metadataConfidence": "reviewed",
+    "metadataSources": [
+      "https://newportfolk.org/lineup",
+      "https://en.wikipedia.org/wiki/Yasmin_Williams"
+    ]
   }
 ]

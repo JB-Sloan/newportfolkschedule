@@ -4,9 +4,9 @@
   "timezone": "America/New_York",
   "officialScheduleUrl": "https://newportfolk.org/schedule",
   "officialInfoUrl": "https://newportfolk.org/info",
-  "scheduleVersion": "2026.placeholder.1",
+  "scheduleVersion": "2026.official.1",
   "publishedAt": "2026-07-13T09:00:00-04:00",
   "verifiedAt": "2026-07-13T09:00:00-04:00",
-  "verifiedBy": ["placeholder"],
-  "notes": "Placeholder schedule for app development. Replace immediately when Newport Folk publishes the official 2026 schedule."
+  "verifiedBy": ["fan-planner"],
+  "notes": "Transcribed from the official Newport Folk 2026 schedule at newportfolk.org/schedule (Fort, Quad, Harbor, Foundation, and Bike stages, July 24-26). Artists and times are subject to change; confirm critical details with Newport Folk."
 }

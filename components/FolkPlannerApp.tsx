@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { findConflicts, getConflictTypeForSet, priorityLabel } from "@/lib/conflicts";
 import { getDeterministicRecommendations } from "@/lib/recommendations";
@@ -106,6 +107,52 @@ function savePlan(plan: PlanState) {
 
 function spotifySearchUrl(artist: Artist) {
   return artist.spotifyUrl ?? `https://open.spotify.com/search/${encodeURIComponent(artist.name)}`;
+}
+
+function artistInitials(name: string) {
+  return name
+    .replace(/[^A-Za-z0-9 ]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0]?.toUpperCase())
+    .join("");
+}
+
+function ArtistImage({
+  artist,
+  className,
+  rounded = "rounded-xl"
+}: {
+  artist: Artist;
+  className?: string;
+  rounded?: string;
+}) {
+  if (artist.imageUrl) {
+    return (
+      <span className={classNames("relative block overflow-hidden bg-ink/8", rounded, className)}>
+        <Image
+          src={artist.imageUrl}
+          alt={`${artist.name} press photo`}
+          fill
+          sizes="(max-width: 640px) 44px, (max-width: 1024px) 64px, 96px"
+          className="object-cover"
+        />
+      </span>
+    );
+  }
+  return (
+    <div
+      aria-hidden="true"
+      className={classNames(
+        "flex items-center justify-center bg-ink/8 font-black text-ink/45",
+        rounded,
+        className
+      )}
+    >
+      {artistInitials(artist.name) || "★"}
+    </div>
+  );
 }
 
 function downloadFile(filename: string, mimeType: string, contents: string) {
@@ -809,14 +856,20 @@ function SetCard({
       )}
     >
       <div className="flex items-start justify-between gap-3">
-        <button className="min-w-0 text-left" onClick={onOpen}>
-          <p className="text-sm font-bold text-ink/65">
-            {formatTime(item.start)}–{formatTime(item.end)} · {durationMinutes(item.start, item.end)} min
-          </p>
-          <h3 className={classNames("font-black", density === "compact" ? "text-base" : "text-xl")}>
-            {item.titleOverride ?? artist.name}
-          </h3>
-          <p className="mt-1 text-sm text-ink/60">{stage.shortName} · {artist.genres.slice(0, 2).join(" / ")}</p>
+        <button className="flex min-w-0 items-start gap-3 text-left" onClick={onOpen}>
+          <ArtistImage
+            artist={artist}
+            className={classNames("shrink-0", density === "compact" ? "h-12 w-12" : "h-16 w-16")}
+          />
+          <span className="min-w-0">
+            <span className="block text-sm font-bold text-ink/65">
+              {formatTime(item.start)}–{formatTime(item.end)} · {durationMinutes(item.start, item.end)} min
+            </span>
+            <span className={classNames("block font-black", density === "compact" ? "text-base" : "text-xl")}>
+              {item.titleOverride ?? artist.name}
+            </span>
+            <span className="mt-1 block text-sm text-ink/60">{stage.shortName} · {artist.genres.slice(0, 2).join(" / ")}</span>
+          </span>
         </button>
         <button
           className={classNames(
@@ -921,10 +974,13 @@ function MyPlan({
                   const conflictType = getConflictTypeForSet(item.id, conflicts);
                   return (
                     <div key={item.id} className="flex items-center gap-3 rounded-2xl bg-paper p-3">
-                      <button className="min-w-0 flex-1 text-left" onClick={() => onOpen(item.id)}>
-                        <p className="text-sm font-bold text-ink/60">{formatTime(item.start)}–{formatTime(item.end)} · {stage.name}</p>
-                        <p className="font-black">{item.titleOverride ?? artist.name}</p>
-                        <p className="text-sm text-ink/60">{priorityLabel(selections[item.id])}{conflictType !== "none" ? ` · ${conflictType === "overlap" ? "overlap conflict" : "tight transition"}` : ""}</p>
+                      <button className="flex min-w-0 flex-1 items-center gap-3 text-left" onClick={() => onOpen(item.id)}>
+                        <ArtistImage artist={artist} className="h-11 w-11 shrink-0" rounded="rounded-lg" />
+                        <span className="min-w-0">
+                          <span className="block text-sm font-bold text-ink/60">{formatTime(item.start)}–{formatTime(item.end)} · {stage.name}</span>
+                          <span className="block font-black">{item.titleOverride ?? artist.name}</span>
+                          <span className="block text-sm text-ink/60">{priorityLabel(selections[item.id])}{conflictType !== "none" ? ` · ${conflictType === "overlap" ? "overlap conflict" : "tight transition"}` : ""}</span>
+                        </span>
                       </button>
                       <button className="min-h-11 rounded-full bg-white px-3 font-black" onClick={() => onCycle(item.id)}>
                         {selections[item.id] === "must" ? "★" : "☆"}
@@ -1241,10 +1297,13 @@ function ArtistSheet({
     <div className="fixed inset-0 z-50 flex items-end bg-ink/45 p-3 md:items-center md:justify-center" role="dialog" aria-modal="true">
       <section className="max-h-[92vh] w-full max-w-2xl overflow-auto rounded-[2rem] bg-white p-5 shadow-soft">
         <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-bay">{stage.name}</p>
-            <h2 className="text-3xl font-black">{item.titleOverride ?? artist.name}</h2>
-            <p className="mt-1 text-ink/60">{formatTime(item.start)}–{formatTime(item.end)} · {durationMinutes(item.start, item.end)} minutes</p>
+          <div className="flex items-start gap-4">
+            <ArtistImage artist={artist} className="h-24 w-24 shrink-0" rounded="rounded-2xl" />
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-bay">{stage.name}</p>
+              <h2 className="text-3xl font-black">{item.titleOverride ?? artist.name}</h2>
+              <p className="mt-1 text-ink/60">{formatTime(item.start)}–{formatTime(item.end)} · {durationMinutes(item.start, item.end)} minutes</p>
+            </div>
           </div>
           <button className="min-h-11 rounded-full bg-ink/8 px-4 font-bold" onClick={onClose}>Close</button>
         </div>
@@ -1271,6 +1330,17 @@ function ArtistSheet({
           <a className="mt-3 inline-block font-bold text-bay" href={artist.officialUrl}>Official artist site</a>
         ) : null}
         <p className="mt-4 text-xs text-ink/50">Metadata confidence: {artist.metadataConfidence}. {item.sourceNote}</p>
+        {artist.imageCredit ? (
+          <p className="mt-1 text-xs text-ink/40">
+            {artist.imageSourceUrl ? (
+              <a href={artist.imageSourceUrl} target="_blank" rel="noreferrer" className="underline">
+                {artist.imageCredit}
+              </a>
+            ) : (
+              artist.imageCredit
+            )}
+          </p>
+        ) : null}
       </section>
     </div>
   );

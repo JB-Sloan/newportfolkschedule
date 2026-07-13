@@ -70,7 +70,7 @@ export function getDeterministicRecommendations({
           artistId: item.artistId,
           setId: item.id,
           score: Math.max(40, 70 - index * 6),
-          reason: `${artist?.name ?? item.artistId} is an early placeholder discovery pick. Select a few acts to personalize this list.`,
+          reason: `${artist?.name ?? item.artistId} is an early schedule discovery pick. Select a few acts to personalize this list.`,
           conflictType: "none" as const
         };
       });
@@ -78,7 +78,7 @@ export function getDeterministicRecommendations({
     return {
       summary: "Pick two or more acts to get better offline recommendations. For now, here are schedule-valid discovery starters.",
       recommendations: discovery,
-      warnings: ["Recommendations use placeholder metadata until the official 2026 schedule is imported."]
+      warnings: ["Recommendations are deterministic planner suggestions, not official festival endorsements."]
     };
   }
 
@@ -119,7 +119,7 @@ export function getDeterministicRecommendations({
         artistId: item.artistId,
         setId: item.id,
         score,
-        reason: `Recommended because you selected ${selectedNames}: ${matched.length ? matched.join(", ") : "complementary placeholder metadata"}.`,
+        reason: `Recommended because you selected ${selectedNames}: ${matched.length ? matched.join(", ") : "complementary artist metadata"}.`,
         tradeoff:
           conflictType === "overlap"
             ? "This overlaps with one of your selected sets."
@@ -135,6 +135,6 @@ export function getDeterministicRecommendations({
   return {
     summary: "Offline recommendations are based on shared genres, moods, tags, and schedule fit.",
     recommendations: scored,
-    warnings: ["This is deterministic placeholder guidance, not an official recommendation."]
+    warnings: ["This is deterministic planner guidance, not an official recommendation."]
   };
 }

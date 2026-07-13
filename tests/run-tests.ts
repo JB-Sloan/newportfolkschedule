@@ -82,7 +82,7 @@ function testConflicts() {
 
 function testSharePlan() {
   const encoded = encodeSharePlan({
-    version: "2026.placeholder.1",
+    version: "2026.official.1",
     transitionBufferMinutes: 10,
     selections: {
       "2026-07-24-alpha": "must",
@@ -91,7 +91,7 @@ function testSharePlan() {
   });
 
   assert.deepEqual(decodeSharePlan(encoded), {
-    version: "2026.placeholder.1",
+    version: "2026.official.1",
     transitionBufferMinutes: 10,
     selections: {
       "2026-07-24-alpha": "must",

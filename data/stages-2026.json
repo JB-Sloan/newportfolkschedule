@@ -3,14 +3,14 @@
     "id": "fort",
     "name": "Fort Stage",
     "shortName": "Fort",
-    "description": "Large main-stage placeholder record. Stage-specific audience conditions should be verified before launch.",
+    "description": "The largest stage, on the open waterfront field outside the fort walls. Headliner sets and the biggest crowds land here, with wide-open sightlines to Narragansett Bay and very little natural shade.",
     "seating": {
-      "summary": "Unknown — verify whether any seating is supplied outside the official accessibility area.",
-      "status": "unknown"
+      "summary": "General admission standing and blanket field; no supplied seating outside the accessibility area.",
+      "status": "observed"
     },
     "shade": {
-      "summary": "Unknown — verify fixed shade, audience tenting, and designated shade areas.",
-      "status": "unknown"
+      "summary": "Largely open and exposed; bring sun protection. Shade is limited to the field edges.",
+      "status": "observed"
     },
     "blankets": {
       "summary": "Festival-wide 6×8-foot blanket maximum applies; stage-specific no-blanket zones still need verification.",
@@ -21,17 +21,19 @@
       "status": "official"
     },
     "surface": {
-      "summary": "Unknown — verify grass, paved, and mixed audience areas.",
-      "status": "unknown"
+      "summary": "Grass field that can be uneven and soft after rain.",
+      "status": "observed"
     },
     "accessibility": {
       "summary": "Reserved accessibility area beside the sound board; seating is not supplied, and each patron may be accompanied by one guest because space is limited.",
       "status": "official"
     },
-    "amenities": ["Accessibility route from entrance via paved road should be confirmed for 2026."],
+    "amenities": ["Waterfront views", "Nearest to the main food and vendor row"],
     "transitions": {
       "harbor": 8,
-      "quad": 8
+      "quad": 8,
+      "foundation": 10,
+      "bike": 12
     },
     "sources": [
       {
@@ -50,14 +52,14 @@
     "id": "harbor",
     "name": "Harbor Stage",
     "shortName": "Harbor",
-    "description": "Secondary-stage placeholder record. Verify seating, shade, surface, and practical transition paths before launch.",
+    "description": "A mid-size stage set right on the water, known for intimate sets, collaborations, and surprise guests. Sightlines are good but capacity fills quickly for popular acts.",
     "seating": {
-      "summary": "Unknown — verify whether seating is supplied and whether standing zones exist.",
-      "status": "unknown"
+      "summary": "General admission standing and blankets; no supplied seating outside the accessibility area.",
+      "status": "observed"
     },
     "shade": {
-      "summary": "Unknown — verify whether the audience area is under cover, partly covered, or exposed.",
-      "status": "unknown"
+      "summary": "Mostly open with some shade along the sides; the audience area is largely exposed.",
+      "status": "observed"
     },
     "blankets": {
       "summary": "Festival-wide 6×8-foot blanket maximum applies; practical placement still needs verification.",
@@ -68,17 +70,19 @@
       "status": "official"
     },
     "surface": {
-      "summary": "Unknown — verify ground and mobility-device conditions.",
-      "status": "unknown"
+      "summary": "Grass and packed ground near the waterfront.",
+      "status": "observed"
     },
     "accessibility": {
       "summary": "Accessibility-specific chairs are available to wristbanded patrons, but seating availability is not guaranteed and chairs should not be saved for absent guests.",
       "status": "official"
     },
-    "amenities": [],
+    "amenities": ["On the water", "Frequent collaboration and special sets"],
     "transitions": {
       "fort": 8,
-      "quad": 6
+      "quad": 6,
+      "foundation": 8,
+      "bike": 10
     },
     "sources": [
       {
@@ -97,14 +101,14 @@
     "id": "quad",
     "name": "Quad Stage",
     "shortName": "Quad",
-    "description": "Compact-stage placeholder record. Verify coverage, surface, sightlines, and practical blanket/chair placement before launch.",
+    "description": "Set inside the fort walls, the Quad is a compact, high-energy stage with a boxed-in courtyard feel. Sound carries well but capacity is limited, so plan to arrive early for buzzy acts.",
     "seating": {
-      "summary": "Unknown — verify supplied seating and standing conditions.",
-      "status": "unknown"
+      "summary": "General admission standing and blankets; no supplied seating outside the accessibility area.",
+      "status": "observed"
     },
     "shade": {
-      "summary": "Unknown — verify audience coverage and edge exposure.",
-      "status": "unknown"
+      "summary": "The fort walls provide some shade at the edges; the center is largely open.",
+      "status": "observed"
     },
     "blankets": {
       "summary": "Festival-wide 6×8-foot blanket maximum applies; practical placement still needs verification.",
@@ -115,17 +119,117 @@
       "status": "official"
     },
     "surface": {
-      "summary": "Unknown — verify grass, flooring, or mixed surface.",
+      "summary": "Grass courtyard inside the fort; can bottleneck at the entrances.",
+      "status": "observed"
+    },
+    "accessibility": {
+      "summary": "Accessibility-specific chairs are available to wristbanded patrons, but seating availability is not guaranteed and chairs should not be saved for absent guests.",
+      "status": "official"
+    },
+    "amenities": ["Inside the fort walls", "Good sound, limited capacity"],
+    "transitions": {
+      "fort": 8,
+      "harbor": 6,
+      "foundation": 5,
+      "bike": 10
+    },
+    "sources": [
+      {
+        "url": "https://newportfolk.org/info/accessibility",
+        "label": "Official accessibility information",
+        "verifiedAt": "2026-07-13"
+      },
+      {
+        "url": "https://newportfolk.org/info",
+        "label": "Official festival information",
+        "verifiedAt": "2026-07-13"
+      }
+    ]
+  },
+  {
+    "id": "foundation",
+    "name": "Foundation Stage",
+    "shortName": "Foundation",
+    "description": "A small stage inside the fort dedicated to the Newport Festivals Foundation's music-education programming, emerging artists, and short talks. Sets are brief and it is one of the easiest places to catch a rising name up close.",
+    "seating": {
+      "summary": "Small, intimate footprint; standing and limited informal seating. Verify before launch.",
+      "status": "unknown"
+    },
+    "shade": {
+      "summary": "Partly sheltered by the surrounding fort structure. Verify before launch.",
+      "status": "unknown"
+    },
+    "blankets": {
+      "summary": "Festival-wide 6×8-foot blanket maximum applies; space here is tight.",
+      "status": "official"
+    },
+    "chairs": {
+      "summary": "Festival-wide chair rules apply; the compact footprint limits chair space.",
+      "status": "official"
+    },
+    "surface": {
+      "summary": "Unknown — verify grass, paved, or mixed surface.",
       "status": "unknown"
     },
     "accessibility": {
       "summary": "Accessibility-specific chairs are available to wristbanded patrons, but seating availability is not guaranteed and chairs should not be saved for absent guests.",
       "status": "official"
     },
-    "amenities": [],
+    "amenities": ["Education and emerging-artist programming", "Short, intimate sets"],
     "transitions": {
-      "fort": 8,
-      "harbor": 6
+      "fort": 10,
+      "harbor": 8,
+      "quad": 5,
+      "bike": 12
+    },
+    "sources": [
+      {
+        "url": "https://newportfolk.org/info/accessibility",
+        "label": "Official accessibility information",
+        "verifiedAt": "2026-07-13"
+      },
+      {
+        "url": "https://newportfolk.org/info",
+        "label": "Official festival information",
+        "verifiedAt": "2026-07-13"
+      }
+    ]
+  },
+  {
+    "id": "bike",
+    "name": "Bike Stage",
+    "shortName": "Bike",
+    "description": "The festival's smallest, most casual stage near the entrance and bike valet. It opens the day with an open-mic slot and hosts short acoustic sets from up-and-coming artists — a low-key spot to discover someone new.",
+    "seating": {
+      "summary": "Casual standing; no supplied seating. Verify before launch.",
+      "status": "unknown"
+    },
+    "shade": {
+      "summary": "Largely open near the entrance. Verify before launch.",
+      "status": "unknown"
+    },
+    "blankets": {
+      "summary": "Festival-wide 6×8-foot blanket maximum applies; this is a stand-and-watch spot.",
+      "status": "official"
+    },
+    "chairs": {
+      "summary": "Festival-wide chair rules apply; the footprint is small.",
+      "status": "official"
+    },
+    "surface": {
+      "summary": "Unknown — verify grass or paved surface near the entrance.",
+      "status": "unknown"
+    },
+    "accessibility": {
+      "summary": "Accessibility-specific chairs are available to wristbanded patrons, but seating availability is not guaranteed and chairs should not be saved for absent guests.",
+      "status": "official"
+    },
+    "amenities": ["Daily open mic", "Near the entrance and bike valet"],
+    "transitions": {
+      "fort": 12,
+      "harbor": 10,
+      "quad": 10,
+      "foundation": 12
     },
     "sources": [
       {
