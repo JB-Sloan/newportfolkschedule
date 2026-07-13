@@ -885,6 +885,7 @@ function SetCard({
 }) {
   const isShortSet = duration <= 30;
   const selection = priorityLabel(priority);
+  const showBadges = Boolean(priority) || conflictType !== "none";
   return (
     <article
       className={classNames(
@@ -921,14 +922,16 @@ function SetCard({
         {!isShortSet ? (
           <p className="truncate text-[11px] text-ink/60 sm:text-xs">{artist.genres.slice(0, 2).join(" / ")}</p>
         ) : null}
-        <div className="mt-auto flex flex-wrap gap-1 text-[10px] sm:text-[11px]">
-          <span className="rounded-full bg-white/80 px-2 py-0.5">{selection}</span>
-          {conflictType !== "none" ? (
-            <span className={classNames("rounded-full px-2 py-0.5 font-bold", conflictType === "overlap" ? "bg-red-100 text-red-800" : "bg-amber-100 text-amber-900")}>
-              {conflictType === "overlap" ? "Overlap" : "Tight move"}
-            </span>
-          ) : null}
-        </div>
+        {showBadges ? (
+          <div className="mt-auto flex flex-wrap gap-1 text-[10px] sm:text-[11px]">
+            {priority ? <span className="rounded-full bg-white/80 px-2 py-0.5">{selection}</span> : null}
+            {conflictType !== "none" ? (
+              <span className={classNames("rounded-full px-2 py-0.5 font-bold", conflictType === "overlap" ? "bg-red-100 text-red-800" : "bg-amber-100 text-amber-900")}>
+                {conflictType === "overlap" ? "Overlap" : "Tight move"}
+              </span>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </article>
   );
