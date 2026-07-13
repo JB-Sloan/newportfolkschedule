@@ -111,21 +111,21 @@ function testSharePlan() {
 function testSocialPost() {
   const socialArtists = {
     "brother-wallace": { name: "Brother Wallace" },
-    "courtney-marie-andrews": { name: "Courtney Marie Andrews" }
+    "courtney-marie-andrews": { name: "Courtney Marie Andrews" },
+    "tiny-habits": { name: "Tiny Habits" }
   };
   const picks = [
     item("2026-07-24-courtney-marie-andrews", "b", "2026-07-24T12:05:00-04:00", "2026-07-24T12:50:00-04:00", "courtney-marie-andrews"),
-    item("2026-07-24-brother-wallace", "a", "2026-07-24T11:05:00-04:00", "2026-07-24T11:50:00-04:00", "brother-wallace")
+    item("2026-07-24-brother-wallace", "a", "2026-07-24T11:05:00-04:00", "2026-07-24T11:50:00-04:00", "brother-wallace"),
+    item("2026-07-24-tiny-habits", "a", "2026-07-24T12:30:00-04:00", "2026-07-24T13:20:00-04:00", "tiny-habits")
   ];
 
+  const post = buildSocialPost(picks, socialArtists);
   assert.equal(
-    buildSocialPost(picks, socialArtists),
-    "My Newport Folk 2026 schedule:\nFri: Brother Wallace -> Courtney Marie Andrews\n#NewportFolk"
+    post,
+    "My Newport Folk 2026 schedule:\nFri: Brother Wallace -> Courtney Marie Andrews -> Tiny Habits\n#NewportFolk"
   );
-
-  const compact = buildSocialPost(picks, socialArtists, 80);
-  assert.match(compact, /Fri: Brother Wallace -> \+1 more/);
-  assert.ok(compact.length <= 80);
+  assert.doesNotMatch(post, /\+\d+ more/);
 }
 
 function testIcs() {

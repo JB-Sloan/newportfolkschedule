@@ -338,7 +338,7 @@ export function FolkPlannerApp({
   }
 
   async function copySocialPost() {
-    await navigator.clipboard.writeText(`${socialPost}\n\n${shareUrl}`);
+    await navigator.clipboard.writeText(socialPost);
     setPostCopied(true);
     window.setTimeout(() => setPostCopied(false), 1600);
   }
