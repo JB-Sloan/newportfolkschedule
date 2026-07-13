@@ -46,6 +46,7 @@ This keeps the entire planner, schedule, stage information, artist summaries, co
 7. `07_QA_DEPLOYMENT_OPERATIONS.md` — testing, deployment, schedule updates, monitoring
 8. `08_STAGE_INFORMATION_WORKSHEET.md` — known official policies plus fields that must be verified
 9. `09_AGENT_PROMPTS.md` — ready-to-paste prompts for coding agents
+10. `10_IMPLEMENTATION_HANDOFF.md` — current built-state notes for the next developer or agent
 
 Additional starter files:
 
@@ -55,6 +56,8 @@ Additional starter files:
 - `stages.template.json`
 
 ## Immediate build order
+
+**Current state as of 2026-07-13:** the initial application has been built and pushed to `https://github.com/JB-Sloan/newportfolkschedule`. Before starting new work, read `10_IMPLEMENTATION_HANDOFF.md`; the list below is the original build order, not the current status.
 
 1. Scaffold and deploy a blank Next.js application to Vercel.
 2. Implement schemas and load placeholder data.

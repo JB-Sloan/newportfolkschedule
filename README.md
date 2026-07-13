@@ -16,6 +16,12 @@ This app is built to make a static festival schedule usable on a phone at Fort A
 
 Important: the committed schedule is placeholder data for development. Replace it with the official Newport Folk 2026 schedule as soon as it is published.
 
+## Current handoff state
+
+The first implementation pass is complete and pushed to `https://github.com/JB-Sloan/newportfolkschedule` on `main`.
+
+Read `newport-folk-planner-docs/10_IMPLEMENTATION_HANDOFF.md` before continuing development. It captures the current architecture, verification status, implementation shortcuts, Vercel deployment gotchas, and remaining work.
+
 ## Tech stack
 
 - Next.js App Router
@@ -25,6 +31,8 @@ Important: the committed schedule is placeholder data for development. Replace i
 - Local-storage persisted plan state
 - Custom service worker/PWA shell
 - Server-only `/api/assistant` OpenRouter integration with deterministic fallback
+
+Implementation note: the original planning packet mentioned Zustand and Serwist. The current app uses lightweight local React state persisted to local storage and a custom service worker. See the handoff doc before swapping either piece.
 
 ## Local development
 
@@ -50,6 +58,8 @@ Current local verification status:
 - unit smoke tests pass for conflict detection, share-plan encoding, and ICS export;
 - lint passes;
 - production build passes.
+
+`npm test` uses `tsx tests/run-tests.ts`, a small Node assertion smoke-test runner. Vitest is not currently installed.
 
 ## Environment variables
 
