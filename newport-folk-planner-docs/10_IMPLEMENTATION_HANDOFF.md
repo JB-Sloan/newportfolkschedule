@@ -24,7 +24,6 @@ Implemented:
 - priority cycle: unselected -> Interested -> Must See -> unselected;
 - My Plan view with selected acts grouped by day;
 - Now / Next view using the device clock;
-- Explore view with deterministic offline recommendations;
 - artist detail sheet with Spotify search fallback and available artist images;
 - stage detail sheet with official/observed/unknown status labels;
 - conflict detection for direct overlaps and tight stage transitions;
@@ -32,7 +31,7 @@ Implemented:
 - `.ics` export in `America/New_York`;
 - print route at `/print` for browser print / Save as PDF;
 - offline page, PWA manifest, SVG icon, custom service worker at `public/sw.js`, and mobile web app metadata;
-- server-only `/api/assistant` route with OpenRouter support and deterministic fallback;
+- archived server-only `/api/assistant` route with OpenRouter support and deterministic fallback;
 - build-time data validation script;
 - lightweight smoke tests for conflicts, share encoding, and ICS output.
 
@@ -45,7 +44,7 @@ The app now uses the imported `2026.official.1` schedule data. It is still unoff
 - Vitest is not currently used. Tests use a small Node assertion runner at `tests/run-tests.ts`.
 - Direct PDF Blob generation is not implemented yet. The current supported PDF path is the print-optimized `/print` route and browser "Save as PDF".
 - QR code display is not implemented yet. Share links are implemented through copy-to-clipboard.
-- OpenRouter is optional. Without `OPENROUTER_API_KEY` and `OPENROUTER_MODEL`, `/api/assistant` returns deterministic recommendations.
+- AI and recommendation UI is currently disabled. `/api/assistant`, `lib/recommendations.ts`, and the archived React components remain available for future re-enablement.
 
 ## Commands that should pass
 
@@ -81,7 +80,7 @@ If starting from PowerShell, use `npm.cmd` if script execution policy blocks `np
 - `components/PrintPlan.tsx` renders the print/PDF route.
 - `lib/schemas.ts` contains Zod schemas for data and assistant contracts.
 - `lib/conflicts.ts` is the deterministic conflict engine.
-- `lib/recommendations.ts` is the offline recommendation engine.
+- `lib/recommendations.ts` is the archived offline recommendation engine.
 - `lib/ics.ts` generates calendar files.
 - `lib/share-plan.ts` encodes and decodes compact plan URLs.
 - `scripts/validate-data.ts` is the build-time data integrity gate.
@@ -140,6 +139,6 @@ Nice-to-have:
 
 - Do not use the official Newport Folk logo or reproduce official schedule artwork without permission.
 - Keep the visible unofficial-site disclaimer.
-- Do not send local plan data to AI until the user opens/uses the assistant.
-- AI responses must only recommend IDs from the validated local dataset.
+- AI UI is disabled; if re-enabled, do not send local plan data until the user explicitly opens/uses the assistant.
+- If re-enabled, AI responses must only recommend IDs from the validated local dataset.
 - Calendar exports are snapshots; they do not auto-update after schedule changes.

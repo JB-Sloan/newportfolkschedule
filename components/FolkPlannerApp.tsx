@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import { findConflicts, getConflictTypeForSet, priorityLabel } from "@/lib/conflicts";
-import { getDeterministicRecommendations } from "@/lib/recommendations";
 import { encodeSharePlan, decodeSharePlan } from "@/lib/share-plan";
 import { generateIcs } from "@/lib/ics";
 import {
@@ -56,8 +55,7 @@ const DEFAULT_TAB = "schedule";
 const tabLabels = [
   { id: "schedule", label: "Schedule" },
   { id: "plan", label: "My Plan" },
-  { id: "now", label: "Now" },
-  { id: "explore", label: "Explore" }
+  { id: "now", label: "Now" }
 ] as const;
 
 type TabId = (typeof tabLabels)[number]["id"];
@@ -203,10 +201,6 @@ export function FolkPlannerApp({
   const [search, setSearch] = useState("");
   const [detailSetId, setDetailSetId] = useState<string | undefined>();
   const [stageDetailId, setStageDetailId] = useState<string | undefined>();
-  const [assistantQuery, setAssistantQuery] = useState("");
-  const [assistantResult, setAssistantResult] = useState<RecommendationResponse | undefined>();
-  const [assistantBusy, setAssistantBusy] = useState(false);
-  const [assistantError, setAssistantError] = useState<string | undefined>();
   const [sharedPlan, setSharedPlan] = useState<SharedPlan | undefined>();
   const [copied, setCopied] = useState(false);
   const online = useOnlineStatus();
@@ -251,19 +245,6 @@ export function FolkPlannerApp({
   const selectedItems = useMemo(
     () => scheduleItems.filter((item) => plan.selections[item.id]).sort(compareSets),
     [scheduleItems, plan.selections]
-  );
-
-  const recommendations = useMemo(
-    () =>
-      getDeterministicRecommendations({
-        schedule: scheduleItems,
-        artists,
-        stages,
-        selections: plan.selections,
-        transitionBufferMinutes: plan.transitionBufferMinutes,
-        preferredStageId: plan.preferredStageId
-      }),
-    [scheduleItems, artists, stages, plan.selections, plan.transitionBufferMinutes, plan.preferredStageId]
   );
 
   const visibleItems = useMemo(() => {
@@ -348,39 +329,6 @@ export function FolkPlannerApp({
       includeAlarm: true
     });
     downloadFile("newport-folk-plan-2026.ics", "text/calendar;charset=utf-8", ics);
-  }
-
-  async function askAssistant() {
-    setAssistantBusy(true);
-    setAssistantError(undefined);
-    try {
-      const response = await fetch("/api/assistant", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          mode: "recommend",
-          query: assistantQuery,
-          selected: Object.entries(plan.selections).map(([setId, priority]) => ({
-            setId,
-            priority
-          })),
-          preferences: {
-            avoidConflicts: true,
-            preferredStageId: plan.preferredStageId
-          },
-          scheduleVersion: manifest.scheduleVersion
-        })
-      });
-
-      if (!response.ok) throw new Error(`Assistant failed with ${response.status}`);
-      const result = (await response.json()) as RecommendationResponse;
-      setAssistantResult(result);
-    } catch {
-      setAssistantError("AI is unavailable. Showing offline recommendations instead.");
-      setAssistantResult(recommendations);
-    } finally {
-      setAssistantBusy(false);
-    }
   }
 
   const detailItem = detailSetId ? scheduleById[detailSetId] : undefined;
@@ -468,7 +416,7 @@ export function FolkPlannerApp({
 
         <div className="grid gap-5 lg:grid-cols-[1fr_360px]">
           <section className="space-y-4">
-            <nav className="grid grid-cols-4 gap-2 rounded-3xl bg-white p-2 shadow-soft" aria-label="Primary">
+            <nav className="grid grid-cols-3 gap-2 rounded-3xl bg-white p-2 shadow-soft" aria-label="Primary">
               {tabLabels.map((tab) => (
                 <button
                   key={tab.id}
@@ -553,17 +501,6 @@ export function FolkPlannerApp({
               />
             ) : null}
 
-            {activeTab === "explore" ? (
-              <Explore
-                recommendations={recommendations}
-                scheduleById={scheduleById}
-                artistsById={artistsById}
-                stagesById={stagesById}
-                selections={plan.selections}
-                onSelect={(setId) => setSelection(setId, "interested")}
-                onOpen={setDetailSetId}
-              />
-            ) : null}
           </section>
 
           <aside className="space-y-4">
@@ -574,20 +511,6 @@ export function FolkPlannerApp({
               onCopyShare={copyShareLink}
               onDownloadIcs={downloadIcs}
               copied={copied}
-            />
-            <AssistantPanel
-              online={online}
-              query={assistantQuery}
-              setQuery={setAssistantQuery}
-              result={assistantResult ?? recommendations}
-              busy={assistantBusy}
-              error={assistantError}
-              scheduleById={scheduleById}
-              artistsById={artistsById}
-              stagesById={stagesById}
-              onAsk={askAssistant}
-              onSelect={(setId) => setSelection(setId, "interested")}
-              onOpen={setDetailSetId}
             />
             <PolicyCard policies={policies} />
           </aside>
@@ -603,10 +526,6 @@ export function FolkPlannerApp({
           conflictType={getConflictTypeForSet(detailItem.id, conflicts)}
           onClose={() => setDetailSetId(undefined)}
           onCycle={() => cycleSelection(detailItem.id)}
-          onSimilar={() => {
-            setActiveTab("explore");
-            setDetailSetId(undefined);
-          }}
           onStage={() => setStageDetailId(detailItem.stageId)}
         />
       ) : null}
@@ -1224,6 +1143,7 @@ function NowCard({
   );
 }
 
+// AI and recommendation UI is intentionally retained for future re-enablement, but not rendered.
 function Explore({
   recommendations,
   scheduleById,
@@ -1401,7 +1321,6 @@ function ArtistSheet({
   conflictType,
   onClose,
   onCycle,
-  onSimilar,
   onStage
 }: {
   item: ScheduleItem;
@@ -1411,7 +1330,6 @@ function ArtistSheet({
   conflictType: "none" | "overlap" | "transition";
   onClose: () => void;
   onCycle: () => void;
-  onSimilar: () => void;
   onStage: () => void;
 }) {
   return (
@@ -1444,7 +1362,6 @@ function ArtistSheet({
           <a className="min-h-12 rounded-2xl bg-ink px-4 py-3 text-center font-bold text-paper" href={spotifySearchUrl(artist)} target="_blank" rel="noreferrer">
             Open in Spotify
           </a>
-          <button className="min-h-12 rounded-2xl bg-ink/8 px-4 font-bold" onClick={onSimilar}>Find similar acts here</button>
           <button className="min-h-12 rounded-2xl bg-ink/8 px-4 font-bold" onClick={onStage}>Stage details</button>
         </div>
         {artist.officialUrl ? (

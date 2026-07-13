@@ -8,7 +8,6 @@ This app is built to make the static festival schedule usable on a phone at Fort
 - mark sets as **Interested** or **Must See** with persistent local storage;
 - see overlap conflicts and tight stage-transition warnings;
 - inspect artist and stage detail sheets with available artist images;
-- use deterministic offline recommendations and an optional OpenRouter-backed assistant;
 - copy compact share URLs;
 - export selected acts to `.ics`;
 - open a print-optimized pocket plan for browser "Save as PDF";
@@ -30,7 +29,6 @@ The app is connected to `https://github.com/JB-Sloan/newportfolkschedule` on `ma
 - Zod data validation
 - Local-storage persisted plan state
 - Custom service worker/PWA shell
-- Server-only `/api/assistant` OpenRouter integration with deterministic fallback
 
 Implementation note: the original planning packet mentioned Zustand and Serwist. The current app uses lightweight local React state persisted to local storage and a custom service worker.
 
@@ -74,7 +72,7 @@ UPSTASH_REDIS_REST_URL=
 UPSTASH_REDIS_REST_TOKEN=
 ```
 
-If OpenRouter is not configured, the assistant panel still returns deterministic offline recommendations.
+The AI assistant and recommendation UI are currently disabled. The archived `/api/assistant` and `lib/recommendations.ts` code remains in the repository for future re-enablement.
 
 ## Schedule update workflow
 
