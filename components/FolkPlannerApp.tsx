@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
+import type { CSSProperties } from "react";
 import { findConflicts, getConflictTypeForSet, priorityLabel } from "@/lib/conflicts";
 import { getDeterministicRecommendations } from "@/lib/recommendations";
 import { encodeSharePlan, decodeSharePlan } from "@/lib/share-plan";
@@ -751,6 +752,38 @@ function ScheduleControls({
   );
 }
 
+const TIMELINE_INTERVAL_MINUTES = 30;
+const TIMELINE_STAGE_MIN_WIDTH = 230;
+const TIMELINE_RAIL_WIDTH = 72;
+
+function getFestivalMinuteOfDay(iso: string) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    hour: "2-digit",
+    hourCycle: "h23",
+    minute: "2-digit",
+    timeZone: "America/New_York"
+  }).formatToParts(new Date(iso));
+  const hour = Number(parts.find((part) => part.type === "hour")?.value ?? 0);
+  const minute = Number(parts.find((part) => part.type === "minute")?.value ?? 0);
+  return hour * 60 + minute;
+}
+
+function formatTimelineMinute(minuteOfDay: number) {
+  const hour24 = Math.floor(minuteOfDay / 60) % 24;
+  const minute = minuteOfDay % 60;
+  const hour12 = hour24 % 12 || 12;
+  const suffix = hour24 >= 12 ? "PM" : "AM";
+  return `${hour12}:${minute.toString().padStart(2, "0")} ${suffix}`;
+}
+
+function buildTimelineTicks(startMinute: number, endMinute: number) {
+  const ticks: number[] = [];
+  for (let minute = startMinute; minute <= endMinute; minute += TIMELINE_INTERVAL_MINUTES) {
+    ticks.push(minute);
+  }
+  return ticks;
+}
+
 function ScheduleGrid({
   items,
   allStages,
@@ -785,41 +818,100 @@ function ScheduleGrid({
     );
   }
 
+  const startMinutes = items.map((item) => getFestivalMinuteOfDay(item.start));
+  const endMinutes = items.map((item) => getFestivalMinuteOfDay(item.end));
+  const timelineStart = Math.floor(Math.min(...startMinutes) / TIMELINE_INTERVAL_MINUTES) * TIMELINE_INTERVAL_MINUTES;
+  const timelineEnd = Math.ceil(Math.max(...endMinutes) / TIMELINE_INTERVAL_MINUTES) * TIMELINE_INTERVAL_MINUTES;
+  const pixelsPerMinute = density === "compact" ? 2.15 : 2.6;
+  const timelineHeight = Math.max(260, (timelineEnd - timelineStart) * pixelsPerMinute);
+  const ticks = buildTimelineTicks(timelineStart, timelineEnd);
+  const gridTemplateColumns = `${TIMELINE_RAIL_WIDTH}px repeat(${stageIds.length}, minmax(${TIMELINE_STAGE_MIN_WIDTH}px, 1fr))`;
+  const minTimelineWidth = TIMELINE_RAIL_WIDTH + stageIds.length * TIMELINE_STAGE_MIN_WIDTH;
+  const dayLabel = FESTIVAL_DAYS.find((day) => day.date === items[0]?.date)?.long;
+
   return (
     <div className="overflow-hidden rounded-3xl bg-white shadow-soft">
-      <div className="grid min-w-[760px] grid-cols-[repeat(var(--stage-count),minmax(220px,1fr))]" style={{ "--stage-count": stageIds.length } as React.CSSProperties}>
-        {stageIds.map((stageId) => {
-          const stage = stagesById[stageId];
-          return (
-            <button
-              key={stageId}
-              className="sticky top-0 z-10 border-b border-ink/10 bg-white px-4 py-3 text-left font-black"
-              onClick={() => onOpenStage(stageId)}
-            >
-              {stage?.name ?? stageId}
-              <span className="ml-2 rounded-full bg-ink/8 px-2 py-1 text-xs font-bold text-ink/60">details</span>
-            </button>
-          );
-        })}
-        {stageIds.map((stageId) => (
-          <div key={stageId} className="space-y-3 border-r border-ink/10 p-3 last:border-r-0">
-            {items
-              .filter((item) => item.stageId === stageId)
-              .map((item) => (
-                <SetCard
-                  key={item.id}
-                  item={item}
-                  artist={artistsById[item.artistId]}
-                  stage={stagesById[item.stageId]}
-                  priority={selections[item.id]}
-                  conflictType={getConflictTypeForSet(item.id, conflicts)}
-                  density={density}
-                  onCycle={() => onCycle(item.id)}
-                  onOpen={() => onOpen(item.id)}
-                />
-              ))}
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-ink/10 px-4 py-3">
+        <div>
+          <h2 className="text-lg font-black">{dayLabel ?? "Schedule"}</h2>
+          <p className="text-xs font-bold text-ink/55">
+            {stageIds.length} {stageIds.length === 1 ? "stage" : "stages"} · {items.length} {items.length === 1 ? "set" : "sets"}
+          </p>
+        </div>
+        <p className="font-mono text-xs font-bold text-ink/55 tabular-nums">
+          {formatTimelineMinute(timelineStart)} - {formatTimelineMinute(timelineEnd)}
+        </p>
+      </div>
+      <div className="overflow-x-auto">
+        <div className="min-w-full" style={{ minWidth: minTimelineWidth }}>
+          <div
+            className="sticky top-0 z-20 grid border-b border-ink/10 bg-white"
+            style={{ gridTemplateColumns }}
+          >
+            <div className="sticky left-0 z-30 border-r border-ink/10 bg-white px-3 py-3 text-xs font-black uppercase tracking-[0.16em] text-ink/45">
+              Time
+            </div>
+            {stageIds.map((stageId) => {
+              const stage = stagesById[stageId];
+              return (
+                <button
+                  key={stageId}
+                  className="border-r border-ink/10 px-4 py-3 text-left last:border-r-0"
+                  onClick={() => onOpenStage(stageId)}
+                >
+                  <span className="block text-lg font-black leading-tight">{stage?.name ?? stageId}</span>
+                  <span className="mt-1 inline-block rounded-full bg-ink/8 px-2 py-1 text-xs font-bold text-ink/60">details</span>
+                </button>
+              );
+            })}
           </div>
-        ))}
+          <div className="grid" style={{ gridTemplateColumns, height: timelineHeight }}>
+            <div className="sticky left-0 z-10 border-r border-ink/10 bg-white" style={{ height: timelineHeight }}>
+              {ticks.map((tick) => {
+                const top = (tick - timelineStart) * pixelsPerMinute;
+                return (
+                  <div key={tick} className="absolute left-0 right-0 border-t border-ink/10" style={{ top }}>
+                    <span className="absolute right-2 top-[-0.7rem] bg-white px-1 text-right font-mono text-[11px] font-bold text-ink/50 tabular-nums">
+                      {formatTimelineMinute(tick)}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            {stageIds.map((stageId) => (
+              <div key={stageId} className="relative border-r border-ink/10 bg-paper/25 last:border-r-0" style={{ height: timelineHeight }}>
+                {ticks.map((tick) => {
+                  const top = (tick - timelineStart) * pixelsPerMinute;
+                  return <div key={tick} className="pointer-events-none absolute left-0 right-0 border-t border-ink/10" style={{ top }} />;
+                })}
+                {items
+                  .filter((item) => item.stageId === stageId)
+                  .map((item) => {
+                    const start = getFestivalMinuteOfDay(item.start);
+                    const end = getFestivalMinuteOfDay(item.end);
+                    const duration = Math.max(1, end - start);
+                    return (
+                      <SetCard
+                        key={item.id}
+                        item={item}
+                        artist={artistsById[item.artistId]}
+                        priority={selections[item.id]}
+                        conflictType={getConflictTypeForSet(item.id, conflicts)}
+                        density={density}
+                        duration={duration}
+                        style={{
+                          top: (start - timelineStart) * pixelsPerMinute,
+                          height: duration * pixelsPerMinute
+                        }}
+                        onCycle={() => onCycle(item.id)}
+                        onOpen={() => onOpen(item.id)}
+                      />
+                    );
+                  })}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -828,67 +920,70 @@ function ScheduleGrid({
 function SetCard({
   item,
   artist,
-  stage,
   priority,
   conflictType,
   density,
+  duration,
+  style,
   onCycle,
   onOpen
 }: {
   item: ScheduleItem;
   artist: Artist;
-  stage: Stage;
   priority?: Priority;
   conflictType: "none" | "overlap" | "transition";
   density: "compact" | "comfortable";
+  duration: number;
+  style: CSSProperties;
   onCycle: () => void;
   onOpen: () => void;
 }) {
+  const isShortSet = duration <= 30;
+  const selection = priorityLabel(priority);
   return (
     <article
       className={classNames(
-        "rounded-2xl border p-3",
+        "absolute left-2 right-2 overflow-hidden rounded-xl border p-2 shadow-sm transition hover:shadow-soft",
         priority === "must" && "border-bay bg-bay/10",
         priority === "interested" && "border-quad bg-quad/10",
-        !priority && "border-ink/12 bg-paper/60",
+        !priority && "border-ink/12 bg-white/90",
         conflictType === "overlap" && "outline outline-2 outline-red-500",
         conflictType === "transition" && "outline outline-2 outline-amber-500"
       )}
+      style={style}
     >
-      <div className="flex items-start justify-between gap-3">
-        <button className="flex min-w-0 items-start gap-3 text-left" onClick={onOpen}>
-          <ArtistImage
-            artist={artist}
-            className={classNames("shrink-0", density === "compact" ? "h-12 w-12" : "h-16 w-16")}
-          />
-          <span className="min-w-0">
-            <span className="block text-sm font-bold text-ink/65">
-              {formatTime(item.start)}–{formatTime(item.end)} · {durationMinutes(item.start, item.end)} min
+      <div className="flex h-full min-h-0 flex-col gap-1 overflow-hidden">
+        <div className="flex min-h-0 items-start gap-2">
+          <button className="min-w-0 flex-1 text-left" onClick={onOpen}>
+            <span className="block whitespace-nowrap font-mono text-[11px] font-bold leading-none text-ink/60 tabular-nums">
+              {formatTime(item.start)} - {formatTime(item.end)}
             </span>
-            <span className={classNames("block font-black", density === "compact" ? "text-base" : "text-xl")}>
+            <span className={classNames("mt-1 block font-black leading-tight", density === "compact" ? "text-sm" : "text-base", isShortSet ? "line-clamp-1" : "line-clamp-2")}>
               {item.titleOverride ?? artist.name}
             </span>
-            <span className="mt-1 block text-sm text-ink/60">{stage.shortName} · {artist.genres.slice(0, 2).join(" / ")}</span>
-          </span>
-        </button>
-        <button
-          className={classNames(
-            "min-h-11 min-w-11 rounded-full px-3 text-lg font-black",
-            priority === "must" ? "bg-bay text-white" : priority === "interested" ? "bg-quad text-white" : "bg-white"
-          )}
-          aria-label={`Set ${artist.name} priority. Current: ${priorityLabel(priority)}`}
-          onClick={onCycle}
-        >
-          {priority === "must" ? "★" : priority === "interested" ? "☆" : "+"}
-        </button>
-      </div>
-      <div className="mt-2 flex flex-wrap gap-1 text-xs">
-        <span className="rounded-full bg-white/80 px-2 py-1">{priorityLabel(priority)}</span>
-        {conflictType !== "none" ? (
-          <span className={classNames("rounded-full px-2 py-1 font-bold", conflictType === "overlap" ? "bg-red-100 text-red-800" : "bg-amber-100 text-amber-900")}>
-            {conflictType === "overlap" ? "Overlap conflict" : "Tight transition"}
-          </span>
+          </button>
+          <button
+            className={classNames(
+              "min-h-8 min-w-8 shrink-0 rounded-full px-2 text-sm font-black",
+              priority === "must" ? "bg-bay text-white" : priority === "interested" ? "bg-quad text-white" : "bg-paper"
+            )}
+            aria-label={`Set ${artist.name} priority. Current: ${selection}`}
+            onClick={onCycle}
+          >
+            {priority === "must" ? "★" : priority === "interested" ? "☆" : "+"}
+          </button>
+        </div>
+        {!isShortSet ? (
+          <p className="truncate text-xs text-ink/60">{artist.genres.slice(0, 2).join(" / ")}</p>
         ) : null}
+        <div className="mt-auto flex flex-wrap gap-1 text-[11px]">
+          <span className="rounded-full bg-white/80 px-2 py-0.5">{selection}</span>
+          {conflictType !== "none" ? (
+            <span className={classNames("rounded-full px-2 py-0.5 font-bold", conflictType === "overlap" ? "bg-red-100 text-red-800" : "bg-amber-100 text-amber-900")}>
+              {conflictType === "overlap" ? "Overlap" : "Tight move"}
+            </span>
+          ) : null}
+        </div>
       </div>
     </article>
   );
