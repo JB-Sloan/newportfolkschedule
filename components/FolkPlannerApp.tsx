@@ -1698,9 +1698,7 @@ function ArtistSheet({
           </a>
           <button className="min-h-12 rounded-2xl bg-ink/8 px-4 font-bold" onClick={onStage}>Stage details</button>
         </div>
-        {artist.officialUrl ? (
-          <a className="mt-3 inline-block font-bold text-bay" href={artist.officialUrl}>Official artist site</a>
-        ) : null}
+        <ArtistLinks artist={artist} />
         <p className="mt-4 text-xs text-ink/50">Metadata confidence: {artist.metadataConfidence}. {item.sourceNote}</p>
         {artist.imageCredit ? (
           <p className="mt-1 text-xs text-ink/40">
@@ -1714,6 +1712,39 @@ function ArtistSheet({
           </p>
         ) : null}
     </SheetShell>
+  );
+}
+
+function ArtistLinks({ artist }: { artist: Artist }) {
+  const links: Array<[string, string | undefined]> = [
+    ["Website", artist.officialUrl],
+    ["Bandcamp", artist.links?.bandcamp],
+    ["Instagram", artist.links?.instagram],
+    ["YouTube", artist.links?.youtube],
+    ["TikTok", artist.links?.tiktok],
+    ["Wikipedia", artist.links?.wikipedia],
+    ["More links", artist.links?.other]
+  ];
+  const available = links.filter((entry): entry is [string, string] => Boolean(entry[1]));
+  if (!available.length) return null;
+
+  return (
+    <div className="mt-4">
+      <p className="text-xs font-black uppercase tracking-[0.14em] text-ink/45">Listen &amp; follow</p>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {available.map(([label, url]) => (
+          <a
+            key={label}
+            className="rounded-full bg-ink/8 px-3 py-1.5 text-sm font-bold text-ink hover:bg-ink/15"
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {label}
+          </a>
+        ))}
+      </div>
+    </div>
   );
 }
 

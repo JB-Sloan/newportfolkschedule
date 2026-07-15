@@ -20,7 +20,11 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Amble_%28band%29"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/5ZC7GPz5h9zkEfjZBUDNzI",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Amble_%28band%29"
+    }
   },
   {
     "id": "belle-blue",
@@ -42,7 +46,12 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://www.bellebluemusic.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/2HM8lglYidPbpbtfaZN9Fj",
+    "links": {
+      "other": "https://linktr.ee/bellebluemusic"
+    }
   },
   {
     "id": "brandi-carlile",
@@ -70,7 +79,14 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Brandi_Carlile"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/2sG4zTOLvjKG1PSoOyf5Ej",
+    "links": {
+      "bandcamp": "https://brandicarlile.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Brandi_Carlile",
+      "instagram": "https://www.instagram.com/brandicarlile/",
+      "youtube": "https://www.youtube.com/channel/UCxrOSjIQ1MbK1hUohxZNwpA"
+    }
   },
   {
     "id": "brandon-flowers",
@@ -96,7 +112,14 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Brandon_Flowers"
-    ]
+    ],
+    "officialUrl": "http://www.brandonflowersmusic.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/18Zv2g2vUcEGqJf6WnjfXN",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Brandon_Flowers",
+      "instagram": "https://www.instagram.com/brandonflowers/",
+      "youtube": "https://www.youtube.com/channel/UChTfZClM1osoBdrzOghD7kg"
+    }
   },
   {
     "id": "brittany-davis",
@@ -119,7 +142,11 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://brittanydavismusic.net/",
+    "links": {
+      "other": "https://linktr.ee/BrittanyDavis_Music"
+    }
   },
   {
     "id": "brother-wallace",
@@ -141,7 +168,11 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://www.brotherwallace.com/home/",
+    "links": {
+      "bandcamp": "https://brotherwallace.bandcamp.com/"
+    }
   },
   {
     "id": "case-oats",
@@ -163,7 +194,13 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://caseoats.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/5Ml0QbIoj7bneIUJDCoMx8",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Case_Oats",
+      "other": "https://www.highroadtouring.com/artists/case-oats/"
+    }
   },
   {
     "id": "cat-power",
@@ -190,7 +227,15 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Cat_Power"
-    ]
+    ],
+    "officialUrl": "http://www.catpowermusic.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/35qUXFIuUScihB4jOHW0Kk",
+    "links": {
+      "bandcamp": "https://catpower.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Cat_Power",
+      "instagram": "https://www.instagram.com/catpowerofficial/",
+      "youtube": "https://www.youtube.com/channel/UCgeVIBrhHxFxxvVeNWJC3Og"
+    }
   },
   {
     "id": "clover-county",
@@ -212,7 +257,11 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/1vOabSI7N1elDhNGoirgU2",
+    "links": {
+      "bandcamp": "https://clovercounty.bandcamp.com/"
+    }
   },
   {
     "id": "cmat",
@@ -238,7 +287,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/CMAT_%28singer%29"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/CMAT_%28singer%29"
+    }
   },
   {
     "id": "community-chapstick",
@@ -259,7 +311,8 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://communitychapstick.com/"
   },
   {
     "id": "courtney-barnett",
@@ -286,7 +339,14 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Courtney_Barnett"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/4OOlG5eBXSkSAAEeKjJb5Y",
+    "links": {
+      "bandcamp": "https://courtneybarnett.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Courtney_Barnett",
+      "instagram": "https://www.instagram.com/courtneymelba/",
+      "youtube": "https://www.youtube.com/channel/UC4zONxF4rPkPZE6klaIoFpw"
+    }
   },
   {
     "id": "courtney-marie-andrews",
@@ -313,7 +373,15 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Courtney_Marie_Andrews"
-    ]
+    ],
+    "officialUrl": "http://courtneymarieandrews.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/1EI0B66miJj5Fl408B7E9H",
+    "links": {
+      "bandcamp": "https://courtneymarieandrews.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Courtney_Marie_Andrews",
+      "instagram": "https://www.instagram.com/courtneymarieandrews/",
+      "youtube": "https://www.youtube.com/channel/UCw_8Gw6tf3jEgll8jBrNXcw"
+    }
   },
   {
     "id": "dawes",
@@ -339,7 +407,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Dawes_%28band%29"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Dawes_%28band%29"
+    }
   },
   {
     "id": "deer-tick",
@@ -366,7 +437,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Deer_Tick_%28band%29"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Deer_Tick_%28band%29"
+    }
   },
   {
     "id": "dove-ellis",
@@ -389,7 +463,13 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://doveellis.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/6tGT6SMlubqjTWDxBhSgg9",
+    "links": {
+      "bandcamp": "https://doveellis.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Dove_Ellis"
+    }
   },
   {
     "id": "evan-honer",
@@ -411,7 +491,13 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://www.evanhoner.com/",
+    "links": {
+      "bandcamp": "https://evanhoner.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Evan_Honer",
+      "other": "https://linktr.ee/evanhoner"
+    }
   },
   {
     "id": "for-petes-sake",
@@ -433,7 +519,10 @@
     "metadataConfidence": "reviewed",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "links": {
+      "other": "https://newportfolk.org/"
+    }
   },
   {
     "id": "fruit-bats",
@@ -459,7 +548,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Fruit_Bats_%28band%29"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Fruit_Bats_%28band%29"
+    }
   },
   {
     "id": "gillian-welch-david-rawlings",
@@ -486,7 +578,15 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Gillian_Welch"
-    ]
+    ],
+    "officialUrl": "http://www.gillianwelch.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/2H5elA2mJKrHmqkN9GSfkz",
+    "links": {
+      "bandcamp": "https://gillianwelch.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Gillian_Welch",
+      "instagram": "https://www.instagram.com/gillianwelchofficial/",
+      "youtube": "https://www.youtube.com/channel/UCc9BfnitYn08sCHc6hv0dkg"
+    }
   },
   {
     "id": "gwenifer-raymond",
@@ -510,7 +610,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Gwenifer_Raymond"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Gwenifer_Raymond"
+    }
   },
   {
     "id": "heynderickx-garcia-conover",
@@ -536,7 +639,15 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Haley_Heynderickx"
-    ]
+    ],
+    "officialUrl": "https://www.haley-heynderickx.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/73MDShZzdL4vUGMkmXOG6X",
+    "links": {
+      "bandcamp": "https://haleyheynderickx.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Haley_Heynderickx",
+      "instagram": "https://www.instagram.com/hhhendrix/",
+      "youtube": "https://www.youtube.com/channel/UC0adt9l9HSGh31N48olTQLg"
+    }
   },
   {
     "id": "hayley-williams",
@@ -563,7 +674,13 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Hayley_Williams"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/6Rx1JKzBrSzoKQtmbVmBnM",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Hayley_Williams",
+      "instagram": "https://www.instagram.com/yelyahwilliams/",
+      "youtube": "https://www.youtube.com/channel/UCoGbSChtzhQ4r1toYPmeiSA"
+    }
   },
   {
     "id": "honest-charlie",
@@ -585,7 +702,8 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/2a3JMqry8I41WmLHEuYbMi"
   },
   {
     "id": "hot-tuna",
@@ -612,7 +730,12 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Hot_Tuna"
-    ]
+    ],
+    "officialUrl": "http://www.hottuna.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/5tOrTQaBRD5yPHqbEwsRn7",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Hot_Tuna"
+    }
   },
   {
     "id": "hudson-freeman",
@@ -634,7 +757,11 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/6k3W2iGuRZrhUnfVZOMQo8",
+    "links": {
+      "bandcamp": "https://hudsonfreeman.bandcamp.com/"
+    }
   },
   {
     "id": "infinity-song",
@@ -659,7 +786,14 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Infinity_Song"
-    ]
+    ],
+    "officialUrl": "https://infinitysongmusic.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/2PZThLYBW7XtcYVzQms8oM",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Infinity_Song",
+      "youtube": "https://www.youtube.com/channel/UC5NHF6qpTaC0SbEqgV56BEg",
+      "tiktok": "https://www.tiktok.com/@infinitysongofficial"
+    }
   },
   {
     "id": "jackie-evans",
@@ -681,7 +815,11 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/3hr95JCfCIlFRK9EmDFJ3R",
+    "links": {
+      "other": "https://linktr.ee/jackieevans"
+    }
   },
   {
     "id": "john-r-miller",
@@ -705,7 +843,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/John_R._Miller_%28musician%29"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/John_R._Miller_%28musician%29"
+    }
   },
   {
     "id": "jonathan-bernstein",
@@ -727,7 +868,10 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "links": {
+      "other": "https://www.rollingstone.com/author/jonathan-bernstein/"
+    }
   },
   {
     "id": "jordan-klepper",
@@ -753,7 +897,12 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Jordan_Klepper"
-    ]
+    ],
+    "officialUrl": "https://www.officialjordanklepper.com/",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Jordan_Klepper",
+      "instagram": "https://www.instagram.com/jordanklepper/"
+    }
   },
   {
     "id": "kathleen-edwards",
@@ -780,7 +929,13 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Kathleen_Edwards"
-    ]
+    ],
+    "officialUrl": "http://kathleenedwards.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/7x4So74vIUx3DaLk93JCFf",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Kathleen_Edwards",
+      "instagram": "https://www.instagram.com/kittythefool/"
+    }
   },
   {
     "id": "kirby",
@@ -802,7 +957,11 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Kirby_%28singer%29"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/5lcDGoJUr5WY5bCFAfYbCU",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Kirby_%28singer%29"
+    }
   },
   {
     "id": "leif-vollebekk",
@@ -828,7 +987,11 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Leif_Vollebekk"
-    ]
+    ],
+    "officialUrl": "http://www.leifvollebekk.com/",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Leif_Vollebekk"
+    }
   },
   {
     "id": "lily-fitts",
@@ -850,7 +1013,12 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://www.lilyfittsmusic.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/1mY66135CEOJg0KTwDIk4N",
+    "links": {
+      "other": "https://linktr.ee/lilyfitts"
+    }
   },
   {
     "id": "lizzy-mcalpine",
@@ -876,7 +1044,16 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Lizzy_McAlpine"
-    ]
+    ],
+    "officialUrl": "https://lizzymcalpine.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/1GmsPCcpKgF9OhlNXjOsbS",
+    "links": {
+      "bandcamp": "https://lizzymcalpine.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Lizzy_McAlpine",
+      "instagram": "https://www.instagram.com/lizzymcalpine/",
+      "youtube": "https://www.youtube.com/channel/UCn-fhn3NbPzOeM39yv4k5hw",
+      "tiktok": "https://www.tiktok.com/@lizzymcalpine"
+    }
   },
   {
     "id": "lucy-dacus",
@@ -903,7 +1080,15 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Lucy_Dacus"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/07D1Bjaof0NFlU32KXiqUP",
+    "links": {
+      "bandcamp": "https://lucydacus.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Lucy_Dacus",
+      "instagram": "https://www.instagram.com/lucydacus/",
+      "youtube": "https://www.youtube.com/channel/UC30azBKZICH0yBDZhOtyDlg",
+      "tiktok": "https://www.tiktok.com/@lucydacus"
+    }
   },
   {
     "id": "madi-diaz",
@@ -929,7 +1114,14 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Madi_Diaz"
-    ]
+    ],
+    "officialUrl": "http://madidiaz.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/7E1o9IcnpiFQDlAUk2H7Az",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Madi_Diaz",
+      "instagram": "https://www.instagram.com/madidiaz/",
+      "youtube": "https://www.youtube.com/channel/UCe9GZ71MOPEs9b3I0fJYZgA"
+    }
   },
   {
     "id": "mark-cutler",
@@ -952,7 +1144,12 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://www.mcutler.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/6bYy84wHed9xrSUnJT2agJ",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Mark_Cutler"
+    }
   },
   {
     "id": "matt-quinn",
@@ -974,7 +1171,11 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://www.mtjoyband.com/",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Mt._Joy_(band)"
+    }
   },
   {
     "id": "medium-build",
@@ -997,7 +1198,11 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Medium_Build"
-    ]
+    ],
+    "officialUrl": "https://www.mediumbuildmusic.com",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Medium_Build"
+    }
   },
   {
     "id": "met-lab-students",
@@ -1019,7 +1224,10 @@
     "metadataConfidence": "reviewed",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "links": {
+      "other": "https://newportfolk.org/"
+    }
   },
   {
     "id": "shannon-narducy-rem",
@@ -1042,7 +1250,15 @@
     "metadataConfidence": "reviewed",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://remhq.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/4KWTAlx2RvbpseOGMEmROg",
+    "links": {
+      "bandcamp": "https://remhq.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/R.E.M.",
+      "instagram": "https://www.instagram.com/rem/",
+      "youtube": "https://www.youtube.com/channel/UCZQMYjqm_j5mBVTfPcCy3FA"
+    }
   },
   {
     "id": "morgan-nagler",
@@ -1063,7 +1279,8 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/6mT5D1CUrWTMXngtqazglr"
   },
   {
     "id": "ms-lauryn-hill",
@@ -1090,7 +1307,14 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Lauryn_Hill"
-    ]
+    ],
+    "officialUrl": "https://mslaurynhill.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/2Mu5NfyYm8n5iTomuKAEHl",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Lauryn_Hill",
+      "instagram": "https://www.instagram.com/mslaurynhill/",
+      "youtube": "https://www.youtube.com/channel/UCxISpPHkXV4RmeqOO4Z04Lg"
+    }
   },
   {
     "id": "music-lab-students",
@@ -1112,7 +1336,10 @@
     "metadataConfidence": "reviewed",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "links": {
+      "other": "https://newportfolk.org/"
+    }
   },
   {
     "id": "nabeel",
@@ -1135,7 +1362,14 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "links": {
+      "bandcamp": "https://nabnabnabeel.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Nabeel_(%D9%86%D8%A8%D9%8A%D9%84)",
+      "instagram": "https://www.instagram.com/nabnabnabeel/",
+      "youtube": "https://www.youtube.com/@nabnabnabeel",
+      "other": "https://linktr.ee/nabnabnabeel"
+    }
   },
   {
     "id": "nathaniel-rateliff",
@@ -1162,7 +1396,14 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Nathaniel_Rateliff"
-    ]
+    ],
+    "officialUrl": "https://www.nathanielrateliff.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/02seUFsFQP7TH4hLrTj77o",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Nathaniel_Rateliff",
+      "instagram": "https://www.instagram.com/nathanielrateliff/",
+      "youtube": "https://www.youtube.com/channel/UC2ba2bC5wk8hHBt6KD7xKYA"
+    }
   },
   {
     "id": "open-mic",
@@ -1184,7 +1425,10 @@
     "metadataConfidence": "reviewed",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "links": {
+      "other": "https://newportfolk.org/"
+    }
   },
   {
     "id": "rowan-grisman-hull-campbell-williams",
@@ -1211,7 +1455,13 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Peter_Rowan"
-    ]
+    ],
+    "officialUrl": "http://www.peter-rowan.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/6zkQCtFCqgSUUVgyotaKSg",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Peter_Rowan",
+      "other": "https://newportfolk.org/"
+    }
   },
   {
     "id": "princess-june",
@@ -1233,7 +1483,9 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://www.princessjunemusic.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/02SHygIyTuHfTUkpD1u6FJ"
   },
   {
     "id": "punch-brothers",
@@ -1260,7 +1512,12 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Punch_Brothers"
-    ]
+    ],
+    "officialUrl": "http://www.punchbrothers.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/4gFssfOmWNY3LfIZ3zyoy4",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Punch_Brothers"
+    }
   },
   {
     "id": "ryan-davis-roadhouse-band",
@@ -1282,7 +1539,14 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://ryandavisandtheroadhouseband.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/7Ah0xZVyWfAL3Vd7OVvKuo",
+    "links": {
+      "bandcamp": "https://sophomorelounge.bandcamp.com/album/ryan-davis-the-roadhouse-band-dancing-on-the-edge",
+      "wikipedia": "https://en.wikipedia.org/wiki/Ryan_Davis_%26_the_Roadhouse_Band",
+      "instagram": "https://www.instagram.com/technique_street/"
+    }
   },
   {
     "id": "sally-rose",
@@ -1327,7 +1591,10 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "links": {
+      "other": "https://newportfolk.org/"
+    }
   },
   {
     "id": "searows",
@@ -1353,7 +1620,13 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Searows"
-    ]
+    ],
+    "officialUrl": "https://www.searows.com/",
+    "links": {
+      "bandcamp": "https://searows.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Searows",
+      "instagram": "https://www.instagram.com/saerows/"
+    }
   },
   {
     "id": "snacktime",
@@ -1376,7 +1649,12 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://snacktimephilly.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/4WdKwazXyV5Hc2YtWc2IDr",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Snacktime_(band)"
+    }
   },
   {
     "id": "stephen-covell",
@@ -1399,7 +1677,10 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "links": {
+      "other": "https://operationencore.org/"
+    }
   },
   {
     "id": "strongboi",
@@ -1421,7 +1702,11 @@
     "metadataConfidence": "draft",
     "metadataSources": [
       "https://newportfolk.org/lineup"
-    ]
+    ],
+    "officialUrl": "https://strongboi.com/",
+    "links": {
+      "bandcamp": "https://strongboi.bandcamp.com/"
+    }
   },
   {
     "id": "taylor-hollingsworth",
@@ -1469,7 +1754,12 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Tedeschi_Trucks_Band"
-    ]
+    ],
+    "officialUrl": "http://www.tedeschitrucksband.com/",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Tedeschi_Trucks_Band",
+      "instagram": "https://www.instagram.com/derekandsusan/"
+    }
   },
   {
     "id": "the-barr-brothers",
@@ -1492,7 +1782,15 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/The_Barr_Brothers"
-    ]
+    ],
+    "officialUrl": "http://www.thebarrbrothers.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/4OyRutd80DZC22C4pl63l7",
+    "links": {
+      "bandcamp": "https://thebarrbrothers.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/The_Barr_Brothers",
+      "instagram": "https://www.instagram.com/thebarrbrothers/",
+      "youtube": "https://www.youtube.com/channel/UCZNVoKAKjs6qKv_wGliftlw"
+    }
   },
   {
     "id": "the-fearless-flyers",
@@ -1519,7 +1817,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/The_Fearless_Flyers"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/The_Fearless_Flyers"
+    }
   },
   {
     "id": "the-lumineers",
@@ -1546,7 +1847,13 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/The_Lumineers"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/16oZKvXb6WkQlVAjwo2Wbg",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/The_Lumineers",
+      "youtube": "https://www.youtube.com/channel/UCB7P9Hr5BYB5Mkxau6t3Sgw",
+      "tiktok": "https://www.tiktok.com/@thelumineersofficial"
+    }
   },
   {
     "id": "the-olllam",
@@ -1570,7 +1877,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/The_Olllam"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/The_Olllam"
+    }
   },
   {
     "id": "this-is-lorelei",
@@ -1597,7 +1907,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/This_Is_Lorelei"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/This_Is_Lorelei"
+    }
   },
   {
     "id": "tim-bernardes",
@@ -1624,7 +1937,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Tim_Bernardes"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Tim_Bernardes"
+    }
   },
   {
     "id": "tiny-habits",
@@ -1650,7 +1966,11 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Tiny_Habits"
-    ]
+    ],
+    "officialUrl": "https://tinyhabitsofficial.com/",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Tiny_Habits"
+    }
   },
   {
     "id": "tom-morello",
@@ -1676,7 +1996,15 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Tom_Morello"
-    ]
+    ],
+    "officialUrl": "https://tommorello.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/74NBPbyyftqJ4SpDZ4c1Ed",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Tom_Morello",
+      "instagram": "https://www.instagram.com/tommorello/",
+      "youtube": "https://www.youtube.com/channel/UCsObT2rCuM4f9ABCmHCEVBw",
+      "tiktok": "https://www.tiktok.com/@tommorello"
+    }
   },
   {
     "id": "trousdale",
@@ -1699,7 +2027,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Trousdale_%28band%29"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Trousdale_%28band%29"
+    }
   },
   {
     "id": "victoria-canal",
@@ -1726,7 +2057,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Victoria_Canal"
-    ]
+    ],
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Victoria_Canal"
+    }
   },
   {
     "id": "vulfpeck",
@@ -1752,7 +2086,14 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Vulfpeck"
-    ]
+    ],
+    "officialUrl": "http://vulfpeck.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/7pXu47GoqSYRajmBCjxdD6",
+    "links": {
+      "bandcamp": "https://vulfpeck.bandcamp.com/",
+      "wikipedia": "https://en.wikipedia.org/wiki/Vulfpeck",
+      "instagram": "https://www.instagram.com/vulfpeck/"
+    }
   },
   {
     "id": "wednesday",
@@ -1776,7 +2117,11 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Wednesday_%28band%29"
-    ]
+    ],
+    "spotifyUrl": "https://open.spotify.com/artist/4j7DrazfBZLLD0OrVoAtEe",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Wednesday_%28band%29"
+    }
   },
   {
     "id": "williams-tyler",
@@ -1803,6 +2148,10 @@
     "metadataSources": [
       "https://newportfolk.org/lineup",
       "https://en.wikipedia.org/wiki/Yasmin_Williams"
-    ]
+    ],
+    "officialUrl": "https://www.yasminwilliamsmusic.com/",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Yasmin_Williams"
+    }
   }
 ]
