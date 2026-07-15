@@ -165,6 +165,48 @@ async function resolveTarget(
   return pickBestArtistMatch(results, target.name);
 }
 
+/**
+ * Step-by-step access check used by GET /api/spotify-playlist?diagnose=1 to
+ * pinpoint Spotify 403s: reports token refresh, /me (which account the token
+ * belongs to), and /search results with Spotify's own error messages.
+ */
+export async function diagnoseSpotifyAccess(config: ServerSpotifyConfig, fetchImpl: FetchLike = fetch) {
+  const steps: Record<string, unknown> = {};
+
+  let token: string;
+  try {
+    token = await getOwnerAccessToken(config, fetchImpl);
+    steps.tokenRefresh = "ok";
+  } catch (error) {
+    steps.tokenRefresh = error instanceof Error ? error.message : "failed";
+    return steps;
+  }
+
+  const probe = async (label: string, path: string) => {
+    const response = await fetchImpl(`${SPOTIFY_API}${path}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (response.ok) {
+      return response.json();
+    }
+    const detail = await readErrorMessage(response);
+    steps[label] = `HTTP ${response.status}${detail ? `: ${detail}` : ""}`;
+    return undefined;
+  };
+
+  const me = (await probe("me", "/me")) as
+    | { id?: string; display_name?: string; product?: string }
+    | undefined;
+  if (me) steps.me = { id: me.id, displayName: me.display_name, product: me.product };
+
+  const search = (await probe("search", "/search?q=test&type=artist&limit=1")) as
+    | { artists?: { items?: unknown[] } }
+    | undefined;
+  if (search) steps.search = `ok (${search.artists?.items?.length ?? 0} result)`;
+
+  return steps;
+}
+
 export type ServerBuildInput = {
   config: ServerSpotifyConfig;
   artists: Array<{ id: string; name: string }>;

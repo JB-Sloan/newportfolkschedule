@@ -5,6 +5,7 @@ import { artistsById } from "@/lib/data";
 import type { ArtistMap } from "@/lib/spotify";
 import {
   buildPlaylistInOwnerAccount,
+  diagnoseSpotifyAccess,
   getServerSpotifyConfig,
   SpotifyServerError
 } from "@/lib/spotify-server";
@@ -38,8 +39,13 @@ function isRateLimited(ip: string) {
   return recent.length > RATE_LIMIT;
 }
 
-export async function GET() {
-  return NextResponse.json({ configured: Boolean(getServerSpotifyConfig()) });
+export async function GET(request: Request) {
+  const config = getServerSpotifyConfig();
+  const url = new URL(request.url);
+  if (url.searchParams.get("diagnose") !== "1" || !config) {
+    return NextResponse.json({ configured: Boolean(config) });
+  }
+  return NextResponse.json(await diagnoseSpotifyAccess(config));
 }
 
 export async function POST(request: Request) {
