@@ -110,15 +110,18 @@ async function spotifyFetch<T>(
       await new Promise((resolve) => setTimeout(resolve, Math.min(retryAfter, 10) * 1000));
       continue;
     }
+    const endpoint = path.split("?")[0];
     if (response.status === 401 || response.status === 403) {
       const detail = await readErrorMessage(response);
       throw new SpotifyServerError(
-        `Spotify rejected the site's credentials (${response.status}${detail ? `: ${detail}` : ""}).`
+        `Spotify rejected the site's credentials (${response.status}${detail ? `: ${detail}` : ""} at ${endpoint}).`
       );
     }
     if (!response.ok) {
       const detail = await readErrorMessage(response);
-      throw new Error(`Spotify request failed (${response.status}${detail ? `: ${detail}` : ""}).`);
+      throw new Error(
+        `Spotify request failed (${response.status}${detail ? `: ${detail}` : ""} at ${endpoint}).`
+      );
     }
     return (await response.json()) as T;
   }
@@ -200,9 +203,41 @@ export async function diagnoseSpotifyAccess(config: ServerSpotifyConfig, fetchIm
   if (me) steps.me = { id: me.id, displayName: me.display_name, product: me.product };
 
   const search = (await probe("search", "/search?q=test&type=artist&limit=1")) as
-    | { artists?: { items?: unknown[] } }
+    | { artists?: { items?: Array<{ id?: string }> } }
     | undefined;
   if (search) steps.search = `ok (${search.artists?.items?.length ?? 0} result)`;
+
+  const firstArtistId = search?.artists?.items?.[0]?.id;
+  if (firstArtistId) {
+    const topTracks = (await probe("topTracks", `/artists/${firstArtistId}/top-tracks`)) as
+      | { tracks?: unknown[] }
+      | undefined;
+    if (topTracks) steps.topTracks = `ok (${topTracks.tracks?.length ?? 0} tracks)`;
+  }
+
+  if (me?.id) {
+    const createResponse = await fetchImpl(`${SPOTIFY_API}/users/${encodeURIComponent(me.id)}/playlists`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: "Folk Planner diagnostic - safe to delete",
+        description: "Created and immediately removed by the diagnostics check.",
+        public: true
+      })
+    });
+    if (createResponse.ok) {
+      const playlist = (await createResponse.json()) as { id: string };
+      steps.createPlaylist = "ok";
+      const cleanup = await fetchImpl(`${SPOTIFY_API}/playlists/${playlist.id}/followers`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      steps.cleanupPlaylist = cleanup.ok ? "ok" : `HTTP ${cleanup.status}`;
+    } else {
+      const detail = await readErrorMessage(createResponse);
+      steps.createPlaylist = `HTTP ${createResponse.status}${detail ? `: ${detail}` : ""}`;
+    }
+  }
 
   return steps;
 }
