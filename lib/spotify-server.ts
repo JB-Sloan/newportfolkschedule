@@ -167,20 +167,40 @@ async function getTopTracks(
   token: string,
   artist: SpotifyArtist
 ): Promise<SpotifyTrack[]> {
-  const params = new URLSearchParams({
-    q: `artist:"${artist.name}"`,
-    type: "track",
-    limit: "10"
-  });
-  const json = await spotifyFetch<TrackSearchResponse>(fetchImpl, token, `/search?${params}`);
   const target = normalizeArtistName(artist.name);
-  return json.tracks.items
-    .filter((track) =>
-      track.artists.some(
-        (trackArtist) =>
-          trackArtist.id === artist.id || normalizeArtistName(trackArtist.name) === target
-      )
-    )
+  const seen = new Set<string>();
+  const candidates: TrackSearchResponse["tracks"]["items"] = [];
+
+  // Paginate: production returns at most 5 items per page regardless of the
+  // requested limit, so keep fetching until we have enough candidates by this
+  // artist to fill the TRACKS_PER_ARTIST budget after filtering.
+  let offset = 0;
+  for (let page = 0; page < 4 && candidates.length < TRACKS_PER_ARTIST; page += 1) {
+    const params = new URLSearchParams({
+      q: `artist:"${artist.name}"`,
+      type: "track",
+      limit: "10",
+      offset: String(offset)
+    });
+    const json = await spotifyFetch<TrackSearchResponse>(fetchImpl, token, `/search?${params}`);
+    const items = json.tracks.items;
+    if (!items.length) break;
+    offset += items.length;
+    for (const track of items) {
+      if (seen.has(track.uri)) continue;
+      seen.add(track.uri);
+      if (
+        track.artists.some(
+          (trackArtist) =>
+            trackArtist.id === artist.id || normalizeArtistName(trackArtist.name) === target
+        )
+      ) {
+        candidates.push(track);
+      }
+    }
+  }
+
+  return candidates
     .sort((a, b) => b.popularity - a.popularity)
     .map((track) => ({
       uri: track.uri,
@@ -258,11 +278,17 @@ export async function diagnoseSpotifyAccess(config: ServerSpotifyConfig, fetchIm
   if (createResponse.ok) {
     const playlist = (await createResponse.json()) as { id: string };
     steps.createPlaylist = "ok";
-    const cleanup = await fetchImpl(`${SPOTIFY_API}/me/library`, {
+    let cleanup = await fetchImpl(`${SPOTIFY_API}/me/library`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       body: JSON.stringify({ uris: [`spotify:playlist:${playlist.id}`] })
     });
+    if (!cleanup.ok) {
+      cleanup = await fetchImpl(
+        `${SPOTIFY_API}/me/library?uris=${encodeURIComponent(`spotify:playlist:${playlist.id}`)}`,
+        { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
+      );
+    }
     steps.cleanupPlaylist = cleanup.ok ? "ok" : `HTTP ${cleanup.status}`;
   } else {
     const detail = await readErrorMessage(createResponse);

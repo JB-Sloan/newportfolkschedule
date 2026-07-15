@@ -206,11 +206,14 @@ async function testServerPlaylistBuilder() {
       const params = new URL(url).searchParams;
       const query = decodeURIComponent(params.get("q") ?? "");
       if (params.get("type") === "track") {
+        // Mirrors production behavior: 5 items per page regardless of limit.
         const artistName = query.match(/artist:"(.+)"/)?.[1] ?? query;
         const artistId = `id-${artistName.toLowerCase().replace(/[^a-z]/g, "")}`;
+        const offset = Number(params.get("offset") ?? 0);
+        const pageIndexes = [0, 1, 2, 3, 4].map((i) => offset + i).filter((i) => i < 12);
         return json({
           tracks: {
-            items: Array.from({ length: 10 }, (_, index) => ({
+            items: pageIndexes.map((index) => ({
               uri: `spotify:track:${artistId}-${index}`,
               name: `Track ${index}`,
               popularity: 100 - index,
