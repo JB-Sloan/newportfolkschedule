@@ -203,26 +203,30 @@ async function testServerPlaylistBuilder() {
       return json({ access_token: "owner-token", expires_in: 3600 });
     }
     if (url.includes("/search")) {
-      const query = decodeURIComponent(new URL(url).searchParams.get("q") ?? "");
+      const params = new URL(url).searchParams;
+      const query = decodeURIComponent(params.get("q") ?? "");
+      if (params.get("type") === "track") {
+        const artistName = query.match(/artist:"(.+)"/)?.[1] ?? query;
+        const artistId = `id-${artistName.toLowerCase().replace(/[^a-z]/g, "")}`;
+        return json({
+          tracks: {
+            items: Array.from({ length: 10 }, (_, index) => ({
+              uri: `spotify:track:${artistId}-${index}`,
+              name: `Track ${index}`,
+              popularity: 100 - index,
+              artists: [{ id: artistId, name: artistName }]
+            }))
+          }
+        });
+      }
       return json({
         artists: { items: [{ id: `id-${query.toLowerCase().replace(/[^a-z]/g, "")}`, name: query, popularity: 80 }] }
       });
     }
-    if (/\/artists\/[^/]+\/top-tracks/.test(url)) {
-      const artistId = url.match(/\/artists\/([^/]+)\/top-tracks/)?.[1];
-      return json({
-        tracks: Array.from({ length: 10 }, (_, index) => ({
-          uri: `spotify:track:${artistId}-${index}`,
-          name: `Track ${index}`,
-          artists: [{ name: artistId }]
-        }))
-      });
-    }
-    if (url.endsWith("/me")) return json({ id: "owner" });
-    if (url.includes("/users/owner/playlists")) {
+    if (url.endsWith("/me/playlists")) {
       return json({ id: "pl1", external_urls: { spotify: "https://open.spotify.com/playlist/pl1" } });
     }
-    if (url.includes("/playlists/pl1/tracks")) return json({ snapshot_id: "snap" });
+    if (url.includes("/playlists/pl1/items")) return json({ snapshot_id: "snap" });
     throw new Error(`Unexpected request: ${url}`);
   };
 
@@ -245,7 +249,9 @@ async function testServerPlaylistBuilder() {
   assert.equal(result.statuses[1].state, "skipped");
   assert.equal(result.statuses[2].state, "resolved");
   assert.equal(result.statuses[2].trackCount, 10);
-  assert.ok(calls.some((call) => call.startsWith("POST https://api.spotify.com/v1/users/owner/playlists")));
+  assert.ok(calls.some((call) => call === "POST https://api.spotify.com/v1/me/playlists"));
+  assert.ok(calls.some((call) => call.startsWith("POST https://api.spotify.com/v1/playlists/pl1/items")));
+  assert.ok(!calls.some((call) => call.includes("top-tracks")), "must not call removed top-tracks endpoint");
 }
 
 testConflicts();

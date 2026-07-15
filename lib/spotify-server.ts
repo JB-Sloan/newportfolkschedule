@@ -1,5 +1,6 @@
 import {
   cleanBillingName,
+  normalizeArtistName,
   pickBestArtistMatch,
   tracksPerResolvedArtist,
   TRACKS_PER_ARTIST,
@@ -143,17 +144,49 @@ async function searchArtists(fetchImpl: FetchLike, token: string, query: string)
   }));
 }
 
-type TopTracksResponse = {
-  tracks: Array<{ uri: string; name: string; artists: Array<{ name: string }> }>;
+type TrackSearchResponse = {
+  tracks: {
+    items: Array<{
+      uri: string;
+      name: string;
+      popularity: number;
+      artists: Array<{ id: string; name: string }>;
+    }>;
+  };
 };
 
-async function getTopTracks(fetchImpl: FetchLike, token: string, artistId: string): Promise<SpotifyTrack[]> {
-  const json = await spotifyFetch<TopTracksResponse>(fetchImpl, token, `/artists/${artistId}/top-tracks`);
-  return json.tracks.map((track) => ({
-    uri: track.uri,
-    name: track.name,
-    artistNames: track.artists.map((artist) => artist.name)
-  }));
+/**
+ * Spotify removed GET /artists/{id}/top-tracks for Development Mode apps in
+ * the February 2026 migration with no replacement, so top tracks are
+ * reconstructed from track search (still available, limit capped at 10):
+ * search by artist name, keep only tracks actually by the resolved artist,
+ * and rank by track popularity.
+ */
+async function getTopTracks(
+  fetchImpl: FetchLike,
+  token: string,
+  artist: SpotifyArtist
+): Promise<SpotifyTrack[]> {
+  const params = new URLSearchParams({
+    q: `artist:"${artist.name}"`,
+    type: "track",
+    limit: "10"
+  });
+  const json = await spotifyFetch<TrackSearchResponse>(fetchImpl, token, `/search?${params}`);
+  const target = normalizeArtistName(artist.name);
+  return json.tracks.items
+    .filter((track) =>
+      track.artists.some(
+        (trackArtist) =>
+          trackArtist.id === artist.id || normalizeArtistName(trackArtist.name) === target
+      )
+    )
+    .sort((a, b) => b.popularity - a.popularity)
+    .map((track) => ({
+      uri: track.uri,
+      name: track.name,
+      artistNames: track.artists.map((trackArtist) => trackArtist.name)
+    }));
 }
 
 async function resolveTarget(
@@ -207,36 +240,33 @@ export async function diagnoseSpotifyAccess(config: ServerSpotifyConfig, fetchIm
     | undefined;
   if (search) steps.search = `ok (${search.artists?.items?.length ?? 0} result)`;
 
-  const firstArtistId = search?.artists?.items?.[0]?.id;
-  if (firstArtistId) {
-    const topTracks = (await probe("topTracks", `/artists/${firstArtistId}/top-tracks`)) as
-      | { tracks?: unknown[] }
-      | undefined;
-    if (topTracks) steps.topTracks = `ok (${topTracks.tracks?.length ?? 0} tracks)`;
-  }
+  const trackSearch = (await probe(
+    "trackSearch",
+    `/search?${new URLSearchParams({ q: 'artist:"Brandi Carlile"', type: "track", limit: "10" })}`
+  )) as { tracks?: { items?: unknown[] } } | undefined;
+  if (trackSearch) steps.trackSearch = `ok (${trackSearch.tracks?.items?.length ?? 0} tracks)`;
 
-  if (me?.id) {
-    const createResponse = await fetchImpl(`${SPOTIFY_API}/users/${encodeURIComponent(me.id)}/playlists`, {
-      method: "POST",
+  const createResponse = await fetchImpl(`${SPOTIFY_API}/me/playlists`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: "Folk Planner diagnostic - safe to delete",
+      description: "Created and immediately removed by the diagnostics check.",
+      public: true
+    })
+  });
+  if (createResponse.ok) {
+    const playlist = (await createResponse.json()) as { id: string };
+    steps.createPlaylist = "ok";
+    const cleanup = await fetchImpl(`${SPOTIFY_API}/me/library`, {
+      method: "DELETE",
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: "Folk Planner diagnostic - safe to delete",
-        description: "Created and immediately removed by the diagnostics check.",
-        public: true
-      })
+      body: JSON.stringify({ uris: [`spotify:playlist:${playlist.id}`] })
     });
-    if (createResponse.ok) {
-      const playlist = (await createResponse.json()) as { id: string };
-      steps.createPlaylist = "ok";
-      const cleanup = await fetchImpl(`${SPOTIFY_API}/playlists/${playlist.id}/followers`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      steps.cleanupPlaylist = cleanup.ok ? "ok" : `HTTP ${cleanup.status}`;
-    } else {
-      const detail = await readErrorMessage(createResponse);
-      steps.createPlaylist = `HTTP ${createResponse.status}${detail ? `: ${detail}` : ""}`;
-    }
+    steps.cleanupPlaylist = cleanup.ok ? "ok" : `HTTP ${cleanup.status}`;
+  } else {
+    const detail = await readErrorMessage(createResponse);
+    steps.createPlaylist = `HTTP ${createResponse.status}${detail ? `: ${detail}` : ""}`;
   }
 
   return steps;
@@ -291,7 +321,7 @@ export async function buildPlaylistInOwnerAccount({
         if (added >= TRACKS_PER_ARTIST) break;
         const match = await resolveTarget(fetchImpl, token, target);
         if (!match) continue;
-        const tracks = await getTopTracks(fetchImpl, token, match.id);
+        const tracks = await getTopTracks(fetchImpl, token, match);
         status.resolvedNames.push(match.name);
         for (const track of tracks.slice(0, Math.min(budget, TRACKS_PER_ARTIST - added))) {
           if (seenUris.has(track.uri)) continue;
@@ -319,11 +349,12 @@ export async function buildPlaylistInOwnerAccount({
     return { playlistName, totalTracks: 0, statuses };
   }
 
-  const me = await spotifyFetch<{ id: string }>(fetchImpl, token, "/me");
+  // POST /me/playlists and /playlists/{id}/items are the February 2026
+  // replacements for /users/{id}/playlists and /playlists/{id}/tracks.
   const playlist = await spotifyFetch<{ id: string; external_urls?: { spotify?: string } }>(
     fetchImpl,
     token,
-    `/users/${encodeURIComponent(me.id)}/playlists`,
+    "/me/playlists",
     {
       method: "POST",
       body: JSON.stringify({
@@ -336,7 +367,7 @@ export async function buildPlaylistInOwnerAccount({
   );
 
   for (let start = 0; start < trackUris.length; start += 100) {
-    await spotifyFetch(fetchImpl, token, `/playlists/${playlist.id}/tracks`, {
+    await spotifyFetch(fetchImpl, token, `/playlists/${playlist.id}/items`, {
       method: "POST",
       body: JSON.stringify({ uris: trackUris.slice(start, start + 100) })
     });
