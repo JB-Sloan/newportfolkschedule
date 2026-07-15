@@ -1,31 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import spotifyArtistMapJson from "@/data/spotify-artist-map.json";
-import {
-  beginSpotifyAuth,
-  buildSpotifyPlaylist,
-  clearSpotifyToken,
-  getSpotifyClientId,
-  getValidToken,
-  rememberPendingBuild,
-  TRACKS_PER_ARTIST,
-  type ArtistMap,
-  type BuildArtistStatus,
-  type BuildResult
-} from "@/lib/spotify";
+import { TRACKS_PER_ARTIST, type BuildArtistStatus, type BuildResult } from "@/lib/spotify";
 import type { Artist } from "@/lib/schemas";
 
-const artistMap = (spotifyArtistMapJson as { overrides: ArtistMap }).overrides;
-
-type Phase = "idle" | "connecting" | "building" | "done" | "error";
+type Phase = "idle" | "building" | "done" | "error";
 
 function statusChip(state: BuildArtistStatus["state"]) {
   switch (state) {
     case "resolved":
       return { label: "Added", className: "bg-bay/15 text-bay" };
-    case "resolving":
-      return { label: "Searching…", className: "bg-quad/15 text-quad" };
     case "skipped":
       return { label: "Skipped", className: "bg-ink/10 text-ink/60" };
     case "not-found":
@@ -37,101 +21,72 @@ function statusChip(state: BuildArtistStatus["state"]) {
   }
 }
 
-export function SpotifyPlaylistCard({
-  planArtists,
-  autoStart,
-  onAutoStartConsumed
-}: {
-  planArtists: Artist[];
-  autoStart?: { playlistName: string };
-  onAutoStartConsumed: () => void;
-}) {
-  const configured = Boolean(getSpotifyClientId());
+export function SpotifyPlaylistCard({ planArtists }: { planArtists: Artist[] }) {
+  const [configured, setConfigured] = useState<boolean | undefined>();
   const [playlistName, setPlaylistName] = useState("Newport Folk 2026 · My Picks");
   const [phase, setPhase] = useState<Phase>("idle");
-  const [statuses, setStatuses] = useState<BuildArtistStatus[]>([]);
   const [result, setResult] = useState<BuildResult | undefined>();
   const [error, setError] = useState<string | undefined>();
   const buildingRef = useRef(false);
 
-  async function runBuild(name: string) {
+  useEffect(() => {
+    fetch("/api/spotify-playlist")
+      .then((response) => response.json())
+      .then((json: { configured?: boolean }) => setConfigured(Boolean(json.configured)))
+      .catch(() => setConfigured(false));
+  }, []);
+
+  async function runBuild() {
     if (buildingRef.current) return;
     buildingRef.current = true;
     setPhase("building");
     setError(undefined);
     setResult(undefined);
-    setStatuses([]);
     try {
-      const token = await getValidToken();
-      if (!token) {
-        rememberPendingBuild({ playlistName: name });
-        setPhase("connecting");
-        await beginSpotifyAuth();
-        return;
-      }
-      const built = await buildSpotifyPlaylist({
-        token,
-        artists: planArtists.map((artist) => ({ id: artist.id, name: artist.name })),
-        artistMap,
-        playlistName: name,
-        onProgress: setStatuses
+      const response = await fetch("/api/spotify-playlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          playlistName: playlistName.trim(),
+          artistIds: planArtists.map((artist) => artist.id)
+        })
       });
-      setResult(built);
-      setStatuses(built.statuses);
+      const json = (await response.json()) as BuildResult & { error?: string };
+      if (!response.ok) {
+        throw new Error(json.error ?? "Playlist creation failed.");
+      }
+      setResult(json);
       setPhase("done");
     } catch (buildError) {
-      setError(buildError instanceof Error ? buildError.message : "Playlist build failed.");
+      setError(buildError instanceof Error ? buildError.message : "Playlist creation failed.");
       setPhase("error");
     } finally {
       buildingRef.current = false;
     }
   }
 
-  useEffect(() => {
-    if (!autoStart) return;
-    setPlaylistName(autoStart.playlistName);
-    onAutoStartConsumed();
-    void runBuild(autoStart.playlistName);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoStart]);
-
   if (!planArtists.length) return null;
 
   return (
     <section className="rounded-3xl bg-white p-4 shadow-soft">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h3 className="text-xl font-black">Spotify playlist</h3>
-          <p className="text-sm text-ink/60">
-            Top {TRACKS_PER_ARTIST} songs for each of your {planArtists.length}{" "}
-            {planArtists.length === 1 ? "artist" : "artists"}, in one private playlist.
-          </p>
-        </div>
-        {phase === "done" || phase === "error" ? (
-          <button
-            className="rounded-full bg-ink/8 px-3 py-2 text-sm font-bold"
-            onClick={() => {
-              clearSpotifyToken();
-              setPhase("idle");
-              setStatuses([]);
-              setResult(undefined);
-              setError(undefined);
-            }}
-          >
-            Disconnect Spotify
-          </button>
-        ) : null}
+      <div>
+        <h3 className="text-xl font-black">Spotify playlist</h3>
+        <p className="text-sm text-ink/60">
+          One tap builds a public playlist with the top {TRACKS_PER_ARTIST} songs for each of your{" "}
+          {planArtists.length} {planArtists.length === 1 ? "artist" : "artists"} — no Spotify login
+          needed. Open it, then hit save to keep it in your library.
+        </p>
       </div>
 
-      {!configured ? (
+      {configured === false ? (
         <p className="mt-3 rounded-2xl bg-paper p-3 text-sm text-ink/70">
-          Spotify isn&apos;t configured for this deployment yet. Set{" "}
-          <code className="font-mono text-xs">NEXT_PUBLIC_SPOTIFY_CLIENT_ID</code> to enable
-          one-tap playlists.
+          Spotify playlists aren&apos;t configured for this deployment yet. Set{" "}
+          <code className="font-mono text-xs">SPOTIFY_CLIENT_SECRET</code> and{" "}
+          <code className="font-mono text-xs">SPOTIFY_REFRESH_TOKEN</code> to enable them.
         </p>
       ) : (
         <>
-          {phase === "idle" || phase === "connecting" ? (
+          {phase === "idle" || phase === "building" ? (
             <div className="mt-3 grid gap-2 sm:grid-cols-[1fr_auto]">
               <label className="block">
                 <span className="sr-only">Playlist name</span>
@@ -144,23 +99,18 @@ export function SpotifyPlaylistCard({
               </label>
               <button
                 className="min-h-12 rounded-2xl bg-[#1DB954] px-5 font-bold text-white disabled:opacity-50"
-                disabled={phase === "connecting" || !playlistName.trim()}
-                onClick={() => void runBuild(playlistName.trim())}
+                disabled={phase === "building" || configured === undefined || !playlistName.trim()}
+                onClick={() => void runBuild()}
               >
-                {phase === "connecting" ? "Opening Spotify…" : "Create playlist"}
+                {phase === "building" ? "Building…" : "Create playlist"}
               </button>
             </div>
           ) : null}
 
-          {phase === "connecting" ? (
-            <p className="mt-2 text-sm text-ink/60">
-              You&apos;ll be sent to Spotify to approve access, then brought right back here.
-            </p>
-          ) : null}
-
           {phase === "building" ? (
             <p className="mt-3 text-sm font-bold text-ink/70" role="status">
-              Building playlist… finding artists and their top tracks.
+              Finding each artist&apos;s top tracks and assembling the playlist — usually 10-20
+              seconds.
             </p>
           ) : null}
 
@@ -169,7 +119,7 @@ export function SpotifyPlaylistCard({
               {result.playlistUrl ? (
                 <>
                   <p className="font-bold">
-                    Done! {result.totalTracks} tracks added to “{result.playlistName}”.
+                    Done! {result.totalTracks} tracks in “{result.playlistName}”.
                   </p>
                   <a
                     className="mt-2 inline-block rounded-full bg-[#1DB954] px-4 py-2 font-bold text-white"
@@ -179,6 +129,15 @@ export function SpotifyPlaylistCard({
                   >
                     Open playlist in Spotify
                   </a>
+                  <button
+                    className="ml-2 mt-2 rounded-full bg-ink/8 px-4 py-2 font-bold"
+                    onClick={() => {
+                      setPhase("idle");
+                      setResult(undefined);
+                    }}
+                  >
+                    Make another
+                  </button>
                 </>
               ) : (
                 <p className="font-bold">No tracks could be found for your picks.</p>
@@ -191,16 +150,16 @@ export function SpotifyPlaylistCard({
               <p className="font-bold text-red-800">{error}</p>
               <button
                 className="mt-2 rounded-full bg-ink px-4 py-2 font-bold text-paper"
-                onClick={() => void runBuild(playlistName.trim())}
+                onClick={() => void runBuild()}
               >
                 Try again
               </button>
             </div>
           ) : null}
 
-          {statuses.length > 0 ? (
-            <ul className="mt-3 grid gap-1.5" aria-label="Playlist build progress">
-              {statuses.map((status) => {
+          {result?.statuses.length ? (
+            <ul className="mt-3 grid gap-1.5" aria-label="Playlist build results">
+              {result.statuses.map((status) => {
                 const chip = statusChip(status.state);
                 const resolvedElsewhere =
                   status.resolvedNames.length > 0 &&

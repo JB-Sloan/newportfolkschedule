@@ -5,7 +5,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import { findConflicts, getConflictTypeForSet, priorityLabel } from "@/lib/conflicts";
 import { SpotifyPlaylistCard } from "@/components/SpotifyPlaylistCard";
-import { completeSpotifyAuth, takePendingBuild } from "@/lib/spotify";
 import { encodeSharePlan, decodeSharePlan } from "@/lib/share-plan";
 import { buildSocialPost } from "@/lib/social-post";
 import { generateIcs } from "@/lib/ics";
@@ -207,7 +206,6 @@ export function FolkPlannerApp({
   const [detailSetId, setDetailSetId] = useState<string | undefined>();
   const [stageDetailId, setStageDetailId] = useState<string | undefined>();
   const [sharedPlan, setSharedPlan] = useState<SharedPlan | undefined>();
-  const [spotifyAutoStart, setSpotifyAutoStart] = useState<{ playlistName: string } | undefined>();
   const [copied, setCopied] = useState(false);
   const [postCopied, setPostCopied] = useState(false);
   const [shareOrigin, setShareOrigin] = useState("https://www.newportfolkschedule.com");
@@ -233,18 +231,6 @@ export function FolkPlannerApp({
     setShareOrigin(window.location.origin);
   }, []);
 
-  useEffect(() => {
-    completeSpotifyAuth()
-      .then((authorized) => {
-        if (!authorized) return;
-        const pending = takePendingBuild();
-        if (pending) {
-          setActiveTab("plan");
-          setSpotifyAutoStart(pending);
-        }
-      })
-      .catch(() => undefined);
-  }, []);
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
@@ -584,13 +570,7 @@ export function FolkPlannerApp({
                 onOpenSocialShare={openSocialShare}
                 copied={copied}
                 postCopied={postCopied}
-                spotifyCard={
-                  <SpotifyPlaylistCard
-                    planArtists={planArtists}
-                    autoStart={spotifyAutoStart}
-                    onAutoStartConsumed={() => setSpotifyAutoStart(undefined)}
-                  />
-                }
+                spotifyCard={<SpotifyPlaylistCard planArtists={planArtists} />}
               />
             ) : null}
 

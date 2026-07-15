@@ -7,8 +7,10 @@ import {
   cleanBillingName,
   normalizeArtistName,
   pickBestArtistMatch,
-  tracksPerResolvedArtist
+  tracksPerResolvedArtist,
+  type ArtistMap
 } from "@/lib/spotify";
+import { buildPlaylistInOwnerAccount } from "@/lib/spotify-server";
 import { artistsById, manifest, scheduleItems, stagesById } from "@/lib/data";
 import type { ScheduleItem, SelectionMap, Stage } from "@/lib/schemas";
 
@@ -175,10 +177,85 @@ function testSpotifyResolution() {
   assert.equal(tracksPerResolvedArtist(4), 3);
 }
 
+async function testServerPlaylistBuilder() {
+  const artistMap: ArtistMap = {
+    "brandon-flowers": {
+      displayName: "Brandon Flowers",
+      resolve: [{ name: "The Killers" }],
+      skip: false
+    },
+    "jordan-klepper": {
+      displayName: "Jordan Klepper",
+      resolve: [],
+      skip: true,
+      note: "comedian"
+    }
+  };
+
+  const calls: string[] = [];
+  const json = (body: unknown) =>
+    new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } });
+
+  const fetchImpl: typeof fetch = async (input, init) => {
+    const url = String(input);
+    calls.push(`${init?.method ?? "GET"} ${url}`);
+    if (url.includes("accounts.spotify.com/api/token")) {
+      return json({ access_token: "owner-token", expires_in: 3600 });
+    }
+    if (url.includes("/search")) {
+      const query = decodeURIComponent(new URL(url).searchParams.get("q") ?? "");
+      return json({
+        artists: { items: [{ id: `id-${query.toLowerCase().replace(/[^a-z]/g, "")}`, name: query, popularity: 80 }] }
+      });
+    }
+    if (/\/artists\/[^/]+\/top-tracks/.test(url)) {
+      const artistId = url.match(/\/artists\/([^/]+)\/top-tracks/)?.[1];
+      return json({
+        tracks: Array.from({ length: 10 }, (_, index) => ({
+          uri: `spotify:track:${artistId}-${index}`,
+          name: `Track ${index}`,
+          artists: [{ name: artistId }]
+        }))
+      });
+    }
+    if (url.endsWith("/me")) return json({ id: "owner" });
+    if (url.includes("/users/owner/playlists")) {
+      return json({ id: "pl1", external_urls: { spotify: "https://open.spotify.com/playlist/pl1" } });
+    }
+    if (url.includes("/playlists/pl1/tracks")) return json({ snapshot_id: "snap" });
+    throw new Error(`Unexpected request: ${url}`);
+  };
+
+  const result = await buildPlaylistInOwnerAccount({
+    config: { clientId: "cid", clientSecret: "secret", refreshToken: "refresh" },
+    artists: [
+      { id: "brandon-flowers", name: "Brandon Flowers" },
+      { id: "jordan-klepper", name: "Jordan Klepper" },
+      { id: "lucy-dacus", name: "Lucy Dacus" }
+    ],
+    artistMap,
+    playlistName: "Test Playlist",
+    fetchImpl
+  });
+
+  assert.equal(result.playlistUrl, "https://open.spotify.com/playlist/pl1");
+  assert.equal(result.totalTracks, 20);
+  assert.equal(result.statuses[0].state, "resolved");
+  assert.deepEqual(result.statuses[0].resolvedNames, ["The Killers"]);
+  assert.equal(result.statuses[1].state, "skipped");
+  assert.equal(result.statuses[2].state, "resolved");
+  assert.equal(result.statuses[2].trackCount, 10);
+  assert.ok(calls.some((call) => call.startsWith("POST https://api.spotify.com/v1/users/owner/playlists")));
+}
+
 testConflicts();
 testSharePlan();
 testSocialPost();
 testIcs();
 testSpotifyResolution();
-
-console.log("Unit smoke tests passed.");
+testServerPlaylistBuilder()
+  .then(() => console.log("Unit smoke tests passed."))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

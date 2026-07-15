@@ -71,24 +71,36 @@ OPENROUTER_MODEL=
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 UPSTASH_REDIS_REST_URL=
 UPSTASH_REDIS_REST_TOKEN=
-NEXT_PUBLIC_SPOTIFY_CLIENT_ID=
+SPOTIFY_CLIENT_ID=
+SPOTIFY_CLIENT_SECRET=
+SPOTIFY_REFRESH_TOKEN=
 ```
 
 The AI assistant and recommendation UI are currently disabled. The archived `/api/assistant` and `lib/recommendations.ts` code remains in the repository for future re-enablement.
 
 ## Spotify playlists
 
-The My Plan tab can build a private Spotify playlist containing the top 10 songs
-for each selected artist. It uses the Authorization Code + PKCE flow entirely in
-the browser, so no server or client secret is needed:
+The My Plan tab can build a public Spotify playlist containing the top 10 songs
+for each selected artist. Playlists are created **server-side in the site
+owner's Spotify account** and shared with visitors by link — visitors never log
+in to Spotify. This is deliberate: Spotify apps in Development Mode only allow
+explicitly allowlisted accounts (max 25) to call the API, and extended-quota
+access is restricted to registered businesses, so per-visitor OAuth cannot
+serve the public.
 
-1. Create an app at <https://developer.spotify.com/dashboard>.
-2. Add redirect URIs for each origin the app runs on, with a trailing slash:
-   `https://www.newportfolkschedule.com/` and `http://127.0.0.1:3000/` for local
-   development (Spotify no longer accepts `http://localhost`, so open the dev
-   server via `http://127.0.0.1:3000`).
-3. Set `NEXT_PUBLIC_SPOTIFY_CLIENT_ID` in `.env.local` (and in Vercel project
-   settings for production).
+One-time setup:
+
+1. Create an app at <https://developer.spotify.com/dashboard> with Web API
+   enabled, and register redirect URI `http://127.0.0.1:8888/callback`.
+2. Run `npx tsx scripts/spotify-owner-auth.ts` with `SPOTIFY_CLIENT_SECRET` set,
+   approve in the browser with the owner account, and copy the printed refresh
+   token.
+3. In Vercel project settings, set `SPOTIFY_CLIENT_SECRET` and
+   `SPOTIFY_REFRESH_TOKEN` (and `SPOTIFY_CLIENT_ID` if different from the
+   committed default), then redeploy.
+
+Created playlists accumulate in the owner's Spotify account; delete them there
+whenever. The `/api/spotify-playlist` route is rate-limited per IP.
 
 Schedule billings that are not literal Spotify artist names (side projects,
 tribute sets, multi-artist billings, non-musical sets) are resolved through the
