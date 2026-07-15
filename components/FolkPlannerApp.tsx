@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
-import type { CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { findConflicts, getConflictTypeForSet, priorityLabel } from "@/lib/conflicts";
+import { SpotifyPlaylistCard } from "@/components/SpotifyPlaylistCard";
+import { completeSpotifyAuth, takePendingBuild } from "@/lib/spotify";
 import { encodeSharePlan, decodeSharePlan } from "@/lib/share-plan";
 import { buildSocialPost } from "@/lib/social-post";
 import { generateIcs } from "@/lib/ics";
@@ -73,13 +75,17 @@ function buildMaps(artists: Artist[], stages: Stage[]) {
   };
 }
 
+function defaultPlan(manifest: Manifest): PlanState {
+  return {
+    scheduleVersion: manifest.scheduleVersion,
+    selections: {},
+    transitionBufferMinutes: 10
+  };
+}
+
 function loadPlan(manifest: Manifest): PlanState {
   if (typeof window === "undefined") {
-    return {
-      scheduleVersion: manifest.scheduleVersion,
-      selections: {},
-      transitionBufferMinutes: 10
-    };
+    return defaultPlan(manifest);
   }
 
   try {
@@ -94,11 +100,7 @@ function loadPlan(manifest: Manifest): PlanState {
       offlineReadyVersion: parsed.offlineReadyVersion
     };
   } catch {
-    return {
-      scheduleVersion: manifest.scheduleVersion,
-      selections: {},
-      transitionBufferMinutes: 10
-    };
+    return defaultPlan(manifest);
   }
 }
 
@@ -193,7 +195,8 @@ export function FolkPlannerApp({
   stages,
   policies
 }: PlannerData) {
-  const [plan, setPlan] = useState<PlanState>(() => loadPlan(manifest));
+  const [plan, setPlan] = useState<PlanState>(() => defaultPlan(manifest));
+  const [hydrated, setHydrated] = useState(false);
   const [activeDay, setActiveDay] = useState<FestivalDate>("2026-07-24");
   const [activeTab, setActiveTab] = useState<TabId>(DEFAULT_TAB);
   const [stageFilter, setStageFilter] = useState("all");
@@ -204,6 +207,7 @@ export function FolkPlannerApp({
   const [detailSetId, setDetailSetId] = useState<string | undefined>();
   const [stageDetailId, setStageDetailId] = useState<string | undefined>();
   const [sharedPlan, setSharedPlan] = useState<SharedPlan | undefined>();
+  const [spotifyAutoStart, setSpotifyAutoStart] = useState<{ playlistName: string } | undefined>();
   const [copied, setCopied] = useState(false);
   const [postCopied, setPostCopied] = useState(false);
   const [shareOrigin, setShareOrigin] = useState("https://www.newportfolkschedule.com");
@@ -216,11 +220,30 @@ export function FolkPlannerApp({
   );
 
   useEffect(() => {
+    setPlan(loadPlan(manifest));
+    setHydrated(true);
+  }, [manifest]);
+
+  useEffect(() => {
+    if (!hydrated) return;
     savePlan(plan);
-  }, [plan]);
+  }, [plan, hydrated]);
 
   useEffect(() => {
     setShareOrigin(window.location.origin);
+  }, []);
+
+  useEffect(() => {
+    completeSpotifyAuth()
+      .then((authorized) => {
+        if (!authorized) return;
+        const pending = takePendingBuild();
+        if (pending) {
+          setActiveTab("plan");
+          setSpotifyAutoStart(pending);
+        }
+      })
+      .catch(() => undefined);
   }, []);
 
   useEffect(() => {
@@ -254,6 +277,18 @@ export function FolkPlannerApp({
     () => scheduleItems.filter((item) => plan.selections[item.id]).sort(compareSets),
     [scheduleItems, plan.selections]
   );
+
+  const planArtists = useMemo(() => {
+    const seen = new Set<string>();
+    const unique: Artist[] = [];
+    for (const item of selectedItems) {
+      if (seen.has(item.artistId)) continue;
+      seen.add(item.artistId);
+      const artist = artistsById[item.artistId];
+      if (artist) unique.push(artist);
+    }
+    return unique;
+  }, [selectedItems, artistsById]);
 
   const shareUrl = useMemo(() => {
     const encoded = encodeSharePlan({
@@ -469,17 +504,27 @@ export function FolkPlannerApp({
 
         <div className="grid gap-5 lg:grid-cols-[1fr_360px]">
           <section className="space-y-4">
-            <nav className="grid grid-cols-3 gap-2 rounded-3xl bg-white p-2 shadow-soft" aria-label="Primary">
+            <nav className="grid grid-cols-3 gap-2 rounded-3xl bg-white p-2 shadow-soft" aria-label="Primary" role="tablist">
               {tabLabels.map((tab) => (
                 <button
                   key={tab.id}
+                  role="tab"
+                  aria-selected={activeTab === tab.id}
                   className={classNames(
-                    "min-h-11 rounded-2xl px-2 py-2 text-sm font-bold",
-                    activeTab === tab.id ? "bg-ink text-paper" : "bg-transparent text-ink/65"
+                    "min-h-11 rounded-2xl px-2 py-2 text-sm font-bold transition-colors",
+                    activeTab === tab.id ? "bg-ink text-paper" : "bg-transparent text-ink/65 hover:bg-ink/5"
                   )}
                   onClick={() => setActiveTab(tab.id)}
                 >
                   {tab.label}
+                  {tab.id === "plan" && selectedItems.length > 0 ? (
+                    <span className={classNames(
+                      "ml-1.5 inline-block rounded-full px-1.5 text-xs tabular-nums",
+                      activeTab === tab.id ? "bg-paper/20" : "bg-ink/10"
+                    )}>
+                      {selectedItems.length}
+                    </span>
+                  ) : null}
                 </button>
               ))}
             </nav>
@@ -538,6 +583,13 @@ export function FolkPlannerApp({
                 onOpenSocialShare={openSocialShare}
                 copied={copied}
                 postCopied={postCopied}
+                spotifyCard={
+                  <SpotifyPlaylistCard
+                    planArtists={planArtists}
+                    autoStart={spotifyAutoStart}
+                    onAutoStartConsumed={() => setSpotifyAutoStart(undefined)}
+                  />
+                }
               />
             ) : null}
 
@@ -570,6 +622,7 @@ export function FolkPlannerApp({
               onCopyShare={copyShareLink}
               onCopySocialPost={copySocialPost}
               onDownloadIcs={downloadIcs}
+              onOpenSpotify={() => setActiveTab("plan")}
               copied={copied}
               postCopied={postCopied}
             />
@@ -1016,7 +1069,8 @@ function MyPlan({
   onNativeShare,
   onOpenSocialShare,
   copied,
-  postCopied
+  postCopied,
+  spotifyCard
 }: {
   selectedItems: ScheduleItem[];
   artistsById: Record<string, Artist>;
@@ -1036,6 +1090,7 @@ function MyPlan({
   onOpenSocialShare: (platform: SocialPlatform) => void;
   copied: boolean;
   postCopied: boolean;
+  spotifyCard?: React.ReactNode;
 }) {
   return (
     <section className="space-y-4">
@@ -1070,6 +1125,8 @@ function MyPlan({
           </button>
         </div>
       </div>
+
+      {spotifyCard}
 
       {selectedItems.length > 0 ? (
         <SocialPostCard
@@ -1196,7 +1253,13 @@ function NowNext({
   setPreferredStage: (stageId: string) => void;
   onOpen: (setId: string) => void;
 }) {
-  const now = new Date();
+  const [now, setNow] = useState(() => new Date());
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(new Date()), 30_000);
+    return () => window.clearInterval(timer);
+  }, []);
+
   const current = selectedItems.find(
     (item) => new Date(item.start) <= now && new Date(item.end) >= now
   );
@@ -1340,6 +1403,7 @@ function PlanSummary({
   onCopyShare,
   onCopySocialPost,
   onDownloadIcs,
+  onOpenSpotify,
   copied,
   postCopied
 }: {
@@ -1349,6 +1413,7 @@ function PlanSummary({
   onCopyShare: () => void;
   onCopySocialPost: () => void | Promise<void>;
   onDownloadIcs: () => void;
+  onOpenSpotify: () => void;
   copied: boolean;
   postCopied: boolean;
 }) {
@@ -1363,6 +1428,13 @@ function PlanSummary({
       </div>
       <div className="mt-4 flex flex-col gap-2">
         <button className="rounded-2xl bg-bay px-4 py-3 font-bold text-white" onClick={onDownloadIcs}>Download .ics</button>
+        <button
+          className="rounded-2xl bg-[#1DB954] px-4 py-3 font-bold text-white disabled:bg-ink/10 disabled:text-ink/40"
+          disabled={selectedItems.length === 0}
+          onClick={onOpenSpotify}
+        >
+          Spotify playlist
+        </button>
         <a className="rounded-2xl bg-ink px-4 py-3 text-center font-bold text-paper" href="/print" target="_blank">Print pocket plan</a>
         <button className="rounded-2xl bg-sunset px-4 py-3 font-bold text-ink disabled:bg-ink/10 disabled:text-ink/40" disabled={selectedItems.length === 0} onClick={onCopySocialPost}>{postCopied ? "Post copied" : "Copy social post"}</button>
         <button className="rounded-2xl bg-ink/8 px-4 py-3 font-bold" onClick={onCopyShare}>{copied ? "Link copied" : "Copy share URL"}</button>
@@ -1456,6 +1528,52 @@ function PolicyCard({ policies }: { policies: Policy[] }) {
   );
 }
 
+function SheetShell({
+  label,
+  onClose,
+  children
+}: {
+  label: string;
+  onClose: () => void;
+  children: ReactNode;
+}) {
+  const panelRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    panelRef.current?.focus();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-end bg-ink/45 p-3 md:items-center md:justify-center"
+      role="dialog"
+      aria-modal="true"
+      aria-label={label}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <section
+        ref={panelRef}
+        tabIndex={-1}
+        className="max-h-[92vh] w-full max-w-2xl overflow-auto rounded-[2rem] bg-white p-5 shadow-soft outline-none"
+      >
+        {children}
+      </section>
+    </div>
+  );
+}
+
 function ArtistSheet({
   item,
   artist,
@@ -1476,8 +1594,7 @@ function ArtistSheet({
   onStage: () => void;
 }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-end bg-ink/45 p-3 md:items-center md:justify-center" role="dialog" aria-modal="true">
-      <section className="max-h-[92vh] w-full max-w-2xl overflow-auto rounded-[2rem] bg-white p-5 shadow-soft">
+    <SheetShell label={`${artist.name} set details`} onClose={onClose}>
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-start gap-4">
             <ArtistImage artist={artist} className="h-24 w-24 shrink-0" rounded="rounded-2xl" />
@@ -1491,7 +1608,7 @@ function ArtistSheet({
         </div>
         <p className="mt-4 text-lg">{artist.shortBio}</p>
         <div className="mt-4 flex flex-wrap gap-2">
-          {[...artist.genres, ...artist.tags, ...artist.moods].slice(0, 12).map((tag) => (
+          {Array.from(new Set([...artist.genres, ...artist.tags, ...artist.moods])).slice(0, 12).map((tag) => (
             <span key={tag} className="rounded-full bg-paper px-3 py-1 text-sm font-bold">{tag}</span>
           ))}
         </div>
@@ -1522,8 +1639,7 @@ function ArtistSheet({
             )}
           </p>
         ) : null}
-      </section>
-    </div>
+    </SheetShell>
   );
 }
 
@@ -1538,8 +1654,7 @@ function StageSheet({ stage, onClose }: { stage: Stage; onClose: () => void }) {
   ] as const;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end bg-ink/45 p-3 md:items-center md:justify-center" role="dialog" aria-modal="true">
-      <section className="max-h-[92vh] w-full max-w-2xl overflow-auto rounded-[2rem] bg-white p-5 shadow-soft">
+    <SheetShell label={`${stage.name} stage details`} onClose={onClose}>
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-quad">Stage details</p>
@@ -1575,7 +1690,6 @@ function StageSheet({ stage, onClose }: { stage: Stage; onClose: () => void }) {
             <a key={source.url} className="mr-3 font-bold text-bay" href={source.url}>{source.label}</a>
           ))}
         </div>
-      </section>
-    </div>
+    </SheetShell>
   );
 }

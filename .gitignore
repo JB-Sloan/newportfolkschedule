@@ -24,3 +24,7 @@ dev-server*.log
 .DS_Store
 Thumbs.db
 .vscode/
+
+# agent scratch
+outputs/
+.claude/

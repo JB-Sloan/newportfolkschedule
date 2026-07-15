@@ -3,6 +3,12 @@ import { findConflicts } from "@/lib/conflicts";
 import { generateIcs } from "@/lib/ics";
 import { decodeSharePlan, encodeSharePlan } from "@/lib/share-plan";
 import { buildSocialPost } from "@/lib/social-post";
+import {
+  cleanBillingName,
+  normalizeArtistName,
+  pickBestArtistMatch,
+  tracksPerResolvedArtist
+} from "@/lib/spotify";
 import { artistsById, manifest, scheduleItems, stagesById } from "@/lib/data";
 import type { ScheduleItem, SelectionMap, Stage } from "@/lib/schemas";
 
@@ -144,9 +150,35 @@ function testIcs() {
   assert.match(unfolded, /Calendar imports are a snapshot/);
 }
 
+function testSpotifyResolution() {
+  assert.equal(normalizeArtistName("Ms. Lauryn Hill"), "lauryn hill");
+  assert.equal(normalizeArtistName("Tim Bernardes"), "tim bernardes");
+  assert.equal(normalizeArtistName("Haley Heynderickx & Max García Conover"), "haley heynderickx max garcia conover");
+
+  assert.equal(
+    cleanBillingName("Michael Shannon & Jason Narducy and Friends Play R.E.M."),
+    "Michael Shannon & Jason Narducy"
+  );
+  assert.equal(cleanBillingName("Dawes (acoustic)"), "Dawes");
+  assert.equal(cleanBillingName("Madi Diaz feat. Someone"), "Madi Diaz");
+
+  const results = [
+    { id: "1", name: "Wednesday Campanella", popularity: 70 },
+    { id: "2", name: "Wednesday", popularity: 60 }
+  ];
+  assert.equal(pickBestArtistMatch(results, "Wednesday")?.id, "2");
+  assert.equal(pickBestArtistMatch([], "Wednesday"), undefined);
+  assert.equal(pickBestArtistMatch(results, "The Wednesday Band")?.id, "2");
+
+  assert.equal(tracksPerResolvedArtist(1), 10);
+  assert.equal(tracksPerResolvedArtist(2), 5);
+  assert.equal(tracksPerResolvedArtist(4), 3);
+}
+
 testConflicts();
 testSharePlan();
 testSocialPost();
 testIcs();
+testSpotifyResolution();
 
 console.log("Unit smoke tests passed.");

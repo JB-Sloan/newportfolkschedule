@@ -1,0 +1,273 @@
+{
+  "$comment": "Curated overrides for resolving schedule artists to Spotify artists. Artists not listed resolve by plain name search.",
+  "overrides": {
+    "amble": {
+      "displayName": "Amble",
+      "resolve": [
+        { "name": "Amble", "spotifyId": "5ZC7GPz5h9zkEfjZBUDNzI" }
+      ],
+      "skip": false,
+      "note": "Multiple artists named Amble on Spotify; this ID is the Irish folk trio (~940K monthly listeners, album 'Reverie')."
+    },
+    "belle-blue": {
+      "displayName": "Belle Blue",
+      "resolve": [
+        { "name": "Belle Blue", "spotifyId": "2HM8lglYidPbpbtfaZN9Fj" }
+      ],
+      "skip": false,
+      "note": "Emerging Brooklyn teen singer-songwriter; ID pinned to avoid partial-name matches (Belle, Belles, Katie Belle Blue)."
+    },
+    "brandon-flowers": {
+      "displayName": "Brandon Flowers",
+      "resolve": [
+        { "name": "The Killers" }
+      ],
+      "skip": false,
+      "note": "Product rule: resolve The Killers frontman to the band's catalog rather than his solo page."
+    },
+    "case-oats": {
+      "displayName": "Case Oats",
+      "resolve": [
+        { "name": "Case Oats", "spotifyId": "5Ml0QbIoj7bneIUJDCoMx8" }
+      ],
+      "skip": false,
+      "note": "Chicago alt-country band ('Last Missouri Exit'); ID verified from open.spotify.com."
+    },
+    "clover-county": {
+      "displayName": "Clover County",
+      "resolve": [
+        { "name": "Clover County", "spotifyId": "1vOabSI7N1elDhNGoirgU2" }
+      ],
+      "skip": false,
+      "note": "Athens, GA americana/alt-country act (~87K monthly listeners); ID verified."
+    },
+    "community-chapstick": {
+      "displayName": "Community Chapstick",
+      "resolve": [],
+      "skip": true,
+      "note": "Real band (Donavan Burt, Disko, Ebbi) but no verifiable Spotify artist page; releases are distributed as downloads on communitychapstick.com."
+    },
+    "dove-ellis": {
+      "displayName": "Dove Ellis",
+      "resolve": [
+        { "name": "Dove Ellis", "spotifyId": "6tGT6SMlubqjTWDxBhSgg9" }
+      ],
+      "skip": false,
+      "note": "Irish chamber-folk artist (Thomas O'Donoghue, debut album 'Blizzard'); ID verified."
+    },
+    "for-petes-sake": {
+      "displayName": "For Pete's Sake",
+      "resolve": [
+        { "name": "Pete Seeger" }
+      ],
+      "skip": false,
+      "note": "Communal singalong slot in the spirit of Pete Seeger; Pete Seeger's catalog is the right playlist content."
+    },
+    "gillian-welch-david-rawlings": {
+      "displayName": "Gillian Welch & David Rawlings",
+      "resolve": [
+        { "name": "Gillian Welch" },
+        { "name": "David Rawlings" },
+        { "name": "Grateful Dead" }
+      ],
+      "skip": false,
+      "note": "Their only 2026 set is 'Play Grateful Dead', so blend both duo members with Grateful Dead."
+    },
+    "heynderickx-garcia-conover": {
+      "displayName": "Haley Heynderickx & Max García Conover",
+      "resolve": [
+        { "name": "Haley Heynderickx" },
+        { "name": "Max García Conover" }
+      ],
+      "skip": false,
+      "note": "Collaborative billing; blend both artists (they also share a joint album, 'Among Horses III')."
+    },
+    "honest-charlie": {
+      "displayName": "Honest Charlie",
+      "resolve": [
+        { "name": "Honest Charlie", "spotifyId": "2a3JMqry8I41WmLHEuYbMi" }
+      ],
+      "skip": false,
+      "note": "Tiny catalog (~76 monthly listeners, songs 'Little Somethin'', 'Good Ol' Days'); only 'Honest Charlie' artist found on Spotify but identity match with the Newport act is unconfirmed."
+    },
+    "hudson-freeman": {
+      "displayName": "Hudson Freeman",
+      "resolve": [
+        { "name": "Hudson Freeman", "spotifyId": "6k3W2iGuRZrhUnfVZOMQo8" }
+      ],
+      "skip": false,
+      "note": "Brooklyn lofi-folk artist (album 'is a Folk Artist'); ID verified."
+    },
+    "jackie-evans": {
+      "displayName": "Jackie Evans",
+      "resolve": [
+        { "name": "Jackie Evans", "spotifyId": "3hr95JCfCIlFRK9EmDFJ3R" }
+      ],
+      "skip": false,
+      "note": "NYC pop/soul/folk singer-songwriter (EP 'Most of the Time', touring with Jensen McRae); common name, ID pinned."
+    },
+    "jonathan-bernstein": {
+      "displayName": "Jonathan Bernstein",
+      "resolve": [],
+      "skip": true,
+      "note": "Rolling Stone music journalist; Foundation Stage talk, no music catalog."
+    },
+    "jordan-klepper": {
+      "displayName": "Jordan Klepper",
+      "resolve": [],
+      "skip": true,
+      "note": "Comedian ('The Daily Show'), no music catalog."
+    },
+    "kirby": {
+      "displayName": "Kirby",
+      "resolve": [
+        { "name": "KIRBY", "spotifyId": "5lcDGoJUr5WY5bCFAfYbCU" }
+      ],
+      "skip": false,
+      "note": "Highly ambiguous name (video-game soundtracks etc.); this is soul singer KIRBY (Kirby Lauryen Dockery), ID verified."
+    },
+    "lily-fitts": {
+      "displayName": "Lily Fitts",
+      "resolve": [
+        { "name": "Lily Fitts", "spotifyId": "1mY66135CEOJg0KTwDIk4N" }
+      ],
+      "skip": false,
+      "note": "Massachusetts indie-folk songwriter (debut 'Getting By'); ID verified."
+    },
+    "mark-cutler": {
+      "displayName": "Mark Cutler",
+      "resolve": [
+        { "name": "Mark Cutler", "spotifyId": "6bYy84wHed9xrSUnJT2agJ" }
+      ],
+      "skip": false,
+      "note": "Providence, RI roots-rock veteran (The Schemers, Raindogs); common name, ID pinned."
+    },
+    "matt-quinn": {
+      "displayName": "Matt Quinn",
+      "resolve": [
+        { "name": "Mt. Joy" }
+      ],
+      "skip": false,
+      "note": "Product rule: Mt. Joy's lead singer; plain 'Matt Quinn' search would miss the band catalog."
+    },
+    "met-lab-students": {
+      "displayName": "MET Lab Students",
+      "resolve": [],
+      "skip": true,
+      "note": "Festival education-program student showcase; no Spotify catalog."
+    },
+    "morgan-nagler": {
+      "displayName": "Morgan Nagler",
+      "resolve": [
+        { "name": "Morgan Nagler", "spotifyId": "6mT5D1CUrWTMXngtqazglr" },
+        { "name": "Whispertown" }
+      ],
+      "skip": false,
+      "note": "Solo catalog is small; blend with her band Whispertown for a fuller playlist."
+    },
+    "music-lab-students": {
+      "displayName": "Music Lab Students",
+      "resolve": [],
+      "skip": true,
+      "note": "Festival education-program student showcase; no Spotify catalog."
+    },
+    "nabeel": {
+      "displayName": "Nabeel",
+      "resolve": [
+        { "name": "nabeel - نبيل", "query": "nabeel نبيل" }
+      ],
+      "skip": false,
+      "note": "Iraqi-American indie/shoegaze project of Yasir Razak (Richmond, VA; single 'lazim alshams'); plain 'Nabeel' hits unrelated Pakistani/Arabic pop singers, so query includes the Arabic name."
+    },
+    "open-mic": {
+      "displayName": "Open Mic",
+      "resolve": [],
+      "skip": true,
+      "note": "Daily Bike Stage open-mic slot; not a resolvable artist."
+    },
+    "princess-june": {
+      "displayName": "Princess June",
+      "resolve": [
+        { "name": "Princess June", "spotifyId": "02SHygIyTuHfTUkpD1u6FJ" }
+      ],
+      "skip": false,
+      "note": "Harmony trio (Myah Strauser, Griffin Keeffe, Telli Quinn); ID pinned to avoid Princess/June partial matches."
+    },
+    "rowan-grisman-hull-campbell-williams": {
+      "displayName": "Peter Rowan / Sam Grisman / Sierra Hull / Larry Campbell & Teresa Williams",
+      "resolve": [
+        { "name": "Peter Rowan" },
+        { "name": "Sam Grisman Project", "spotifyId": "6zkQCtFCqgSUUVgyotaKSg" },
+        { "name": "Sierra Hull" },
+        { "name": "Larry Campbell & Teresa Williams" }
+      ],
+      "skip": false,
+      "note": "Bluegrass summit billing; blend all four acts. Sam Grisman records as 'Sam Grisman Project' (ID verified)."
+    },
+    "ryan-davis-roadhouse-band": {
+      "displayName": "Ryan Davis & The Roadhouse Band",
+      "resolve": [
+        { "name": "Ryan Davis & the Roadhouse Band", "spotifyId": "7Ah0xZVyWfAL3Vd7OVvKuo" }
+      ],
+      "skip": false,
+      "note": "Plain 'Ryan Davis' is ambiguous on Spotify; canonical artist is 'Ryan Davis & the Roadhouse Band' (ID verified)."
+    },
+    "sally-rose": {
+      "displayName": "Sally Rose",
+      "resolve": [
+        { "name": "Sally Rose", "query": "Sally Rose" }
+      ],
+      "skip": false,
+      "note": "UNVERIFIED: several artists named Sally Rose on Spotify (Virginia country-queer songwriter, The Sally Rose Band from MA, a Florida artist) and no press confirms which plays Newport; needs manual review before pinning an ID."
+    },
+    "sea-to-shining-sea": {
+      "displayName": "Sea to Shining Sea",
+      "resolve": [
+        { "name": "Devon Gilfillian" }
+      ],
+      "skip": false,
+      "note": "Newport Folk Presents storytelling project by Jay Sweet featuring Devon Gilfillian; his catalog is the closest playlist match for this special set."
+    },
+    "shannon-narducy-rem": {
+      "displayName": "Michael Shannon & Jason Narducy and Friends Play R.E.M.",
+      "resolve": [
+        { "name": "R.E.M." }
+      ],
+      "skip": false,
+      "note": "Tribute set performing R.E.M. albums; the right playlist content is R.E.M. (product rule)."
+    },
+    "snacktime": {
+      "displayName": "Snacktime",
+      "resolve": [
+        { "name": "SNACKTIME", "spotifyId": "4WdKwazXyV5Hc2YtWc2IDr" }
+      ],
+      "skip": false,
+      "note": "Philadelphia brass/funk band, stylized SNACKTIME; ID pinned to avoid kids-music and 'Snack Time' collisions."
+    },
+    "stephen-covell": {
+      "displayName": "Stephen Covell",
+      "resolve": [
+        { "name": "Stephen Covell" }
+      ],
+      "skip": false,
+      "note": "Veteran songwriter via Operation Encore (albums incl. 'Longing for the Hills'); name appears unique but Spotify presence is sparse/unconfirmed — low confidence."
+    },
+    "wednesday": {
+      "displayName": "Wednesday",
+      "resolve": [
+        { "name": "Wednesday", "spotifyId": "4j7DrazfBZLLD0OrVoAtEe" }
+      ],
+      "skip": false,
+      "note": "Common word/name on Spotify; this ID is the Asheville band ('Rat Saw God', 'Bleeds'), verified."
+    },
+    "williams-tyler": {
+      "displayName": "Yasmin Williams & William Tyler",
+      "resolve": [
+        { "name": "Yasmin Williams" },
+        { "name": "William Tyler" }
+      ],
+      "skip": false,
+      "note": "Duo billing; blend both instrumental guitarists. The fingerstyle guitarist is the top 'William Tyler' on Spotify."
+    }
+  }
+}

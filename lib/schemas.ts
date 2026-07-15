@@ -104,6 +104,24 @@ export const ManifestSchema = z.object({
   notes: z.string().min(1)
 });
 
+export const SpotifyArtistMapSchema = z.object({
+  $comment: z.string().optional(),
+  overrides: z.record(
+    z.object({
+      displayName: z.string().min(1),
+      resolve: z.array(
+        z.object({
+          name: z.string().min(1),
+          spotifyId: z.string().regex(/^[0-9A-Za-z]{22}$/).optional(),
+          query: z.string().min(1).optional()
+        })
+      ),
+      skip: z.boolean(),
+      note: z.string().optional()
+    })
+  )
+});
+
 export const AssistantRequestSchema = z.object({
   mode: z.enum(["recommend", "chat", "build-plan", "resolve-conflicts"]),
   query: z.string().max(800).optional(),

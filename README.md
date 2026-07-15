@@ -11,6 +11,7 @@ This app is built to make the static festival schedule usable on a phone at Fort
 - copy compact share URLs;
 - export selected acts to `.ics`;
 - open a print-optimized pocket plan for browser "Save as PDF";
+- create a private Spotify playlist with the top 10 songs for every selected artist;
 - install/save the app as an offline-capable PWA.
 
 Important: the committed schedule is `2026.official.1`, transcribed from Newport Folk's official schedule. Schedule information can still change; confirm critical details with Newport Folk before relying on them.
@@ -70,9 +71,31 @@ OPENROUTER_MODEL=
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 UPSTASH_REDIS_REST_URL=
 UPSTASH_REDIS_REST_TOKEN=
+NEXT_PUBLIC_SPOTIFY_CLIENT_ID=
 ```
 
 The AI assistant and recommendation UI are currently disabled. The archived `/api/assistant` and `lib/recommendations.ts` code remains in the repository for future re-enablement.
+
+## Spotify playlists
+
+The My Plan tab can build a private Spotify playlist containing the top 10 songs
+for each selected artist. It uses the Authorization Code + PKCE flow entirely in
+the browser, so no server or client secret is needed:
+
+1. Create an app at <https://developer.spotify.com/dashboard>.
+2. Add redirect URIs for each origin the app runs on, with a trailing slash:
+   `https://www.newportfolkschedule.com/` and `http://127.0.0.1:3000/` for local
+   development (Spotify no longer accepts `http://localhost`, so open the dev
+   server via `http://127.0.0.1:3000`).
+3. Set `NEXT_PUBLIC_SPOTIFY_CLIENT_ID` in `.env.local` (and in Vercel project
+   settings for production).
+
+Schedule billings that are not literal Spotify artist names (side projects,
+tribute sets, multi-artist billings, non-musical sets) are resolved through the
+curated override map in `data/spotify-artist-map.json` — for example Brandon
+Flowers resolves to The Killers and the R.E.M. tribute set pulls R.E.M. tracks.
+Multi-artist billings blend a few top tracks from each artist. Update that file
+when the lineup changes.
 
 ## Schedule update workflow
 

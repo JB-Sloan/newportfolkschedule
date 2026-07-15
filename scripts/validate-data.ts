@@ -2,12 +2,14 @@ import artistsJson from "../data/artists-2026.json";
 import manifestJson from "../data/schedule-manifest.json";
 import policiesJson from "../data/policies-2026.json";
 import scheduleJson from "../data/schedule-2026.json";
+import spotifyArtistMapJson from "../data/spotify-artist-map.json";
 import stagesJson from "../data/stages-2026.json";
 import {
   ArtistSchema,
   ManifestSchema,
   PolicySchema,
   ScheduleItemSchema,
+  SpotifyArtistMapSchema,
   StageSchema
 } from "../lib/schemas";
 
@@ -16,6 +18,7 @@ const schedule = ScheduleItemSchema.array().parse(scheduleJson);
 const artists = ArtistSchema.array().parse(artistsJson);
 const stages = StageSchema.array().parse(stagesJson);
 const policies = PolicySchema.array().parse(policiesJson);
+const spotifyArtistMap = SpotifyArtistMapSchema.parse(spotifyArtistMapJson);
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -92,6 +95,15 @@ for (const policy of policies) {
   }
 }
 
+for (const [artistId, entry] of Object.entries(spotifyArtistMap.overrides)) {
+  if (!artistIds.has(artistId)) {
+    errors.push(`spotify-artist-map references unknown artist ${artistId}`);
+  }
+  if (!entry.skip && entry.resolve.length === 0) {
+    errors.push(`spotify-artist-map entry ${artistId} is not skipped but has no resolve targets`);
+  }
+}
+
 if (warnings.length) {
   console.warn(`Data validation warnings:\n${warnings.map((warning) => `- ${warning}`).join("\n")}`);
 }
@@ -102,5 +114,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Validated ${schedule.length} schedule items, ${artists.length} artists, ${stages.length} stages, ${policies.length} policies for ${manifest.scheduleVersion}.`
+  `Validated ${schedule.length} schedule items, ${artists.length} artists, ${stages.length} stages, ${policies.length} policies, ${Object.keys(spotifyArtistMap.overrides).length} Spotify overrides for ${manifest.scheduleVersion}.`
 );
