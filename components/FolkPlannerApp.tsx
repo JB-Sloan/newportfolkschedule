@@ -502,7 +502,7 @@ export function FolkPlannerApp({
           />
         ) : null}
 
-        <div className="grid gap-5 lg:grid-cols-[1fr_360px]">
+        <div className={classNames("grid gap-5", activeTab !== "schedule" && "lg:grid-cols-[1fr_360px]")}>
           <section className="space-y-4">
             <nav className="grid grid-cols-3 gap-2 rounded-3xl bg-white p-2 shadow-soft" aria-label="Primary" role="tablist">
               {tabLabels.map((tab) => (
@@ -574,6 +574,7 @@ export function FolkPlannerApp({
                 }
                 onOpen={setDetailSetId}
                 onCycle={cycleSelection}
+                onRemove={(setId) => setSelection(setId)}
                 onDownloadIcs={downloadIcs}
                 onCopyShare={copyShareLink}
                 socialPost={socialPost}
@@ -614,20 +615,22 @@ export function FolkPlannerApp({
 
           </section>
 
-          <aside className="space-y-4">
-            <PlanSummary
-              selectedItems={selectedItems}
-              selections={plan.selections}
-              conflicts={conflicts}
-              onCopyShare={copyShareLink}
-              onCopySocialPost={copySocialPost}
-              onDownloadIcs={downloadIcs}
-              onOpenSpotify={() => setActiveTab("plan")}
-              copied={copied}
-              postCopied={postCopied}
-            />
-            <PolicyCard policies={policies} />
-          </aside>
+          {activeTab !== "schedule" ? (
+            <aside className="space-y-4">
+              <PlanSummary
+                selectedItems={selectedItems}
+                selections={plan.selections}
+                conflicts={conflicts}
+                onCopyShare={copyShareLink}
+                onCopySocialPost={copySocialPost}
+                onDownloadIcs={downloadIcs}
+                onOpenSpotify={() => setActiveTab("plan")}
+                copied={copied}
+                postCopied={postCopied}
+              />
+              <PolicyCard policies={policies} />
+            </aside>
+          ) : null}
         </div>
       </section>
 
@@ -639,7 +642,7 @@ export function FolkPlannerApp({
           priority={plan.selections[detailItem.id]}
           conflictType={getConflictTypeForSet(detailItem.id, conflicts)}
           onClose={() => setDetailSetId(undefined)}
-          onCycle={() => cycleSelection(detailItem.id)}
+          onSetPriority={(priority) => setSelection(detailItem.id, priority)}
           onStage={() => setStageDetailId(detailItem.stageId)}
         />
       ) : null}
@@ -786,7 +789,7 @@ function ScheduleControls({
 }
 
 const TIMELINE_INTERVAL_MINUTES = 30;
-const TIMELINE_STAGE_MIN_WIDTH = 150;
+const TIMELINE_STAGE_MIN_WIDTH = 180;
 const TIMELINE_RAIL_WIDTH = 62;
 
 function getFestivalMinuteOfDay(iso: string) {
@@ -866,7 +869,22 @@ function ScheduleGrid({
   onOpen: (setId: string) => void;
   onOpenStage: (stageId: string) => void;
 }) {
+  const [hovered, setHovered] = useState<{ setId: string; x: number; y: number } | undefined>();
+
   const stageIds = allStages.map((stage) => stage.id).filter((stageId) => items.some((item) => item.stageId === stageId));
+
+  const POPOVER_WIDTH = 288;
+  function showPopover(setId: string, rect: DOMRect) {
+    let x = rect.right + 12;
+    if (x + POPOVER_WIDTH > window.innerWidth - 8) {
+      x = Math.max(8, rect.left - POPOVER_WIDTH - 12);
+    }
+    const y = Math.max(8, Math.min(rect.top, window.innerHeight - 240));
+    setHovered({ setId, x, y });
+  }
+
+  const hoveredItem = hovered ? items.find((item) => item.id === hovered.setId) : undefined;
+  const hoveredArtist = hoveredItem ? artistsById[hoveredItem.artistId] : undefined;
 
   if (!items.length) {
     return (
@@ -881,7 +899,7 @@ function ScheduleGrid({
   const endMinutes = items.map((item) => getFestivalMinuteOfDay(item.end));
   const timelineStart = Math.floor(Math.min(...startMinutes) / TIMELINE_INTERVAL_MINUTES) * TIMELINE_INTERVAL_MINUTES;
   const timelineEnd = Math.ceil(Math.max(...endMinutes) / TIMELINE_INTERVAL_MINUTES) * TIMELINE_INTERVAL_MINUTES;
-  const pixelsPerMinute = density === "compact" ? 1.85 : 2.15;
+  const pixelsPerMinute = density === "compact" ? 2 : 2.4;
   const timelineHeight = Math.max(260, (timelineEnd - timelineStart) * pixelsPerMinute);
   const ticks = buildTimelineTicks(timelineStart, timelineEnd);
   const gridTemplateColumns = `${TIMELINE_RAIL_WIDTH}px repeat(${stageIds.length}, minmax(${TIMELINE_STAGE_MIN_WIDTH}px, 1fr))`;
@@ -963,7 +981,12 @@ function ScheduleGrid({
                           height: duration * pixelsPerMinute
                         }}
                         onCycle={() => onCycle(item.id)}
-                        onOpen={() => onOpen(item.id)}
+                        onOpen={() => {
+                          setHovered(undefined);
+                          onOpen(item.id);
+                        }}
+                        onHover={(rect) => showPopover(item.id, rect)}
+                        onHoverEnd={() => setHovered(undefined)}
                       />
                     );
                   })}
@@ -972,6 +995,32 @@ function ScheduleGrid({
           </div>
         </div>
       </div>
+      {hoveredItem && hoveredArtist && hovered ? (
+        <div
+          className="pointer-events-none fixed z-40 w-72 rounded-2xl border border-ink/10 bg-white p-4 shadow-soft"
+          style={{ left: hovered.x, top: hovered.y }}
+          role="tooltip"
+        >
+          <p className="font-mono text-xs font-bold text-ink/60 tabular-nums">
+            {formatSetTimeRange(hoveredItem.start, hoveredItem.end)} · {durationMinutes(hoveredItem.start, hoveredItem.end)} min
+          </p>
+          <p className="mt-1 text-lg font-black leading-tight">{hoveredItem.titleOverride ?? hoveredArtist.name}</p>
+          <p className="mt-0.5 text-sm font-bold text-ink/60">{stagesById[hoveredItem.stageId]?.name}</p>
+          {hoveredArtist.genres.length ? (
+            <p className="mt-1 text-sm text-ink/60">{hoveredArtist.genres.slice(0, 3).join(" / ")}</p>
+          ) : null}
+          <p className="mt-2 line-clamp-3 text-sm text-ink/75">{hoveredArtist.shortBio}</p>
+          <div className="mt-2 flex flex-wrap gap-1 text-xs font-bold">
+            <span className="rounded-full bg-paper px-2 py-0.5">{priorityLabel(selections[hoveredItem.id])}</span>
+            {getConflictTypeForSet(hoveredItem.id, conflicts) !== "none" ? (
+              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-amber-900">
+                {getConflictTypeForSet(hoveredItem.id, conflicts) === "overlap" ? "Overlap" : "Tight move"}
+              </span>
+            ) : null}
+          </div>
+          <p className="mt-2 text-[11px] text-ink/45">Click the card for full details</p>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -985,7 +1034,9 @@ function SetCard({
   duration,
   style,
   onCycle,
-  onOpen
+  onOpen,
+  onHover,
+  onHoverEnd
 }: {
   item: ScheduleItem;
   artist: Artist;
@@ -996,6 +1047,8 @@ function SetCard({
   style: CSSProperties;
   onCycle: () => void;
   onOpen: () => void;
+  onHover: (rect: DOMRect) => void;
+  onHoverEnd: () => void;
 }) {
   const isShortSet = duration <= 30;
   const selection = priorityLabel(priority);
@@ -1011,6 +1064,8 @@ function SetCard({
         conflictType === "transition" && "outline outline-2 outline-amber-500"
       )}
       style={style}
+      onMouseEnter={(event) => onHover(event.currentTarget.getBoundingClientRect())}
+      onMouseLeave={onHoverEnd}
     >
       <div className="flex h-full min-h-0 flex-col gap-1 overflow-hidden">
         <div className="flex min-h-0 items-start gap-1.5">
@@ -1061,6 +1116,7 @@ function MyPlan({
   setTransitionBuffer,
   onOpen,
   onCycle,
+  onRemove,
   onDownloadIcs,
   onCopyShare,
   socialPost,
@@ -1081,6 +1137,7 @@ function MyPlan({
   setTransitionBuffer: (value: number) => void;
   onOpen: (setId: string) => void;
   onCycle: (setId: string) => void;
+  onRemove: (setId: string) => void;
   onDownloadIcs: () => void;
   onCopyShare: () => void;
   socialPost: string;
@@ -1166,8 +1223,19 @@ function MyPlan({
                           <span className="block text-sm text-ink/60">{priorityLabel(selections[item.id])}{conflictType !== "none" ? ` · ${conflictType === "overlap" ? "overlap conflict" : "tight transition"}` : ""}</span>
                         </span>
                       </button>
-                      <button className="min-h-11 rounded-full bg-white px-3 font-black" onClick={() => onCycle(item.id)}>
+                      <button
+                        className="min-h-11 rounded-full bg-white px-3 font-black"
+                        aria-label={`Toggle priority for ${artist.name}. Current: ${priorityLabel(selections[item.id])}`}
+                        onClick={() => onCycle(item.id)}
+                      >
                         {selections[item.id] === "must" ? "★" : "☆"}
+                      </button>
+                      <button
+                        className="min-h-11 rounded-full bg-white px-3 font-black text-ink/50 hover:text-red-700"
+                        aria-label={`Remove ${artist.name} from plan`}
+                        onClick={() => onRemove(item.id)}
+                      >
+                        ×
                       </button>
                     </div>
                   );
@@ -1581,7 +1649,7 @@ function ArtistSheet({
   priority,
   conflictType,
   onClose,
-  onCycle,
+  onSetPriority,
   onStage
 }: {
   item: ScheduleItem;
@@ -1590,7 +1658,7 @@ function ArtistSheet({
   priority?: Priority;
   conflictType: "none" | "overlap" | "transition";
   onClose: () => void;
-  onCycle: () => void;
+  onSetPriority: (priority?: Priority) => void;
   onStage: () => void;
 }) {
   return (
@@ -1615,10 +1683,36 @@ function ArtistSheet({
         <div className="mt-4 rounded-2xl bg-paper p-3 text-sm">
           <strong>Conflict status:</strong> {conflictType === "none" ? "No selected conflict." : conflictType === "overlap" ? "Direct overlap with a selected set." : "Tight stage transition."}
         </div>
-        <div className="mt-5 grid gap-2 sm:grid-cols-2">
-          <button className="min-h-12 rounded-2xl bg-bay px-4 font-bold text-white" onClick={onCycle}>
-            Change priority · {priorityLabel(priority)}
+        <div className="mt-5 grid grid-cols-3 gap-2" role="group" aria-label="Set priority">
+          <button
+            className={classNames(
+              "min-h-12 rounded-2xl px-2 font-bold",
+              priority === "interested" ? "bg-quad text-white" : "bg-ink/8"
+            )}
+            aria-pressed={priority === "interested"}
+            onClick={() => onSetPriority(priority === "interested" ? undefined : "interested")}
+          >
+            ☆ Interested
           </button>
+          <button
+            className={classNames(
+              "min-h-12 rounded-2xl px-2 font-bold",
+              priority === "must" ? "bg-bay text-white" : "bg-ink/8"
+            )}
+            aria-pressed={priority === "must"}
+            onClick={() => onSetPriority(priority === "must" ? undefined : "must")}
+          >
+            ★ Must see
+          </button>
+          <button
+            className="min-h-12 rounded-2xl bg-ink/8 px-2 font-bold disabled:opacity-40"
+            disabled={!priority}
+            onClick={() => onSetPriority(undefined)}
+          >
+            Remove
+          </button>
+        </div>
+        <div className="mt-2 grid gap-2 sm:grid-cols-2">
           <a className="min-h-12 rounded-2xl bg-ink px-4 py-3 text-center font-bold text-paper" href={spotifySearchUrl(artist)} target="_blank" rel="noreferrer">
             Open in Spotify
           </a>
