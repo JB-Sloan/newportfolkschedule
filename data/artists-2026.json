@@ -1730,35 +1730,33 @@
     ]
   },
   {
-    "id": "tedeschi-trucks-band",
-    "name": "Tedeschi Trucks Band",
-    "shortBio": "The 12-piece blues-rock juggernaut led by Susan Tedeschi and Derek Trucks, fusing soul, gospel and jam-band improvisation.",
+    "id": "father-john-misty",
+    "name": "Father John Misty",
+    "shortBio": "The satirical, orchestral-folk project of Josh Tillman (former Fleet Foxes drummer), whose grand, wry songwriting runs from Fear Fun and I Love You, Honeybear through 2024's Mahashmashana.",
     "genres": [
-      "blues-rock",
-      "soul",
-      "jam"
+      "indie-folk",
+      "folk-rock",
+      "chamber-pop"
     ],
     "tags": [
+      "vocal-led",
       "band",
-      "guitar-led",
-      "virtuosic"
+      "acclaimed"
     ],
     "moods": [
-      "high-energy",
-      "uplifting"
+      "wry",
+      "lush"
     ],
-    "imageUrl": "/images/artists/tedeschi-trucks-band.jpg",
-    "imageCredit": "Photo via Wikipedia / Wikimedia Commons",
-    "imageSourceUrl": "https://en.wikipedia.org/wiki/Tedeschi_Trucks_Band",
     "metadataConfidence": "reviewed",
     "metadataSources": [
       "https://newportfolk.org/lineup",
-      "https://en.wikipedia.org/wiki/Tedeschi_Trucks_Band"
+      "https://en.wikipedia.org/wiki/Father_John_Misty"
     ],
-    "officialUrl": "http://www.tedeschitrucksband.com/",
+    "officialUrl": "https://www.fatherjohnmisty.com/",
+    "spotifyUrl": "https://open.spotify.com/artist/2kGBy2WHvF0VdZyqiVCkDT",
     "links": {
-      "wikipedia": "https://en.wikipedia.org/wiki/Tedeschi_Trucks_Band",
-      "instagram": "https://www.instagram.com/derekandsusan/"
+      "wikipedia": "https://en.wikipedia.org/wiki/Father_John_Misty",
+      "instagram": "https://www.instagram.com/fatherjohnmisty/"
     }
   },
   {

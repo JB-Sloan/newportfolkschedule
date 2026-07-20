@@ -6,7 +6,7 @@
     "summary": "Blankets are allowed at 6 by 8 feet or smaller. Stage-specific placement should still be verified.",
     "officialSourceUrl": "https://newportfolk.org/info",
     "verifiedAt": "2026-07-13",
-    "scheduleVersion": "2026.official.1"
+    "scheduleVersion": "2026.official.2"
   },
   {
     "id": "chairs",
@@ -15,7 +15,7 @@
     "summary": "Chairs must be under 34 inches high. Chairs under 30 inches are allowed outside no-chair zones; 30–34 inch chairs belong farthest from stages or in designated shade areas.",
     "officialSourceUrl": "https://newportfolk.org/info",
     "verifiedAt": "2026-07-13",
-    "scheduleVersion": "2026.official.1"
+    "scheduleVersion": "2026.official.2"
   },
   {
     "id": "shade",
@@ -24,7 +24,7 @@
     "summary": "Personal shade tents are allowed at the back of performance areas when they do not impede others. Umbrellas must be closed during performances.",
     "officialSourceUrl": "https://newportfolk.org/info",
     "verifiedAt": "2026-07-13",
-    "scheduleVersion": "2026.official.1"
+    "scheduleVersion": "2026.official.2"
   },
   {
     "id": "water",
@@ -33,7 +33,7 @@
     "summary": "Empty refillable water bottles are allowed and refill stations are available.",
     "officialSourceUrl": "https://newportfolk.org/info",
     "verifiedAt": "2026-07-13",
-    "scheduleVersion": "2026.official.1"
+    "scheduleVersion": "2026.official.2"
   },
   {
     "id": "accessibility-hub",
@@ -42,7 +42,7 @@
     "summary": "The Accessibility Hub offers shade, water, a restricted bathroom, mobility-device charging, and accessibility volunteers.",
     "officialSourceUrl": "https://newportfolk.org/info/accessibility",
     "verifiedAt": "2026-07-13",
-    "scheduleVersion": "2026.official.1"
+    "scheduleVersion": "2026.official.2"
   },
   {
     "id": "weather",
@@ -51,6 +51,6 @@
     "summary": "The festival is rain or shine. All artists, set times, and stages are subject to change.",
     "officialSourceUrl": "https://newportfolk.org/info",
     "verifiedAt": "2026-07-13",
-    "scheduleVersion": "2026.official.1"
+    "scheduleVersion": "2026.official.2"
   }
 ]

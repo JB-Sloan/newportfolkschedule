@@ -4,9 +4,9 @@
   "timezone": "America/New_York",
   "officialScheduleUrl": "https://newportfolk.org/schedule",
   "officialInfoUrl": "https://newportfolk.org/info",
-  "scheduleVersion": "2026.official.1",
-  "publishedAt": "2026-07-13T09:00:00-04:00",
-  "verifiedAt": "2026-07-13T09:00:00-04:00",
+  "scheduleVersion": "2026.official.2",
+  "publishedAt": "2026-07-20T12:00:00-04:00",
+  "verifiedAt": "2026-07-20T12:00:00-04:00",
   "verifiedBy": ["fan-planner"],
-  "notes": "Transcribed from the official Newport Folk 2026 schedule at newportfolk.org/schedule (Fort, Quad, Harbor, Foundation, and Bike stages, July 24-26). Artists and times are subject to change; confirm critical details with Newport Folk."
+  "notes": "Transcribed from the official Newport Folk 2026 schedule at newportfolk.org/schedule (Fort, Quad, Harbor, Foundation, and Bike stages, July 24-26). official.2 reflects a Sunday Fort Stage update: Tedeschi Trucks Band withdrew and Father John Misty was added, with Brandi Carlile and Nathaniel Rateliff & Friends set times shifted accordingly. Artists and times are subject to change; confirm critical details with Newport Folk."
 }
