@@ -6,6 +6,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { findConflicts, getConflictTypeForSet, priorityLabel } from "@/lib/conflicts";
 import { SpotifyPlaylistCard } from "@/components/SpotifyPlaylistCard";
 import { SurpriseBoard } from "@/components/SurpriseBoard";
+import { WeatherStrip } from "@/components/WeatherStrip";
 import { HistoryBoard } from "@/components/HistoryBoard";
 import { encodeSharePlan, decodeSharePlan } from "@/lib/share-plan";
 import { buildSocialPost } from "@/lib/social-post";
@@ -548,6 +549,7 @@ export function FolkPlannerApp({
                   density={density}
                   setDensity={setDensity}
                 />
+                <WeatherStrip activeDay={activeDay} />
                 <ScheduleGrid
                   items={visibleItems}
                   allStages={stages}

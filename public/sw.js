@@ -24,7 +24,9 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
 
   if (request.method !== "GET" || url.origin !== self.location.origin) return;
-  if (url.pathname.startsWith("/api/assistant")) return;
+  // API responses are live data (weather, playlists) — never serve them
+  // cache-first, or the forecast would freeze at whatever was first fetched.
+  if (url.pathname.startsWith("/api/")) return;
 
   if (request.mode === "navigate") {
     event.respondWith(

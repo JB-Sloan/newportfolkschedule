@@ -27,6 +27,14 @@ import {
   summarizeHistory
 } from "@/lib/history";
 import type { SurpriseEvidence } from "@/lib/schemas";
+import {
+  buildOpenMeteoUrl,
+  describeWeatherCode,
+  formatClock,
+  formatHourLabel,
+  normalizeForecast,
+  weatherAdvice
+} from "@/lib/weather";
 import { artists, artistsById, historicalYears, historySummaries, manifest, scheduleItems, stagesById } from "@/lib/data";
 import type { Artist, HistoricalYear, ScheduleItem, SelectionMap, Stage } from "@/lib/schemas";
 
@@ -412,7 +420,70 @@ testSharePlan();
 testSocialPost();
 testIcs();
 testSpotifyResolution();
+function testWeather() {
+  assert.equal(describeWeatherCode(0).label, "Clear");
+  assert.equal(describeWeatherCode(3).label, "Overcast");
+  assert.equal(describeWeatherCode(63).label, "Rain");
+  assert.equal(describeWeatherCode(96).label, "Thunderstorms");
+  assert.equal(describeWeatherCode(999).label, "Unsettled");
+
+  assert.equal(formatClock("2026-07-24T20:17"), "8:17 PM");
+  assert.equal(formatClock("2026-07-24T05:31"), "5:31 AM");
+  assert.equal(formatClock(""), "");
+  assert.equal(formatHourLabel(13), "1p");
+  assert.equal(formatHourLabel(10), "10a");
+  assert.equal(formatHourLabel(12), "12p");
+
+  const url = buildOpenMeteoUrl("2026-07-24", "2026-07-26");
+  assert.match(url, /api\.open-meteo\.com/);
+  assert.match(url, /timezone=America%2FNew_York/);
+  assert.match(url, /start_date=2026-07-24&end_date=2026-07-26/);
+
+  // Hours outside the festival window are dropped; parallel arrays zip up.
+  const days = normalizeForecast({
+    daily: {
+      time: ["2026-07-24"],
+      weather_code: [61],
+      temperature_2m_max: [81.6],
+      temperature_2m_min: [67.2],
+      precipitation_probability_max: [55],
+      precipitation_sum: [0.128],
+      wind_speed_10m_max: [12.4],
+      uv_index_max: [7.6],
+      sunrise: ["2026-07-24T05:31"],
+      sunset: ["2026-07-24T20:17"]
+    },
+    hourly: {
+      time: ["2026-07-24T06:00", "2026-07-24T14:00", "2026-07-24T23:00"],
+      temperature_2m: [60.2, 79.7, 66.1],
+      precipitation_probability: [5, 60, 10],
+      weather_code: [0, 61, 2]
+    }
+  });
+
+  assert.equal(days.length, 1);
+  const day = days[0];
+  assert.equal(day.high, 82);
+  assert.equal(day.low, 67);
+  assert.equal(day.precipitationProbability, 55);
+  assert.equal(day.uvMax, 8);
+  assert.equal(day.hours.length, 1, "only the 2pm hour is inside the festival window");
+  assert.equal(day.hours[0].hour, 14);
+  assert.equal(day.hours[0].temperature, 80);
+  assert.equal(weatherAdvice(day), "Pack a rain layer.");
+
+  // Thunderstorms outrank other advice; a calm day gets none.
+  assert.match(weatherAdvice({ ...day, code: 95 }) ?? "", /Thunderstorms/);
+  assert.equal(
+    weatherAdvice({ ...day, code: 2, precipitationProbability: 10, high: 78, uvMax: 5, windMax: 8 }),
+    undefined
+  );
+
+  assert.deepEqual(normalizeForecast({}), []);
+}
+
 testSurpriseScoring();
+testWeather();
 testHistory();
 testServerPlaylistBuilder()
   .then(() => console.log("Unit smoke tests passed."))
