@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { manifest, policies } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "About this Newport Folk 2026 planner",
+  description:
+    "How this unofficial Newport Folk Festival 2026 schedule planner is sourced and verified, plus festival policies on chairs, blankets, shade, and water.",
+  alternates: { canonical: "/about" }
+};
 
 export default function AboutPage() {
   return (

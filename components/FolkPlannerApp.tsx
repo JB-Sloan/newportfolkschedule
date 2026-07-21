@@ -436,11 +436,12 @@ export function FolkPlannerApp({
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-paper/70">Unofficial planner</p>
               <h1 className="mt-3 text-4xl font-black leading-tight md:text-6xl">
-                Folk Planner 2026
+                Newport Folk 2026 Schedule
               </h1>
               <p className="mt-4 max-w-2xl text-lg text-paper/82">
-                Build a personal Newport Folk itinerary, spot conflicts, save it offline,
-                and export a pocket plan before Fort Adams reception gets wobbly.
+                Every set time for July 24–26 at Fort Adams. Build a personal itinerary,
+                spot conflicts, save it offline, and export a pocket plan before reception
+                gets wobbly.
               </p>
               <div className="mt-5 flex flex-wrap gap-2 text-sm">
                 <span className="rounded-full bg-paper/14 px-3 py-1">
