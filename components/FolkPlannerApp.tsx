@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import { findConflicts, getConflictTypeForSet, priorityLabel } from "@/lib/conflicts";
 import { SpotifyPlaylistCard } from "@/components/SpotifyPlaylistCard";
-import { SurpriseBoard } from "@/components/SurpriseBoard";
+import { RumorTeaser, SurpriseBoard } from "@/components/SurpriseBoard";
 import { WeatherStrip } from "@/components/WeatherStrip";
 import { HistoryBoard } from "@/components/HistoryBoard";
 import { encodeSharePlan, decodeSharePlan } from "@/lib/share-plan";
@@ -61,15 +61,23 @@ type SharedPlan = {
 const STORAGE_KEY = "newport-folk-planner:v1";
 const DEFAULT_TAB = "schedule";
 
+/**
+ * The Now/Next view only means anything once gates open. Flip to true on
+ * Friday July 24 to surface the tab; the view itself stays wired up.
+ */
+const SHOW_NOW_TAB = false;
+
 const tabLabels = [
   { id: "schedule", label: "Schedule" },
+  { id: "surprise", label: "Rumors" },
   { id: "plan", label: "My Plan" },
   { id: "now", label: "Now" },
-  { id: "surprise", label: "Rumors" },
   { id: "history", label: "History" }
 ] as const;
 
 type TabId = (typeof tabLabels)[number]["id"];
+
+const visibleTabs = tabLabels.filter((tab) => tab.id !== "now" || SHOW_NOW_TAB);
 type SocialPlatform = "x" | "facebook";
 
 function classNames(...values: Array<string | false | undefined>) {
@@ -507,8 +515,15 @@ export function FolkPlannerApp({
 
         <div className={classNames("grid gap-5", (activeTab === "plan" || activeTab === "now") && "lg:grid-cols-[1fr_360px]")}>
           <section className="space-y-4">
-            <nav className="grid grid-cols-3 gap-2 rounded-3xl bg-white p-2 shadow-soft sm:grid-cols-5" aria-label="Primary" role="tablist">
-              {tabLabels.map((tab) => (
+            <nav
+              className={classNames(
+                "grid gap-2 rounded-3xl bg-white p-2 shadow-soft",
+                visibleTabs.length === 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-3 sm:grid-cols-5"
+              )}
+              aria-label="Primary"
+              role="tablist"
+            >
+              {visibleTabs.map((tab) => (
                 <button
                   key={tab.id}
                   role="tab"
@@ -549,7 +564,7 @@ export function FolkPlannerApp({
                   density={density}
                   setDensity={setDensity}
                 />
-                <WeatherStrip activeDay={activeDay} />
+                <RumorTeaser onOpen={() => setActiveTab("surprise")} />
                 <ScheduleGrid
                   items={visibleItems}
                   allStages={stages}
@@ -799,6 +814,7 @@ function ScheduleControls({
           </button>
         ))}
       </div>
+      <WeatherStrip activeDay={activeDay} />
     </div>
   );
 }

@@ -363,6 +363,39 @@ function SuspectDetail({
   );
 }
 
+/**
+ * Compact entry point shown on the Schedule tab so the Rumor Evaluator is
+ * discoverable without hunting through tabs.
+ */
+export function RumorTeaser({ onOpen }: { onOpen: () => void }) {
+  const ranked = useMemo(() => rankSuspects(surpriseGuests as SurpriseGuest[], historicalYears), []);
+  const top = ranked[0];
+  if (!top) return null;
+
+  return (
+    <button
+      onClick={onOpen}
+      className="w-full rounded-3xl bg-ink px-4 py-3 text-left text-paper shadow-soft transition hover:bg-ink/90"
+    >
+      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+        <div className="min-w-0">
+          <p className="text-[11px] font-black uppercase tracking-[0.16em] text-paper/55">
+            Rumor Evaluator
+          </p>
+          <p className="mt-0.5 truncate text-sm text-paper/90">
+            Who might surprise-guest? Top lead:{" "}
+            <strong className="font-black text-paper">{top.suspect.name}</strong>{" "}
+            <span className="tabular-nums">{top.score.percent}%</span>
+          </p>
+        </div>
+        <span className="shrink-0 rounded-full bg-paper/15 px-3 py-1 text-xs font-bold">
+          {ranked.length} rumors scored →
+        </span>
+      </div>
+    </button>
+  );
+}
+
 export function SurpriseBoard({
   artistsById,
   onOpenArtist
