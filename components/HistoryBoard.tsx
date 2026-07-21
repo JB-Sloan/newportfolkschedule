@@ -1,8 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { HistoricalYear } from "@/lib/schemas";
 import type { ArtistHistorySummary } from "@/lib/history";
+
+/** The full roster runs to four figures once the historic years are included. */
+const HISTORY_PAGE_SIZE = 60;
 
 function classNames(...values: Array<string | false | undefined>) {
   return values.filter(Boolean).join(" ");
@@ -112,6 +115,7 @@ export function HistoryBoard({
   const [expandedKey, setExpandedKey] = useState<string | undefined>();
   const [onlyReturning, setOnlyReturning] = useState(false);
   const [onlyLineup, setOnlyLineup] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(HISTORY_PAGE_SIZE);
 
   const years = historicalYears.filter((year) => !year.cancelled).map((year) => year.year);
   const cancelledYear = historicalYears.find((year) => year.cancelled)?.year;
@@ -130,6 +134,12 @@ export function HistoryBoard({
       .filter(({ summary }) => !query || summary.name.toLowerCase().includes(query));
   }, [ranked, search, onlyReturning, onlyLineup]);
 
+  // Start the list over whenever the result set changes, so a narrow search
+  // doesn't inherit a long "show more" run from a previous query.
+  useEffect(() => {
+    setVisibleCount(HISTORY_PAGE_SIZE);
+  }, [search, onlyReturning, onlyLineup]);
+
   const returningCount = historySummaries.filter((summary) => summary.years.length > 1).length;
   const lineupOverlapCount = historySummaries.filter((summary) => summary.artistId).length;
 
@@ -138,7 +148,7 @@ export function HistoryBoard({
       <div className="rounded-3xl bg-white p-5 shadow-soft">
         <h2 className="text-2xl font-black">Newport Folk history, {span}</h2>
         <p className="mt-1 text-ink/60">
-          Every billed act and known guest sit-in from the last ten festivals, counted up so you can see who keeps
+          Every billed act and known guest sit-in across {years.length} festivals, counted up so you can see who keeps
           coming back to Fort Adams.
           {cancelledYear ? ` ${cancelledYear} is excluded — the festival was cancelled that year.` : ""}
         </p>
@@ -188,16 +198,27 @@ export function HistoryBoard({
         {filtered.length === 0 ? (
           <p className="p-4 text-center text-ink/60">No history matches those filters.</p>
         ) : (
-          filtered.map(({ summary, rank }) => (
-            <ArtistHistoryRow
-              key={summary.key}
-              rank={rank}
-              summary={summary}
-              expanded={expandedKey === summary.key}
-              onToggle={() => setExpandedKey((current) => (current === summary.key ? undefined : summary.key))}
-              onOpenArtist={onOpenArtist}
-            />
-          ))
+          <>
+            {filtered.slice(0, visibleCount).map(({ summary, rank }) => (
+              <ArtistHistoryRow
+                key={summary.key}
+                rank={rank}
+                summary={summary}
+                expanded={expandedKey === summary.key}
+                onToggle={() => setExpandedKey((current) => (current === summary.key ? undefined : summary.key))}
+                onOpenArtist={onOpenArtist}
+              />
+            ))}
+            {filtered.length > visibleCount ? (
+              <button
+                className="w-full rounded-2xl bg-ink/6 px-4 py-3 text-sm font-bold hover:bg-ink/12"
+                onClick={() => setVisibleCount((current) => current + HISTORY_PAGE_SIZE)}
+              >
+                Show {Math.min(HISTORY_PAGE_SIZE, filtered.length - visibleCount)} more · {filtered.length - visibleCount}{" "}
+                remaining
+              </button>
+            ) : null}
+          </>
         )}
       </div>
 

@@ -289,6 +289,23 @@ function testSurpriseScoring() {
   const historicalPrior = deriveHistoricalBaseRate(historicalYears, 34);
   assert.ok(historicalPrior > 0.08 && historicalPrior < 0.1, `history-derived prior is ~9% (got ${historicalPrior})`);
 
+  // Pre-2016 seasons list billed lineups with no guest census. Adding them to
+  // the history dataset must not drag the median guest count toward zero and
+  // silently move every rumor percentage.
+  const withHistoricYears = [
+    ...historicalYears,
+    ...[1965, 1985, 1995, 2005, 2010, 2015].map((year) => ({
+      year,
+      cancelled: false,
+      appearances: [{ name: "Someone Billed", role: "billed" as const }]
+    }))
+  ];
+  assert.equal(
+    deriveHistoricalBaseRate(withHistoricYears, 34),
+    historicalPrior,
+    "years outside the guest-census window must not change the prior"
+  );
+
   // Same-category clues corroborate modestly instead of behaving as independent events.
   assert.equal(categoryStrength([ev("collaboration", 50)], "collaboration"), 0.5);
   const two = categoryStrength([ev("collaboration", 50), ev("collaboration", 50)], "collaboration");

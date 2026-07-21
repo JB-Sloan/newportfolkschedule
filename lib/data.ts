@@ -4,7 +4,7 @@ import policiesJson from "@/data/policies-2026.json";
 import scheduleJson from "@/data/schedule-2026.json";
 import stagesJson from "@/data/stages-2026.json";
 import surpriseGuestsJson from "@/data/surprise-guests-2026.json";
-import historyJson from "@/data/newport-history-2016-2025.json";
+import historyJson from "@/data/newport-history.json";
 import {
   ArtistSchema,
   HistoricalYearSchema,

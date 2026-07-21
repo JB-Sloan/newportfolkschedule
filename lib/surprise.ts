@@ -23,14 +23,28 @@ import type { HistoricalYear, SurpriseEvidence, SurpriseEvidenceType, SurpriseGu
 export const HISTORICAL_BASE_RATE = 0.09;
 
 /**
+ * Window of seasons that have an audited guest census. Years outside it list
+ * billed lineups only, so counting their (zero) guests would understate the
+ * real rate — the bound is explicit on both ends so extending the history
+ * dataset backwards cannot silently move every rumor percentage.
+ */
+export const GUEST_CENSUS_FIRST_YEAR = 2016;
+export const GUEST_CENSUS_LAST_YEAR = 2023;
+
+/**
  * Uses the median identified-guest count from the completed, guest-audited
- * 2016-2023 seasons. Later history rows currently document billed lineups but
+ * 2016-2023 seasons. Other history rows document billed lineups but
  * explicitly do not yet contain a complete guest census.
  */
 export function deriveHistoricalBaseRate(history: HistoricalYear[], candidatePoolSize: number) {
   if (candidatePoolSize <= 0) return HISTORICAL_BASE_RATE;
   const counts = history
-    .filter((year) => !year.cancelled && year.year <= 2023)
+    .filter(
+      (year) =>
+        !year.cancelled &&
+        year.year >= GUEST_CENSUS_FIRST_YEAR &&
+        year.year <= GUEST_CENSUS_LAST_YEAR
+    )
     .map((year) => year.appearances.filter((appearance) => appearance.role === "guest").length)
     .sort((a, b) => a - b);
   if (!counts.length) return HISTORICAL_BASE_RATE;

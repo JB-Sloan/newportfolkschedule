@@ -176,7 +176,8 @@ export const HistoricalAppearanceSchema = z.object({
 });
 
 export const HistoricalYearSchema = z.object({
-  year: z.number().int().min(2000).max(2025),
+  // 1959 is the first Newport Folk Festival.
+  year: z.number().int().min(1959).max(2025),
   cancelled: z.boolean().default(false),
   note: z.string().max(300).optional(),
   sourceUrl: z.string().url().optional(),
