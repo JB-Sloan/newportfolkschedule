@@ -3,18 +3,23 @@ import manifestJson from "@/data/schedule-manifest.json";
 import policiesJson from "@/data/policies-2026.json";
 import scheduleJson from "@/data/schedule-2026.json";
 import stagesJson from "@/data/stages-2026.json";
+import surpriseGuestsJson from "@/data/surprise-guests-2026.json";
+import historyJson from "@/data/newport-history-2016-2025.json";
 import {
   ArtistSchema,
+  HistoricalYearSchema,
   ManifestSchema,
   PolicySchema,
   ScheduleItemSchema,
   StageSchema,
+  SurpriseGuestSchema,
   type Artist,
   type FestivalDate,
   type ScheduleItem,
   type Stage
 } from "@/lib/schemas";
 import { compareSets } from "@/lib/time";
+import { buildHistoryRecords, summarizeHistory } from "@/lib/history";
 
 export const manifest = ManifestSchema.parse(manifestJson);
 export const scheduleItems = ScheduleItemSchema.array().parse(scheduleJson).sort(compareSets);
@@ -23,6 +28,12 @@ export const artists = ArtistSchema.array().parse(artistsJson).sort((a, b) =>
 );
 export const stages = StageSchema.array().parse(stagesJson);
 export const policies = PolicySchema.array().parse(policiesJson);
+export const surpriseGuests = SurpriseGuestSchema.array().parse(surpriseGuestsJson);
+export const historicalYears = HistoricalYearSchema.array()
+  .parse(historyJson)
+  .sort((a, b) => a.year - b.year);
+export const historyRecords = buildHistoryRecords(historicalYears, artists);
+export const historySummaries = summarizeHistory(historyRecords);
 
 export const artistsById: Record<string, Artist> = Object.fromEntries(
   artists.map((artist) => [artist.id, artist])
@@ -57,6 +68,8 @@ export function getScheduleHydrationData() {
     scheduleItems,
     artists,
     stages,
-    policies
+    policies,
+    historicalYears,
+    historySummaries
   };
 }

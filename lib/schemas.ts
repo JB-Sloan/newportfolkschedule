@@ -132,6 +132,57 @@ export const SpotifyArtistMapSchema = z.object({
   )
 });
 
+export const SurpriseEvidenceTypeSchema = z.enum([
+  "shared-band",
+  "appearance-vehicle",
+  "collaboration",
+  "tour-routing",
+  "schedule-friction",
+  "past-newport",
+  "label-mgmt",
+  "public-hint"
+]);
+
+export const SurpriseEvidenceSchema = z.object({
+  type: SurpriseEvidenceTypeSchema,
+  // References a billed lineup artist id; omit for general (artist-agnostic) signals.
+  artistId: z.string().min(1).optional(),
+  weight: z.number().int().min(1).max(100),
+  detail: z.string().min(1).max(400),
+  sources: z.array(z.string().url()).min(1)
+});
+
+export const SurpriseGuestSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  name: z.string().min(1),
+  billed: z.boolean().default(false),
+  summary: z.string().min(1).max(280),
+  links: z
+    .object({
+      spotify: z.string().url().optional(),
+      wikipedia: z.string().url().optional(),
+      website: z.string().url().optional()
+    })
+    .optional(),
+  evidence: z.array(SurpriseEvidenceSchema).min(1),
+  status: z.enum(["draft", "researched", "confirmed", "debunked"]).default("draft"),
+  verifiedAt: z.string().min(1)
+});
+
+export const HistoricalAppearanceSchema = z.object({
+  name: z.string().min(1),
+  role: z.enum(["billed", "guest"]),
+  notes: z.string().max(300).optional()
+});
+
+export const HistoricalYearSchema = z.object({
+  year: z.number().int().min(2000).max(2025),
+  cancelled: z.boolean().default(false),
+  note: z.string().max(300).optional(),
+  sourceUrl: z.string().url().optional(),
+  appearances: z.array(HistoricalAppearanceSchema).default([])
+});
+
 export const AssistantRequestSchema = z.object({
   mode: z.enum(["recommend", "chat", "build-plan", "resolve-conflicts"]),
   query: z.string().max(800).optional(),
@@ -185,6 +236,11 @@ export type Artist = z.infer<typeof ArtistSchema>;
 export type Stage = z.infer<typeof StageSchema>;
 export type Policy = z.infer<typeof PolicySchema>;
 export type Manifest = z.infer<typeof ManifestSchema>;
+export type SurpriseEvidenceType = z.infer<typeof SurpriseEvidenceTypeSchema>;
+export type SurpriseEvidence = z.infer<typeof SurpriseEvidenceSchema>;
+export type SurpriseGuest = z.infer<typeof SurpriseGuestSchema>;
+export type HistoricalAppearance = z.infer<typeof HistoricalAppearanceSchema>;
+export type HistoricalYear = z.infer<typeof HistoricalYearSchema>;
 export type AssistantRequest = z.infer<typeof AssistantRequestSchema>;
 export type RecommendationResponse = z.infer<typeof RecommendationResponseSchema>;
 export type SelectionMap = Record<string, Priority>;

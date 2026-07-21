@@ -11,8 +11,24 @@ import {
   type ArtistMap
 } from "@/lib/spotify";
 import { buildPlaylistInOwnerAccount } from "@/lib/spotify-server";
-import { artistsById, manifest, scheduleItems, stagesById } from "@/lib/data";
-import type { ScheduleItem, SelectionMap, Stage } from "@/lib/schemas";
+import {
+  categoryStrength,
+  connectedArtists,
+  deriveHistoricalBaseRate,
+  likelihoodLabel,
+  rankSuspects,
+  scoreSuspect
+} from "@/lib/surprise";
+import {
+  buildHistoryRecords,
+  getArtistHistory,
+  matchHistoricalArtist,
+  normalizeHistoryName,
+  summarizeHistory
+} from "@/lib/history";
+import type { SurpriseEvidence } from "@/lib/schemas";
+import { artists, artistsById, historicalYears, historySummaries, manifest, scheduleItems, stagesById } from "@/lib/data";
+import type { Artist, HistoricalYear, ScheduleItem, SelectionMap, Stage } from "@/lib/schemas";
 
 const stages: Stage[] = [
   {
@@ -257,11 +273,147 @@ async function testServerPlaylistBuilder() {
   assert.ok(!calls.some((call) => call.includes("top-tracks")), "must not call removed top-tracks endpoint");
 }
 
+function ev(type: SurpriseEvidence["type"], weight: number, artistId?: string): SurpriseEvidence {
+  return { type, weight, artistId, detail: "x", sources: ["https://example.com"] };
+}
+
+function testSurpriseScoring() {
+  const historicalPrior = deriveHistoricalBaseRate(historicalYears, 34);
+  assert.ok(historicalPrior > 0.08 && historicalPrior < 0.1, `history-derived prior is ~9% (got ${historicalPrior})`);
+
+  // Same-category clues corroborate modestly instead of behaving as independent events.
+  assert.equal(categoryStrength([ev("collaboration", 50)], "collaboration"), 0.5);
+  const two = categoryStrength([ev("collaboration", 50), ev("collaboration", 50)], "collaboration");
+  assert.equal(two, 0.55, "a second 50 clue closes only 20% of the remaining weighted gap");
+  assert.equal(categoryStrength([ev("collaboration", 50)], "shared-band"), 0);
+
+  // A relationship without current availability remains close to the historical prior.
+  const lone = scoreSuspect({ evidence: [ev("shared-band", 95, "lucy-dacus")] });
+  assert.ok(lone.percent >= 7 && lone.percent <= 12, `unrouted band tie stays conservative (got ${lone.percent})`);
+  assert.equal(lone.availabilityKnown, false);
+
+  // Distinct categories corroborate, but do not create an implausible 70% rumor.
+  const corroborated = scoreSuspect({
+    evidence: [
+      ev("shared-band", 95, "lucy-dacus"),
+      ev("past-newport", 70),
+      ev("collaboration", 60, "lucy-dacus")
+    ]
+  });
+  assert.ok(corroborated.percent > lone.percent, "corroboration raises the score");
+  assert.ok(corroborated.percent < 25, "relationships without availability stay capped naturally");
+
+  const routed = scoreSuspect({
+    evidence: [
+      ev("collaboration", 80, "nathaniel-rateliff"),
+      ev("tour-routing", 80),
+      ev("public-hint", 70)
+    ]
+  });
+  assert.ok(routed.percent >= 30, "routing, a named vehicle, and a current hint materially raise odds");
+  assert.equal(routed.availabilityKnown, true);
+  assert.ok(
+    routed.categories.some((category) => category.type === "appearance-vehicle" && category.inferred),
+    "named & Friends sets create an inferred appearance vehicle"
+  );
+
+  const difficultRoute = scoreSuspect({
+    evidence: [
+      ev("shared-band", 95, "lucy-dacus"),
+      ev("past-newport", 70),
+      ev("collaboration", 60, "lucy-dacus"),
+      ev("schedule-friction", 70)
+    ]
+  });
+  assert.ok(difficultRoute.percent < corroborated.percent, "schedule friction lowers the score");
+  assert.ok(difficultRoute.percent > 0, "schedule friction is a penalty, not a hard exclusion");
+
+  const ruledOut = scoreSuspect({
+    status: "debunked",
+    evidence: [ev("shared-band", 100, "lucy-dacus")]
+  });
+  assert.equal(ruledOut.percent, 0, "a verified hard conflict overrides positive evidence");
+  assert.equal(ruledOut.label, "Ruled out");
+
+  // Labels and ranking.
+  assert.equal(likelihoodLabel(65), "Prime suspect");
+  assert.equal(likelihoodLabel(40), "Strong lead");
+  assert.equal(likelihoodLabel(5), "Cold trail");
+
+  // connectedArtists dedupes to the strongest edge per artist.
+  const connections = connectedArtists({
+    evidence: [ev("collaboration", 40, "brandi-carlile"), ev("shared-band", 90, "brandi-carlile")]
+  });
+  assert.equal(connections.length, 1);
+  assert.equal(connections[0].type, "shared-band");
+
+  const ranked = rankSuspects([
+    { evidence: [ev("public-hint", 20)] },
+    { evidence: [ev("shared-band", 95, "lucy-dacus")] },
+    { status: "debunked" as const, evidence: [ev("shared-band", 100, "lucy-dacus")] }
+  ]);
+  assert.ok(ranked[0].score.percent >= ranked[1].score.percent, "ranked descending by score");
+  assert.equal(ranked[2].score.percent, 0, "ruled-out suspects rank last");
+}
+
+function testHistory() {
+  assert.equal(normalizeHistoryName("The Night Sweats"), "night sweats");
+  assert.equal(normalizeHistoryName("Nathaniel Rateliff and the Night Sweats"), "nathaniel rateliff and the night sweats");
+  assert.equal(normalizeHistoryName("Gillian Welch & David Rawlings"), "gillian welch and david rawlings");
+
+  const roster: Artist[] = [
+    { ...artists[0], id: "nathaniel-rateliff", name: "Nathaniel Rateliff" },
+    { ...artists[0], id: "father-john-misty", name: "Father John Misty" }
+  ];
+
+  assert.equal(
+    matchHistoricalArtist("Nathaniel Rateliff and the Night Sweats", roster)?.artistId,
+    "nathaniel-rateliff"
+  );
+  assert.equal(matchHistoricalArtist("Father John Misty", roster)?.artistId, "father-john-misty");
+  assert.equal(matchHistoricalArtist("The National", roster), undefined);
+
+  const years: HistoricalYear[] = [
+    { year: 2016, cancelled: false, appearances: [{ name: "Father John Misty", role: "billed" }] },
+    {
+      year: 2021,
+      cancelled: false,
+      appearances: [
+        { name: "Nathaniel Rateliff and the Night Sweats", role: "billed" },
+        { name: "Father John Misty", role: "guest", notes: "sat in" }
+      ]
+    },
+    { year: 2020, cancelled: true, appearances: [] }
+  ];
+  const records = buildHistoryRecords(years, roster);
+  assert.equal(records.length, 3, "cancelled year contributes no records");
+
+  const summaries = summarizeHistory(records);
+  const misty = getArtistHistory("father-john-misty", summaries);
+  assert.ok(misty);
+  assert.equal(misty!.totalAppearances, 2);
+  assert.equal(misty!.billedCount, 1);
+  assert.equal(misty!.guestCount, 1);
+  assert.deepEqual(misty!.years, [2016, 2021]);
+
+  const rateliff = getArtistHistory("nathaniel-rateliff", summaries);
+  assert.equal(rateliff!.name, "Nathaniel Rateliff", "matched summaries display the 2026 canonical name");
+
+  // Real dataset sanity checks.
+  assert.ok(historicalYears.some((year) => year.year === 2020 && year.cancelled));
+  assert.ok(historySummaries.length > 100, "history covers many distinct acts");
+  const realMisty = getArtistHistory("father-john-misty", historySummaries);
+  assert.ok(realMisty, "Father John Misty should be linked from 2016 history to the 2026 roster");
+  assert.ok(realMisty!.years.includes(2016));
+}
+
 testConflicts();
 testSharePlan();
 testSocialPost();
 testIcs();
 testSpotifyResolution();
+testSurpriseScoring();
+testHistory();
 testServerPlaylistBuilder()
   .then(() => console.log("Unit smoke tests passed."))
   .catch((error) => {

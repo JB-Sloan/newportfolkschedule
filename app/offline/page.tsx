@@ -8,7 +8,7 @@ export default function OfflinePage() {
         <h1 className="mt-3 text-4xl font-black">You’re offline.</h1>
         <p className="mt-4 text-ink/70">
           If you saved the planner for offline use, your schedule and selections should still be available.
-          AI chat and external Spotify links require an internet connection.
+          External Spotify links require an internet connection.
         </p>
         <Link className="mt-6 inline-block rounded-full bg-ink px-5 py-3 font-bold text-paper" href="/">
           Open saved planner

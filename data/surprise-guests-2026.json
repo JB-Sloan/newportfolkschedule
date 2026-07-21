@@ -1,0 +1,1589 @@
+[
+  {
+    "id": "phoebe-bridgers",
+    "name": "Phoebe Bridgers",
+    "billed": false,
+    "summary": "boygenius bandmate of Friday artist Lucy Dacus, with her own Newport history and a clear walk-on vehicle.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Phoebe_Bridgers"
+    },
+    "evidence": [
+      {
+        "type": "shared-band",
+        "artistId": "lucy-dacus",
+        "weight": 95,
+        "detail": "Bridgers and billed Friday artist Lucy Dacus are members of boygenius with Julien Baker.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Boygenius",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 72,
+        "detail": "Bridgers appeared on the 2018 Newport Folk Festival lineup.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "hayley-williams",
+        "weight": 74,
+        "detail": "Bridgers, Julien Baker, and Lucy Dacus supplied the boygenius backing vocals on Hayley Williams's 2020 song 'Roses/Lotus/Violet/Iris.'",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Petals_for_Armor"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "julien-baker",
+    "name": "Julien Baker",
+    "billed": false,
+    "summary": "The third boygenius member and a recent Newport alum, making Lucy Dacus's Friday set a natural cameo route.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Julien_Baker"
+    },
+    "evidence": [
+      {
+        "type": "shared-band",
+        "artistId": "lucy-dacus",
+        "weight": 95,
+        "detail": "Baker and billed Friday artist Lucy Dacus are members of boygenius with Phoebe Bridgers.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Boygenius",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 80,
+        "detail": "Baker performed during Newport's 2021 Folk On program.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "hayley-williams",
+        "weight": 78,
+        "detail": "Baker sang with boygenius on Williams's 'Roses/Lotus/Violet/Iris' and later reworked Paramore's 'Thick Skull' for the band's official remix album.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Petals_for_Armor",
+          "https://store.paramore.net/collections/best-selling/products/re-this-is-why-remix-album-red-vinyl"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "amanda-shires",
+    "name": "Amanda Shires",
+    "billed": false,
+    "summary": "Highwomen co-founder with Sunday artist Brandi Carlile and a repeat Newport performer.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Amanda_Shires"
+    },
+    "evidence": [
+      {
+        "type": "shared-band",
+        "artistId": "brandi-carlile",
+        "weight": 90,
+        "detail": "Shires and billed Sunday artist Brandi Carlile co-founded The Highwomen with Maren Morris and Natalie Hemby.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/The_Highwomen",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 85,
+        "detail": "Shires played Newport in 2018 and returned with The Highwomen for their first full live set there in 2019.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year",
+          "https://en.wikipedia.org/wiki/The_Highwomen"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 96,
+        "detail": "The Highwomen reunited for a 26-song Gorge concert in June 2026; on July 19 Shires again joined Carlile and Maren Morris at Red Rocks, only five days before Newport.",
+        "sources": [
+          "https://www.jambase.com/article/highwomen-gorge-2026-setlist-video-linda-perry-bonnie-raitt-wynonna-judd",
+          "https://jambands.com/news/2026/07/20/brandi-carlile-offers-surprise-maren-morris-opening-set-at-red-rocks/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "jason-isbell",
+    "name": "Jason Isbell",
+    "billed": false,
+    "summary": "Ruled out: Isbell is booked in Michigan Friday, Ohio Saturday, and Virginia Sunday, covering all three Newport dates.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Jason_Isbell"
+    },
+    "evidence": [
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 65,
+        "detail": "Isbell co-wrote The Highwomen song 'If She Ever Leaves Me'; Carlile is a member of the group and is billed Sunday.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/The_Highwomen",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 78,
+        "detail": "Isbell performed at Newport in 2015 and returned with the 400 Unit in 2018.",
+        "sources": [
+          "https://www.boisestatepublicradio.org/music/2015-07-26/jason-isbell-live-in-concert-newport-folk-2015",
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year"
+        ]
+      },
+      {
+        "type": "tour-routing",
+        "weight": 1,
+        "detail": "Hard conflict: Isbell plays Interlochen, MI July 24, Huber Heights, OH July 25, and Charlottesville, VA July 26, leaving no festival day available.",
+        "sources": [
+          "https://www.interlochen.org/events/jason-isbell-and-400-unit-2026-07-24",
+          "https://rosemusiccenter.com/events/2026/07/jason-isbell-and-the-400-unit",
+          "https://news.pollstar.com/2025/10/28/jason-isbell-the-400-unit-announce-2026-tour/"
+        ]
+      }
+    ],
+    "status": "debunked",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "anais-mitchell",
+    "name": "Anaïs Mitchell",
+    "billed": false,
+    "summary": "Fruit Bats' Eric D. Johnson's Bonny Light Horseman bandmate and a deeply established Newport returnee.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Ana%C3%AFs_Mitchell",
+      "website": "https://www.anaismitchell.com/"
+    },
+    "evidence": [
+      {
+        "type": "shared-band",
+        "artistId": "fruit-bats",
+        "weight": 95,
+        "detail": "Mitchell and Fruit Bats' Eric D. Johnson are members of the folk trio Bonny Light Horseman; Fruit Bats play Friday.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Bonny_Light_Horseman_(band)",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 90,
+        "detail": "Mitchell has returned to Newport repeatedly, including with Bonny Light Horseman in 2019 and 2021 and as a solo artist in 2022.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year",
+          "https://www.bostonglobe.com/2021/07/28/arts/stripped-down-spirited-newport-folk-festival-with-beck-sing-along/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "josh-kaufman",
+    "name": "Josh Kaufman",
+    "billed": false,
+    "summary": "Fruit Bats' Eric D. Johnson's Bonny Light Horseman bandmate, with multiple prior Newport appearances in that trio.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Josh_Kaufman_(musician)"
+    },
+    "evidence": [
+      {
+        "type": "shared-band",
+        "artistId": "fruit-bats",
+        "weight": 95,
+        "detail": "Kaufman and Fruit Bats' Eric D. Johnson are members of Bonny Light Horseman; Fruit Bats play Friday.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Bonny_Light_Horseman_(band)",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 85,
+        "detail": "Kaufman performed at Newport with Bonny Light Horseman in 2019 and during the 2021 Folk On program.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year",
+          "https://www.bostonglobe.com/2021/07/28/arts/stripped-down-spirited-newport-folk-festival-with-beck-sing-along/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "taylor-york",
+    "name": "Taylor York",
+    "billed": false,
+    "summary": "Hayley Williams's current Paramore bandmate and principal writing partner, with an explicit Friday 'and Friends' slot.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Taylor_York"
+    },
+    "evidence": [
+      {
+        "type": "shared-band",
+        "artistId": "hayley-williams",
+        "weight": 95,
+        "detail": "York is a current member of Paramore with billed Friday artist Hayley Williams.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Paramore",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "hayley-williams",
+        "weight": 82,
+        "detail": "York is a central Paramore songwriter and instrumental collaborator with Williams, including on the Grammy-winning 'Ain't It Fun.'",
+        "sources": [
+          "https://time.com/6254612/paramore-interview-this-is-why-album/",
+          "https://en.wikipedia.org/wiki/Paramore"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "hayley-williams",
+        "weight": 92,
+        "detail": "York produced Williams's entire solo debut 'Petals for Armor' and co-wrote tracks including 'Simmer,' a direct producer/songwriter relationship outside Paramore.",
+        "sources": [
+          "https://www.allmusic.com/album/petals-for-armor-mw0003356388",
+          "https://en.wikipedia.org/wiki/Petals_for_Armor"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "zac-farro",
+    "name": "Zac Farro",
+    "billed": false,
+    "summary": "Hayley Williams's current Paramore bandmate, with her Friday set explicitly billed 'and Friends.'",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Zac_Farro"
+    },
+    "evidence": [
+      {
+        "type": "shared-band",
+        "artistId": "hayley-williams",
+        "weight": 95,
+        "detail": "Farro is Paramore's current drummer alongside billed Friday artist Hayley Williams and Taylor York.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Paramore",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "hayley-williams",
+        "weight": 70,
+        "detail": "Farro contributed drums and instrumentation alongside Williams and York to Paramore's 2023 album 'This Is Why.'",
+        "sources": [
+          "https://apnews.com/article/17529b931087b37f29dc58d043f50967"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "hayley-williams",
+        "weight": 78,
+        "detail": "Williams is the featured vocalist on 'As U Wave' by Farro's HalfNoise project; Farro also drummed on her solo album 'Petals for Armor.'",
+        "sources": [
+          "https://www.altpress.com/hayley_williams_featured_on_new_halfnoise_zac_farro_songlisten/",
+          "https://trackseven.net/2020/06/01/hayley-williams-petals-for-armor/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "maren-morris",
+    "name": "Maren Morris",
+    "billed": false,
+    "summary": "Highwomen member with Brandi Carlile who reunited with the group in June and again performed with Carlile at Red Rocks July 19; a Saturday Montana show limits her to Sunday.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Maren_Morris",
+      "website": "https://www.marenmorris.com/"
+    },
+    "evidence": [
+      {
+        "type": "shared-band",
+        "artistId": "brandi-carlile",
+        "weight": 90,
+        "detail": "Morris and billed Sunday artist Brandi Carlile are members of The Highwomen.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/The_Highwomen",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 90,
+        "detail": "Morris performed The Highwomen's first full live set at Newport in 2019 and returned to the 2022 festival.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/The_Highwomen",
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 88,
+        "detail": "Morris released the studio duet 'Common' featuring Carlile on her 2019 album 'Girl.'",
+        "sources": [
+          "https://www.sonymusic.ca/press_release/maren-morris-to-release-new-album-girl-on-march-8"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 96,
+        "detail": "Morris and Carlile reassembled The Highwomen for a 26-song show in June 2026 and performed together again at Red Rocks on July 19.",
+        "sources": [
+          "https://www.jambase.com/article/highwomen-gorge-2026-setlist-video-linda-perry-bonnie-raitt-wynonna-judd",
+          "https://jambands.com/news/2026/07/20/brandi-carlile-offers-surprise-maren-morris-opening-set-at-red-rocks/"
+        ]
+      },
+      {
+        "type": "schedule-friction",
+        "weight": 75,
+        "detail": "Morris performs in Bonner, Montana on Saturday night. A Sunday Newport cameo remains possible, but it would require an overnight cross-country trip of roughly 2,300 miles.",
+        "sources": [
+          "https://www.bonneramphitheater.com/events/",
+          "https://www.ticketmaster.com/maren-morris-the-dreamgirl-tour-bonner-montana-07-25-2026/event/1E00646DDCDDDBF9"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "natalie-hemby",
+    "name": "Natalie Hemby",
+    "billed": false,
+    "summary": "Highwomen member with Brandi Carlile and a Newport veteran both with the group and as a solo performer.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Natalie_Hemby",
+      "website": "https://www.nataliehemby.com/"
+    },
+    "evidence": [
+      {
+        "type": "shared-band",
+        "artistId": "brandi-carlile",
+        "weight": 90,
+        "detail": "Hemby's official site identifies her as a Highwomen member with billed Sunday artist Brandi Carlile.",
+        "sources": [
+          "https://www.nataliehemby.com/",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 90,
+        "detail": "Hemby played Newport with The Highwomen in 2019 and returned as a solo artist during the 2021 Folk On program.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/The_Highwomen",
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 94,
+        "detail": "Hemby and Carlile reassembled The Highwomen for a 26-song Gorge concert in June 2026, the group's first concert in three years.",
+        "sources": [
+          "https://www.jambase.com/article/highwomen-gorge-2026-setlist-video-linda-perry-bonnie-raitt-wynonna-judd"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "kurt-vile",
+    "name": "Kurt Vile",
+    "billed": false,
+    "summary": "Courtney Barnett's full-album collaborator is officially playing Boston on Friday night, keeping him nearby all weekend.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Kurt_Vile",
+      "website": "https://www.kurtvile.com/"
+    },
+    "evidence": [
+      {
+        "type": "tour-routing",
+        "weight": 100,
+        "detail": "Vile's official site lists a July 24, 2026 concert at Royale in Boston, roughly 70 miles from Newport, at the start of festival weekend.",
+        "sources": [
+          "https://www.kurtvile.com/gig/friday-july-24th-2026-royale/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "courtney-barnett",
+        "weight": 88,
+        "detail": "Vile and billed Friday artist Courtney Barnett made the joint album 'Lotta Sea Lice' and toured it together.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Lotta_Sea_Lice",
+          "https://newportfolk.org/schedule"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "mike-mills",
+    "name": "Mike Mills",
+    "billed": false,
+    "summary": "R.E.M.'s bassist has repeatedly joined the billed Shannon/Narducy tribute, including during its 2026 tour.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Mike_Mills"
+    },
+    "evidence": [
+      {
+        "type": "collaboration",
+        "artistId": "shannon-narducy-rem",
+        "weight": 95,
+        "detail": "Mills has repeatedly joined Michael Shannon and Jason Narducy's R.E.M. tribute onstage, including a March 2026 tour stop.",
+        "sources": [
+          "https://www.gpb.org/news/2026/02/20/remaking-rem-meet-the-tribute-bands-keeping-the-music-alive",
+          "https://www.guitarworld.com/artists/guitarists/jason-narducy-on-celebrating-rem-with-michael-shannon",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "tour-routing",
+        "weight": 96,
+        "detail": "Mills is booked at Carnegie Hall in New York on Saturday July 25, placing him within a practical Sunday trip to Newport for the R.E.M. tribute.",
+        "sources": [
+          "https://www.livenation.com/artist/K8vZ9173Ad7/mike-mills-events"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "peter-buck",
+    "name": "Peter Buck",
+    "billed": false,
+    "summary": "R.E.M.'s guitarist has already sat in with the billed Shannon/Narducy tribute project more than once.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Peter_Buck"
+    },
+    "evidence": [
+      {
+        "type": "collaboration",
+        "artistId": "shannon-narducy-rem",
+        "weight": 90,
+        "detail": "Buck joined Shannon and Narducy's tribute onstage, including the February 2025 show where all four R.E.M. members performed 'Pretty Persuasion.'",
+        "sources": [
+          "https://www.guitarworld.com/artists/guitarists/jason-narducy-on-celebrating-rem-with-michael-shannon",
+          "https://www.gpb.org/news/2026/02/20/remaking-rem-meet-the-tribute-bands-keeping-the-music-alive",
+          "https://newportfolk.org/schedule"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "michael-stipe",
+    "name": "Michael Stipe",
+    "billed": false,
+    "summary": "R.E.M.'s singer has a purpose-built tribute-set vehicle and sang with Brandi Carlile in New York less than a month before Newport.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Michael_Stipe"
+    },
+    "evidence": [
+      {
+        "type": "collaboration",
+        "artistId": "shannon-narducy-rem",
+        "weight": 90,
+        "detail": "Stipe joined the tribute in Brooklyn and took part when all four R.E.M. members performed with Shannon and Narducy in Athens in 2025.",
+        "sources": [
+          "https://www.guitarworld.com/artists/guitarists/jason-narducy-on-celebrating-rem-with-michael-shannon",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 92,
+        "detail": "Stipe and Carlile sang Elvis Presley's 'Suspicious Minds' together at the Gansett Games closing ceremony in Amagansett, New York, on June 27, 2026.",
+        "sources": [
+          "https://stereogum.com/2504211/michael-stipe-brandi-carlile-cover-elvis-presley-josh-homme-covers-tom-petty-at-gansett-games/news",
+          "https://wrif.com/2026/07/08/stars-perform-covers-at-gansett-games-closing-ceremony-in-amagansett/"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 58,
+        "detail": "Stipe and a possible R.E.M. reunion are active guesses in the festival-week Newport surprise thread, specifically tied to the billed Shannon/Narducy R.E.M. tribute.",
+        "sources": [
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "hozier",
+    "name": "Hozier",
+    "billed": false,
+    "summary": "A recent Newport headliner with a recorded Brandi Carlile duet and prior onstage Newport collaboration with her.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Hozier",
+      "website": "https://hozier.com/"
+    },
+    "evidence": [
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 88,
+        "detail": "Carlile is the featured duet partner on Hozier's 'Damage Gets Done'; the two have also performed together at Newport.",
+        "sources": [
+          "https://store.hozier.com/products/unreal-unearth-cd",
+          "https://www.iheart.com/content/2019-07-30-hozier-brings-out-brandi-carlile-to-perform-the-joke-at-newport-folk-fest/"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 88,
+        "detail": "Hozier performed at Newport in 2014 and 2019 and returned as a 2024 headliner.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "joni-mitchell",
+    "name": "Joni Mitchell",
+    "billed": false,
+    "summary": "The Brandi connection is real, but Mitchell's post-comeback appearances remain rare, special-event performances with no announced 2026 concert route.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Joni_Mitchell",
+      "website": "https://jonimitchell.com/"
+    },
+    "evidence": [
+      {
+        "type": "past-newport",
+        "weight": 100,
+        "detail": "Mitchell made an unannounced return during Carlile's 2022 Newport closing set, her first Newport appearance since 1969.",
+        "sources": [
+          "https://jonimitchell.com/chronology/detail.cfm?id=2344"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 95,
+        "detail": "Carlile curated the 2022 Newport Joni Jam and produced the resulting live album 'Joni Mitchell at Newport.'",
+        "sources": [
+          "https://jonimitchell.com/library/print.cfm?id=5485",
+          "https://newportfolk.org/schedule"
+        ]
+      },
+      {
+        "type": "schedule-friction",
+        "weight": 76,
+        "detail": "Mitchell's official chronology shows only a handful of special-event performances after her Newport return, most recently in 2025, and no announced 2026 concert appearance. That limited live pattern makes another cross-country surprise unlikely.",
+        "sources": [
+          "https://jonimitchell.com/chronology/tour.cfm?id=0",
+          "https://www.nme.com/news/music/watch-joni-mitchell-perform-both-sides-now-at-la-fireaid-benefit-gig-3833579"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "bruce-springsteen",
+    "name": "Bruce Springsteen",
+    "billed": false,
+    "summary": "A deliberate long shot, but his collaboration with Sunday artist Tom Morello is current, extensive, and documented.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Bruce_Springsteen",
+      "website": "https://brucespringsteen.net/"
+    },
+    "evidence": [
+      {
+        "type": "collaboration",
+        "artistId": "tom-morello",
+        "weight": 95,
+        "detail": "Springsteen's official site documents Morello's extensive E Street touring and album work, plus Springsteen's appearance on Morello's 2021 album.",
+        "sources": [
+          "https://brucespringsteen.net/news/2026/just-announced-special-guest-tom-morello/",
+          "https://newportfolk.org/schedule"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "paul-simon",
+    "name": "Paul Simon",
+    "billed": false,
+    "summary": "Nathaniel Rateliff already brought Simon out unannounced at Newport in 2022; Rateliff again closes Sunday 'and Friends.'",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Paul_Simon",
+      "website": "https://paulsimon.com/"
+    },
+    "evidence": [
+      {
+        "type": "past-newport",
+        "weight": 100,
+        "detail": "Simon made his Newport debut as an unannounced guest during Rateliff and the Night Sweats' 2022 American Tune Revue.",
+        "sources": [
+          "https://www.grammy.com/news/newport-folk-festival-2022-recap-taj-mahal-rhiannon-giddens-brandi-carlile-joni-mitchell-paul-simon/",
+          "https://www.bostonglobe.com/2022/07/24/arts/an-exhilarating-return-almost-normal-newport-folk-festival/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "nathaniel-rateliff",
+        "weight": 95,
+        "detail": "Rateliff led Simon's Newport tribute and backed Simon's four-song cameo; his 2026 Sunday closer is again billed 'Nathaniel Rateliff & Friends.'",
+        "sources": [
+          "https://www.grammy.com/news/newport-folk-festival-2022-recap-taj-mahal-rhiannon-giddens-brandi-carlile-joni-mitchell-paul-simon/",
+          "https://newportfolk.org/schedule"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "conor-oberst",
+    "name": "Conor Oberst",
+    "billed": false,
+    "summary": "Dawes has repeatedly served as Oberst's backing band, including at Newport, and he also shares Nonesuch history with Saturday's Punch Brothers.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Conor_Oberst",
+      "website": "https://www.conoroberst.com/"
+    },
+    "evidence": [
+      {
+        "type": "collaboration",
+        "artistId": "dawes",
+        "weight": 78,
+        "detail": "At Newport 2012, Dawes backed Oberst for much of his set, including 'Moab' and the closing 'Make War.'",
+        "sources": [
+          "https://glidemagazine.com/21362/newport-folk-festival/",
+          "https://jambands.com/news/2012/07/30/jackson-browne-dawes-jonathan-wilson-and-more-share-the-stage-at-newport-folk-day-2/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "dawes",
+        "weight": 80,
+        "detail": "Dawes opened Oberst's 2014 tour and then acted as his band for the full headlining sets, a much deeper tie than a one-song sit-in.",
+        "sources": [
+          "https://www.nonesuch.com/journal/nonesuch-release-conor-oberst-upside-down-mountain-may-20-tour-special-guest-dawes-2014-02-11"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "dawes",
+        "weight": 42,
+        "detail": "Producer Jonathan Wilson made Oberst's 'Upside Down Mountain' and Dawes' 'Nothing Is Wrong,' adding a separate studio-network connection.",
+        "sources": [
+          "https://conoroberst.bandcamp.com/album/upside-down-mountain",
+          "https://dawestheband.com/limited-edition-nothing-is-wrong-deluxe-vinyl/"
+        ]
+      },
+      {
+        "type": "label-mgmt",
+        "artistId": "punch-brothers",
+        "weight": 48,
+        "detail": "Oberst released three solo albums through Nonesuch; Punch Brothers' new album is also a Nonesuch release, though Oberst's tie is older.",
+        "sources": [
+          "https://www.nonesuch.com/artists/conor-oberst",
+          "https://www.nonesuch.com/artists/punch-brothers"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 82,
+        "detail": "Oberst is a repeat Newport alumnus, appearing in the 2012 and 2014 festival lineups.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "weight": 86,
+        "detail": "Bright Eyes released a new cover of the Felice Brothers' 'Wonderful Life' on July 17 for the forthcoming 'Felice County Fair' tribute album.",
+        "sources": [
+          "https://www.carrythezero.co/new-music-friday-july-17-2026/",
+          "https://www.thefelicebrothers.com/"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 58,
+        "detail": "Both the active Inforoo thread and Newport subreddit independently connected Oberst to Dawes and Saturday night's Felice County Fair aftershow.",
+        "sources": [
+          "https://inforoo.com/thread/40653/newport-folk-festival-2026-july?page=29",
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "langhorne-slim",
+    "name": "Langhorne Slim",
+    "billed": false,
+    "summary": "A deeply recurring Newport artist who sang his own 'Found My Heart' with Dawes backing him in the festival's 2024 finale.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Langhorne_Slim",
+      "website": "https://langhorneslimmusic.com/"
+    },
+    "evidence": [
+      {
+        "type": "collaboration",
+        "artistId": "dawes",
+        "weight": 88,
+        "detail": "During Newport's 2024 Conan O'Brien finale, house band Dawes backed Langhorne Slim on his original song 'Found My Heart.'",
+        "sources": [
+          "https://jambands.com/news/2024/07/29/newport-folk-festival-ends-65th-anniversary-event-with-guest-filled-finale/"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 98,
+        "detail": "Slim has unusually deep Newport history, appearing on the 2009, 2013, 2015, 2018, 2021, 2022, and 2024 festival lineups.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year",
+          "https://www.jambase.com/article/9-best-sets-newport-folk-festival-2018",
+          "https://jambands.com/news/2024/07/29/newport-folk-festival-ends-65th-anniversary-event-with-guest-filled-finale/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "trey-anastasio",
+    "name": "Trey Anastasio",
+    "billed": false,
+    "summary": "Phish leaves Sunday open between MSG shows, while Anastasio has exact song-level history with both Vulfpeck and Chris Thile.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Trey_Anastasio",
+      "website": "https://trey.com/"
+    },
+    "evidence": [
+      {
+        "type": "tour-routing",
+        "weight": 98,
+        "detail": "Phish plays Madison Square Garden July 24 and 25, leaves Sunday July 26 open, then returns to MSG July 27; Newport is a plausible off-day trip from New York.",
+        "sources": [
+          "https://www.msg.com/events-tickets/phish-madison-square-garden-july-2026/3B00644DC1DC6EB2"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "vulfpeck",
+        "weight": 75,
+        "detail": "Anastasio sat in with Vulfpeck at Red Rocks in 2017 for 'Rango' into Michael Jackson's 'Will You Be There' and back into 'Rango.'",
+        "sources": [
+          "https://www.jambase.com/article/trey-anastasio-guests-vulfpeck-ahead-tab-sets-red-rocks"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "punch-brothers",
+        "weight": 82,
+        "detail": "With Chris Thile in 2016, Anastasio played 'Brian & Robert,' 'Back on the Train,' 'Water in the Sky,' 'Miss You,' and 'Prince of Peace.'",
+        "sources": [
+          "https://www.jambase.com/article/trey-anastasio-appears-prairie-home-companion-chris-thile"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "punch-brothers",
+        "weight": 76,
+        "detail": "Anastasio reunited with Thile on 2019's 'Live From Here' for 'Theme From the Bottom,' 'If I Could,' and 'A Life Beyond the Dream.'",
+        "sources": [
+          "https://www.jambase.com/article/trey-anastasio-live-from-here-videos"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 88,
+        "detail": "Anastasio is a two-time Newport alumnus, with festival sets in 2008 and 2019.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year",
+          "https://www.jambase.com/article/trey-anastasio-phish-2008-newport-folk-festival-video"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 52,
+        "detail": "Trey repeatedly surfaced in both Inforoo and Reddit discussion of Nathaniel Rateliff's expanded Sunday '& Friends' set, alongside Billy Strings and Dave Matthews.",
+        "sources": [
+          "https://inforoo.com/thread/40653/newport-folk-festival-2026-july?page=29",
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "billy-strings",
+    "name": "Billy Strings",
+    "billed": false,
+    "summary": "The strongest new routing lead: a Sunday gap between Portland and Hartford, plus very recent full-set ties to Punch Brothers and Sierra Hull.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Billy_Strings",
+      "website": "https://www.billystrings.com/"
+    },
+    "evidence": [
+      {
+        "type": "tour-routing",
+        "weight": 100,
+        "detail": "Strings plays Portland, Maine July 24 and 25, has Newport Sunday open, then plays Hartford July 28; his official tour route brackets the festival geographically.",
+        "sources": [
+          "https://www.billystrings.com/tour"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "punch-brothers",
+        "weight": 94,
+        "detail": "In June 2025, Chris Thile and Punch Brothers joined Strings for a 13-song encore including 'Uncle Pen,' 'Summertime,' 'E.M.D.,' and 'Rank Stranger.'",
+        "sources": [
+          "https://relix.com/news/detail/billy-strings-welcomes-chris-thile-and-punch-brothers-for-extensive-13-song-encore-of-classic-bluegrass-covers/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "punch-brothers",
+        "weight": 82,
+        "detail": "Strings and Thile also performed 'Wild Bill Jones,' 'I Am a Pilgrim,' and 'I've Been All Around This World' together for CBS in 2024, then played a live New York Philharmonic session.",
+        "sources": [
+          "https://www.nonesuch.com/journal/watch-chris-thile-billy-strings-perform-cbs-saturday-morning-2024-02-03"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "rowan-grisman-hull-campbell-williams",
+        "weight": 88,
+        "detail": "Sierra Hull joined Strings in May 2025 on 'Southern Flavor,' 'Psycho,' and 'Meet Me at the Creek,' then both joined Willie Nelson's finale.",
+        "sources": [
+          "https://www.jambase.com/article/billy-strings-new-song-debut-sierra-hull-outlaw"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 90,
+        "detail": "Strings played Newport with Molly Tuttle in 2019 and returned in the 2021 and 2023 lineups.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year",
+          "https://www.wbur.org/news/2021/07/22/2021-newport-folk-festival"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 60,
+        "detail": "Billy was one of the most repeated Nathaniel Rateliff guest predictions on both Inforoo and the current Newport Folk subreddit thread.",
+        "sources": [
+          "https://inforoo.com/thread/40653/newport-folk-festival-2026-july?page=29",
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "dave-matthews",
+    "name": "Dave Matthews",
+    "billed": false,
+    "summary": "A Sunday opening after DMB's Hartford show combines with documented Brandi Carlile studio/live work and a recent Nathaniel Rateliff finale.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Dave_Matthews",
+      "website": "https://davematthewsband.com/"
+    },
+    "evidence": [
+      {
+        "type": "tour-routing",
+        "weight": 98,
+        "detail": "Dave Matthews Band plays Hartford Saturday July 25, about 85 miles from Newport, with no show listed for Sunday July 26.",
+        "sources": [
+          "https://davematthewsband.com/tours"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 90,
+        "detail": "Carlile is the featured duet partner on DMB's 2019 version of 'Come Tomorrow,' trading lines with Matthews and harmonizing on its chorus and bridge.",
+        "sources": [
+          "https://davematthewsband.com/news/dave-matthews-band-releases-new-version-of-come-tomorrow-featuring-brandi-carlile/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 76,
+        "detail": "Matthews and Carlile have repeatedly dueted John Prine's 'Angel From Montgomery'; she also joined the full DMB on 'Spoon' in 2013.",
+        "sources": [
+          "https://www.jambase.com/article/watch-5-memorable-brandi-carlile-collaborations",
+          "https://jambands.com/news/2013/06/24/brandi-carlile-shares-the-stage-with-dave-matthews-band/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "nathaniel-rateliff",
+        "weight": 84,
+        "detail": "At Farm Aid 2024, Rateliff joined Dave Matthews and Tim Reynolds, Lukas Nelson, and Micah Nelson to close their set with 'The Weight.'",
+        "sources": [
+          "https://www.jambase.com/article/farm-aid-2024-spac-review-photos",
+          "https://jambands.com/news/2024/09/23/farm-aid-2024-a-recap/"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 55,
+        "detail": "Dave was repeatedly named for Rateliff's Sunday '& Friends' set in both Inforoo and the Newport subreddit, matching his unusually favorable Hartford routing.",
+        "sources": [
+          "https://inforoo.com/thread/40653/newport-folk-festival-2026-july?page=29",
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "the-felice-brothers",
+    "name": "The Felice Brothers",
+    "billed": false,
+    "summary": "The strongest new on-island lead: their official Saturday Newport aftershow coincides with a new tribute album featuring several billed artists.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/The_Felice_Brothers",
+      "website": "https://www.thefelicebrothers.com/"
+    },
+    "evidence": [
+      {
+        "type": "tour-routing",
+        "weight": 100,
+        "detail": "The Jane Pickens Theater lists a sold-out official Newport Folk aftershow, 'Felice County Fair,' during festival weekend, putting the band in Newport on Saturday night.",
+        "sources": [
+          "https://m.janepickens.com/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "dawes",
+        "weight": 82,
+        "detail": "Dawes recorded 'Jazz on the Autobahn' for the newly announced 'Felice County Fair: A Celebration of the Felice Brothers' tribute album.",
+        "sources": [
+          "https://www.reddit.com/r/indieheads/comments/1uyz0da/fresh_bright_eyes_felice_county_fair_wonderful/",
+          "https://www.thefelicebrothers.com/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "nathaniel-rateliff",
+        "weight": 72,
+        "detail": "Nathaniel Rateliff is a contributor to the forthcoming Felice Brothers tribute album, creating a current project-level link to Sunday's '& Friends' closer.",
+        "sources": [
+          "https://www.binghamtondrive.com/news/alt-rock-music-news/hear-the-lumineers-cover-the-felice-brothers-for-upcoming-tribute-album/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandon-flowers",
+        "weight": 72,
+        "detail": "Billed Friday artist Brandon Flowers is also among the announced contributors to the 2026 Felice Brothers tribute album.",
+        "sources": [
+          "https://www.binghamtondrive.com/news/alt-rock-music-news/hear-the-lumineers-cover-the-felice-brothers-for-upcoming-tribute-album/"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 88,
+        "detail": "The band's official biography highlights its storm-struck 2008 Newport set, when it finished unplugged in the rain after lightning cut stage power.",
+        "sources": [
+          "https://www.thefelicebrothers.com/about/"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 55,
+        "detail": "Inforoo and Reddit discussion both expect the Felice County Fair aftershow to pull in guests from the tribute album and the festival lineup.",
+        "sources": [
+          "https://inforoo.com/thread/40653/newport-folk-festival-2026-july?page=28",
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1u9cg9k/after_shows/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "jack-antonoff",
+    "name": "Jack Antonoff",
+    "billed": false,
+    "summary": "Williams surprised Antonoff at Newport last year, then performed another collaborative set with Bleachers in October; Reddit now expects the favor returned.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Jack_Antonoff",
+      "website": "https://bleachersmusic.com/"
+    },
+    "evidence": [
+      {
+        "type": "collaboration",
+        "artistId": "hayley-williams",
+        "weight": 92,
+        "detail": "Williams live-debuted 'Mirtazapine' with Antonoff and Bleachers at Newport 2025, then stayed for their cover of 'I Melt With You.'",
+        "sources": [
+          "https://www.spinmagazine.com/2025/07/bleachers-newport-folk/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "hayley-williams",
+        "weight": 86,
+        "detail": "Williams and Antonoff reunited in October 2025 for a collaborative Beacon Theatre set that included 'Mirtazapine' and 'Good Ol’ Days.'",
+        "sources": [
+          "https://www.jambase.com/article/hayley-williams-jack-antonoff-bleachers-rolling-stone-musicians-on-musicians"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 94,
+        "detail": "Antonoff closed Friday at Newport 2025 with Bleachers' Ally Coalition Talent Show, built around a long sequence of guest appearances.",
+        "sources": [
+          "https://www.spinmagazine.com/2025/07/bleachers-newport-folk/"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 48,
+        "detail": "The current Newport subreddit repeatedly names Antonoff as a likely friend for Williams's Friday set.",
+        "sources": [
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "remi-wolf",
+    "name": "Remi Wolf",
+    "billed": false,
+    "summary": "A recent Newport alum with an official Paramore remix, a 2025 live collaboration with Williams, and no dates on her current tour page.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Remi_Wolf",
+      "website": "https://www.remiwolf.com/"
+    },
+    "evidence": [
+      {
+        "type": "collaboration",
+        "artistId": "hayley-williams",
+        "weight": 88,
+        "detail": "Wolf created 'You First (Re: Remi Wolf)' for Paramore's official 'Re: This Is Why' album.",
+        "sources": [
+          "https://store.paramore.net/collections/best-selling/products/re-this-is-why-remix-album-red-vinyl",
+          "https://open.spotify.com/album/6gn9peue2gXdYeDFqBrK7z"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "hayley-williams",
+        "weight": 82,
+        "detail": "After Bonnaroo 2025 was canceled, Wolf staged her SuperJam in Nashville with Williams among the performers, providing a recent live precedent.",
+        "sources": [
+          "https://uproxx.com/indie/remi-wolf-bonnaroo-superjam-hayley-williams/"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 90,
+        "detail": "Wolf played a guest-heavy 'Remi Wolf and Friends' set at Newport in 2025.",
+        "sources": [
+          "https://www.jambase.com/article/remi-wolf-friends-john-c-reilly-newport-folk-festival",
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 52,
+        "detail": "Wolf is one of the two most repeated Hayley Williams guest predictions in the current Newport subreddit thread; her official site presently lists no competing dates.",
+        "sources": [
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/",
+          "https://www.remiwolf.com/tour/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "joy-oladokun",
+    "name": "Joy Oladokun",
+    "billed": false,
+    "summary": "Oladokun is booked for a Saturday Newport aftershow and has both studio and recent live history with Sunday headliner Brandi Carlile.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Joy_Oladokun",
+      "website": "https://joyoladokun.com/"
+    },
+    "evidence": [
+      {
+        "type": "tour-routing",
+        "weight": 100,
+        "detail": "Newport aftershow ticket records place Oladokun at The Parlor on Saturday night, making her physically present in town during the festival.",
+        "sources": [
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1udg42p/removed/",
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1rjst2y/2026_newport_folk_festival_ticketing_megathread/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 84,
+        "detail": "Oladokun and Carlile both sing on Lucie Silvas's 2021 studio single 'We Don't Know We're Living.'",
+        "sources": [
+          "https://open.spotify.com/album/1vJ4hlzBjTPtW54msCMGb9",
+          "https://theboot.com/lucie-silvas-brandi-carlile-joy-oladokun-we-dont-know-were-living/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 80,
+        "detail": "Oladokun and Carlile performed 'Sweet Symphony' together at Red Rocks in 2023.",
+        "sources": [
+          "https://www.advocate.com/music/brandi-carlile-collabs"
+        ]
+      },
+      {
+        "type": "past-newport",
+        "weight": 78,
+        "detail": "Oladokun performed during Newport's 2021 Folk On program.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Newport_Folk_Festival_lineups_by_year"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 46,
+        "detail": "Inforoo users specifically flagged her Saturday Parlor booking as a possible route into a festival cameo.",
+        "sources": [
+          "https://inforoo.com/thread/40653/newport-folk-festival-2026-july?page=29"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "warren-haynes",
+    "name": "Warren Haynes",
+    "billed": false,
+    "summary": "A repeat Newport surprise guest with recent all-star benefit history alongside Nathaniel Rateliff and a separate song-level tie to Tom Morello.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Warren_Haynes",
+      "website": "https://warrenhaynes.net/"
+    },
+    "evidence": [
+      {
+        "type": "past-newport",
+        "weight": 94,
+        "detail": "Haynes made a three-song surprise appearance with Nels Cline at Newport 2018, then returned on the official 2019 lineup.",
+        "sources": [
+          "https://www.jambase.com/article/warren-haynes-guests-nels-cline-newport-folk-festival",
+          "https://www.jambase.com/article/phil-lesh-sheryl-crow-warren-haynes-benmont-tench-newport"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "nathaniel-rateliff",
+        "weight": 76,
+        "detail": "Haynes and Rateliff each played the 2024 Soulshine benefit at Madison Square Garden and joined the all-performer 'Come Together' finale.",
+        "sources": [
+          "https://www.jambase.com/article/soulshine-setlist-video-dave-matthews-warren-haynes-madison-square-garden",
+          "https://en.wikipedia.org/wiki/Soulshine_(benefit_concert)"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "tom-morello",
+        "weight": 68,
+        "detail": "Haynes and Morello traded guitar parts in an all-star performance of the Beatles' 'While My Guitar Gently Weeps.'",
+        "sources": [
+          "https://relix.com/blogs/detail/watch_warren_haynes_team_with_tom_morello_jon_batiste_and_regina_spektor_for_beatles_cover/"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 44,
+        "detail": "Haynes is a recurring Nathaniel Rateliff guest prediction in the current Newport subreddit discussion.",
+        "sources": [
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/",
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1t5gm7g/nathaniel_rateliff_friends/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "joe-russo",
+    "name": "Joe Russo",
+    "billed": false,
+    "summary": "Russo was Newport's all-star house drummer last year, played the Rateliff-linked Soulshine benefit, and reportedly says he will attend this weekend.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Joe_Russo_(musician)",
+      "website": "https://joerussosalmostdead.com/"
+    },
+    "evidence": [
+      {
+        "type": "past-newport",
+        "weight": 98,
+        "detail": "Russo anchored the house-band rhythm section for Newport 2025's 16-song 'Songs for the People' finale, backing Nathaniel Rateliff and many others.",
+        "sources": [
+          "https://www.jambase.com/article/newport-folk-festival-songs-for-the-people-video-setlist"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "nathaniel-rateliff",
+        "weight": 72,
+        "detail": "Russo and Rateliff were both performers at the 2024 Soulshine benefit and joined its full-cast 'Come Together' finale.",
+        "sources": [
+          "https://www.jambase.com/article/soulshine-benefit-4-5-million-hurricane-relief",
+          "https://en.wikipedia.org/wiki/Soulshine_(benefit_concert)"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 62,
+        "detail": "A current Newport Reddit thread reports that Russo posted he is attending the festival 'as a fan'; his band's official site lists no competing dates.",
+        "sources": [
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/",
+          "https://joerussosalmostdead.com/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "jesse-welles",
+    "name": "Jesse Welles",
+    "billed": false,
+    "summary": "Ruled out: despite strong Newport history and fresh Reddit speculation, Welles is booked in Alabama Friday and North Carolina Saturday and Sunday.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Jesse_Welles",
+      "website": "https://www.wellesmusic.com/"
+    },
+    "evidence": [
+      {
+        "type": "past-newport",
+        "weight": 92,
+        "detail": "Welles was Newport's 2025 John Prine Songwriter Fellow, played the Fort Stage, and made multiple guest appearances including 'Jester and the Bull' with Mon Rovîa.",
+        "sources": [
+          "https://www.newportlifemagazine.com/music/newport-folk-festival-2025-is-in-the-books/",
+          "https://www.grammy.com/news/newport-folk-festival-2025-recap-performances-backstage-interviews/"
+        ]
+      },
+      {
+        "type": "public-hint",
+        "weight": 38,
+        "detail": "Welles was suggested in both the active surprise-guest thread and the earlier 2026 predictions discussion before his tour route was checked.",
+        "sources": [
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/",
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1qwonjm/2026_predictions/"
+        ]
+      },
+      {
+        "type": "tour-routing",
+        "weight": 1,
+        "detail": "Hard conflict: his Red Tour plays Birmingham July 24, Asheville July 25, and Wilmington July 26, covering every Newport date.",
+        "sources": [
+          "https://www.livenation.com/artist/K8vZ917qvGf/jesse-welles-events",
+          "https://www.ticketmaster.com/jesse-welles-tickets/artist/3178720"
+        ]
+      }
+    ],
+    "status": "debunked",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "mumford-and-sons",
+    "name": "Mumford & Sons",
+    "billed": false,
+    "summary": "A proven unannounced Newport headliner with fresh Hozier and Brandi Carlile studio ties and recent live collaborations with Dawes and Nathaniel Rateliff.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Mumford_%26_Sons",
+      "website": "https://www.mumfordandsons.com/"
+    },
+    "evidence": [
+      {
+        "type": "past-newport",
+        "weight": 96,
+        "detail": "Mumford & Sons played a full unannounced Newport set in 2018, opening 'Awake My Soul' with Brandi Carlile and Maggie Rogers and later bringing out Mavis Staples and other guests.",
+        "sources": [
+          "https://jambands.com/news/2018/07/29/mumford-sons-play-unannounced-set-at-newport-with-mavis-staples-brandi-carlile-and-more/",
+          "https://www.setlist.fm/setlist/mumford-and-sons/2018/fort-adams-state-park-fort-stage-newport-ri-63eb12d3.html"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "nathaniel-rateliff",
+        "weight": 86,
+        "detail": "Rateliff was in Mumford & Sons' traveling house band for the 2025 Railroad Revival Tour and sang lead with them on the Night Sweats' 'S.O.B.' at three stops, including Richmond.",
+        "sources": [
+          "https://news.pollstar.com/2025/05/13/mumford-sons-head-back-to-the-rails-after-14-years-for-railroad-revival/",
+          "https://www.setlist.fm/stats/with/mumford-and-sons-7bd4e228.html?year=2025"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "weight": 94,
+        "detail": "Hozier is the featured duet partner on Mumford & Sons' 2025 single 'Rubber Band Man,' which also appears on the band's February 2026 album 'Prizefighter.'",
+        "sources": [
+          "https://apnews.com/article/0a83026c172aba0b50377bd734b6082a",
+          "https://en.wikipedia.org/wiki/Rubber_Band_Man_(Mumford_%26_Sons_%26_Hozier_song)"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 88,
+        "detail": "Marcus Mumford and Carlile co-wrote and recorded the duet 'How' for his 2022 solo album; Carlile also holds writing credits on Mumford & Sons' current 'Prizefighter.'",
+        "sources": [
+          "https://www.lpm.org/music/2022-07-13/marcus-mumford-has-recruited-some-impressive-friends-for-his-new-solo-album",
+          "https://apnews.com/article/0a83026c172aba0b50377bd734b6082a"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "dawes",
+        "weight": 78,
+        "detail": "Dawes joined Mumford & Sons at the Hollywood Palladium in March 2025 for 'Caroline,' with Taylor Goldsmith on vocals and guitar and Griffin Goldsmith on percussion.",
+        "sources": [
+          "https://www.jambase.com/article/mumford-sons-dawes-madison-cunningham-ed-helms-los-angeles-video"
+        ]
+      },
+      {
+        "type": "schedule-friction",
+        "weight": 28,
+        "detail": "The band's official archive places its last announced pre-Newport show in Europe on July 16. Eight free days make Newport possible, but the transatlantic reset is a modest logistical drag.",
+        "sources": [
+          "https://www.mumfordandsons.com/tour-archive/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "jim-james",
+    "name": "Jim James",
+    "billed": false,
+    "summary": "A serial Newport collaborator with documented Dawes and Brandi Carlile history and two exact Nathaniel Rateliff sit-ins on their recent co-headlining tour.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Jim_James",
+      "website": "https://www.jimjames.com/"
+    },
+    "evidence": [
+      {
+        "type": "past-newport",
+        "weight": 97,
+        "detail": "James has deep Newport history: a 2008 solo set, multiple 2010 sit-ins, John Prine's 'All the Best' in 2017, and a 2019 appearance with Kermit the Frog.",
+        "sources": [
+          "https://www.klcc.org/npr-music/2008-08-02/jim-james-at-the-newport-folk-festival",
+          "https://jambands.com/news/2010/08/03/jim-james-is-everywhere-at-newport-folk-fest/",
+          "https://jambands.com/news/2017/07/31/roger-waters-jim-james-justin-vernon-and-more-join-john-prine-at-newport-folk-festival/",
+          "https://pitchfork.com/news/watch-janet-weiss-and-jim-james-join-kermit-the-frog-at-newport-folk-fest/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "nathaniel-rateliff",
+        "weight": 90,
+        "detail": "At the September 2024 My Morning Jacket/Night Sweats tour opener, James and Rateliff shared lead vocals on The Band's 'It Makes No Difference' and Springsteen's 'Dancing in the Dark.'",
+        "sources": [
+          "https://www.jambase.com/article/nathaniel-rateliff-my-morning-jacket-band-bruce-springsteen-cover-wilmington-video-setlist"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "dawes",
+        "weight": 70,
+        "detail": "Jim James and Dawes frontman Taylor Goldsmith co-led Dr. Dog's 'Oh My Christmas Tree' with Dawes and My Morning Jacket keyboardist Bo Koster at Dawes' 2023 holiday concert.",
+        "sources": [
+          "https://www.jambase.com/article/dawes-my-morning-jacket-dr-dog-cover-video-setlist"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "brandi-carlile",
+        "weight": 82,
+        "detail": "James and Carlile have repeatedly traded sit-ins, including Dylan's 'The Times They Are A-Changin'' in 2016 and an Aretha Franklin encore of 'Do Right Woman' and 'Respect' in 2018.",
+        "sources": [
+          "https://www.jambase.com/article/brandi-carlile-joins-jim-james-for-bob-dylan-cover-in-seattle",
+          "https://jambands.com/news/2018/08/19/brandi-carlile-and-jim-james-team-up-for-aretha-franklin-tribute-in-los-angeles/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "jeff-tweedy",
+    "name": "Jeff Tweedy",
+    "billed": false,
+    "summary": "A 2025 Newport multi-set guest whose Wilco tour ends six days before the festival in Ohio, with Courtney Barnett's set offering a proven song-level reunion.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Jeff_Tweedy",
+      "website": "https://jefftweedy.com/"
+    },
+    "evidence": [
+      {
+        "type": "past-newport",
+        "weight": 98,
+        "detail": "Tweedy was all over Newport 2025: he performed his own set, sang Wilco's 'Either Way' with Remi Wolf, and joined Bleachers for 'Kamera' and Lana Del Rey's 'Margaret.'",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/",
+          "https://jambands.com/news/2025/07/26/newport-folk-day-one-goose-team-up-with-kenny-loggins-kevin-morby-welcomes-nathaniel-rateliff-bleachers-feature-jeff-tweedy-weyes-blood-rufus-wainwright-and-more/"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "courtney-barnett",
+        "weight": 84,
+        "detail": "Barnett has twice joined Tweedy and Wilco to sing 'Handshake Drugs': at Solid Sound in 2019 and again at Wilco's Sky Blue Sky event in January 2020.",
+        "sources": [
+          "https://jambands.com/news/2020/01/20/watch-courtney-barnett-jam-handshake-drugs-with-wilco-at-their-inaugural-sky-blue-sky-event/"
+        ]
+      },
+      {
+        "type": "tour-routing",
+        "weight": 74,
+        "detail": "Wilco's official schedule ends its July U.S. leg in Columbus on July 18, leaving Tweedy six days to reach Newport; the next Wilco date is not until August 13 in Oslo.",
+        "sources": [
+          "https://wilcoworld.net/shows/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "billy-bragg",
+    "name": "Billy Bragg",
+    "billed": false,
+    "summary": "A recent Newport returnee with exact Courtney Barnett and Tom Morello collaborations, tempered by a transcontinental trip after Vancouver Folk Festival.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Billy_Bragg",
+      "website": "https://www.billybragg.co.uk/"
+    },
+    "evidence": [
+      {
+        "type": "past-newport",
+        "weight": 92,
+        "detail": "Bragg returned to Newport in 2024 and sat in with Dropkick Murphys on 'Worker's Song'; in 2017 he also reunited with Wilco there for 'California Stars.'",
+        "sources": [
+          "https://americanahighways.org/2024/08/07/show-review-newport-folk-festival-2024/amp/",
+          "https://www.jambase.com/article/wilco-reunites-billy-bragg-newport-folk-festival"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "courtney-barnett",
+        "weight": 80,
+        "detail": "Bragg and Barnett performed The Velvet Underground's 'Sunday Morning' together with the RocKwiz Orkestra in 2014, with Barnett also taking a guitar solo.",
+        "sources": [
+          "https://boingboing.net/2026/01/11/courtney-barnett-and-billy-bragg-covering-the-velvet-underground.html"
+        ]
+      },
+      {
+        "type": "collaboration",
+        "artistId": "tom-morello",
+        "weight": 76,
+        "detail": "Bragg and Morello toured together on 2003's Tell Us the Truth Tour and later performed Woody Guthrie's 'This Land Is Your Land' together with Mason Jennings at SXSW in 2008.",
+        "sources": [
+          "https://www.nme.com/news/music/rage-against-the-machine-90-1380493",
+          "https://jambands.com/news/2008/03/17/body-of-war-at-sxsw/"
+        ]
+      },
+      {
+        "type": "schedule-friction",
+        "weight": 26,
+        "detail": "Bragg played Vancouver Folk Festival on July 18, his last listed July date. Six travel days keep Newport possible, but the Vancouver-to-Rhode Island move deserves a modest penalty.",
+        "sources": [
+          "https://thefestival.bc.ca/wp-content/uploads/2026/05/2026-05-07-Vancouver-Folk-Music-Festival-announces-Mainstage-lineup-FINAL.pdf",
+          "https://open.spotify.com/artist/5yXAFDZNUNyO92l5WTImkO/concerts"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "taylor-swift",
+    "name": "Taylor Swift",
+    "billed": false,
+    "summary": "A perennial Newport theory with one exact Hayley Williams song vehicle, but no verified 2026 performance route or new festival-specific signal; years of similar theories have not materialized.",
+    "links": {
+      "wikipedia": "https://en.wikipedia.org/wiki/Taylor_Swift",
+      "website": "https://www.taylorswift.com/"
+    },
+    "evidence": [
+      {
+        "type": "collaboration",
+        "artistId": "hayley-williams",
+        "weight": 92,
+        "detail": "Williams is the featured vocalist on Swift's 'Castles Crumbling (Taylor's Version) (From the Vault),' and joined Swift to perform the song live at Wembley Stadium in June 2024.",
+        "sources": [
+          "https://www.officialcharts.com/songs/taylor-swifthayley-williams-castles-crumbling-taylors-version/",
+          "https://www.nme.com/news/music/watch-hayley-williams-join-taylor-swift-to-perform-castles-crumbling-in-london-3767902"
+        ]
+      },
+      {
+        "type": "schedule-friction",
+        "weight": 65,
+        "detail": "As of July 20, Swift's official site publishes no tour calendar or festival-week route. This is also persistent rumor folklore rather than a fresh lead: a 2023 thread called it the sixth consecutive year of Taylor theories, while the current 2026 thread cites the failed Dessner/Antonoff version as a warning against repeating the inference.",
+        "sources": [
+          "https://www.taylorswift.com/",
+          "https://www.reddit.com/r/NewportFolkFestival/comments/10r37j4/",
+          "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/"
+        ]
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-20"
+  }
+]

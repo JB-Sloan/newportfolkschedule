@@ -5,9 +5,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import { findConflicts, getConflictTypeForSet, priorityLabel } from "@/lib/conflicts";
 import { SpotifyPlaylistCard } from "@/components/SpotifyPlaylistCard";
+import { SurpriseBoard } from "@/components/SurpriseBoard";
+import { HistoryBoard } from "@/components/HistoryBoard";
 import { encodeSharePlan, decodeSharePlan } from "@/lib/share-plan";
 import { buildSocialPost } from "@/lib/social-post";
 import { generateIcs } from "@/lib/ics";
+import { getArtistHistory, type ArtistHistorySummary } from "@/lib/history";
 import {
   FESTIVAL_DAYS,
   compareSets,
@@ -20,6 +23,7 @@ import {
 import type {
   Artist,
   FestivalDate,
+  HistoricalYear,
   Manifest,
   Policy,
   Priority,
@@ -35,6 +39,8 @@ type PlannerData = {
   artists: Artist[];
   stages: Stage[];
   policies: Policy[];
+  historicalYears: HistoricalYear[];
+  historySummaries: ArtistHistorySummary[];
 };
 
 type PlanState = {
@@ -57,7 +63,9 @@ const DEFAULT_TAB = "schedule";
 const tabLabels = [
   { id: "schedule", label: "Schedule" },
   { id: "plan", label: "My Plan" },
-  { id: "now", label: "Now" }
+  { id: "now", label: "Now" },
+  { id: "surprise", label: "Rumors" },
+  { id: "history", label: "History" }
 ] as const;
 
 type TabId = (typeof tabLabels)[number]["id"];
@@ -192,7 +200,9 @@ export function FolkPlannerApp({
   scheduleItems,
   artists,
   stages,
-  policies
+  policies,
+  historicalYears,
+  historySummaries
 }: PlannerData) {
   const [plan, setPlan] = useState<PlanState>(() => defaultPlan(manifest));
   const [hydrated, setHydrated] = useState(false);
@@ -342,6 +352,11 @@ export function FolkPlannerApp({
     else setSelection(setId);
   }
 
+  function openArtist(artistId: string) {
+    const set = scheduleItems.find((item) => item.artistId === artistId);
+    if (set) setDetailSetId(set.id);
+  }
+
   async function saveForOffline() {
     if (!("caches" in window)) return;
     const cache = await caches.open(`newport-folk-planner:${manifest.scheduleVersion}`);
@@ -488,9 +503,9 @@ export function FolkPlannerApp({
           />
         ) : null}
 
-        <div className={classNames("grid gap-5", activeTab !== "schedule" && "lg:grid-cols-[1fr_360px]")}>
+        <div className={classNames("grid gap-5", (activeTab === "plan" || activeTab === "now") && "lg:grid-cols-[1fr_360px]")}>
           <section className="space-y-4">
-            <nav className="grid grid-cols-3 gap-2 rounded-3xl bg-white p-2 shadow-soft" aria-label="Primary" role="tablist">
+            <nav className="grid grid-cols-3 gap-2 rounded-3xl bg-white p-2 shadow-soft sm:grid-cols-5" aria-label="Primary" role="tablist">
               {tabLabels.map((tab) => (
                 <button
                   key={tab.id}
@@ -593,9 +608,21 @@ export function FolkPlannerApp({
               />
             ) : null}
 
+            {activeTab === "surprise" ? (
+              <SurpriseBoard artistsById={artistsById} onOpenArtist={openArtist} />
+            ) : null}
+
+            {activeTab === "history" ? (
+              <HistoryBoard
+                historicalYears={historicalYears}
+                historySummaries={historySummaries}
+                onOpenArtist={openArtist}
+              />
+            ) : null}
+
           </section>
 
-          {activeTab !== "schedule" ? (
+          {activeTab === "plan" || activeTab === "now" ? (
             <aside className="space-y-4">
               <PlanSummary
                 selectedItems={selectedItems}
@@ -621,9 +648,14 @@ export function FolkPlannerApp({
           stage={detailStage}
           priority={plan.selections[detailItem.id]}
           conflictType={getConflictTypeForSet(detailItem.id, conflicts)}
+          history={getArtistHistory(detailArtist.id, historySummaries)}
           onClose={() => setDetailSetId(undefined)}
           onSetPriority={(priority) => setSelection(detailItem.id, priority)}
           onStage={() => setStageDetailId(detailItem.stageId)}
+          onViewHistory={() => {
+            setDetailSetId(undefined);
+            setActiveTab("history");
+          }}
         />
       ) : null}
 
@@ -1011,7 +1043,6 @@ function SetCard({
   priority,
   conflictType,
   density,
-  duration,
   style,
   onCycle,
   onOpen,
@@ -1030,9 +1061,14 @@ function SetCard({
   onHover: (rect: DOMRect) => void;
   onHoverEnd: () => void;
 }) {
-  const isShortSet = duration <= 30;
+  // Gate content on the card's actual pixel height so nothing overlaps on
+  // short sets (or in compact density), where there isn't room for every row.
+  const cardHeight = typeof style.height === "number" ? style.height : 200;
   const selection = priorityLabel(priority);
-  const showBadges = Boolean(priority) || conflictType !== "none";
+  const twoLineName = cardHeight >= 82;
+  const showGenre = cardHeight >= 104;
+  const showBadges = (Boolean(priority) || conflictType !== "none") && cardHeight >= 82;
+  const showConflictDot = conflictType !== "none" && !showBadges;
   return (
     <article
       className={classNames(
@@ -1053,7 +1089,7 @@ function SetCard({
             <span className="block whitespace-nowrap font-mono text-[10px] font-bold leading-none text-ink/60 tabular-nums sm:text-[11px]">
               {formatSetTimeRange(item.start, item.end)}
             </span>
-            <span className={classNames("mt-1 block font-black leading-tight", density === "compact" ? "text-xs sm:text-sm" : "text-sm sm:text-base", isShortSet ? "line-clamp-1" : "line-clamp-2")}>
+            <span className={classNames("mt-1 block font-black leading-tight", density === "compact" ? "text-xs sm:text-sm" : "text-sm sm:text-base", twoLineName ? "line-clamp-2" : "line-clamp-1")}>
               {item.titleOverride ?? artist.name}
             </span>
           </button>
@@ -1068,7 +1104,7 @@ function SetCard({
             {priority === "must" ? "★" : priority === "interested" ? "☆" : "+"}
           </button>
         </div>
-        {!isShortSet ? (
+        {showGenre ? (
           <p className="truncate text-[11px] text-ink/60 sm:text-xs">{artist.genres.slice(0, 2).join(" / ")}</p>
         ) : null}
         {showBadges ? (
@@ -1082,6 +1118,15 @@ function SetCard({
           </div>
         ) : null}
       </div>
+      {showConflictDot ? (
+        <span
+          className={classNames(
+            "pointer-events-none absolute bottom-1 right-1 h-2.5 w-2.5 rounded-full ring-2 ring-white",
+            conflictType === "overlap" ? "bg-red-500" : "bg-amber-500"
+          )}
+          aria-hidden="true"
+        />
+      ) : null}
     </article>
   );
 }
@@ -1628,18 +1673,22 @@ function ArtistSheet({
   stage,
   priority,
   conflictType,
+  history,
   onClose,
   onSetPriority,
-  onStage
+  onStage,
+  onViewHistory
 }: {
   item: ScheduleItem;
   artist: Artist;
   stage: Stage;
   priority?: Priority;
   conflictType: "none" | "overlap" | "transition";
+  history?: ArtistHistorySummary;
   onClose: () => void;
   onSetPriority: (priority?: Priority) => void;
   onStage: () => void;
+  onViewHistory: () => void;
 }) {
   return (
     <SheetShell label={`${artist.name} set details`} onClose={onClose}>
@@ -1663,6 +1712,22 @@ function ArtistSheet({
         <div className="mt-4 rounded-2xl bg-paper p-3 text-sm">
           <strong>Conflict status:</strong> {conflictType === "none" ? "No selected conflict." : conflictType === "overlap" ? "Direct overlap with a selected set." : "Tight stage transition."}
         </div>
+        {history ? (
+          <button
+            className="mt-3 flex w-full items-center justify-between gap-2 rounded-2xl bg-bay/10 p-3 text-left text-sm text-bay hover:bg-bay/15"
+            onClick={onViewHistory}
+          >
+            <span>
+              <strong>{history.totalAppearances}x at Newport Folk</strong> since {Math.min(...history.years)}
+              {history.guestCount ? ` (including ${history.guestCount} guest sit-in${history.guestCount === 1 ? "" : "s"})` : ""}
+            </span>
+            <span aria-hidden="true">→</span>
+          </button>
+        ) : (
+          <p className="mt-3 rounded-2xl bg-paper p-3 text-sm text-ink/50">
+            No appearance found in our 2016–2025 history data — may be a Newport Folk debut.
+          </p>
+        )}
         <div className="mt-5 grid grid-cols-3 gap-2" role="group" aria-label="Set priority">
           <button
             className={classNames(

@@ -4,13 +4,17 @@ import policiesJson from "../data/policies-2026.json";
 import scheduleJson from "../data/schedule-2026.json";
 import spotifyArtistMapJson from "../data/spotify-artist-map.json";
 import stagesJson from "../data/stages-2026.json";
+import surpriseGuestsJson from "../data/surprise-guests-2026.json";
+import historyJson from "../data/newport-history-2016-2025.json";
 import {
   ArtistSchema,
+  HistoricalYearSchema,
   ManifestSchema,
   PolicySchema,
   ScheduleItemSchema,
   SpotifyArtistMapSchema,
-  StageSchema
+  StageSchema,
+  SurpriseGuestSchema
 } from "../lib/schemas";
 
 const manifest = ManifestSchema.parse(manifestJson);
@@ -19,6 +23,8 @@ const artists = ArtistSchema.array().parse(artistsJson);
 const stages = StageSchema.array().parse(stagesJson);
 const policies = PolicySchema.array().parse(policiesJson);
 const spotifyArtistMap = SpotifyArtistMapSchema.parse(spotifyArtistMapJson);
+const surpriseGuests = SurpriseGuestSchema.array().parse(surpriseGuestsJson);
+const historicalYears = HistoricalYearSchema.array().parse(historyJson);
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -104,6 +110,31 @@ for (const [artistId, entry] of Object.entries(spotifyArtistMap.overrides)) {
   }
 }
 
+duplicateIds(surpriseGuests, "surprise-guest");
+for (const suspect of surpriseGuests) {
+  for (const item of suspect.evidence) {
+    if (item.artistId && !artistIds.has(item.artistId)) {
+      errors.push(`surprise guest ${suspect.id} references unknown artist ${item.artistId}`);
+    }
+  }
+  const hasArtistEdge = suspect.evidence.some((item) => item.artistId);
+  if (!hasArtistEdge) {
+    warnings.push(`surprise guest ${suspect.id} has no evidence tied to a billed artist`);
+  }
+}
+
+const seenYears = new Set<number>();
+for (const year of historicalYears) {
+  if (seenYears.has(year.year)) errors.push(`Duplicate historical year: ${year.year}`);
+  seenYears.add(year.year);
+  if (!year.cancelled && year.appearances.length === 0) {
+    errors.push(`Historical year ${year.year} has no appearances and is not marked cancelled`);
+  }
+  if (year.cancelled && year.appearances.length > 0) {
+    errors.push(`Historical year ${year.year} is marked cancelled but lists appearances`);
+  }
+}
+
 if (warnings.length) {
   console.warn(`Data validation warnings:\n${warnings.map((warning) => `- ${warning}`).join("\n")}`);
 }
@@ -114,5 +145,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Validated ${schedule.length} schedule items, ${artists.length} artists, ${stages.length} stages, ${policies.length} policies, ${Object.keys(spotifyArtistMap.overrides).length} Spotify overrides for ${manifest.scheduleVersion}.`
+  `Validated ${schedule.length} schedule items, ${artists.length} artists, ${stages.length} stages, ${policies.length} policies, ${Object.keys(spotifyArtistMap.overrides).length} Spotify overrides, ${surpriseGuests.length} surprise suspects, ${historicalYears.length} historical years for ${manifest.scheduleVersion}.`
 );
