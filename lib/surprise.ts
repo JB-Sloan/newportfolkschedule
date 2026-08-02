@@ -3,9 +3,16 @@ import type { HistoricalYear, SurpriseEvidence, SurpriseEvidenceType, SurpriseGu
 /**
  * Historically anchored rumor model.
  *
- * The history file records a median of three identified guests per completed
+ * The history file records a median of five identified guests per completed
  * festival from 2016-2023. Dividing that median by the live researched
  * candidate-pool size supplies a conservative prior for a screened rumor.
+ *
+ * That median rose from three to five in July 2026 when the guest census was
+ * researched properly (2018, 2019 and 2023 had been badly undercounted), which
+ * lifted the prior from ~9% to ~14% and every score with it. The earlier
+ * figure understated reality rather than the new one overstating it — but the
+ * census is still uneven: 2022-23 are well documented while 2016-18 probably
+ * remain light, so the prior is a floor more than a precise rate.
  *
  * Evidence updates log-odds instead of adding percentages. Coefficients are
  * deliberately conservative because the historical data identifies winners
@@ -14,13 +21,13 @@ import type { HistoricalYear, SurpriseEvidence, SurpriseEvidenceType, SurpriseGu
  * claim of fully trained statistical calibration.
  *
  * Two historical findings drive the structure:
- * - only 8 of 33 recorded guests had appeared in an earlier dataset year, so
+ * - most recorded guests had not appeared in an earlier dataset year, so
  *   Newport history is a small modifier;
  * - essentially every recorded guest had a named host set or special revue,
  *   so a concrete 2026 appearance vehicle is a major independent signal.
  */
 
-export const HISTORICAL_BASE_RATE = 0.09;
+export const HISTORICAL_BASE_RATE = 0.14;
 
 /**
  * Window of seasons that have an audited guest census. Years outside it list

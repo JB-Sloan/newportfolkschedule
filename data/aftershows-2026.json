@@ -1,0 +1,23 @@
+[
+  {
+    "id": "jpt-mister-romantic",
+    "title": "Newport Folk Aftershow: Mister Romantic",
+    "act": "Mister Romantic (John C. Reilly)",
+    "date": "2026-07-24",
+    "venue": "The JPT Film + Event Center",
+    "city": "Newport, RI",
+    "soldOut": true,
+    "sourceUrl": "https://janepickens.com/shows",
+    "note": "Mister Romantic is John C. Reilly's stage project, so the billed act is known."
+  },
+  {
+    "id": "jpt-felice-county-fair",
+    "title": "Newport Folk Aftershow: Felice County Fair",
+    "date": "2026-07-25",
+    "venue": "The JPT Film + Event Center",
+    "city": "Newport, RI",
+    "soldOut": true,
+    "sourceUrl": "https://janepickens.com/shows",
+    "note": "Named for the Felice Brothers tribute album announced July 17, 2026. The venue has not published a performer list, so who plays is not confirmed."
+  }
+]

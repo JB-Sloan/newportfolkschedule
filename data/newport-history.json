@@ -3378,6 +3378,30 @@
       {
         "name": "Doc Watson and David Holt",
         "role": "billed"
+      },
+      {
+        "name": "Richie Havens",
+        "role": "guest",
+        "notes": "Joined Levon Helm's Sunday closing set for \"The Weight\".",
+        "sources": [
+          "https://www.rollingstone.com/music/music-news/levon-helm-edward-sharpe-rock-newport-folk-festival-91050/"
+        ]
+      },
+      {
+        "name": "Jim James",
+        "role": "guest",
+        "notes": "Sat in with John Prine for a duet on \"All the Best\" and with Preservation Hall Jazz Band on \"St. James Infirmary\".",
+        "sources": [
+          "https://www.rollingstone.com/music/music-news/levon-helm-edward-sharpe-rock-newport-folk-festival-91050/"
+        ]
+      },
+      {
+        "name": "Lenny Goldsmith",
+        "role": "guest",
+        "notes": "Former Tower of Power frontman joined his son Taylor Goldsmith during Dawes' encore.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-news/levon-helm-edward-sharpe-rock-newport-folk-festival-91050/"
+        ]
       }
     ]
   },
@@ -3541,6 +3565,46 @@
       {
         "name": "Dar Williams",
         "role": "billed"
+      },
+      {
+        "name": "Chris Thile",
+        "role": "guest",
+        "notes": "Joined Elvis Costello's acoustic set alongside Emmylou Harris.",
+        "sources": [
+          "https://glidemagazine.com/64452/review-newport-folk-festival-2011/"
+        ]
+      },
+      {
+        "name": "Emmylou Harris",
+        "role": "guest",
+        "notes": "Sat in during Elvis Costello's set.",
+        "sources": [
+          "https://glidemagazine.com/64452/review-newport-folk-festival-2011/"
+        ]
+      },
+      {
+        "name": "David Rawlings",
+        "role": "guest",
+        "notes": "Called up by Colin Meloy to join The Decemberists' set, along with Gillian Welch.",
+        "sources": [
+          "https://glidemagazine.com/64452/review-newport-folk-festival-2011/"
+        ]
+      },
+      {
+        "name": "Gillian Welch",
+        "role": "guest",
+        "notes": "Called up by Colin Meloy to join The Decemberists' set with David Rawlings.",
+        "sources": [
+          "https://glidemagazine.com/64452/review-newport-folk-festival-2011/"
+        ]
+      },
+      {
+        "name": "Jonny Corndawg",
+        "role": "guest",
+        "notes": "Joined Middle Brother's set with additional members of Dawes.",
+        "sources": [
+          "https://glidemagazine.com/64452/review-newport-folk-festival-2011/"
+        ]
       }
     ]
   },
@@ -3716,6 +3780,30 @@
       {
         "name": "Sharon Van Etten",
         "role": "billed"
+      },
+      {
+        "name": "Jackson Browne",
+        "role": "guest",
+        "notes": "Sat in during Jonathan Wilson's midday set and Sara Watkins' set before his own festival-closing performance.",
+        "sources": [
+          "https://www.countrystandardtime.com/d/concertreview.asp?xid=686"
+        ]
+      },
+      {
+        "name": "Tom Morello",
+        "role": "guest",
+        "notes": "Joined Jackson Browne's closing set for a mass finale of Warren Zevon's \"Lawyers, Guns and Money\".",
+        "sources": [
+          "https://www.countrystandardtime.com/d/concertreview.asp?xid=686"
+        ]
+      },
+      {
+        "name": "First Aid Kit",
+        "role": "guest",
+        "notes": "Provided backing vocals during Conor Oberst's solo set.",
+        "sources": [
+          "https://www.countrystandardtime.com/d/concertreview.asp?xid=686"
+        ]
       }
     ]
   },
@@ -3911,6 +3999,38 @@
       {
         "name": "Wheeler Brothers",
         "role": "billed"
+      },
+      {
+        "name": "Ramblin' Jack Elliott",
+        "role": "guest",
+        "notes": "Walked out unannounced during Beck's Sunday closing set after Beck dedicated a Jimmie Rodgers song to him; the two swapped verses. Beck said it \"took [him] by surprise\".",
+        "sources": [
+          "https://www.bostonglobe.com/arts/music/2013/07/28/beck-closes-out-newport-folk-festival-style/fUhpbwBf2xOGgDhIk5f3IP/story.html"
+        ]
+      },
+      {
+        "name": "Andrew Bird",
+        "role": "guest",
+        "notes": "Joined Beck's closing set for an extended jam into Jimmie Rodgers' \"Waitin' for a Train\".",
+        "sources": [
+          "https://jambands.com/news/2013/07/29/beck-the-lumineers-close-out-newport-folk-festival/"
+        ]
+      },
+      {
+        "name": "Chris Funk",
+        "role": "guest",
+        "notes": "The Decemberists guitarist joined Beck's closing-set jam with Andrew Bird and Analisa Tornfelt.",
+        "sources": [
+          "https://jambands.com/news/2013/07/29/beck-the-lumineers-close-out-newport-folk-festival/"
+        ]
+      },
+      {
+        "name": "Tift Merritt",
+        "role": "guest",
+        "notes": "Sat in during Andrew Bird's Quad Stage set.",
+        "sources": [
+          "https://jambands.com/news/2013/07/29/beck-the-lumineers-close-out-newport-folk-festival/"
+        ]
       }
     ]
   },
@@ -4122,6 +4242,70 @@
       {
         "name": "Pegi Young and the Survivors",
         "role": "billed"
+      },
+      {
+        "name": "Norah Jones",
+        "role": "guest",
+        "notes": "Joined the \"Mavis Staples & Friends\" closing set for \"Will the Circle Be Unbroken?\".",
+        "sources": [
+          "https://jambands.com/news/2014/07/28/mavis-staples-and-special-guests-rodrigo-y-gabriela-tweedy-and-more-close-out-newport-folk/"
+        ]
+      },
+      {
+        "name": "Trampled by Turtles",
+        "role": "guest",
+        "notes": "Backed Norah Jones on \"Will the Circle Be Unbroken?\" during the \"Mavis Staples & Friends\" closing set.",
+        "sources": [
+          "https://jambands.com/news/2014/07/28/mavis-staples-and-special-guests-rodrigo-y-gabriela-tweedy-and-more-close-out-newport-folk/"
+        ]
+      },
+      {
+        "name": "Taylor Goldsmith",
+        "role": "guest",
+        "notes": "Joined the \"Mavis Staples & Friends\" closing set for The Band's \"The Weight\".",
+        "sources": [
+          "https://jambands.com/news/2014/07/28/mavis-staples-and-special-guests-rodrigo-y-gabriela-tweedy-and-more-close-out-newport-folk/"
+        ]
+      },
+      {
+        "name": "Spooner Oldham",
+        "role": "guest",
+        "notes": "Muscle Shoals keyboardist sat in with Mavis Staples for \"Let's Do It Again\" and \"I'll Take You There\".",
+        "sources": [
+          "https://jambands.com/news/2014/07/28/mavis-staples-and-special-guests-rodrigo-y-gabriela-tweedy-and-more-close-out-newport-folk/"
+        ]
+      },
+      {
+        "name": "Lucius",
+        "role": "guest",
+        "notes": "Joined the \"Mavis Staples & Friends\" closing set for Talking Heads' \"Slippery People\".",
+        "sources": [
+          "https://jambands.com/news/2014/07/28/mavis-staples-and-special-guests-rodrigo-y-gabriela-tweedy-and-more-close-out-newport-folk/"
+        ]
+      },
+      {
+        "name": "Jeff Tweedy",
+        "role": "guest",
+        "notes": "Joined the \"Mavis Staples & Friends\" closing set for \"You Are Not Alone\".",
+        "sources": [
+          "https://jambands.com/news/2014/07/28/mavis-staples-and-special-guests-rodrigo-y-gabriela-tweedy-and-more-close-out-newport-folk/"
+        ]
+      },
+      {
+        "name": "Mavis Staples",
+        "role": "guest",
+        "notes": "Sat in during Jeff Tweedy's set for \"Wrote a Song for Everyone\" and \"Only the Lord Knows\".",
+        "sources": [
+          "https://jambands.com/news/2014/07/28/mavis-staples-and-special-guests-rodrigo-y-gabriela-tweedy-and-more-close-out-newport-folk/"
+        ]
+      },
+      {
+        "name": "The Deslondes",
+        "role": "guest",
+        "notes": "Joined Hurray for the Riff Raff's set for Pete Seeger's \"If I Had a Hammer\".",
+        "sources": [
+          "https://jambands.com/news/2014/07/28/mavis-staples-and-special-guests-rodrigo-y-gabriela-tweedy-and-more-close-out-newport-folk/"
+        ]
       }
     ]
   },
@@ -4426,7 +4610,7 @@
       {
         "name": "Kris Kristofferson",
         "role": "guest",
-        "notes": "Joined The Texas Gentlemen's set"
+        "notes": "Surprise guest during Margo Price's set (backed by The Texas Gentlemen)"
       },
       {
         "name": "Violent Femmes",
@@ -4746,6 +4930,38 @@
       {
         "name": "Tuck & Patti",
         "role": "billed"
+      },
+      {
+        "name": "Mavis Staples",
+        "role": "guest",
+        "notes": "Joined Mumford & Sons' unannounced Saturday headline set (the slot was listed only as \"UNANNOUNCED\") for the closing \"The Weight\".",
+        "sources": [
+          "https://www.jambase.com/article/mumford-sons-welcome-many-guests-surprise-newport-folk-festival-set"
+        ]
+      },
+      {
+        "name": "Maggie Rogers",
+        "role": "guest",
+        "notes": "Joined Mumford & Sons' unannounced Saturday headline set, opening on \"Awake My Soul\" and leading the band through one of her own songs.",
+        "sources": [
+          "https://www.jambase.com/article/mumford-sons-welcome-many-guests-surprise-newport-folk-festival-set"
+        ]
+      },
+      {
+        "name": "Jerry Douglas",
+        "role": "guest",
+        "notes": "Played dobro during Mumford & Sons' unannounced Saturday headline set, including \"Awake My Soul\".",
+        "sources": [
+          "https://www.jambase.com/article/mumford-sons-welcome-many-guests-surprise-newport-folk-festival-set"
+        ]
+      },
+      {
+        "name": "Phil Cook",
+        "role": "guest",
+        "notes": "Joined the finale of Mumford & Sons' unannounced Saturday headline set with MC Taylor and Mavis Staples.",
+        "sources": [
+          "https://www.jambase.com/article/mumford-sons-welcome-many-guests-surprise-newport-folk-festival-set"
+        ]
       }
     ]
   },
@@ -4988,6 +5204,54 @@
       {
         "name": "Yola",
         "role": "billed"
+      },
+      {
+        "name": "James Taylor",
+        "role": "guest",
+        "notes": "Arrived by speedboat and surprised Sheryl Crow's Friday set, singing her \"Everyday Is a Winding Road\" after texting her about 15 minutes beforehand.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-fest-2019-recap-864579/"
+        ]
+      },
+      {
+        "name": "Jason Isbell",
+        "role": "guest",
+        "notes": "Guested during The Highwomen's set alongside the Hanseroth twins, Yola and Sheryl Crow.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-fest-2019-recap-864579/"
+        ]
+      },
+      {
+        "name": "Linda Perry",
+        "role": "guest",
+        "notes": "Joined the all-female Saturday finale curated by Brandi Carlile for the \"9 to 5\" ensemble with Dolly Parton.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-fest-2019-recap-864579/"
+        ]
+      },
+      {
+        "name": "Mavis Staples",
+        "role": "guest",
+        "notes": "Took part in the Sunday Pete Seeger tribute closing singalong.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-fest-2019-recap-864579/"
+        ]
+      },
+      {
+        "name": "Robin Pecknold",
+        "role": "guest",
+        "notes": "Sang \"Suite: Judy Blue Eyes\" with James Mercer, Eric D. Johnson and Judy Collins during the Sunday closing singalong.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-fest-2019-recap-864579/"
+        ]
+      },
+      {
+        "name": "James Mercer",
+        "role": "guest",
+        "notes": "Sang \"Suite: Judy Blue Eyes\" with Robin Pecknold, Eric D. Johnson and Judy Collins during the Sunday closing singalong.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-fest-2019-recap-864579/"
+        ]
       }
     ]
   },
@@ -5747,6 +6011,95 @@
       {
         "name": "Jaime Wyatt",
         "role": "billed"
+      },
+      {
+        "name": "Jack Antonoff",
+        "role": "guest",
+        "notes": "Made a piano cameo during Lana Del Rey's set, including Joni Mitchell's \"For Free\".",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-festival-lana-del-rey-james-taylor-1234797217/"
+        ]
+      },
+      {
+        "name": "Nikki Lane",
+        "role": "guest",
+        "notes": "Joined Lana Del Rey's set for several songs.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-festival-lana-del-rey-james-taylor-1234797217/"
+        ]
+      },
+      {
+        "name": "Neko Case",
+        "role": "guest",
+        "notes": "Guested during Los Lobos' set.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-festival-lana-del-rey-james-taylor-1234797217/"
+        ]
+      },
+      {
+        "name": "Nels Cline",
+        "role": "guest",
+        "notes": "Guested during Los Lobos' set.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-festival-lana-del-rey-james-taylor-1234797217/"
+        ]
+      },
+      {
+        "name": "John McCauley",
+        "role": "guest",
+        "notes": "The Deer Tick frontman shared the stage during Los Lobos' set.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-festival-lana-del-rey-james-taylor-1234797217/"
+        ]
+      },
+      {
+        "name": "Evan Felker",
+        "role": "guest",
+        "notes": "The Turnpike Troubadours singer joined Jason Isbell & The 400 Unit for \"King of Oklahoma\".",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-festival-lana-del-rey-james-taylor-1234797217/"
+        ]
+      },
+      {
+        "name": "Craig Finn",
+        "role": "guest",
+        "notes": "The Hold Steady frontman sat in with Slaughter Beach, Dog for a mellowed-out Neil Young cover.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-festival-lana-del-rey-james-taylor-1234797217/"
+        ]
+      },
+      {
+        "name": "Maggie Rogers",
+        "role": "guest",
+        "notes": "Guested during My Morning Jacket's set.",
+        "sources": [
+          "https://relix.com/festivals/festival_news/detail/newport-folk-festival-2023-day-one-ushers-iconic-surprise-collaborations-impromptu-fill-in-by-james-taylor/"
+        ]
+      },
+      {
+        "name": "John Oates",
+        "role": "guest",
+        "notes": "Guested during My Morning Jacket's set.",
+        "sources": [
+          "https://relix.com/festivals/festival_news/detail/newport-folk-festival-2023-day-one-ushers-iconic-surprise-collaborations-impromptu-fill-in-by-james-taylor/"
+        ]
+      },
+      {
+        "name": "Animal (The Muppets)",
+        "role": "guest",
+        "notes": "The Muppet drummer made a surprise appearance during My Morning Jacket's set.",
+        "sources": [
+          "https://relix.com/festivals/festival_news/detail/newport-folk-festival-2023-day-one-ushers-iconic-surprise-collaborations-impromptu-fill-in-by-james-taylor/"
+        ]
+      },
+      {
+        "name": "SistaStrings",
+        "role": "guest",
+        "notes": "Monique Ross of SistaStrings joined Maggie Rogers' set; SistaStrings also accompanied Jason Isbell & The 400 Unit.",
+        "sources": [
+          "https://relix.com/festivals/festival_news/detail/newport-folk-festival-2023-day-one-ushers-iconic-surprise-collaborations-impromptu-fill-in-by-james-taylor/",
+          "https://www.rollingstone.com/music/music-live-reviews/newport-folk-festival-lana-del-rey-james-taylor-1234797217/"
+        ]
       }
     ]
   },
@@ -5952,6 +6305,164 @@
       {
         "name": "Illiterate Light",
         "role": "billed"
+      },
+      {
+        "name": "Jack White",
+        "role": "guest",
+        "notes": "Unannounced final guest of Conan O'Brien's Sunday closing set, duetting on The White Stripes' \"We're Going to Be Friends\" and Eddie Cochran's \"Twenty Flight Rock\".",
+        "sources": [
+          "https://www.rollingstone.com/music/music-news/conan-obrien-jack-white-performance-newport-folk-festival-2024-1235069683/",
+          "https://www.jambase.com/article/conan-obrien-newport-folk-jack-white-mavis-staples-nathaniel-rateliff-videos-setlist"
+        ]
+      },
+      {
+        "name": "Mavis Staples",
+        "role": "guest",
+        "notes": "Surprise guest at the end of Hozier's Friday headline set for \"The Weight\", and again during Conan O'Brien's Sunday closing set for \"I'll Take You There\".",
+        "sources": [
+          "https://www.rollingstone.com/music/music-news/hozier-mavis-staples-the-weight-joan-baez-newport-folk-festival-1235069465/",
+          "https://www.jambase.com/article/conan-obrien-newport-folk-jack-white-mavis-staples-nathaniel-rateliff-videos-setlist"
+        ]
+      },
+      {
+        "name": "Joan Baez",
+        "role": "guest",
+        "notes": "Officially at the festival only for a poetry reading, she joined Hozier's Friday headline set for \"The Weight\" and led the crowd through \"We Shall Overcome\".",
+        "sources": [
+          "https://www.rollingstone.com/music/music-news/hozier-mavis-staples-the-weight-joan-baez-newport-folk-festival-1235069465/"
+        ]
+      },
+      {
+        "name": "Nathaniel Rateliff",
+        "role": "guest",
+        "notes": "Not on the bill; joined Hozier's headline set for \"The Weight\"/\"We Shall Overcome\" and Conan O'Brien's closing set for \"Everybody's Talkin'\" and \"Let It Bleed\".",
+        "sources": [
+          "https://glidemagazine.com/303368/2024-newport-folk-festival-preserves-strong-with-surprise-guests-lgbtq-standouts-meaningful-collaborations-festival-review/",
+          "https://www.jambase.com/article/conan-obrien-newport-folk-jack-white-mavis-staples-nathaniel-rateliff-videos-setlist"
+        ]
+      },
+      {
+        "name": "Nick Lowe",
+        "role": "guest",
+        "notes": "Guested during Conan O'Brien's Sunday closing set for \"So It Goes\" and \"Cruel to Be Kind\".",
+        "sources": [
+          "https://www.jambase.com/article/conan-obrien-newport-folk-jack-white-mavis-staples-nathaniel-rateliff-videos-setlist"
+        ]
+      },
+      {
+        "name": "Brittany Howard",
+        "role": "guest",
+        "notes": "Guested during Conan O'Brien's Sunday closing set on \"Come and Get Your Love\".",
+        "sources": [
+          "https://www.jambase.com/article/conan-obrien-newport-folk-jack-white-mavis-staples-nathaniel-rateliff-videos-setlist"
+        ]
+      },
+      {
+        "name": "Langhorne Slim",
+        "role": "guest",
+        "notes": "Guested during Conan O'Brien's Sunday closing set on \"Found My Heart\".",
+        "sources": [
+          "https://www.jambase.com/article/conan-obrien-newport-folk-jack-white-mavis-staples-nathaniel-rateliff-videos-setlist"
+        ]
+      },
+      {
+        "name": "Triumph the Insult Comic Dog",
+        "role": "guest",
+        "notes": "Made a surprise appearance during Conan O'Brien's Sunday closing set, performing an original song.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-news/conan-obrien-jack-white-performance-newport-folk-festival-2024-1235069683/"
+        ]
+      },
+      {
+        "name": "Allison Russell",
+        "role": "guest",
+        "notes": "Joined the ensemble finale of Hozier's Friday headline set for \"The Weight\" and \"We Shall Overcome\".",
+        "sources": [
+          "https://www.rollingstone.com/music/music-news/hozier-mavis-staples-the-weight-joan-baez-newport-folk-festival-1235069465/",
+          "https://whatsupnewp.com/2024/07/newport-folk-festival-2024-high-energy-at-fort-adams-day-1-recap-and-photos/"
+        ]
+      },
+      {
+        "name": "Madison Cunningham",
+        "role": "guest",
+        "notes": "Joined the ensemble finale of Hozier's Friday headline set for \"The Weight\" and \"We Shall Overcome\".",
+        "sources": [
+          "https://www.rollingstone.com/music/music-news/hozier-mavis-staples-the-weight-joan-baez-newport-folk-festival-1235069465/",
+          "https://whatsupnewp.com/2024/07/newport-folk-festival-2024-high-energy-at-fort-adams-day-1-recap-and-photos/"
+        ]
+      },
+      {
+        "name": "Kaia Kater",
+        "role": "guest",
+        "notes": "Joined the \"We Shall Overcome\" finale of Hozier's Friday headline set.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-news/hozier-mavis-staples-the-weight-joan-baez-newport-folk-festival-1235069465/"
+        ]
+      },
+      {
+        "name": "William Prince",
+        "role": "guest",
+        "notes": "Joined the \"We Shall Overcome\" finale of Hozier's Friday headline set.",
+        "sources": [
+          "https://www.rollingstone.com/music/music-news/hozier-mavis-staples-the-weight-joan-baez-newport-folk-festival-1235069465/"
+        ]
+      },
+      {
+        "name": "Wesley Schultz",
+        "role": "guest",
+        "notes": "The Lumineers frontman joined the ensemble closing Hozier's Friday headline set on \"The Weight\" and \"We Shall Overcome\".",
+        "sources": [
+          "https://consequence.net/2024/07/conan-jack-white-newport-folk-festival-2024-review/"
+        ]
+      },
+      {
+        "name": "Hozier",
+        "role": "guest",
+        "notes": "Sat in with Allison Russell for a duet on \"Requiem\".",
+        "sources": [
+          "https://xpn.org/2024/07/31/10-highlights-newport-folk-festival-2024/"
+        ]
+      },
+      {
+        "name": "Gillian Welch",
+        "role": "guest",
+        "notes": "Joined Sierra Ferrell's set for the bluegrass standard \"Handsome Molly\".",
+        "sources": [
+          "https://xpn.org/2024/07/31/10-highlights-newport-folk-festival-2024/"
+        ]
+      },
+      {
+        "name": "John C. Reilly",
+        "role": "guest",
+        "notes": "Joined Sierra Ferrell's set for \"Heartaches by the Number\".",
+        "sources": [
+          "https://xpn.org/2024/07/31/10-highlights-newport-folk-festival-2024/"
+        ]
+      },
+      {
+        "name": "Pharoahe Monch",
+        "role": "guest",
+        "notes": "Appeared during De La Soul's set for several songs, including his own \"Simon Says\".",
+        "sources": [
+          "https://xpn.org/2024/07/31/10-highlights-newport-folk-festival-2024/"
+        ]
+      },
+      {
+        "name": "Craig Finn",
+        "role": "guest",
+        "notes": "Brought out by Adam Granduciel during The War on Drugs' set to sing John Hiatt's \"Walk On\".",
+        "sources": [
+          "https://xpn.org/2024/07/31/10-highlights-newport-folk-festival-2024/",
+          "https://glidemagazine.com/303368/2024-newport-folk-festival-preserves-strong-with-surprise-guests-lgbtq-standouts-meaningful-collaborations-festival-review/"
+        ]
+      },
+      {
+        "name": "Victor Wooten",
+        "role": "guest",
+        "notes": "Guested during Cory Wong's acoustic set.",
+        "sources": [
+          "https://glidemagazine.com/303368/2024-newport-folk-festival-preserves-strong-with-surprise-guests-lgbtq-standouts-meaningful-collaborations-festival-review/"
+        ]
       }
     ]
   },
@@ -6135,6 +6646,261 @@
       {
         "name": "Stephen Wilson Jr.",
         "role": "billed"
+      },
+      {
+        "name": "Matt Berninger",
+        "role": "guest",
+        "notes": "The National frontman played an unannounced solo set on the Bike Stage Sunday, and later sang the Flaming Lips' \"Waiting for a Superman\" in the \"Songs for the People\" finale.",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/",
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
+      },
+      {
+        "name": "James Austin Johnson",
+        "role": "guest",
+        "notes": "The SNL cast member gave a surprise comedic Bike Stage performance on Sunday, including a Dylan parody.",
+        "sources": [
+          "https://www.boston.com/culture/concert-reviews/2025/07/25/newport-folk-festival-2025-live-updates-from-the-fest/"
+        ]
+      },
+      {
+        "name": "Nathaniel Rateliff",
+        "role": "guest",
+        "notes": "Not on the bill; played a semi-secret solo Harbor Stage set and sat in with Jesse Welles (\"This Can't Be Right\"), Lucius (R.E.M.'s \"Everybody Hurts\"), Mt. Joy (\"Wild and Rotten\") and the closing finale.",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/",
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
+      },
+      {
+        "name": "Mavis Staples",
+        "role": "guest",
+        "notes": "Joined Lucius' Harbor Stage set for \"Go Home\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/",
+          "https://americanahighways.org/2025/08/03/show-review-newport-folk-festival-2025/"
+        ]
+      },
+      {
+        "name": "Tommy Prine",
+        "role": "guest",
+        "notes": "Joined Jesse Welles' Fort Stage set for his father John Prine's \"Angel from Montgomery\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/"
+        ]
+      },
+      {
+        "name": "Lukas Nelson",
+        "role": "guest",
+        "notes": "Sat in during Jesse Welles' set on \"This Can't Be Right\" and made several other guest appearances across the weekend, including the closing finale.",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/",
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
+      },
+      {
+        "name": "MJ Lenderman",
+        "role": "guest",
+        "notes": "Guested throughout Waxahatchee's Saturday Fort Stage set on \"Right Back to It\", \"Burns Out at Midnight\", \"Tigers Blood\" and \"Much Ado About Nothing\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/",
+          "https://americanahighways.org/2025/08/03/show-review-newport-folk-festival-2025/"
+        ]
+      },
+      {
+        "name": "Jeff Tweedy",
+        "role": "guest",
+        "notes": "Guested in Remi Wolf's \"& Friends\" set on Wilco's \"Either Way\" and sat in with Lucius on Wilco's \"Jesus, Etc.\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/",
+          "https://americanahighways.org/2025/08/03/show-review-newport-folk-festival-2025/"
+        ]
+      },
+      {
+        "name": "Saya Gray",
+        "role": "guest",
+        "notes": "Guested in Remi Wolf's \"& Friends\" set on Fleetwood Mac's \"Dreams\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/",
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
+      },
+      {
+        "name": "Maren Morris",
+        "role": "guest",
+        "notes": "Guested in Remi Wolf's \"& Friends\" set on \"Angel from Montgomery\" and in Mt. Joy's set on \"Highway Queen\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/"
+        ]
+      },
+      {
+        "name": "John C. Reilly",
+        "role": "guest",
+        "notes": "Guested in Remi Wolf's \"& Friends\" set, duetting on Grover Washington Jr.'s \"Just the Two of Us\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/",
+          "https://www.followingbackstage.com/newport-folk-festival-2025-day-2-sea-breezes-surprise-guests-sonic-crossroads/"
+        ]
+      },
+      {
+        "name": "slimdan",
+        "role": "guest",
+        "notes": "Guested in Remi Wolf's \"& Friends\" set on Neil Diamond's \"I'm a Believer\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/"
+        ]
+      },
+      {
+        "name": "Adam Melchor",
+        "role": "guest",
+        "notes": "Guested in Remi Wolf's \"& Friends\" set, covering Tom Petty's \"Breakdown\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/"
+        ]
+      },
+      {
+        "name": "Tiny Habits",
+        "role": "guest",
+        "notes": "Backed Remi Wolf during her \"& Friends\" set on \"Street You Live On\" and \"Harvest Moon\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/"
+        ]
+      },
+      {
+        "name": "Jesse Welles",
+        "role": "guest",
+        "notes": "Sat in on \"Harvest Moon\" during Remi Wolf's \"& Friends\" set and joined Margo Price's Fort Stage set for \"Don't Wake Me Up\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/",
+          "https://americanahighways.org/2025/08/03/show-review-newport-folk-festival-2025/"
+        ]
+      },
+      {
+        "name": "Josh Kaufman",
+        "role": "guest",
+        "notes": "Guested during Mary Chapin Carpenter's Fort Stage set on \"Saving Things\" and \"Bitter Ender\", and produced the \"Songs for the People\" closing revue.",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/"
+        ]
+      },
+      {
+        "name": "S.G. Goodman",
+        "role": "guest",
+        "notes": "Sat in with Lucius on \"Impressions\" and guested during MJ Lenderman's Friday set.",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/",
+          "https://www.boston.com/culture/concert-reviews/2025/07/25/newport-folk-festival-2025-live-updates-from-the-fest/"
+        ]
+      },
+      {
+        "name": "Jensen McRae",
+        "role": "guest",
+        "notes": "Guested during Mt. Joy's Fort Stage set on \"In the Middle\".",
+        "sources": [
+          "https://relix.com/news/detail/newport-folk-festival-highlights-remi-wolf-welcomes-jeff-tweedy-and-john-c-reilly-matt-berninger-performs-surprise-set-josh-kaufman-leads-star-studded-protest-finale-and-more/"
+        ]
+      },
+      {
+        "name": "Kenny Loggins",
+        "role": "guest",
+        "notes": "Joined Goose's Friday set for \"Danger Zone\".",
+        "sources": [
+          "https://americanahighways.org/2025/08/03/show-review-newport-folk-festival-2025/"
+        ]
+      },
+      {
+        "name": "Waxahatchee",
+        "role": "guest",
+        "notes": "Katie Crutchfield sat in with Kevin Morby on \"Bittersweet, TN\" and joined Bleachers at the Ally Coalition Talent Show for Roy Orbison's \"You Got It\".",
+        "sources": [
+          "https://americanahighways.org/2025/08/03/show-review-newport-folk-festival-2025/",
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
+      },
+      {
+        "name": "Jack Antonoff",
+        "role": "guest",
+        "notes": "Led the unbilled Ally Coalition Talent Show with Bleachers on Friday, hosting a run of surprise guests.",
+        "sources": [
+          "https://www.boston.com/culture/concert-reviews/2025/07/25/newport-folk-festival-2025-live-updates-from-the-fest/",
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
+      },
+      {
+        "name": "Weyes Blood",
+        "role": "guest",
+        "notes": "Surprise guest at the Ally Coalition Talent Show, singing \"Dream a Little Dream of Me\" and joining Waxahatchee and Bleachers on \"You Got It\".",
+        "sources": [
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/",
+          "https://www.boston.com/culture/concert-reviews/2025/07/25/newport-folk-festival-2025-live-updates-from-the-fest/"
+        ]
+      },
+      {
+        "name": "Hayley Williams",
+        "role": "guest",
+        "notes": "Surprise guest at the Ally Coalition Talent Show, debuting her solo song \"Mirtazapine\" live and covering Modern English's \"I Melt With You\".",
+        "sources": [
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/",
+          "https://www.boston.com/culture/concert-reviews/2025/07/25/newport-folk-festival-2025-live-updates-from-the-fest/"
+        ]
+      },
+      {
+        "name": "Rufus Wainwright",
+        "role": "guest",
+        "notes": "Surprise guest at the Ally Coalition Talent Show, performing \"45\" and Dylan's \"Not Dark Yet\".",
+        "sources": [
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/",
+          "https://americanahighways.org/2025/08/03/show-review-newport-folk-festival-2025/"
+        ]
+      },
+      {
+        "name": "Sammy Rae",
+        "role": "guest",
+        "notes": "Sang Dylan's \"Don't Think Twice, It's All Right\" with Jesse Welles.",
+        "sources": [
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
+      },
+      {
+        "name": "Trombone Shorty",
+        "role": "guest",
+        "notes": "Accompanied Amy Helm on Allen Toussaint's \"Yes We Can Can\" during the \"Songs for the People\" closing revue.",
+        "sources": [
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
+      },
+      {
+        "name": "Amy Helm",
+        "role": "guest",
+        "notes": "Sang Allen Toussaint's \"Yes We Can Can\" with Trombone Shorty during the \"Songs for the People\" closing revue.",
+        "sources": [
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
+      },
+      {
+        "name": "Matthew Logan Vasquez",
+        "role": "guest",
+        "notes": "Performed The Who's \"My Generation\" during the \"Songs for the People\" closing revue.",
+        "sources": [
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
+      },
+      {
+        "name": "The Swell Season",
+        "role": "guest",
+        "notes": "Performed Van Morrison's \"Into the Mystic\" with the Snacktime horns during the \"Songs for the People\" closing revue.",
+        "sources": [
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
+      },
+      {
+        "name": "Leslie Mendelson",
+        "role": "guest",
+        "notes": "Sang the Grateful Dead's \"Eyes of the World\" with Eric D. Johnson, Rick Mitarotonda and Matt Quinn during the \"Songs for the People\" closing revue.",
+        "sources": [
+          "https://artsfuse.org/314566/concert-review-newport-folk-festival-2025-fresh-signs-of-hope/"
+        ]
       }
     ]
   }

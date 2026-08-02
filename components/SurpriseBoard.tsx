@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { historicalYears, surpriseGuests } from "@/lib/data";
+import { aftershows, historicalYears, surpriseGuests } from "@/lib/data";
 import {
   EVIDENCE_TYPES,
   connectedArtists,
@@ -363,6 +363,55 @@ function SuspectDetail({
   );
 }
 
+const DAY_LABEL: Record<string, string> = {
+  "2026-07-24": "Fri Jul 24",
+  "2026-07-25": "Sat Jul 25",
+  "2026-07-26": "Sun Jul 26"
+};
+
+/**
+ * Announced aftershows are confirmed bookings, not speculation, so they sit
+ * above the evaluator as acts rather than being scored as rumors.
+ */
+function AftershowCard() {
+  if (!aftershows.length) return null;
+  return (
+    <section className="rounded-3xl bg-white p-4 shadow-soft">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 className="text-xl font-black">Official aftershows</h3>
+        <span className="text-xs font-bold text-ink/45">Announced &amp; ticketed — not rumors</span>
+      </div>
+      <div className="mt-3 space-y-2">
+        {aftershows.map((show) => (
+          <div key={show.id} className="rounded-2xl bg-paper p-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="rounded-full bg-ink px-2 py-0.5 text-xs font-bold text-paper">
+                {DAY_LABEL[show.date] ?? show.date}
+              </span>
+              <span className="font-black">{show.act ?? show.title.replace(/^Newport Folk Aftershow:\s*/, "")}</span>
+              {show.soldOut ? (
+                <span className="rounded-full bg-quad/15 px-2 py-0.5 text-xs font-bold text-quad">Sold out</span>
+              ) : null}
+            </div>
+            <p className="mt-1 text-sm text-ink/60">
+              {show.venue} · {show.city}
+            </p>
+            {show.note ? <p className="mt-1 text-xs text-ink/50">{show.note}</p> : null}
+            <a
+              className="mt-1 inline-block text-xs font-bold text-bay underline"
+              href={show.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Venue listing
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 /**
  * Compact entry point shown on the Schedule tab so the Rumor Evaluator is
  * discoverable without hunting through tabs.
@@ -433,8 +482,11 @@ export function SurpriseBoard({
         </p>
         <p className="mt-2 text-xs text-paper/55">
           Fan speculation only. Not insider info, and not affiliated with the festival or these artists.
+          Acts with an announced booking are listed above as confirmed, not scored here.
         </p>
       </div>
+
+      <AftershowCard />
 
       <div className="grid gap-4 lg:grid-cols-[300px_1fr]">
         <div className="order-2 lg:order-1 lg:sticky lg:top-3 lg:self-start">

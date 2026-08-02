@@ -117,10 +117,20 @@
           "https://www.jambase.com/article/highwomen-gorge-2026-setlist-video-linda-perry-bonnie-raitt-wynonna-judd",
           "https://jambands.com/news/2026/07/20/brandi-carlile-offers-surprise-maren-morris-opening-set-at-red-rocks/"
         ]
+      },
+      {
+        "type": "collaboration",
+        "weight": 76,
+        "detail": "On July 19, 2026 at Red Rocks, Brandi Carlile made a surprise opening appearance at Maren Morris's show; The Highwomen reunited and Carlile performed 'Raise Hell' and an a cappella number with Amanda Shires. JamBase lists no Shires dates until Aug 6 in San Diego.",
+        "sources": [
+          "https://jambands.com/news/2026/07/20/brandi-carlile-offers-surprise-maren-morris-opening-set-at-red-rocks/",
+          "https://www.jambase.com/band/amanda-shires"
+        ],
+        "artistId": "brandi-carlile"
       }
     ],
     "status": "researched",
-    "verifiedAt": "2026-07-20"
+    "verifiedAt": "2026-07-22"
   },
   {
     "id": "jason-isbell",
@@ -159,10 +169,18 @@
           "https://rosemusiccenter.com/events/2026/07/jason-isbell-and-the-400-unit",
           "https://news.pollstar.com/2025/10/28/jason-isbell-the-400-unit-announce-2026-tour/"
         ]
+      },
+      {
+        "type": "schedule-friction",
+        "weight": 95,
+        "detail": "JamBase shows Jason Isbell headlining all three festival days: July 24 at Interlochen Center for the Arts (MI), July 25 at The Rose Music Center (Huber Heights, OH), and July 26 at Ting Pavilion (Charlottesville, VA).",
+        "sources": [
+          "https://www.jambase.com/band/jason-isbell"
+        ]
       }
     ],
     "status": "debunked",
-    "verifiedAt": "2026-07-20"
+    "verifiedAt": "2026-07-22"
   },
   {
     "id": "anais-mitchell",
@@ -476,10 +494,20 @@
         "sources": [
           "https://www.livenation.com/artist/K8vZ9173Ad7/mike-mills-events"
         ]
+      },
+      {
+        "type": "tour-routing",
+        "weight": 68,
+        "detail": "Mills headlines 'A Night of Georgia Music' with Robert McDuffie and Chuck Leavell at Carnegie Hall, New York on Sat July 25, 2026 at 8pm. The Michael Shannon & Jason Narducy R.E.M. set is Friday July 24, so there is no direct conflict, and it puts Mills in the Northeast that weekend.",
+        "sources": [
+          "https://www.carnegiehall.org/calendar/2026/07/25/a-night-of-georgia-music-featuring-mike-mills-robert-mcduffie-and-chuck-leavel-0800pm",
+          "https://jambands.com/news/2026/06/09/mike-mills-chuck-leavell-and-robert-mcduffie-to-celebrate-georgia-music-with-orchestral-covers-of-the-allman-brothers-band-r-e-m-and-otis-redding-at-carnegie-hall/",
+          "https://www.jambase.com/band/mike-mills"
+        ]
       }
     ],
     "status": "researched",
-    "verifiedAt": "2026-07-20"
+    "verifiedAt": "2026-07-22"
   },
   {
     "id": "peter-buck",
@@ -541,10 +569,19 @@
         "sources": [
           "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/"
         ]
+      },
+      {
+        "type": "appearance-vehicle",
+        "weight": 62,
+        "detail": "Relix's Newport announcement notes Stipe joined Michael Shannon & Jason Narducy on their spring 2026 'Lifes Rich Pageant' tour at a New York stop, performing two tracks he had not played in 18 years. The same band plays Newport on Friday July 24.",
+        "sources": [
+          "https://relix.com/news/detail/michael-shannon-jason-narducys-r-e-m-tribute-joins-newport-folk-festival-lineup/"
+        ],
+        "artistId": "shannon-narducy-rem"
       }
     ],
     "status": "researched",
-    "verifiedAt": "2026-07-20"
+    "verifiedAt": "2026-07-22"
   },
   {
     "id": "hozier",
@@ -750,10 +787,21 @@
           "https://inforoo.com/thread/40653/newport-folk-festival-2026-july?page=29",
           "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/"
         ]
+      },
+      {
+        "type": "collaboration",
+        "weight": 52,
+        "detail": "Bright Eyes contribute a cover of 'Wonderful Life' to the Felice County Fair tribute album announced July 17, 2026. A 'Felice County Fair' Newport Folk aftershow is booked at the JPT in Newport on July 25. JamBase lists no Bright Eyes dates in July 2026 (next is Maha Festival, Omaha, Aug 8).",
+        "sources": [
+          "https://stereogum.com/2505608/hear-bright-eyes-the-lumineers-tracks-from-a-new-felice-brothers-tribute-album/music",
+          "https://www.rollingstone.com/music/music-country/felice-brothers-tribute-album-lumineers-bright-eyes-1235594554/",
+          "https://janepickens.com/shows",
+          "https://www.jambase.com/band/bright-eyes"
+        ]
       }
     ],
     "status": "researched",
-    "verifiedAt": "2026-07-20"
+    "verifiedAt": "2026-07-22"
   },
   {
     "id": "langhorne-slim",
@@ -977,16 +1025,24 @@
           "https://inforoo.com/thread/40653/newport-folk-festival-2026-july?page=29",
           "https://www.reddit.com/r/NewportFolkFestival/comments/1v113lm/surprise_guest/"
         ]
+      },
+      {
+        "type": "tour-routing",
+        "weight": 78,
+        "detail": "JamBase lists Dave Matthews Band at The Meadows Music Theatre in Hartford, CT on Sat July 25, 2026, then nothing until Wed July 29 at Jones Beach, NY. Hartford is roughly 90 minutes from Fort Adams, leaving Sunday July 26 wide open. Fri July 24 he is at Star Lake in Burgettstown, PA.",
+        "sources": [
+          "https://www.jambase.com/band/dave-matthews"
+        ]
       }
     ],
     "status": "researched",
-    "verifiedAt": "2026-07-20"
+    "verifiedAt": "2026-07-22"
   },
   {
     "id": "the-felice-brothers",
     "name": "The Felice Brothers",
     "billed": false,
-    "summary": "The strongest new on-island lead: their official Saturday Newport aftershow coincides with a new tribute album featuring several billed artists.",
+    "summary": "A Newport aftershow is named for their new tribute album and five contributors are on the bill, though the aftershow's own lineup is unpublished.",
     "links": {
       "wikipedia": "https://en.wikipedia.org/wiki/The_Felice_Brothers",
       "website": "https://www.thefelicebrothers.com/"
@@ -994,8 +1050,8 @@
     "evidence": [
       {
         "type": "tour-routing",
-        "weight": 100,
-        "detail": "The Jane Pickens Theater lists a sold-out official Newport Folk aftershow, 'Felice County Fair,' during festival weekend, putting the band in Newport on Saturday night.",
+        "weight": 45,
+        "detail": "A sold-out 'Newport Folk Aftershow: Felice County Fair' is booked at the JPT in Newport on Sat July 25, named for the tribute album to the band. The venue publishes no performer list, so their own presence is inferred, not confirmed. Songkick shows no other dates before Sept 1.",
         "sources": [
           "https://m.janepickens.com/"
         ]
@@ -1044,10 +1100,33 @@
           "https://inforoo.com/thread/40653/newport-folk-festival-2026-july?page=28",
           "https://www.reddit.com/r/NewportFolkFestival/comments/1u9cg9k/after_shows/"
         ]
+      },
+      {
+        "type": "appearance-vehicle",
+        "weight": 92,
+        "detail": "The JPT (Jane Pickens) in Newport lists a sold-out 'Newport Folk Aftershow: Felice County Fair' on Sat July 25, 2026. It ties to the tribute album 'Felice County Fair: A Celebration of the Felice Brothers' (announced July 17, out Oct 16), whose contributors include billed Newport acts The Lumineers, Dawes, Nathaniel Rateliff, Brandon Flowers and Deer Tick.",
+        "sources": [
+          "https://janepickens.com/shows",
+          "https://janepickens.com/shows/newport-folk-aftershow-felice-county-fair",
+          "https://stereogum.com/2505608/hear-bright-eyes-the-lumineers-tracks-from-a-new-felice-brothers-tribute-album/music",
+          "https://www.rollingstone.com/music/music-country/felice-brothers-tribute-album-lumineers-bright-eyes-1235594554/"
+        ],
+        "artistId": "deer-tick"
+      },
+      {
+        "type": "tour-routing",
+        "weight": 45,
+        "detail": "A sold-out 'Newport Folk Aftershow: Felice County Fair' is booked at the JPT in Newport on Sat July 25, named for the tribute album to the band. The venue publishes no performer list, so their own presence is inferred, not confirmed. Songkick shows no other dates before Sept 1.",
+        "sources": [
+          "https://janepickens.com/shows",
+          "https://janepickens.com/shows/newport-folk-aftershow-felice-county-fair",
+          "https://stereogum.com/2505608/hear-bright-eyes-the-lumineers-tracks-from-a-new-felice-brothers-tribute-album/music",
+          "https://www.rollingstone.com/music/music-country/felice-brothers-tribute-album-lumineers-bright-eyes-1235594554/"
+        ]
       }
     ],
     "status": "researched",
-    "verifiedAt": "2026-07-20"
+    "verifiedAt": "2026-07-22"
   },
   {
     "id": "jack-antonoff",
@@ -1334,10 +1413,18 @@
           "https://www.livenation.com/artist/K8vZ917qvGf/jesse-welles-events",
           "https://www.ticketmaster.com/jesse-welles-tickets/artist/3178720"
         ]
+      },
+      {
+        "type": "schedule-friction",
+        "weight": 88,
+        "detail": "JamBase reports Jesse Welles's 'Red Tour 2026' opens on July 24, 2026 at Avondale Brewing Company in Birmingham, Alabama and runs through October 26.",
+        "sources": [
+          "https://www.jambase.com/article/jesse-welles-tour-dates-2026-summer-fall"
+        ]
       }
     ],
     "status": "debunked",
-    "verifiedAt": "2026-07-20"
+    "verifiedAt": "2026-07-22"
   },
   {
     "id": "mumford-and-sons",
@@ -1456,10 +1543,18 @@
           "https://www.jambase.com/article/brandi-carlile-joins-jim-james-for-bob-dylan-cover-in-seattle",
           "https://jambands.com/news/2018/08/19/brandi-carlile-and-jim-james-team-up-for-aretha-franklin-tribute-in-los-angeles/"
         ]
+      },
+      {
+        "type": "schedule-friction",
+        "weight": 85,
+        "detail": "JamBase lists My Morning Jacket at FloydFest in Check, VA on July 25, 2026 and at Great South Bay Music Festival in Patchogue, NY on July 26, 2026.",
+        "sources": [
+          "https://www.jambase.com/band/my-morning-jacket"
+        ]
       }
     ],
-    "status": "researched",
-    "verifiedAt": "2026-07-20"
+    "status": "debunked",
+    "verifiedAt": "2026-07-22"
   },
   {
     "id": "jeff-tweedy",
@@ -1585,5 +1680,64 @@
     ],
     "status": "researched",
     "verifiedAt": "2026-07-20"
+  },
+  {
+    "id": "gabe-witcher",
+    "name": "Gabe Witcher",
+    "billed": false,
+    "summary": "Founding Punch Brothers member who plays in John C. Reilly's Mister Romantic band, which has a Newport Folk aftershow on Friday.",
+    "evidence": [
+      {
+        "type": "shared-band",
+        "weight": 44,
+        "detail": "Gabe Witcher plays violin in John C. Reilly's Mister Romantic band, which has a Newport Folk aftershow at the JPT on July 24. Witcher is a founding member of billed Saturday act Punch Brothers (Wikipedia lists Brittany Haas as the current fiddler).",
+        "sources": [
+          "https://www.misterromantic.com/",
+          "https://janepickens.com/shows",
+          "https://en.wikipedia.org/wiki/Punch_Brothers"
+        ],
+        "artistId": "punch-brothers"
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-22"
+  },
+  {
+    "id": "steve-berlin",
+    "name": "Steve Berlin",
+    "billed": false,
+    "summary": "Los Lobos saxophonist who guests on Deer Tick's 2026 album; Deer Tick play a named '& Friends' set on Friday.",
+    "evidence": [
+      {
+        "type": "collaboration",
+        "weight": 40,
+        "detail": "Deer Tick's ninth album 'Coin-O-Matic' (ATO, June 5, 2026) features guest turns from Los Lobos' Steve Berlin on baritone sax and former Deer Tick member Rob Crowell on organ. Deer Tick play a billed 'Deer Tick & Friends' set on Friday July 24.",
+        "sources": [
+          "https://klofmag.com/2026/06/deer-tick-coin-o-matic/"
+        ],
+        "artistId": "deer-tick"
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-22"
+  },
+  {
+    "id": "rob-crowell",
+    "name": "Rob Crowell",
+    "billed": false,
+    "summary": "Former Deer Tick member who guests on their June 2026 album, with Deer Tick's Friday '& Friends' set an obvious vehicle.",
+    "evidence": [
+      {
+        "type": "shared-band",
+        "weight": 48,
+        "detail": "Former Deer Tick member Rob Crowell plays organ as a guest on Deer Tick's June 2026 album 'Coin-O-Matic.' Deer Tick's Newport slot on Friday July 24 is billed as 'Deer Tick & Friends.'",
+        "sources": [
+          "https://klofmag.com/2026/06/deer-tick-coin-o-matic/"
+        ],
+        "artistId": "deer-tick"
+      }
+    ],
+    "status": "researched",
+    "verifiedAt": "2026-07-22"
   }
 ]

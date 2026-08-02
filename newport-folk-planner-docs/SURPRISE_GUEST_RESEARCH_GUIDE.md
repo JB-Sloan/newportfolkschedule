@@ -74,7 +74,7 @@ A JSON array in `data/surprise-guests-2026.json`. Each element is one *suspect*
 
 ## 2. The eight evidence types (and what they mean)
 
-Defined in `lib/surprise.ts` as `EVIDENCE_TYPES`. The scorer starts from a 9%
+Defined in `lib/surprise.ts` as `EVIDENCE_TYPES`. The scorer starts from a ~14%
 historical prior and applies documented log-odds coefficients. Pick the right
 `type` and a fair `weight`; do not try to reverse-engineer a desired percentage.
 

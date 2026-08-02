@@ -84,6 +84,12 @@ function ArtistHistoryRow({
                 >
                   {record.role === "billed" ? "Billed" : "Guest"}
                 </span>
+                {record.billedAs ? (
+                  <span className="text-ink/70">
+                    as <span className="font-bold">{record.billedAs}</span>
+                    {record.notes ? " · " : ""}
+                  </span>
+                ) : null}
                 {record.notes ? <span className="text-ink/70">{record.notes}</span> : null}
               </span>
             </div>

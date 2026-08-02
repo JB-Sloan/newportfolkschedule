@@ -286,8 +286,10 @@ function ev(type: SurpriseEvidence["type"], weight: number, artistId?: string): 
 }
 
 function testSurpriseScoring() {
+  // The 2016-2023 guest census has a median of 5 identified guests, so a
+  // screened candidate in a ~34-strong pool starts near 15%.
   const historicalPrior = deriveHistoricalBaseRate(historicalYears, 34);
-  assert.ok(historicalPrior > 0.08 && historicalPrior < 0.1, `history-derived prior is ~9% (got ${historicalPrior})`);
+  assert.ok(historicalPrior > 0.13 && historicalPrior < 0.17, `history-derived prior is ~15% (got ${historicalPrior})`);
 
   // Pre-2016 seasons list billed lineups with no guest census. Adding them to
   // the history dataset must not drag the median guest count toward zero and
@@ -312,9 +314,13 @@ function testSurpriseScoring() {
   assert.equal(two, 0.55, "a second 50 clue closes only 20% of the remaining weighted gap");
   assert.equal(categoryStrength([ev("collaboration", 50)], "shared-band"), 0);
 
-  // A relationship without current availability remains close to the historical prior.
+  // A relationship without current availability remains close to the historical
+  // prior: the shared-band boost is offset by the unknown-availability penalty.
   const lone = scoreSuspect({ evidence: [ev("shared-band", 95, "lucy-dacus")] });
-  assert.ok(lone.percent >= 7 && lone.percent <= 12, `unrouted band tie stays conservative (got ${lone.percent})`);
+  assert.ok(
+    lone.percent >= 11 && lone.percent <= 18,
+    `unrouted band tie stays near the ~14% prior (got ${lone.percent})`
+  );
   assert.equal(lone.availabilityKnown, false);
 
   // Distinct categories corroborate, but do not create an implausible 70% rumor.
@@ -423,6 +429,31 @@ function testHistory() {
 
   const rateliff = getArtistHistory("nathaniel-rateliff", summaries);
   assert.equal(rateliff!.name, "Nathaniel Rateliff", "matched summaries display the 2026 canonical name");
+
+  // A co-billed set counts toward every artist who actually played it, and the
+  // original billing is retained so the count stays explainable.
+  const coBilled: HistoricalYear[] = [
+    { year: 1963, cancelled: false, appearances: [{ name: "Joan Baez", role: "billed" }] },
+    { year: 1965, cancelled: false, appearances: [{ name: "Joan Baez with Donovan", role: "billed" }] }
+  ];
+  const credits = { "Joan Baez with Donovan": ["Joan Baez", "Donovan"] };
+  const creditedRecords = buildHistoryRecords(coBilled, [], credits);
+  assert.equal(creditedRecords.length, 3, "the co-billing expands into one record per artist");
+
+  const credited = summarizeHistory(creditedRecords);
+  const baez = credited.find((s) => s.name === "Joan Baez");
+  assert.equal(baez!.totalAppearances, 2, "Joan Baez is credited for her co-billed set");
+  assert.deepEqual(baez!.years, [1963, 1965]);
+  assert.equal(
+    baez!.records.find((r) => r.year === 1965)!.billedAs,
+    "Joan Baez with Donovan",
+    "the original billing is preserved for display"
+  );
+  assert.equal(baez!.records.find((r) => r.year === 1963)!.billedAs, undefined, "solo billings need no alias");
+  assert.equal(credited.find((s) => s.name === "Donovan")!.totalAppearances, 1);
+
+  // Billings absent from the credits map are untouched.
+  assert.equal(buildHistoryRecords(coBilled, [], {}).length, 2);
 
   // Real dataset sanity checks.
   assert.ok(historicalYears.some((year) => year.year === 2020 && year.cancelled));

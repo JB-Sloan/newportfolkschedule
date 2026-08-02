@@ -54,27 +54,43 @@ export function matchHistoricalArtist(name: string, artists: Artist[]): ArtistMa
 
 export type HistoryAppearanceRecord = {
   year: number;
+  /** The credited artist this record counts toward. */
   name: string;
+  /** The original billing, when it differs from the credited artist. */
+  billedAs?: string;
   role: "billed" | "guest";
   notes?: string;
   artistId?: string;
   artistName?: string;
 };
 
-export function buildHistoryRecords(years: HistoricalYear[], artists: Artist[]): HistoryAppearanceRecord[] {
+/**
+ * Expands each billing into one record per credited artist, so a co-billed or
+ * grouped set ("Béla Fleck and Abigail Washburn") counts toward every artist
+ * who actually played it rather than creating a separate one-off entry.
+ */
+export function buildHistoryRecords(
+  years: HistoricalYear[],
+  artists: Artist[],
+  credits: Record<string, string[]> = {}
+): HistoryAppearanceRecord[] {
   const records: HistoryAppearanceRecord[] = [];
   for (const year of years) {
     if (year.cancelled) continue;
     for (const appearance of year.appearances) {
-      const match = matchHistoricalArtist(appearance.name, artists);
-      records.push({
-        year: year.year,
-        name: appearance.name,
-        role: appearance.role,
-        notes: appearance.notes,
-        artistId: match?.artistId,
-        artistName: match?.name
-      });
+      const creditedNames = credits[appearance.name] ?? [appearance.name];
+      for (const creditedName of creditedNames) {
+        const match = matchHistoricalArtist(creditedName, artists);
+        records.push({
+          year: year.year,
+          name: creditedName,
+          billedAs: creditedName === appearance.name ? undefined : appearance.name,
+          role: appearance.role,
+          notes: appearance.notes,
+          artistId: match?.artistId,
+          artistName: match?.name
+        });
+      }
     }
   }
   return records;

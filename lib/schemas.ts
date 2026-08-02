@@ -172,7 +172,33 @@ export const SurpriseGuestSchema = z.object({
 export const HistoricalAppearanceSchema = z.object({
   name: z.string().min(1),
   role: z.enum(["billed", "guest"]),
-  notes: z.string().max(300).optional()
+  notes: z.string().max(300).optional(),
+  /** Per-appearance citations, used for guest sit-ins sourced from press. */
+  sources: z.array(z.string().url()).optional()
+});
+
+/**
+ * Officially announced Newport Folk Aftershow events. These are confirmed,
+ * ticketed bookings — not speculation — so they are presented as acts rather
+ * than scored as rumors.
+ */
+export const AftershowSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  title: z.string().min(1),
+  /** Omitted when the venue has not published who performs. */
+  act: z.string().min(1).optional(),
+  date: FestivalDateSchema,
+  venue: z.string().min(1),
+  city: z.string().min(1),
+  soldOut: z.boolean().default(false),
+  sourceUrl: z.string().url(),
+  note: z.string().max(300).optional()
+});
+
+export const HistoryCreditsSchema = z.object({
+  $comment: z.string().optional(),
+  /** Billing name -> the individual acts that performed under it. */
+  credits: z.record(z.array(z.string().min(1)).min(1))
 });
 
 export const HistoricalYearSchema = z.object({
@@ -240,6 +266,8 @@ export type Manifest = z.infer<typeof ManifestSchema>;
 export type SurpriseEvidenceType = z.infer<typeof SurpriseEvidenceTypeSchema>;
 export type SurpriseEvidence = z.infer<typeof SurpriseEvidenceSchema>;
 export type SurpriseGuest = z.infer<typeof SurpriseGuestSchema>;
+export type Aftershow = z.infer<typeof AftershowSchema>;
+export type HistoryCredits = z.infer<typeof HistoryCreditsSchema>;
 export type HistoricalAppearance = z.infer<typeof HistoricalAppearanceSchema>;
 export type HistoricalYear = z.infer<typeof HistoricalYearSchema>;
 export type AssistantRequest = z.infer<typeof AssistantRequestSchema>;

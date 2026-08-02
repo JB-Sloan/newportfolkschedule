@@ -6,9 +6,13 @@ import spotifyArtistMapJson from "../data/spotify-artist-map.json";
 import stagesJson from "../data/stages-2026.json";
 import surpriseGuestsJson from "../data/surprise-guests-2026.json";
 import historyJson from "../data/newport-history.json";
+import historyCreditsJson from "../data/history-credits.json";
+import aftershowsJson from "../data/aftershows-2026.json";
 import {
   ArtistSchema,
   HistoricalYearSchema,
+  AftershowSchema,
+  HistoryCreditsSchema,
   ManifestSchema,
   PolicySchema,
   ScheduleItemSchema,
@@ -25,6 +29,8 @@ const policies = PolicySchema.array().parse(policiesJson);
 const spotifyArtistMap = SpotifyArtistMapSchema.parse(spotifyArtistMapJson);
 const surpriseGuests = SurpriseGuestSchema.array().parse(surpriseGuestsJson);
 const historicalYears = HistoricalYearSchema.array().parse(historyJson);
+const historyCredits = HistoryCreditsSchema.parse(historyCreditsJson).credits;
+const aftershows = AftershowSchema.array().parse(aftershowsJson);
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -135,6 +141,13 @@ for (const year of historicalYears) {
   }
 }
 
+const billedNames = new Set(historicalYears.flatMap((year) => year.appearances.map((a) => a.name)));
+for (const billing of Object.keys(historyCredits)) {
+  if (!billedNames.has(billing)) {
+    errors.push(`history-credits maps a billing that appears in no festival year: "${billing}"`);
+  }
+}
+
 if (warnings.length) {
   console.warn(`Data validation warnings:\n${warnings.map((warning) => `- ${warning}`).join("\n")}`);
 }
@@ -145,5 +158,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Validated ${schedule.length} schedule items, ${artists.length} artists, ${stages.length} stages, ${policies.length} policies, ${Object.keys(spotifyArtistMap.overrides).length} Spotify overrides, ${surpriseGuests.length} surprise suspects, ${historicalYears.length} historical years for ${manifest.scheduleVersion}.`
+  `Validated ${schedule.length} schedule items, ${artists.length} artists, ${stages.length} stages, ${policies.length} policies, ${Object.keys(spotifyArtistMap.overrides).length} Spotify overrides, ${surpriseGuests.length} surprise suspects, ${historicalYears.length} historical years, ${Object.keys(historyCredits).length} credit mappings, ${aftershows.length} aftershows for ${manifest.scheduleVersion}.`
 );

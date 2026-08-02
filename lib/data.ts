@@ -5,9 +5,13 @@ import scheduleJson from "@/data/schedule-2026.json";
 import stagesJson from "@/data/stages-2026.json";
 import surpriseGuestsJson from "@/data/surprise-guests-2026.json";
 import historyJson from "@/data/newport-history.json";
+import historyCreditsJson from "@/data/history-credits.json";
+import aftershowsJson from "@/data/aftershows-2026.json";
 import {
   ArtistSchema,
   HistoricalYearSchema,
+  AftershowSchema,
+  HistoryCreditsSchema,
   ManifestSchema,
   PolicySchema,
   ScheduleItemSchema,
@@ -32,7 +36,9 @@ export const surpriseGuests = SurpriseGuestSchema.array().parse(surpriseGuestsJs
 export const historicalYears = HistoricalYearSchema.array()
   .parse(historyJson)
   .sort((a, b) => a.year - b.year);
-export const historyRecords = buildHistoryRecords(historicalYears, artists);
+export const aftershows = AftershowSchema.array().parse(aftershowsJson).sort((a, b) => a.date.localeCompare(b.date));
+export const historyCredits = HistoryCreditsSchema.parse(historyCreditsJson).credits;
+export const historyRecords = buildHistoryRecords(historicalYears, artists, historyCredits);
 export const historySummaries = summarizeHistory(historyRecords);
 
 export const artistsById: Record<string, Artist> = Object.fromEntries(
