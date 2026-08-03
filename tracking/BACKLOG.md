@@ -41,7 +41,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E1-03 | Migration: `releases`, `release_credits` | done | `0002_music_graph.sql` |
 | E1-04 | MusicBrainz lookup + import service | todo | 1 req/sec, real User-Agent |
 | E1-05 | Artist merge/dedupe tool for moderators | todo | You will need this sooner than you think |
-| E1-06 | Artist page: appearances, memberships, releases | todo | |
+| E1-06 | Artist page: appearances, memberships, releases | done | `/artist/[slug]` ships appearance history from `v_artist_appearances`. Memberships/releases await that data |
 | E1-07 | Artist search with trigram + alias matching | todo | |
 | E1-08 | Seed instruments + reference data | done | Applied. 22 instruments, 5 stages, 20 transits |
 

@@ -1,17 +1,17 @@
 # Status
 
-*Generated 2026-08-02 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
+*Generated 2026-08-03 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
 
 ## Overall
 
-`████████░░░░░░░░░░░░░░░░░░░░░░` **28%** (36/130 tasks)
+`█████████░░░░░░░░░░░░░░░░░░░░░` **28%** (37/130 tasks)
 
 | Status | Count |
 |---|---|
-| ✅ done | 36 |
+| ✅ done | 37 |
 | 🔨 wip | 0 |
 | ⛔ blocked | 2 |
-| ⬜ todo | 92 |
+| ⬜ todo | 91 |
 | 🚫 cut | 1 |
 
 ## By epic
@@ -19,7 +19,7 @@
 | Epic | Phase | Progress | Done | Open | Blocked |
 |---|---|---|---|---|---|
 | **E0** Foundation | Phase 0 | `███████░░░░░` 55% | 11 | 9 | 0 |
-| **E1** Music Graph | Phase 0 | `██████░░░░░░` 50% | 4 | 4 | 0 |
+| **E1** Music Graph | Phase 0 | `████████░░░░` 62% | 5 | 3 | 0 |
 | **E2** Set Pages & Core UGC | Phase 0 | `██████░░░░░░` 50% | 8 | 8 | 0 |
 | **E3** Media Embeds | Phase 0 | `██░░░░░░░░░░` 20% | 1 | 4 | 0 |
 | **E4** Message Board | Phase 1 | `███░░░░░░░░░` 29% | 2 | 5 | 0 |
@@ -58,7 +58,7 @@
 **E1 Music Graph**
 - ⬜ E1-04 MusicBrainz lookup + import service
 - ⬜ E1-05 Artist merge/dedupe tool for moderators
-- ⬜ E1-06 Artist page: appearances, memberships, releases
+- ⬜ E1-07 Artist search with trigram + alias matching
 
 **E2 Set Pages & Core UGC**
 - ⬜ E2-09 Set page UI
