@@ -4,14 +4,14 @@
 
 ## Overall
 
-`█████████░░░░░░░░░░░░░░░░░░░░░` **28%** (37/130 tasks)
+`█████████░░░░░░░░░░░░░░░░░░░░░` **30%** (39/130 tasks)
 
 | Status | Count |
 |---|---|
-| ✅ done | 37 |
-| 🔨 wip | 0 |
-| ⛔ blocked | 2 |
-| ⬜ todo | 91 |
+| ✅ done | 39 |
+| 🔨 wip | 1 |
+| ⛔ blocked | 0 |
+| ⬜ todo | 90 |
 | 🚫 cut | 1 |
 
 ## By epic
@@ -30,15 +30,14 @@
 | **E9** Profiles, Attendance & Badges | Phase 1 | `███░░░░░░░░░` 29% | 2 | 5 | 0 |
 | **E10** Announcement Tracker | Phase 3 | `███░░░░░░░░░` 25% | 1 | 3 | 0 |
 | **E11** Schedule Builder | Phase 3 | `█░░░░░░░░░░░` 11% | 1 | 8 | 0 |
-| **E12** Historical Backfill | Phase 1, ongoing | `░░░░░░░░░░░░` 0% | 0 | 8 | 2 |
+| **E12** Historical Backfill | Phase 1, ongoing | `██░░░░░░░░░░` 20% | 2 | 8 | 0 |
 | **E13** Merch | Phase 4 | `███░░░░░░░░░` 25% | 1 | 3 | 0 |
 | **E14** Logistics & Meetups | Phase 4 | `░░░░░░░░░░░░` 0% | 0 | 3 | 0 |
 | **E15** Live Mode | Phase 4 | `░░░░░░░░░░░░` 0% | 0 | 5 | 0 |
 
-## Blocked
+## In progress
 
-- ⛔ **E12-06** Candidate-detection pass over forum threads — Blocked by E12-04, E12-05
-- ⛔ **E12-07** LLM structured-extraction pass — Blocked by E12-06
+- 🔨 **E12-08** Moderator review queue for mined claims
 
 ## Critical path / warnings
 

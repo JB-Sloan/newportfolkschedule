@@ -167,3 +167,30 @@ predictions              (artist, edition, as_of, score, rank, probability, mode
 **Schedule** — `user_schedules`, `user_schedule_items`
 **Merch** — `merch_items`, `merch_listings`
 **Moderation** — `reports`, `moderation_actions`
+**Community demand** — `artist_requests` (view `v_artist_demand`)
+
+## `artist_requests` (0013)
+
+Forum-sourced fan demand — "I wish they'd book X" — captured as one row per
+explicit request in an Inforoo annual thread, with a `sources` row for the
+post (permalink + author handle + short excerpt). Distinct from the Wishlist
+(E8) and bingo; it is a third crowd signal that feeds Oracle `F20_crowd_pick_rate`.
+
+- `festival_year` is the edition discussed; `request_post_year` is when it was
+  posted (annual threads open the prior summer).
+- `request_type`: `wish` | `request` | `dream` | `prediction`. Only `wish`/`request`
+  count as demand in `v_artist_demand`.
+- `artist_id` resolves to `artists` when the act exists in our graph; requests
+  for acts that have never played Newport keep `requested_name` with a null
+  `artist_id` until an artist record is created.
+
+### Research → schema mapping (`Inforoo Research/`)
+
+| Research file | Target | Status |
+|---|---|---|
+| `requested-acts.csv` | `artist_requests` + `sources` | **Imported** (282 verified) |
+| `sit-ins.csv` | `performances` (role `sit_in`/`guest_vocal`/…) + `sources`/`citations`; aftershows need `events`/`sets` first | Mapped; import pending |
+| `songs-played.csv` | `songs` + `setlist_entries` + `setlist_entry_performers` | Mapped; import pending |
+
+Only `review_status=verified` (and `confidence` high/medium) rows are imported;
+the raw queues in the research folder stay out of production.

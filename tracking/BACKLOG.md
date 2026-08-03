@@ -184,9 +184,9 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E12-03 | setlist.fm import for prior editions | todo | Check licensing |
 | E12-04 | **Post in the Inforoo community explaining the project** | todo | **Do this before any scraping.** Highest-leverage 5 min in the epic |
 | E12-05 | Check Inforoo robots.txt + ToS | todo | If restricted → manual-assist import only |
-| E12-06 | Candidate-detection pass over forum threads | blocked | Blocked by E12-04, E12-05 |
-| E12-07 | LLM structured-extraction pass | blocked | Blocked by E12-06 |
-| E12-08 | Moderator review queue for mined claims | todo | |
+| E12-06 | Candidate-detection pass over forum threads | done | Research agent: 30,483 posts / 1,024 pages across 15 threads → candidate queues |
+| E12-07 | LLM structured-extraction pass | done | Research agent: 282 requests, 274 sit-ins, 138 songs extracted with per-row citations |
+| E12-08 | Moderator review queue for mined claims | wip | `Inforoo Research/reviewed/`; verified requests imported (0014), sit-ins/songs pending |
 | E12-09 | Opt-out request handling + contact address | todo | |
 | E12-10 | "Adopt an edition" program | todo | |
 
