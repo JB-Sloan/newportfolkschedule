@@ -12,13 +12,13 @@ const TIME = new Intl.DateTimeFormat("en-US", {
 });
 
 type SetRow = {
+  slug: string;
   billed_name: string;
   set_kind: string;
   is_surprise: boolean;
   scheduled_start: string | null;
   billed_artist_id: string | null;
   stages: { name: string; sort_order: number } | null;
-  artists: { slug: string } | null;
   events: { kind: string; date: string } | null;
 };
 
@@ -38,7 +38,7 @@ export default async function EditionPage({ params }: { params: { year: string }
   const { data: rows } = await supabase
     .from("sets")
     .select(
-      "billed_name, set_kind, is_surprise, scheduled_start, billed_artist_id, stages(name, sort_order), artists(slug), events!inner(kind, date, edition_id)"
+      "slug, billed_name, set_kind, is_surprise, scheduled_start, billed_artist_id, stages(name, sort_order), events!inner(kind, date, edition_id)"
     )
     .eq("events.edition_id", edition.id)
     .order("scheduled_start", { ascending: true, nullsFirst: false })
@@ -48,14 +48,11 @@ export default async function EditionPage({ params }: { params: { year: string }
   const billed = sets.filter((s) => !s.is_surprise);
   const guests = sets.filter((s) => s.is_surprise);
 
-  const SetName = ({ s }: { s: SetRow }) =>
-    s.artists?.slug ? (
-      <Link href={`/artist/${s.artists.slug}`} className="font-bold underline decoration-black/20 hover:decoration-black">
-        {s.billed_name}
-      </Link>
-    ) : (
-      <span className="font-bold">{s.billed_name}</span>
-    );
+  const SetName = ({ s }: { s: SetRow }) => (
+    <Link href={`/archive/${year}/${s.slug}`} className="font-bold underline decoration-black/20 hover:decoration-black">
+      {s.billed_name}
+    </Link>
+  );
 
   return (
     <main className="mx-auto max-w-3xl p-6">
@@ -89,13 +86,9 @@ export default async function EditionPage({ params }: { params: { year: string }
           <ul className="mt-2 flex flex-wrap gap-2">
             {guests.map((s, i) => (
               <li key={i} className="rounded-full bg-black/5 px-3 py-1 text-sm">
-                {s.artists?.slug ? (
-                  <Link href={`/artist/${s.artists.slug}`} className="underline decoration-black/20 hover:decoration-black">
-                    {s.billed_name}
-                  </Link>
-                ) : (
-                  s.billed_name
-                )}
+                <Link href={`/archive/${year}/${s.slug}`} className="underline decoration-black/20 hover:decoration-black">
+                  {s.billed_name}
+                </Link>
               </li>
             ))}
           </ul>

@@ -238,6 +238,83 @@ export type Database = {
           },
         ]
       }
+      artist_requests: {
+        Row: {
+          artist_id: string | null
+          confidence: Database["public"]["Enums"]["confidence_level"]
+          context: string | null
+          created_at: string
+          edition_id: string | null
+          festival_year: number
+          id: string
+          request_post_year: number | null
+          request_type: Database["public"]["Enums"]["request_type"]
+          requested_name: string
+          source_id: string | null
+          status: Database["public"]["Enums"]["content_status"]
+          submitted_by: string | null
+        }
+        Insert: {
+          artist_id?: string | null
+          confidence?: Database["public"]["Enums"]["confidence_level"]
+          context?: string | null
+          created_at?: string
+          edition_id?: string | null
+          festival_year: number
+          id?: string
+          request_post_year?: number | null
+          request_type?: Database["public"]["Enums"]["request_type"]
+          requested_name: string
+          source_id?: string | null
+          status?: Database["public"]["Enums"]["content_status"]
+          submitted_by?: string | null
+        }
+        Update: {
+          artist_id?: string | null
+          confidence?: Database["public"]["Enums"]["confidence_level"]
+          context?: string | null
+          created_at?: string
+          edition_id?: string | null
+          festival_year?: number
+          id?: string
+          request_post_year?: number | null
+          request_type?: Database["public"]["Enums"]["request_type"]
+          requested_name?: string
+          source_id?: string | null
+          status?: Database["public"]["Enums"]["content_status"]
+          submitted_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "artist_requests_artist_id_fkey"
+            columns: ["artist_id"]
+            isOneToOne: false
+            referencedRelation: "artists"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "artist_requests_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "editions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "artist_requests_source_id_fkey"
+            columns: ["source_id"]
+            isOneToOne: false
+            referencedRelation: "sources"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "artist_requests_submitted_by_fkey"
+            columns: ["submitted_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       artists: {
         Row: {
           artist_type: Database["public"]["Enums"]["artist_type"]
@@ -2469,6 +2546,24 @@ export type Database = {
           },
         ]
       }
+      v_artist_demand: {
+        Row: {
+          artist_id: string | null
+          artist_name: string | null
+          demand_count: number | null
+          festival_year: number | null
+          request_rows: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "artist_requests_artist_id_fkey"
+            columns: ["artist_id"]
+            isOneToOne: false
+            referencedRelation: "artists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       v_bingo_pick_rate: {
         Row: {
           artist_id: string | null
@@ -2613,6 +2708,7 @@ export type Database = {
         | "compilation"
         | "soundtrack"
         | "reissue"
+      request_type: "wish" | "request" | "dream" | "prediction"
       set_kind:
         | "standard"
         | "tribute"
@@ -2838,6 +2934,7 @@ export const Constants = {
         "soundtrack",
         "reissue",
       ],
+      request_type: ["wish", "request", "dream", "prediction"],
       set_kind: [
         "standard",
         "tribute",

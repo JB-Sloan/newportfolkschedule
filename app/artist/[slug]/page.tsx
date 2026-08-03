@@ -38,6 +38,13 @@ export default async function ArtistPage({ params }: { params: { slug: string } 
   const appearances = rows ?? [];
   const years = [...new Set(appearances.map((a) => a.edition_year))];
 
+  const { data: reqRows } = await supabase
+    .from("artist_requests")
+    .select("festival_year")
+    .eq("artist_id", artist.id)
+    .returns<{ festival_year: number }[]>();
+  const requestYears = [...new Set((reqRows ?? []).map((r) => r.festival_year))].sort((a, b) => b - a);
+
   return (
     <main className="mx-auto max-w-3xl p-6">
       <Link href="/archive" className="text-xs font-bold uppercase tracking-widest opacity-50 hover:opacity-80">
@@ -52,6 +59,14 @@ export default async function ArtistPage({ params }: { params: { slug: string } 
         {years.length ? ` across ${years.length} ${years.length === 1 ? "edition" : "editions"} (${years[years.length - 1]}–${years[0]})` : ""}
       </p>
       {artist.bio ? <p className="mt-3 max-w-prose text-sm opacity-80">{artist.bio}</p> : null}
+
+      {(reqRows ?? []).length ? (
+        <p className="mt-3 inline-block rounded-lg bg-black/5 px-3 py-2 text-sm">
+          🎟️ Wished for by fans on the Inforoo boards{" "}
+          {requestYears.length ? `(${requestYears.join(", ")})` : ""} — {(reqRows ?? []).length} request
+          {(reqRows ?? []).length === 1 ? "" : "s"}.
+        </p>
+      ) : null}
 
       <ul className="mt-6 divide-y divide-black/10">
         {appearances.map((a, i) => (
