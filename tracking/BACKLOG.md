@@ -60,7 +60,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E2-08 | **Seed 2026 edition: events, stages, sets** | done | `0010_seed_2026_edition.sql`. 1 edition, 5 events (3 days + 2 aftershows), 79 sets. Added Bike stage + Jane Pickens venue |
 | E2-09 | Set page UI | done | `/archive/[year]/[slug]` shows performers by role + stage/time; edition pages link to it. Setlist/media/reviews attach next |
 | E2-10 | Setlist editor with revision history + revert | wip | Add-song contribution shipped (`/archive/[year]/[slug]`); revision-history/revert UI still todo |
-| E2-11 | Sit-in submission with instrument + song tagging | todo | |
+| E2-11 | Sit-in submission with instrument + song tagging | wip | Guest+role+instruments submission shipped (`/archive/[year]/[slug]`, pending until confirmed); per-song tagging still todo |
 | E2-12 | Confirm/dispute UI with "confirmed by N" | todo | |
 | E2-13 | Review + rating UI | todo | |
 | E2-14 | Citation attachment UI | todo | |
