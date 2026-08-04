@@ -29,7 +29,19 @@ type SetRow = {
   billed_artist_id: string | null;
   stages: { name: string; sort_order: number } | null;
   events: { kind: string; date: string } | null;
+  setlist_entries: { count: number }[];
 };
+
+const songCount = (s: SetRow) => s.setlist_entries?.[0]?.count ?? 0;
+
+function SetlistBadge({ n }: { n: number }) {
+  if (!n) return null;
+  return (
+    <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">
+      ♪ {n}
+    </span>
+  );
+}
 
 // Minute-of-day in festival time (America/New_York), matching the planner grid.
 function minuteOfDay(iso: string) {
@@ -125,9 +137,14 @@ function DayTimeline({ year, date, sets }: { year: number; date: string; sets: S
                           {TIME.format(new Date(s.scheduled_start!))}
                         </span>
                         <span className="mt-0.5 block text-sm font-black leading-tight line-clamp-2">{s.billed_name}</span>
-                        {s.set_kind !== "standard" ? (
-                          <span className="mt-1 inline-block rounded-full bg-black/10 px-1.5 text-[10px] font-bold">{s.set_kind}</span>
-                        ) : null}
+                        <span className="mt-1 flex flex-wrap gap-1">
+                          {s.set_kind !== "standard" ? (
+                            <span className="inline-block rounded-full bg-black/10 px-1.5 text-[10px] font-bold">{s.set_kind}</span>
+                          ) : null}
+                          {songCount(s) ? (
+                            <span className="inline-block rounded-full bg-emerald-100 px-1.5 text-[10px] font-bold text-emerald-800">♪ {songCount(s)}</span>
+                          ) : null}
+                        </span>
                       </Link>
                     );
                   })}
@@ -156,7 +173,7 @@ export default async function EditionPage({ params }: { params: { year: string }
   const { data: rows } = await supabase
     .from("sets")
     .select(
-      "slug, billed_name, set_kind, is_surprise, scheduled_start, scheduled_end, billed_artist_id, stages(name, sort_order), events!inner(kind, date, edition_id)"
+      "slug, billed_name, set_kind, is_surprise, scheduled_start, scheduled_end, billed_artist_id, stages(name, sort_order), events!inner(kind, date, edition_id), setlist_entries(count)"
     )
     .eq("events.edition_id", edition.id)
     .order("scheduled_start", { ascending: true, nullsFirst: false })
@@ -201,6 +218,7 @@ export default async function EditionPage({ params }: { params: { year: string }
                 {s.set_kind !== "standard" ? (
                   <span className="rounded-full bg-black/10 px-2 py-0.5 text-xs font-bold">{s.set_kind}</span>
                 ) : null}
+                <SetlistBadge n={songCount(s)} />
               </li>
             ))}
           </ul>

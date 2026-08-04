@@ -35,6 +35,11 @@ export default async function ArchiveIndexPage() {
       <p className="mt-1 text-sm opacity-70">
         {editions.length} editions · {totalSets.toLocaleString()} sets · 1959–2026
       </p>
+      <nav className="mt-3 flex flex-wrap gap-2 text-sm font-bold">
+        <Link href="/setlists" className="rounded-full bg-black/5 px-3 py-1 hover:bg-black/10">♪ Setlists</Link>
+        <Link href="/sit-ins" className="rounded-full bg-black/5 px-3 py-1 hover:bg-black/10">Sit-in graph</Link>
+        <Link href="/wishlists" className="rounded-full bg-black/5 px-3 py-1 hover:bg-black/10">Fan wishlists</Link>
+      </nav>
 
       {error ? <p className="mt-4 rounded-lg bg-red-100 p-3 text-sm text-red-800">{error.message}</p> : null}
 
