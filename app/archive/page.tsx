@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { AuthStatus } from "@/components/AuthStatus";
 
 /**
  * The Archive index: every edition we hold, newest first, with set counts.
@@ -30,7 +31,10 @@ export default async function ArchiveIndexPage() {
 
   return (
     <main className="mx-auto max-w-4xl p-6">
-      <p className="text-xs font-bold uppercase tracking-widest opacity-50">The Archive</p>
+      <div className="flex items-start justify-between gap-3">
+        <p className="text-xs font-bold uppercase tracking-widest opacity-50">The Archive</p>
+        <AuthStatus />
+      </div>
       <h1 className="mt-1 text-3xl font-black">Newport Folk, year by year</h1>
       <p className="mt-1 text-sm opacity-70">
         {editions.length} editions · {totalSets.toLocaleString()} sets · 1959–2026
