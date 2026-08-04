@@ -4,14 +4,14 @@
 
 ## Overall
 
-`██████████░░░░░░░░░░░░░░░░░░░░` **32%** (41/129 tasks)
+`██████████░░░░░░░░░░░░░░░░░░░░` **33%** (42/129 tasks)
 
 | Status | Count |
 |---|---|
-| ✅ done | 41 |
+| ✅ done | 42 |
 | 🔨 wip | 3 |
 | ⛔ blocked | 0 |
-| ⬜ todo | 85 |
+| ⬜ todo | 84 |
 | 🚫 cut | 2 |
 
 ## By epic
@@ -20,7 +20,7 @@
 |---|---|---|---|---|---|
 | **E0** Foundation | Phase 0 | `████████░░░░` 63% | 12 | 7 | 0 |
 | **E1** Music Graph | Phase 0 | `████████░░░░` 62% | 5 | 3 | 0 |
-| **E2** Set Pages & Core UGC | Phase 0 | `███████░░░░░` 56% | 9 | 7 | 0 |
+| **E2** Set Pages & Core UGC | Phase 0 | `████████░░░░` 62% | 10 | 6 | 0 |
 | **E3** Media Embeds | Phase 0 | `██░░░░░░░░░░` 20% | 1 | 4 | 0 |
 | **E4** Message Board | Phase 1 | `███░░░░░░░░░` 29% | 2 | 5 | 0 |
 | **E5** The Wire | Phase 1 | `█░░░░░░░░░░░` 11% | 1 | 8 | 0 |
@@ -61,9 +61,9 @@
 - ⬜ E1-07 Artist search with trigram + alias matching
 
 **E2 Set Pages & Core UGC**
-- ⬜ E2-12 Confirm/dispute UI with "confirmed by N"
 - ⬜ E2-13 Review + rating UI
 - ⬜ E2-14 Citation attachment UI
+- ⬜ E2-15 Song fuzzy-match on setlist entry
 
 **E3 Media Embeds**
 - ⬜ E3-02 oEmbed resolver (YouTube, Instagram, Bandcamp, Archive.org)
