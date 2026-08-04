@@ -186,7 +186,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E12-05 | Check Inforoo robots.txt + ToS | todo | If restricted → manual-assist import only |
 | E12-06 | Candidate-detection pass over forum threads | done | Research agent: 30,483 posts / 1,024 pages across 15 threads → candidate queues |
 | E12-07 | LLM structured-extraction pass | done | Research agent: 282 requests, 274 sit-ins, 138 songs extracted with per-row citations |
-| E12-08 | Moderator review queue for mined claims | wip | `Inforoo Research/reviewed/`; verified requests imported (0014), sit-ins/songs pending |
+| E12-08 | Moderator review queue for mined claims | wip | Verified imported: requests (0014), sit-ins (0015), songs (0016). Gated: unnamed-host + collaboration-set rows |
 | E12-09 | Opt-out request handling + contact address | todo | |
 | E12-10 | "Adopt an edition" program | todo | |
 

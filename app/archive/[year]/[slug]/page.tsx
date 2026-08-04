@@ -36,7 +36,15 @@ type Performer = {
   status: string;
   artists: { name: string; slug: string; artist_type: string } | null;
 };
+type SetlistEntry = {
+  position: number;
+  raw_title: string;
+  is_cover: boolean;
+  is_encore: boolean;
+  songs: { title: string; slug: string } | null;
+};
 type SetRow = {
+  id: string;
   billed_name: string;
   set_kind: string;
   is_surprise: boolean;
@@ -46,6 +54,7 @@ type SetRow = {
   stages: { name: string } | null;
   events: { kind: string; date: string; name: string | null } | null;
   performances: Performer[];
+  setlist_entries: SetlistEntry[];
 };
 
 export default async function SetPage({ params }: { params: { year: string; slug: string } }) {
@@ -59,7 +68,7 @@ export default async function SetPage({ params }: { params: { year: string; slug
   const { data: set } = await supabase
     .from("sets")
     .select(
-      "billed_name, set_kind, is_surprise, scheduled_start, scheduled_end, description, stages(name), events!inner(kind, date, name, edition_id), performances(role, instruments, status, artists(name, slug, artist_type))"
+      "id, billed_name, set_kind, is_surprise, scheduled_start, scheduled_end, description, stages(name), events!inner(kind, date, name, edition_id), performances(role, instruments, status, artists(name, slug, artist_type)), setlist_entries(position, raw_title, is_cover, is_encore, songs(title, slug))"
     )
     .eq("events.edition_id", edition.id)
     .eq("slug", params.slug)
@@ -72,6 +81,7 @@ export default async function SetPage({ params }: { params: { year: string; slug
   const performers = [...(set.performances ?? [])].sort(
     (a, b) => order.indexOf(a.role) - order.indexOf(b.role)
   );
+  const setlist = [...(set.setlist_entries ?? [])].sort((a, b) => a.position - b.position);
 
   return (
     <main className="mx-auto max-w-2xl p-6">
@@ -126,6 +136,23 @@ export default async function SetPage({ params }: { params: { year: string; slug
           </p>
         )}
       </section>
+
+      {setlist.length ? (
+        <section className="mt-6">
+          <h2 className="text-sm font-black uppercase tracking-widest opacity-50">Setlist</h2>
+          <ol className="mt-2 space-y-1">
+            {setlist.map((e, i) => (
+              <li key={i} className="flex flex-wrap items-baseline gap-x-2 text-sm">
+                <span className="w-6 shrink-0 text-right tabular-nums opacity-40">{i + 1}.</span>
+                <span>{e.songs?.title ?? e.raw_title}</span>
+                {e.is_cover ? <span className="text-xs opacity-45">(cover)</span> : null}
+                {e.is_encore ? <span className="rounded bg-black/10 px-1.5 text-xs font-bold">encore</span> : null}
+              </li>
+            ))}
+          </ol>
+          <p className="mt-2 text-xs opacity-45">Community-sourced; order approximate.</p>
+        </section>
+      ) : null}
     </main>
   );
 }
