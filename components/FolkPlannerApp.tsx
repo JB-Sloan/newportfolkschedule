@@ -253,6 +253,16 @@ export function FolkPlannerApp({
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
+    // In dev the SW caches hashed chunks that vanish on the next rebuild, then
+    // serves a stale, unstyled shell. Only run it in prod; in dev, tear down any
+    // SW a previous session registered so local reloads always hit the server.
+    if (process.env.NODE_ENV !== "production") {
+      navigator.serviceWorker
+        .getRegistrations()
+        .then((regs) => regs.forEach((reg) => reg.unregister()))
+        .catch(() => undefined);
+      return;
+    }
     navigator.serviceWorker.register("/sw.js").catch(() => undefined);
   }, []);
 
@@ -711,17 +721,17 @@ const EXPLORE_CARDS = [
     cta: "Browse editions"
   },
   {
-    href: "/artist/deer-tick",
+    href: "/sit-ins",
     tag: "The Sit-In Graph",
-    title: "Who joined whom on stage",
-    body: "The documented guest appearances that make Newport legendary — start with Deer Tick's 25 collaborators.",
+    title: "Who joins whom on stage",
+    body: "The documented guest appearances that make Newport legendary — ranked by who's most connected.",
     cta: "Trace the graph"
   },
   {
-    href: "/artist/first-aid-kit",
+    href: "/wishlists",
     tag: "Fan Wishlists",
     title: "Who the boards begged for",
-    body: "Years of Inforoo dream-lineup requests, matched to who actually turned up.",
+    body: "Years of Inforoo dream-lineup requests, ranked by fan demand.",
     cta: "See the demand"
   }
 ] as const;
