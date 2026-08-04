@@ -9,9 +9,9 @@
 | Status | Count |
 |---|---|
 | ✅ done | 40 |
-| 🔨 wip | 1 |
+| 🔨 wip | 2 |
 | ⛔ blocked | 0 |
-| ⬜ todo | 89 |
+| ⬜ todo | 88 |
 | 🚫 cut | 1 |
 
 ## By epic
@@ -37,6 +37,7 @@
 
 ## In progress
 
+- 🔨 **E2-10** Setlist editor with revision history + revert
 - 🔨 **E12-08** Moderator review queue for mined claims
 
 ## Critical path / warnings
@@ -60,9 +61,9 @@
 - ⬜ E1-07 Artist search with trigram + alias matching
 
 **E2 Set Pages & Core UGC**
-- ⬜ E2-10 Setlist editor with revision history + revert
 - ⬜ E2-11 Sit-in submission with instrument + song tagging
 - ⬜ E2-12 Confirm/dispute UI with "confirmed by N"
+- ⬜ E2-13 Review + rating UI
 
 **E3 Media Embeds**
 - ⬜ E3-02 oEmbed resolver (YouTube, Instagram, Bandcamp, Archive.org)
