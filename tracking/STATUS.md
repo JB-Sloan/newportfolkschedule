@@ -4,21 +4,21 @@
 
 ## Overall
 
-`█████████░░░░░░░░░░░░░░░░░░░░░` **31%** (40/130 tasks)
+`██████████░░░░░░░░░░░░░░░░░░░░` **32%** (41/129 tasks)
 
 | Status | Count |
 |---|---|
-| ✅ done | 40 |
+| ✅ done | 41 |
 | 🔨 wip | 2 |
 | ⛔ blocked | 0 |
-| ⬜ todo | 88 |
-| 🚫 cut | 1 |
+| ⬜ todo | 86 |
+| 🚫 cut | 2 |
 
 ## By epic
 
 | Epic | Phase | Progress | Done | Open | Blocked |
 |---|---|---|---|---|---|
-| **E0** Foundation | Phase 0 | `███████░░░░░` 55% | 11 | 9 | 0 |
+| **E0** Foundation | Phase 0 | `████████░░░░` 63% | 12 | 7 | 0 |
 | **E1** Music Graph | Phase 0 | `████████░░░░` 62% | 5 | 3 | 0 |
 | **E2** Set Pages & Core UGC | Phase 0 | `███████░░░░░` 56% | 9 | 7 | 0 |
 | **E3** Media Embeds | Phase 0 | `██░░░░░░░░░░` 20% | 1 | 4 | 0 |
@@ -42,7 +42,6 @@
 
 ## Critical path / warnings
 
-- ⬜ **E0-04** Configure custom SMTP (Resend) for magic links — **Blocks launch.** Built-in sender is rate-limited to a few/hr
 - ⬜ **E0-11** GitHub Actions keepalive cron — **Free tier pauses after 7 days idle**
 - ⬜ **E2-16** **Google Form fallback for submissions** — **Day 1. Insurance against build slip**
 - ⬜ **E6-04** **Weekly snapshot job** — **Start immediately — cannot be backfilled**
@@ -51,9 +50,9 @@
 ## Next up
 
 **E0 Foundation**
-- ⬜ E0-04 Configure custom SMTP (Resend) for magic links
-- ⬜ E0-05 Enable Google + Apple OAuth providers
 - ⬜ E0-10 Handle reservation + profanity/impersonation blocklist
+- ⬜ E0-11 GitHub Actions keepalive cron
+- ⬜ E0-13 Sentry + basic analytics (Plausible/Umami self-host)
 
 **E1 Music Graph**
 - ⬜ E1-04 MusicBrainz lookup + import service

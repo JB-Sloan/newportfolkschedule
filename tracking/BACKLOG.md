@@ -14,8 +14,8 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E0-01 | Migration: extensions, enums, `set_updated_at` | done | `0001_foundation.sql` |
 | E0-02 | Migration: `profiles`, auto-create trigger, role helpers | done | `0001_foundation.sql` |
 | E0-03 | Decide auth provider | done | Supabase Auth. Auth0 dropped — see docs/01 |
-| E0-04 | Configure custom SMTP (Resend) for magic links | todo | **Blocks launch.** Built-in sender is rate-limited to a few/hr |
-| E0-05 | Enable Google + Apple OAuth providers | todo | |
+| E0-04 | Configure custom SMTP (Resend) for magic links | done | Resend SMTP configured in Supabase Auth (2026-08-04) |
+| E0-05 | Enable Google + Apple OAuth providers | cut | Email-only by decision — magic link is the sole method; OAuth buttons removed from `/login` |
 | E0-05a | App-side auth plumbing (login, callback, middleware, AuthStatus) | done | `middleware.ts`, `/login`, `/auth/*`; works once E0-04/05 configured |
 | E0-06 | Migration: `revisions` + `record_revision()` trigger | done | `0001_foundation.sql` |
 | E0-07 | Migration: `reports`, `moderation_actions` | done | `0001_foundation.sql` |
