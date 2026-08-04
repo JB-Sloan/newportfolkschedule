@@ -453,16 +453,17 @@ export function FolkPlannerApp({
         <header className="overflow-hidden rounded-[2rem] bg-ink text-paper shadow-soft">
           <div className="grid gap-6 p-5 md:grid-cols-[1.4fr_0.8fr] md:p-8">
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-paper/70">Unofficial fan archive &amp; planner</p>
+              <p className="text-sm uppercase tracking-[0.3em] text-paper/70">Newport Folk data &amp; fan site</p>
               <h1 className="mt-3 text-4xl font-black leading-tight md:text-6xl">
-                Newport Folk 2026
-                <span className="mt-1 block text-2xl font-black text-paper/75 md:text-3xl">
-                  Schedule &amp; living archive
+                Newport Folk
+                <span className="mt-1 block text-2xl font-black italic text-paper/75 md:text-3xl">
+                  “We're weird for this festival”
                 </span>
               </h1>
               <p className="mt-4 max-w-2xl text-lg text-paper/82">
-                Sixty-seven years of Newport Folk in one place. Browse every lineup since 1959,
-                trace the sit-ins that make the festival legendary, and revisit your July 24–26 plan.
+                A site dedicated to the magic and history of the Newport Folk Festival.
+                Browse sixty-seven years of lineups, trace the sit-ins that make it legendary,
+                and revisit your July 24–26 plan.
               </p>
               <div className="mt-5 flex flex-wrap gap-2 text-sm">
                 <a className="rounded-full bg-paper px-4 py-1.5 font-bold text-ink" href="/archive">
