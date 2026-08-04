@@ -1,8 +1,12 @@
 -- 0016_import_inforoo_songs.sql
--- 121 verified songs -> songs + setlist_entries on the sourced sets.
+-- Verified songs -> songs + setlist_entries (deduped to one per song per set)
+-- + a citation per entry to its Inforoo/press/reddit source.
 -- Generated from 'Inforoo Research/songs-played.csv'.
 
 begin;
+-- clear any prior imported setlist entries so positions/dedup are clean
+delete from setlist_entries;
+
 -- songs
 insert into songs (title, slug) values
   ('Take It Easy', 'take-it-easy'),
@@ -90,7 +94,7 @@ insert into songs (title, slug) values
   ('Attics of My Life', 'attics-of-my-life')
 on conflict do nothing;
 
--- sources for setlists
+-- setlist sources
 insert into sources (kind, url, author_handle) values
   ('inforoo', 'https://inforoo.com/post/1133352/thread', 'macandcheese'),
   ('press', 'https://jambands.com/news/2012/07/28/wilco-s-woody-guthrie-tribute/', 'Jambands/Relix staff'),
@@ -131,29 +135,24 @@ insert into sources (kind, url, author_handle) values
   ('reddit', 'https://www.reddit.com/r/NewportFolkFestival/comments/1v73bcg/newport_folk_festival_2026_day_3_sunday_726/p05l8ef/', 'wemissjerry')
 on conflict (url) where url is not null do nothing;
 
--- setlist entries
+-- setlist entries (one per song per set)
 insert into setlist_entries (set_id, position, song_id, raw_title, is_cover, is_encore)
 select s.id, v.pos, so.id, v.raw, v.cover, v.encore
 from (values
   (2012, 'aftershow-conor-oberst-pre-festival-show', 1, 'take-it-easy', 'Take It Easy', true, false),
   (2012, 'aftershow-conor-oberst-pre-festival-show', 2, 'our-lady-of-the-well', 'Our Lady of the Well', true, false),
   (2012, 'preshow-wilco', 1, 'california-stars', 'California Stars', true, false),
-  (2012, 'preshow-wilco', 2, 'california-stars', 'California Stars', true, false),
-  (2012, 'preshow-wilco', 3, 'airline-to-heaven', 'Airline to Heaven', true, false),
-  (2012, 'preshow-wilco', 4, 'airline-to-heaven', 'Airline to Heaven', true, false),
-  (2012, 'preshow-wilco', 5, 'hoodoo-voodoo', 'Hoodoo Voodoo', true, false),
+  (2012, 'preshow-wilco', 2, 'airline-to-heaven', 'Airline to Heaven', true, false),
+  (2012, 'preshow-wilco', 3, 'hoodoo-voodoo', 'Hoodoo Voodoo', true, false),
   (2012, 'preservation-hall-jazz-band', 1, 'el-manicero', 'El Manicero', true, false),
   (2012, 'preservation-hall-jazz-band', 2, 'just-a-closer-walk-with-thee', 'Just a Closer Walk with Thee', true, false),
   (2012, 'preservation-hall-jazz-band', 3, 'ill-fly-away', 'I''ll Fly Away', true, false),
   (2012, 'dawes', 1, 'when-my-time-comes', 'When My Time Comes', false, false),
   (2012, 'first-aid-kit', 1, 'king-of-the-world', 'King of the World', false, false),
   (2012, 'my-morning-jacket', 1, 'wonderful-the-way-i-feel', 'Wonderful (The Way I Feel)', false, false),
-  (2012, 'my-morning-jacket', 2, 'wonderful-the-way-i-feel', 'Wonderful (The Way I Feel)', false, false),
-  (2012, 'my-morning-jacket', 3, 'bermuda-highway', 'Bermuda Highway', false, false),
-  (2012, 'my-morning-jacket', 4, 'it-makes-no-difference', 'It Makes No Difference', true, false),
-  (2012, 'my-morning-jacket', 5, 'it-makes-no-difference', 'It Makes No Difference', true, false),
-  (2012, 'my-morning-jacket', 6, 'smokin-from-shootin', 'Smokin'' From Shootin''', false, false),
-  (2012, 'my-morning-jacket', 7, 'smokin-from-shootin', 'Smokin'' From Shootin''', false, false),
+  (2012, 'my-morning-jacket', 2, 'bermuda-highway', 'Bermuda Highway', false, false),
+  (2012, 'my-morning-jacket', 3, 'it-makes-no-difference', 'It Makes No Difference', true, false),
+  (2012, 'my-morning-jacket', 4, 'smokin-from-shootin', 'Smokin'' From Shootin''', false, false),
   (2012, 'jonathan-wilson', 1, 'gentle-spirit', 'Gentle Spirit', false, false),
   (2012, 'conor-oberst', 1, 'classic-cars', 'Classic Cars', true, false),
   (2012, 'conor-oberst', 2, 'lua', 'Lua', true, false),
@@ -161,36 +160,23 @@ from (values
   (2012, 'conor-oberst', 4, 'method-acting', 'Method Acting', true, false),
   (2012, 'conor-oberst', 5, 'make-war', 'Make War', true, false),
   (2012, 'conor-oberst', 6, 'moab', 'Moab', false, false),
-  (2012, 'conor-oberst', 7, 'make-war', 'Make War', true, false),
-  (2012, 'conor-oberst', 8, 'at-the-bottom-of-everything', 'At the Bottom of Everything', true, false),
+  (2012, 'conor-oberst', 7, 'at-the-bottom-of-everything', 'At the Bottom of Everything', true, false),
   (2012, 'jackson-browne', 1, 'late-show', 'The Late Show', false, false),
   (2012, 'jackson-browne', 2, 'barricades-of-heaven', 'The Barricades of Heaven', false, false),
   (2012, 'jackson-browne', 3, 'these-days', 'These Days', false, false),
   (2012, 'jackson-browne', 4, 'take-it-easy', 'Take It Easy', true, false),
   (2012, 'jackson-browne', 5, 'our-lady-of-the-well', 'Our Lady of the Well', false, false),
   (2012, 'jackson-browne', 6, 'lawyers-guns-and-money', 'Lawyers, Guns and Money', true, false),
-  (2012, 'jackson-browne', 7, 'lawyers-guns-and-money', 'Lawyers, Guns and Money', true, false),
-  (2012, 'jackson-browne', 8, 'barricades-of-heaven', 'The Barricades of Heaven', false, false),
-  (2012, 'jackson-browne', 9, 'these-days', 'These Days', false, false),
-  (2012, 'jackson-browne', 10, 'take-it-easy', 'Take It Easy', true, false),
-  (2012, 'jackson-browne', 11, 'our-lady-of-the-well', 'Our Lady of the Well', false, false),
-  (2012, 'jackson-browne', 12, 'lawyers-guns-and-money', 'Lawyers, Guns and Money', true, false),
-  (2012, 'jackson-browne', 13, 'a-child-in-these-hills', 'A Child in These Hills', false, false),
-  (2012, 'jackson-browne', 14, 'you-know-the-night', 'You Know the Night', false, false),
-  (2012, 'jackson-browne', 15, 'live-nude-cabaret', 'Live Nude Cabaret', false, false),
-  (2012, 'jackson-browne', 16, 'ill-do-anything', 'I''ll Do Anything', false, false),
-  (2012, 'jackson-browne', 17, 'late-show', 'The Late Show', false, false),
-  (2012, 'jackson-browne', 18, 'take-it-easy', 'Take It Easy', true, false),
-  (2012, 'jackson-browne', 19, 'our-lady-of-the-well', 'Our Lady of the Well', false, false),
-  (2012, 'jackson-browne', 20, 'lawyers-guns-and-money', 'Lawyers, Guns and Money', true, false),
-  (2012, 'jackson-browne', 21, 'take-it-easy', 'Take It Easy', true, false),
+  (2012, 'jackson-browne', 7, 'a-child-in-these-hills', 'A Child in These Hills', false, false),
+  (2012, 'jackson-browne', 8, 'you-know-the-night', 'You Know the Night', false, false),
+  (2012, 'jackson-browne', 9, 'live-nude-cabaret', 'Live Nude Cabaret', false, false),
+  (2012, 'jackson-browne', 10, 'ill-do-anything', 'I''ll Do Anything', false, false),
   (2012, 'aftershow-deer-tick-and-friends-middle-brother-mini-set', 1, 'middle-brother', 'Middle Brother', true, false),
   (2012, 'aftershow-deer-tick-and-friends-middle-brother-mini-set', 2, 'negative-creep', 'Negative Creep', true, false),
   (2012, 'aftershow-deer-tick-and-friends-middle-brother-mini-set', 3, 'scentless-apprentice', 'Scentless Apprentice', true, false),
   (2021, 'andrew-bird-and-jimbo-mathus', 1, 'angel-from-montgomery', 'Angel from Montgomery', true, false),
   (2022, 'madi-diaz', 1, 'resentment', 'Resentment', false, false),
   (2022, 'bleachers', 1, 'bloodbuzz-ohio', 'Bloodbuzz Ohio', true, false),
-  (2022, 'bleachers', 2, 'bloodbuzz-ohio', 'Bloodbuzz Ohio', true, false),
   (2022, 'aftershow-deer-tick-afterparty', 1, 'rocks-off', 'Rocks Off', true, false),
   (2022, 'aftershow-deer-tick-afterparty', 2, 'happy', 'Happy', true, false),
   (2022, 'aftershow-deer-tick-afterparty', 3, 'sweet-virginia', 'Sweet Virginia', true, false),
@@ -208,14 +194,10 @@ from (values
   (2025, 'songs-for-the-people', 1, 'america', 'America', true, false),
   (2025, 'songs-for-the-people', 2, 'talkin-bout-a-revolution', 'Talkin'' Bout a Revolution', true, false),
   (2025, 'songs-for-the-people', 3, 'into-the-mystic', 'Into the Mystic', true, false),
-  (2025, 'songs-for-the-people', 4, 'into-the-mystic', 'Into the Mystic', true, false),
-  (2025, 'songs-for-the-people', 5, 'into-the-mystic', 'Into the Mystic', true, false),
-  (2025, 'songs-for-the-people', 6, 'yes-we-can-can', 'Yes We Can Can', true, false),
-  (2025, 'songs-for-the-people', 7, 'yes-we-can-can', 'Yes We Can Can', true, false),
-  (2025, 'songs-for-the-people', 8, 'hallelujah', 'Hallelujah', true, false),
-  (2025, 'songs-for-the-people', 9, 'waiting-for-a-superman', 'Waiting for a Superman', true, false),
-  (2025, 'songs-for-the-people', 10, 'eyes-of-the-world', 'Eyes of the World', true, false),
-  (2025, 'songs-for-the-people', 11, 'eyes-of-the-world', 'Eyes of the World', true, false),
+  (2025, 'songs-for-the-people', 4, 'yes-we-can-can', 'Yes We Can Can', true, false),
+  (2025, 'songs-for-the-people', 5, 'hallelujah', 'Hallelujah', true, false),
+  (2025, 'songs-for-the-people', 6, 'waiting-for-a-superman', 'Waiting for a Superman', true, false),
+  (2025, 'songs-for-the-people', 7, 'eyes-of-the-world', 'Eyes of the World', true, false),
   (2013, 'aftershow-dawes-and-friends-aftershow', 1, 'after-midnight', 'After Midnight', true, false),
   (2013, 'aftershow-dawes-and-friends-aftershow', 2, 'cinnamon-girl', 'Cinnamon Girl', true, false),
   (2013, 'aftershow-dawes-and-friends-aftershow', 3, 'one-i-love', 'The One I Love', true, false),
@@ -228,37 +210,127 @@ from (values
   (2015, 'roger-waters-my-morning-jacket', 4, 'forever-young', 'Forever Young', true, false),
   (2015, 'nathaniel-rateliff-and-the-night-sweats', 1, 'sob-the-shape-im-in-sob', 'S.O.B. > The Shape I''m In > S.O.B.', true, false),
   (2015, 'aftershow-deer-tick-aftershow', 1, 'helpless', 'Helpless', true, false),
-  (2015, 'aftershow-deer-tick-aftershow', 2, 'helpless', 'Helpless', true, false),
   (2015, 'heartbreaker-banquet', 1, 'fools-rush-in', 'Fools Rush In', true, false),
-  (2015, 'heartbreaker-banquet', 2, 'fools-rush-in', 'Fools Rush In', true, false),
   (2016, 'texas-gentlemen', 1, 'me-and-bobby-mcgee', 'Me and Bobby McGee', true, false),
-  (2016, 'texas-gentlemen', 2, 'me-and-bobby-mcgee', 'Me and Bobby McGee', true, false),
   (2017, 'aftershow-alone-and-together-show', 1, 'last-kiss', 'Last Kiss', true, false),
   (2017, 'speak-out', 1, 'masters-of-war', 'Masters of War', true, false),
   (2019, 'steal-your-folk', 1, 'row-jimmy', 'Row Jimmy', true, false),
   (2019, 'sheryl-crow', 1, 'everyday-is-a-winding-road', 'Everyday Is a Winding Road', false, false),
   (2019, 'phil-lesh', 1, 'almost-cut-my-hair', 'Almost Cut My Hair', true, false),
-  (2019, 'phil-lesh', 2, 'almost-cut-my-hair', 'Almost Cut My Hair', true, false),
   (2019, 'warren-haynes', 1, 'find-the-cost-of-freedom', 'Find the Cost of Freedom', true, false),
-  (2019, 'warren-haynes', 2, 'find-the-cost-of-freedom', 'Find the Cost of Freedom', true, false),
-  (2019, 'warren-haynes', 3, 'find-the-cost-of-freedom', 'Find the Cost of Freedom', true, false),
-  (2019, 'warren-haynes', 4, 'masters-of-war', 'Masters of War', true, false),
-  (2019, 'warren-haynes', 5, 'masters-of-war', 'Masters of War', true, false),
-  (2019, 'warren-haynes', 6, 'masters-of-war', 'Masters of War', true, false),
+  (2019, 'warren-haynes', 2, 'masters-of-war', 'Masters of War', true, false),
   (2019, 'dawes', 1, 'anchor', 'Anchor', false, false),
   (2019, 'saturday-collaboration-set', 1, 'i-will-always-love-you', 'I Will Always Love You', true, false),
   (2019, 'saturday-collaboration-set', 2, 'whats-up', 'What''s Up?', true, false),
   (2019, 'aftershow-mavis-staples-aftershow', 1, 'weight', 'The Weight', true, false),
   (2019, 'if-i-had-a-song', 1, 'rainbow-connection', 'Rainbow Connection', true, false),
-  (2019, 'if-i-had-a-song', 2, 'rainbow-connection', 'Rainbow Connection', true, false),
-  (2019, 'if-i-had-a-song', 3, 'god-only-knows', 'God Only Knows', true, false),
+  (2019, 'if-i-had-a-song', 2, 'god-only-knows', 'God Only Knows', true, false),
   (2024, 'dropkick-murphys', 1, 'workers-song', 'Worker''s Song', true, false),
   (2026, 'peter-rowan-sam-grisman-sierra-hull-and-larry-and-teresa', 1, 'walls-of-time', 'Walls of Time', true, false),
-  (2026, 'peter-rowan-sam-grisman-sierra-hull-and-larry-and-teresa', 2, 'walls-of-time', 'Walls of Time', true, false),
-  (2026, 'peter-rowan-sam-grisman-sierra-hull-and-larry-and-teresa', 3, 'attics-of-my-life', 'Attics of My Life', true, false)
+  (2026, 'peter-rowan-sam-grisman-sierra-hull-and-larry-and-teresa', 2, 'attics-of-my-life', 'Attics of My Life', true, false)
 ) as v(year, set_slug, pos, song_slug, raw, cover, encore)
 join editions ed on ed.year = v.year
 join sets s on s.slug = v.set_slug and s.event_id in (select id from events where edition_id = ed.id)
 join songs so on so.slug = v.song_slug
 on conflict (set_id, position) do nothing;
+
+-- citations: source(s) per setlist entry
+insert into citations (source_id, entity_table, entity_id, confidence)
+select src.id, 'setlist_entries', se.id, v.conf::confidence_level
+from (values
+  (2012, 'aftershow-conor-oberst-pre-festival-show', 1, 'https://inforoo.com/post/1133352/thread', 'high'),
+  (2012, 'aftershow-conor-oberst-pre-festival-show', 2, 'https://inforoo.com/post/1133352/thread', 'high'),
+  (2012, 'preshow-wilco', 1, 'https://jambands.com/news/2012/07/28/wilco-s-woody-guthrie-tribute/', 'high'),
+  (2012, 'preshow-wilco', 2, 'https://jambands.com/news/2012/07/28/wilco-s-woody-guthrie-tribute/', 'high'),
+  (2012, 'preshow-wilco', 3, 'https://jambands.com/news/2012/07/28/wilco-s-woody-guthrie-tribute/', 'high'),
+  (2012, 'preservation-hall-jazz-band', 1, 'https://jambands.com/news/2012/07/29/my-morning-jacket-dawes-the-guthrie-family-and-more-highlight-newport-folk-day-1/', 'high'),
+  (2012, 'preservation-hall-jazz-band', 2, 'https://jambands.com/news/2012/07/29/my-morning-jacket-dawes-the-guthrie-family-and-more-highlight-newport-folk-day-1/', 'high'),
+  (2012, 'preservation-hall-jazz-band', 3, 'https://jambands.com/news/2012/07/29/my-morning-jacket-dawes-the-guthrie-family-and-more-highlight-newport-folk-day-1/', 'high'),
+  (2012, 'dawes', 1, 'https://jambands.com/news/2012/07/29/my-morning-jacket-dawes-the-guthrie-family-and-more-highlight-newport-folk-day-1/', 'high'),
+  (2012, 'first-aid-kit', 1, 'https://jambands.com/the-loop/2012/08/08/first-aid-kit-at-newport-folk/', 'high'),
+  (2012, 'my-morning-jacket', 1, 'https://livemusicblog.com/set-list-my-morning-jacket-2012-newport-folk-festival/', 'high'),
+  (2012, 'my-morning-jacket', 2, 'https://livemusicblog.com/set-list-my-morning-jacket-2012-newport-folk-festival/', 'high'),
+  (2012, 'my-morning-jacket', 3, 'https://livemusicblog.com/set-list-my-morning-jacket-2012-newport-folk-festival/', 'high'),
+  (2012, 'my-morning-jacket', 4, 'https://livemusicblog.com/set-list-my-morning-jacket-2012-newport-folk-festival/', 'high'),
+  (2012, 'jonathan-wilson', 1, 'https://jambands.com/news/2012/07/30/jackson-browne-dawes-jonathan-wilson-and-more-share-the-stage-at-newport-folk-day-2/', 'high'),
+  (2012, 'conor-oberst', 1, 'https://www.krvs.org/npr-music/2012-07-30/highlights-the-2012-newport-folk-festival-in-photos', 'high'),
+  (2012, 'conor-oberst', 2, 'https://www.krvs.org/npr-music/2012-07-30/highlights-the-2012-newport-folk-festival-in-photos', 'high'),
+  (2012, 'conor-oberst', 3, 'https://www.krvs.org/npr-music/2012-07-30/highlights-the-2012-newport-folk-festival-in-photos', 'high'),
+  (2012, 'conor-oberst', 4, 'https://www.krvs.org/npr-music/2012-07-30/highlights-the-2012-newport-folk-festival-in-photos', 'high'),
+  (2012, 'conor-oberst', 5, 'https://www.krvs.org/npr-music/2012-07-30/highlights-the-2012-newport-folk-festival-in-photos', 'high'),
+  (2012, 'conor-oberst', 6, 'https://www.krvs.org/npr-music/2012-07-30/highlights-the-2012-newport-folk-festival-in-photos', 'high'),
+  (2012, 'conor-oberst', 7, 'https://www.krvs.org/npr-music/2012-07-30/highlights-the-2012-newport-folk-festival-in-photos', 'high'),
+  (2012, 'jackson-browne', 1, 'https://inforoo.com/post/1133664/thread', 'high'),
+  (2012, 'jackson-browne', 2, 'https://inforoo.com/post/1133664/thread', 'high'),
+  (2012, 'jackson-browne', 3, 'https://inforoo.com/post/1133664/thread', 'high'),
+  (2012, 'jackson-browne', 4, 'https://inforoo.com/post/1133664/thread', 'high'),
+  (2012, 'jackson-browne', 5, 'https://inforoo.com/post/1133664/thread', 'high'),
+  (2012, 'jackson-browne', 6, 'https://inforoo.com/post/1133664/thread', 'high'),
+  (2012, 'jackson-browne', 7, 'https://inforoo.com/post/1133664/thread', 'high'),
+  (2012, 'jackson-browne', 8, 'https://inforoo.com/post/1133664/thread', 'high'),
+  (2012, 'jackson-browne', 9, 'https://inforoo.com/post/1133664/thread', 'high'),
+  (2012, 'jackson-browne', 10, 'https://inforoo.com/post/1133664/thread', 'high'),
+  (2012, 'aftershow-deer-tick-and-friends-middle-brother-mini-set', 1, 'https://inforoo.com/post/1134071/thread', 'high'),
+  (2012, 'aftershow-deer-tick-and-friends-middle-brother-mini-set', 2, 'https://inforoo.com/post/1134071/thread', 'high'),
+  (2012, 'aftershow-deer-tick-and-friends-middle-brother-mini-set', 3, 'https://inforoo.com/post/1134071/thread', 'high'),
+  (2021, 'andrew-bird-and-jimbo-mathus', 1, 'https://inforoo.com/post/2636004/thread', 'high'),
+  (2022, 'madi-diaz', 1, 'https://inforoo.com/post/2834672/thread', 'high'),
+  (2022, 'bleachers', 1, 'https://inforoo.com/post/2835823/thread', 'high'),
+  (2022, 'aftershow-deer-tick-afterparty', 1, 'https://inforoo.com/post/2835337/thread', 'high'),
+  (2022, 'aftershow-deer-tick-afterparty', 2, 'https://inforoo.com/post/2835337/thread', 'high'),
+  (2022, 'aftershow-deer-tick-afterparty', 3, 'https://inforoo.com/post/2835337/thread', 'high'),
+  (2022, 'aftershow-deer-tick-afterparty', 4, 'https://inforoo.com/post/2835337/thread', 'high'),
+  (2022, 'john-craigie-and-friends', 1, 'https://inforoo.com/post/2834924/thread', 'high'),
+  (2022, 'john-craigie-and-friends', 2, 'https://inforoo.com/post/2834924/thread', 'high'),
+  (2023, 'goose', 1, 'https://inforoo.com/post/2999872/thread', 'high'),
+  (2024, 'hozier', 1, 'https://inforoo.com/post/3119929/thread', 'high'),
+  (2024, 'hozier', 2, 'https://inforoo.com/post/3119929/thread', 'high'),
+  (2024, 'de-la-soul', 1, 'https://inforoo.com/post/3120261/thread', 'high'),
+  (2024, 'sierra-ferrell', 1, 'https://inforoo.com/post/3120414/thread', 'high'),
+  (2025, 'aftershow-jane-pickens-collaborative-aftershow', 1, 'https://inforoo.com/post/3223100/thread', 'high'),
+  (2025, 'aftershow-jane-pickens-collaborative-aftershow', 2, 'https://inforoo.com/post/3223100/thread', 'high'),
+  (2025, 'aftershow-jane-pickens-collaborative-aftershow', 3, 'https://inforoo.com/post/3223100/thread', 'high'),
+  (2025, 'songs-for-the-people', 1, 'https://inforoo.com/post/3223482/thread', 'high'),
+  (2025, 'songs-for-the-people', 2, 'https://inforoo.com/post/3223482/thread', 'high'),
+  (2025, 'songs-for-the-people', 3, 'https://inforoo.com/post/3223482/thread', 'high'),
+  (2025, 'songs-for-the-people', 4, 'https://inforoo.com/post/3223482/thread', 'high'),
+  (2025, 'songs-for-the-people', 5, 'https://inforoo.com/post/3223482/thread', 'high'),
+  (2025, 'songs-for-the-people', 6, 'https://inforoo.com/post/3223482/thread', 'high'),
+  (2025, 'songs-for-the-people', 7, 'https://inforoo.com/post/3223482/thread', 'high'),
+  (2013, 'aftershow-dawes-and-friends-aftershow', 1, 'https://inforoo.com/post/1356134/thread', 'high'),
+  (2013, 'aftershow-dawes-and-friends-aftershow', 2, 'https://inforoo.com/post/1356134/thread', 'high'),
+  (2013, 'aftershow-dawes-and-friends-aftershow', 3, 'https://inforoo.com/post/1356134/thread', 'high'),
+  (2013, 'aftershow-dawes-and-friends-aftershow', 4, 'https://inforoo.com/post/1356134/thread', 'high'),
+  (2013, 'aftershow-dawes-and-friends-aftershow', 5, 'https://inforoo.com/post/1356134/thread', 'high'),
+  (2013, 'aftershow-dawes-and-friends-aftershow', 6, 'https://inforoo.com/post/1356134/thread', 'high'),
+  (2015, 'roger-waters-my-morning-jacket', 1, 'https://inforoo.com/post/1753836/thread', 'high'),
+  (2015, 'roger-waters-my-morning-jacket', 2, 'https://inforoo.com/post/1753836/thread', 'high'),
+  (2015, 'roger-waters-my-morning-jacket', 3, 'https://inforoo.com/post/1753836/thread', 'high'),
+  (2015, 'roger-waters-my-morning-jacket', 4, 'https://inforoo.com/post/1753836/thread', 'high'),
+  (2015, 'nathaniel-rateliff-and-the-night-sweats', 1, 'https://inforoo.com/post/1754125/thread', 'high'),
+  (2015, 'aftershow-deer-tick-aftershow', 1, 'https://inforoo.com/post/1754901/thread', 'high'),
+  (2015, 'heartbreaker-banquet', 1, 'https://inforoo.com/post/1754901/thread', 'high'),
+  (2016, 'texas-gentlemen', 1, 'https://inforoo.com/post/1920527/thread', 'high'),
+  (2017, 'aftershow-alone-and-together-show', 1, 'https://inforoo.com/post/2061883/thread', 'high'),
+  (2017, 'speak-out', 1, 'https://inforoo.com/post/2062192/thread', 'high'),
+  (2019, 'steal-your-folk', 1, 'https://inforoo.com/post/2344578/thread', 'high'),
+  (2019, 'sheryl-crow', 1, 'https://inforoo.com/post/2344610/thread', 'high'),
+  (2019, 'phil-lesh', 1, 'https://inforoo.com/post/2344612/thread', 'high'),
+  (2019, 'warren-haynes', 1, 'https://inforoo.com/post/2344683/thread', 'high'),
+  (2019, 'warren-haynes', 2, 'https://inforoo.com/post/2344683/thread', 'high'),
+  (2019, 'dawes', 1, 'https://inforoo.com/post/2344805/thread', 'high'),
+  (2019, 'saturday-collaboration-set', 1, 'https://inforoo.com/post/2344753/thread', 'high'),
+  (2019, 'saturday-collaboration-set', 2, 'https://inforoo.com/post/2344753/thread', 'high'),
+  (2019, 'aftershow-mavis-staples-aftershow', 1, 'https://inforoo.com/post/2344774/thread', 'high'),
+  (2019, 'if-i-had-a-song', 1, 'https://inforoo.com/post/2344932/thread', 'high'),
+  (2019, 'if-i-had-a-song', 2, 'https://inforoo.com/post/2344932/thread', 'high'),
+  (2024, 'dropkick-murphys', 1, 'https://www.reddit.com/r/NewportFolkFestival/comments/1efu51f/comment/lfnx6cm/', 'high'),
+  (2026, 'peter-rowan-sam-grisman-sierra-hull-and-larry-and-teresa', 1, 'https://www.reddit.com/r/NewportFolkFestival/comments/1v73bcg/newport_folk_festival_2026_day_3_sunday_726/p05l8ef/', 'high'),
+  (2026, 'peter-rowan-sam-grisman-sierra-hull-and-larry-and-teresa', 2, 'https://www.reddit.com/r/NewportFolkFestival/comments/1v73bcg/newport_folk_festival_2026_day_3_sunday_726/p05l8ef/', 'high')
+) as v(year, set_slug, pos, url, conf)
+join editions ed on ed.year = v.year
+join sets s on s.slug = v.set_slug and s.event_id in (select id from events where edition_id = ed.id)
+join setlist_entries se on se.set_id = s.id and se.position = v.pos
+join sources src on src.url = v.url
+where not exists (select 1 from citations c2 where c2.source_id=src.id and c2.entity_table='setlist_entries' and c2.entity_id=se.id);
 commit;

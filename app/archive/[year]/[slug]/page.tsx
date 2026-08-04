@@ -31,17 +31,29 @@ const ROLE_LABEL: Record<string, string> = {
 };
 
 type Performer = {
+  id: string;
   role: string;
   instruments: string[] | null;
   status: string;
   artists: { name: string; slug: string; artist_type: string } | null;
 };
 type SetlistEntry = {
+  id: string;
   position: number;
   raw_title: string;
   is_cover: boolean;
   is_encore: boolean;
   songs: { title: string; slug: string } | null;
+};
+type SourceRow = { kind: string; url: string | null; author_handle: string | null };
+
+const SOURCE_LABEL: Record<string, string> = {
+  inforoo: "Inforoo",
+  reddit: "Reddit",
+  setlistfm: "setlist.fm",
+  press: "Press",
+  youtube: "YouTube",
+  instagram: "Instagram"
 };
 type SetRow = {
   id: string;
@@ -68,7 +80,7 @@ export default async function SetPage({ params }: { params: { year: string; slug
   const { data: set } = await supabase
     .from("sets")
     .select(
-      "id, billed_name, set_kind, is_surprise, scheduled_start, scheduled_end, description, stages(name), events!inner(kind, date, name, edition_id), performances(role, instruments, status, artists(name, slug, artist_type)), setlist_entries(position, raw_title, is_cover, is_encore, songs(title, slug))"
+      "id, billed_name, set_kind, is_surprise, scheduled_start, scheduled_end, description, stages(name), events!inner(kind, date, name, edition_id), performances(id, role, instruments, status, artists(name, slug, artist_type)), setlist_entries(id, position, raw_title, is_cover, is_encore, songs(title, slug))"
     )
     .eq("events.edition_id", edition.id)
     .eq("slug", params.slug)
@@ -82,6 +94,20 @@ export default async function SetPage({ params }: { params: { year: string; slug
     (a, b) => order.indexOf(a.role) - order.indexOf(b.role)
   );
   const setlist = [...(set.setlist_entries ?? [])].sort((a, b) => a.position - b.position);
+
+  // Sources cited for this set's guest performances + setlist (community provenance).
+  const entityIds = [...performers.map((p) => p.id), ...setlist.map((e) => e.id)];
+  let sources: SourceRow[] = [];
+  if (entityIds.length) {
+    const { data: cites } = await supabase
+      .from("citations")
+      .select("sources(kind, url, author_handle)")
+      .in("entity_id", entityIds)
+      .returns<{ sources: SourceRow | null }[]>();
+    const byUrl = new Map<string, SourceRow>();
+    for (const c of cites ?? []) if (c.sources?.url && !byUrl.has(c.sources.url)) byUrl.set(c.sources.url, c.sources);
+    sources = [...byUrl.values()];
+  }
 
   return (
     <main className="mx-auto max-w-2xl p-6">
@@ -151,6 +177,25 @@ export default async function SetPage({ params }: { params: { year: string; slug
             ))}
           </ol>
           <p className="mt-2 text-xs opacity-45">Community-sourced; order approximate.</p>
+        </section>
+      ) : null}
+
+      {sources.length ? (
+        <section className="mt-6">
+          <h2 className="text-sm font-black uppercase tracking-widest opacity-50">Sources</h2>
+          <ul className="mt-2 space-y-1">
+            {sources.map((s, i) => (
+              <li key={i} className="text-sm">
+                <a href={s.url ?? "#"} target="_blank" rel="noreferrer" className="text-blue-700 underline">
+                  {SOURCE_LABEL[s.kind] ?? s.kind}
+                  {s.author_handle ? ` — ${s.author_handle}` : ""}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2 text-xs opacity-45">
+            Guest and setlist details reported by fans; not affiliated with the festival or artists.
+          </p>
         </section>
       ) : null}
     </main>
