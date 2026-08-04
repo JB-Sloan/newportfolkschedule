@@ -74,6 +74,46 @@ export async function addSong(input: {
   return { ok: true };
 }
 
+/**
+ * Confirm (+1), dispute (-1), or retract (0) a vote on a guest performance.
+ * A DB trigger (recompute_performance_status) recounts confirm/dispute and
+ * auto-promotes status: a trusted/moderator/admin confirm, a high-confidence
+ * citation, or net +3 community confirms flips it to 'confirmed'; net negative
+ * → 'disputed'. RLS lets a user write only their own vote row.
+ */
+export async function voteOnPerformance(input: {
+  performanceId: string;
+  vote: 1 | -1 | 0;
+  year: number;
+  setSlug: string;
+}): Promise<AddSongResult> {
+  const supabase = createClient();
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "Please sign in first." };
+
+  if (input.vote === 0) {
+    const { error } = await supabase
+      .from("performance_votes")
+      .delete()
+      .eq("performance_id", input.performanceId)
+      .eq("user_id", user.id);
+    if (error) return { ok: false, error: error.message };
+  } else {
+    const { error } = await supabase
+      .from("performance_votes")
+      .upsert(
+        { performance_id: input.performanceId, user_id: user.id, vote: input.vote },
+        { onConflict: "performance_id,user_id" }
+      );
+    if (error) return { ok: false, error: error.message };
+  }
+
+  revalidatePath(`/archive/${input.year}/${input.setSlug}`);
+  return { ok: true };
+}
+
 const GUEST_ROLES = ["sit_in", "guest_vocal", "surprise_guest"] as const;
 export type GuestRole = (typeof GUEST_ROLES)[number];
 

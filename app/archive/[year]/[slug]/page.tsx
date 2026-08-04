@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { AddSongForm } from "./AddSongForm";
 import { AddSitInForm } from "./AddSitInForm";
+import { PerformanceVote } from "./PerformanceVote";
+
+// Guest roles the vote trigger can promote (everything but billed / band member).
+const VOTABLE = (role: string) => role !== "billed" && role !== "band_member";
 
 /**
  * Set page (E2-09): one billed set — its performers (billed, band members,
@@ -37,6 +41,8 @@ type Performer = {
   role: string;
   instruments: string[] | null;
   status: string;
+  confirm_count: number;
+  dispute_count: number;
   artists: { name: string; slug: string; artist_type: string } | null;
 };
 type SetlistEntry = {
@@ -82,7 +88,7 @@ export default async function SetPage({ params }: { params: { year: string; slug
   const { data: set } = await supabase
     .from("sets")
     .select(
-      "id, billed_name, set_kind, is_surprise, scheduled_start, scheduled_end, description, stages(name), events!inner(kind, date, name, edition_id), performances(id, role, instruments, status, artists(name, slug, artist_type)), setlist_entries(id, position, raw_title, is_cover, is_encore, songs(title, slug))"
+      "id, billed_name, set_kind, is_surprise, scheduled_start, scheduled_end, description, stages(name), events!inner(kind, date, name, edition_id), performances(id, role, instruments, status, confirm_count, dispute_count, artists(name, slug, artist_type)), setlist_entries(id, position, raw_title, is_cover, is_encore, songs(title, slug))"
     )
     .eq("events.edition_id", edition.id)
     .eq("slug", params.slug)
@@ -100,6 +106,21 @@ export default async function SetPage({ params }: { params: { year: string; slug
     (a, b) => order.indexOf(a.role) - order.indexOf(b.role)
   );
   const setlist = [...(set.setlist_entries ?? [])].sort((a, b) => a.position - b.position);
+
+  // The current user's existing confirm/dispute votes on this set's guests.
+  const myVotes = new Map<string, number>();
+  if (user) {
+    const votableIds = performers.filter((p) => VOTABLE(p.role)).map((p) => p.id);
+    if (votableIds.length) {
+      const { data: votes } = await supabase
+        .from("performance_votes")
+        .select("performance_id, vote")
+        .eq("user_id", user.id)
+        .in("performance_id", votableIds)
+        .returns<{ performance_id: string; vote: number }[]>();
+      for (const v of votes ?? []) myVotes.set(v.performance_id, v.vote);
+    }
+  }
 
   // Sources cited for this set's guest performances + setlist (community provenance).
   const entityIds = [...performers.map((p) => p.id), ...setlist.map((e) => e.id)];
@@ -157,7 +178,29 @@ export default async function SetPage({ params }: { params: { year: string; slug
                   <span className="text-sm opacity-55">{p.instruments.join(", ")}</span>
                 ) : null}
                 {p.status && p.status !== "confirmed" ? (
-                  <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-800">{p.status}</span>
+                  <span
+                    className={
+                      "rounded-full px-2 py-0.5 text-xs font-bold " +
+                      (p.status === "disputed" ? "bg-red-100 text-red-800" : "bg-amber-100 text-amber-800")
+                    }
+                  >
+                    {p.status}
+                  </span>
+                ) : p.status === "confirmed" && VOTABLE(p.role) ? (
+                  <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">confirmed</span>
+                ) : null}
+                {VOTABLE(p.role) ? (
+                  <span className="ml-auto">
+                    <PerformanceVote
+                      performanceId={p.id}
+                      year={year}
+                      setSlug={params.slug}
+                      confirmCount={p.confirm_count}
+                      disputeCount={p.dispute_count}
+                      myVote={myVotes.get(p.id) ?? 0}
+                      signedIn={!!user}
+                    />
+                  </span>
                 ) : null}
               </li>
             ))}
