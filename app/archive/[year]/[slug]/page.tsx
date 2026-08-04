@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { AddSongForm } from "./AddSongForm";
 
 /**
  * Set page (E2-09): one billed set — its performers (billed, band members,
@@ -89,6 +90,10 @@ export default async function SetPage({ params }: { params: { year: string; slug
 
   if (!set) notFound();
 
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
+
   const order = ["billed", "host", "curator", "band_member", "guest_vocal", "sit_in", "surprise_guest"];
   const performers = [...(set.performances ?? [])].sort(
     (a, b) => order.indexOf(a.role) - order.indexOf(b.role)
@@ -163,22 +168,36 @@ export default async function SetPage({ params }: { params: { year: string; slug
         )}
       </section>
 
-      {setlist.length ? (
-        <section className="mt-6">
-          <h2 className="text-sm font-black uppercase tracking-widest opacity-50">Setlist</h2>
-          <ol className="mt-2 space-y-1">
-            {setlist.map((e, i) => (
-              <li key={i} className="flex flex-wrap items-baseline gap-x-2 text-sm">
-                <span className="w-6 shrink-0 text-right tabular-nums opacity-40">{i + 1}.</span>
-                <span>{e.songs?.title ?? e.raw_title}</span>
-                {e.is_cover ? <span className="text-xs opacity-45">(cover)</span> : null}
-                {e.is_encore ? <span className="rounded bg-black/10 px-1.5 text-xs font-bold">encore</span> : null}
-              </li>
-            ))}
-          </ol>
-          <p className="mt-2 text-xs opacity-45">Community-sourced; order approximate.</p>
-        </section>
-      ) : null}
+      <section className="mt-6">
+        <h2 className="text-sm font-black uppercase tracking-widest opacity-50">Setlist</h2>
+        {setlist.length ? (
+          <>
+            <ol className="mt-2 space-y-1">
+              {setlist.map((e, i) => (
+                <li key={i} className="flex flex-wrap items-baseline gap-x-2 text-sm">
+                  <span className="w-6 shrink-0 text-right tabular-nums opacity-40">{i + 1}.</span>
+                  <span>{e.songs?.title ?? e.raw_title}</span>
+                  {e.is_cover ? <span className="text-xs opacity-45">(cover)</span> : null}
+                  {e.is_encore ? <span className="rounded bg-black/10 px-1.5 text-xs font-bold">encore</span> : null}
+                </li>
+              ))}
+            </ol>
+            <p className="mt-2 text-xs opacity-45">Community-sourced; order approximate.</p>
+          </>
+        ) : (
+          <p className="mt-2 text-sm opacity-60">No setlist documented yet — know what they played?</p>
+        )}
+        {user ? (
+          <AddSongForm setId={set.id} year={year} setSlug={params.slug} />
+        ) : (
+          <p className="mt-3 text-sm opacity-60">
+            <Link href="/login" className="font-bold underline decoration-black/30 hover:decoration-black">
+              Sign in
+            </Link>{" "}
+            to add songs to this setlist.
+          </p>
+        )}
+      </section>
 
       {sources.length ? (
         <section className="mt-6">
