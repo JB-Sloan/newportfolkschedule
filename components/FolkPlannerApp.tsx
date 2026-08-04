@@ -457,7 +457,7 @@ export function FolkPlannerApp({
               <h1 className="mt-3 text-4xl font-black leading-tight md:text-6xl">
                 Newport Folk
                 <span className="mt-1 block text-2xl font-black italic text-paper/75 md:text-3xl">
-                  “We're weird for this festival”
+                  “We’re weird for this festival”
                 </span>
               </h1>
               <p className="mt-4 max-w-2xl text-lg text-paper/82">
