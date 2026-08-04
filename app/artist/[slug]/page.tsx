@@ -45,6 +45,26 @@ export default async function ArtistPage({ params }: { params: { slug: string } 
     .returns<{ festival_year: number }[]>();
   const requestYears = [...new Set((reqRows ?? []).map((r) => r.festival_year))].sort((a, b) => b - a);
 
+  // Sit-in graph: everyone this artist has shared a stage with (as guest or host).
+  const [{ data: asGuest }, { data: asHost }] = await Promise.all([
+    supabase.from("v_sit_in_graph").select("host_artist_id, times, first_year, last_year").eq("guest_artist_id", artist.id).returns<{ host_artist_id: string; times: number; first_year: number; last_year: number }[]>(),
+    supabase.from("v_sit_in_graph").select("guest_artist_id, times, first_year, last_year").eq("host_artist_id", artist.id).returns<{ guest_artist_id: string; times: number; first_year: number; last_year: number }[]>()
+  ]);
+  const collabAgg = new Map<string, { times: number; first: number; last: number }>();
+  for (const r of asGuest ?? []) collabAgg.set(r.host_artist_id, { times: r.times, first: r.first_year, last: r.last_year });
+  for (const r of asHost ?? []) {
+    const e = collabAgg.get(r.guest_artist_id);
+    if (e) { e.times += r.times; e.first = Math.min(e.first, r.first_year); e.last = Math.max(e.last, r.last_year); }
+    else collabAgg.set(r.guest_artist_id, { times: r.times, first: r.first_year, last: r.last_year });
+  }
+  let collaborators: { name: string; slug: string; times: number; first: number; last: number }[] = [];
+  if (collabAgg.size) {
+    const { data: names } = await supabase.from("artists").select("id, name, slug").in("id", [...collabAgg.keys()]).returns<{ id: string; name: string; slug: string }[]>();
+    collaborators = (names ?? [])
+      .map((a) => ({ name: a.name, slug: a.slug, ...collabAgg.get(a.id)! }))
+      .sort((a, b) => b.times - a.times || a.name.localeCompare(b.name));
+  }
+
   return (
     <main className="mx-auto max-w-3xl p-6">
       <Link href="/archive" className="text-xs font-bold uppercase tracking-widest opacity-50 hover:opacity-80">
@@ -66,6 +86,26 @@ export default async function ArtistPage({ params }: { params: { slug: string } 
           {requestYears.length ? `(${requestYears.join(", ")})` : ""} — {(reqRows ?? []).length} request
           {(reqRows ?? []).length === 1 ? "" : "s"}.
         </p>
+      ) : null}
+
+      {collaborators.length ? (
+        <section className="mt-5">
+          <h2 className="text-sm font-black uppercase tracking-widest opacity-50">Shared a stage with</h2>
+          <ul className="mt-2 flex flex-wrap gap-2">
+            {collaborators.map((c, i) => (
+              <li key={i}>
+                <Link
+                  href={`/artist/${c.slug}`}
+                  className="inline-flex items-baseline gap-1 rounded-full bg-black/5 px-3 py-1 text-sm hover:bg-black/10"
+                >
+                  {c.name}
+                  {c.times > 1 ? <span className="text-xs opacity-50">×{c.times}</span> : null}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2 text-xs opacity-45">From documented sit-ins and guest appearances.</p>
+        </section>
       ) : null}
 
       <ul className="mt-6 divide-y divide-black/10">
