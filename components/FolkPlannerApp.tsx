@@ -443,23 +443,25 @@ export function FolkPlannerApp({
         <header className="overflow-hidden rounded-[2rem] bg-ink text-paper shadow-soft">
           <div className="grid gap-6 p-5 md:grid-cols-[1.4fr_0.8fr] md:p-8">
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-paper/70">Unofficial planner</p>
+              <p className="text-sm uppercase tracking-[0.3em] text-paper/70">Unofficial fan archive &amp; planner</p>
               <h1 className="mt-3 text-4xl font-black leading-tight md:text-6xl">
-                Newport Folk 2026 Schedule
+                Newport Folk 2026
+                <span className="mt-1 block text-2xl font-black text-paper/75 md:text-3xl">
+                  Schedule &amp; living archive
+                </span>
               </h1>
               <p className="mt-4 max-w-2xl text-lg text-paper/82">
-                Every set time for July 24–26 at Fort Adams. Build a personal itinerary,
-                spot conflicts, save it offline, and export a pocket plan before reception
-                gets wobbly.
+                Sixty-seven years of Newport Folk in one place. Browse every lineup since 1959,
+                trace the sit-ins that make the festival legendary, and revisit your July 24–26 plan.
               </p>
               <div className="mt-5 flex flex-wrap gap-2 text-sm">
+                <a className="rounded-full bg-paper px-4 py-1.5 font-bold text-ink" href="/archive">
+                  Browse the archive →
+                </a>
                 <span className="rounded-full bg-paper/14 px-3 py-1">
                   Version {manifest.scheduleVersion}
                 </span>
-                <span className="rounded-full bg-paper/14 px-3 py-1">
-                  {online ? "Online" : "Offline"} · {offlineReady ? "saved for offline" : "not fully saved"}
-                </span>
-                <a className="rounded-full bg-paper px-3 py-1 font-semibold text-ink" href={officialUrl}>
+                <a className="rounded-full bg-paper/14 px-3 py-1 font-semibold text-paper" href={officialUrl}>
                   Official schedule source
                 </a>
               </div>
@@ -481,6 +483,8 @@ export function FolkPlannerApp({
             </div>
           </div>
         </header>
+
+        <ExploreBand />
 
         {hasPlaceholderData ? (
           <div className="rounded-3xl border-2 border-dashed border-sunset/60 bg-white/80 p-4 text-sm">
@@ -689,6 +693,57 @@ export function FolkPlannerApp({
         Schedule information is subject to change; confirm critical details with Newport Folk.
       </footer>
     </main>
+  );
+}
+
+/**
+ * Explore band: foregrounds the community archive now that the 2026 festival
+ * has wrapped and the schedule is no longer the timely draw. Each card links
+ * into a real, populated page (editions index, richest sit-in graph, a
+ * fan-wishlist artist) so the platform's newest features are one tap away.
+ */
+const EXPLORE_CARDS = [
+  {
+    href: "/archive",
+    tag: "The Archive",
+    title: "67 years, 1959–2026",
+    body: "Every Newport Folk lineup and set, edition by edition — now fully browsable.",
+    cta: "Browse editions"
+  },
+  {
+    href: "/artist/deer-tick",
+    tag: "The Sit-In Graph",
+    title: "Who joined whom on stage",
+    body: "The documented guest appearances that make Newport legendary — start with Deer Tick's 25 collaborators.",
+    cta: "Trace the graph"
+  },
+  {
+    href: "/artist/first-aid-kit",
+    tag: "Fan Wishlists",
+    title: "Who the boards begged for",
+    body: "Years of Inforoo dream-lineup requests, matched to who actually turned up.",
+    cta: "See the demand"
+  }
+] as const;
+
+function ExploreBand() {
+  return (
+    <section aria-label="Explore the archive" className="grid gap-3 sm:grid-cols-3">
+      {EXPLORE_CARDS.map((card) => (
+        <a
+          key={card.href}
+          href={card.href}
+          className="group flex flex-col rounded-3xl bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-bay">{card.tag}</p>
+          <h2 className="mt-2 text-xl font-black leading-tight">{card.title}</h2>
+          <p className="mt-1 text-sm text-ink/65">{card.body}</p>
+          <span className="mt-3 inline-block text-sm font-bold text-bay group-hover:underline">
+            {card.cta} →
+          </span>
+        </a>
+      ))}
+    </section>
   );
 }
 
