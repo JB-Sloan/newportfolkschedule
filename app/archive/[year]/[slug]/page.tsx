@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { AddSongForm } from "./AddSongForm";
+import { AddSitInForm } from "./AddSitInForm";
 
 /**
  * Set page (E2-09): one billed set — its performers (billed, band members,
@@ -166,6 +167,7 @@ export default async function SetPage({ params }: { params: { year: string; slug
             No performers resolved yet — this set is recorded from the billing. Sit-ins and setlist coming from community submissions.
           </p>
         )}
+        {user ? <AddSitInForm setId={set.id} year={year} setSlug={params.slug} /> : null}
       </section>
 
       <section className="mt-6">
