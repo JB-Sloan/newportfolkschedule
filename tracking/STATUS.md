@@ -1,6 +1,6 @@
 # Status
 
-*Generated 2026-08-03 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
+*Generated 2026-08-04 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
 
 ## Overall
 

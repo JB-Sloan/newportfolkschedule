@@ -16,6 +16,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E0-03 | Decide auth provider | done | Supabase Auth. Auth0 dropped — see docs/01 |
 | E0-04 | Configure custom SMTP (Resend) for magic links | todo | **Blocks launch.** Built-in sender is rate-limited to a few/hr |
 | E0-05 | Enable Google + Apple OAuth providers | todo | |
+| E0-05a | App-side auth plumbing (login, callback, middleware, AuthStatus) | done | `middleware.ts`, `/login`, `/auth/*`; works once E0-04/05 configured |
 | E0-06 | Migration: `revisions` + `record_revision()` trigger | done | `0001_foundation.sql` |
 | E0-07 | Migration: `reports`, `moderation_actions` | done | `0001_foundation.sql` |
 | E0-08 | Migration: `sources`, `citations` | done | `0001_foundation.sql` |
