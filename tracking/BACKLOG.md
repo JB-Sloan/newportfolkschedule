@@ -63,7 +63,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E2-11 | Sit-in submission with instrument + song tagging | wip | Guest+role+instruments submission shipped (`/archive/[year]/[slug]`, pending until confirmed); per-song tagging still todo |
 | E2-12 | Confirm/dispute UI with "confirmed by N" | done | Vote controls on set page; recompute_performance_status trigger auto-promotes (trusted/mod confirm, high citation, or net +3) |
 | E2-13 | Review + rating UI | todo | |
-| E2-14 | Citation attachment UI | todo | |
+| E2-14 | Citation attachment UI | done | Optional source URL on song/sit-in submissions → sources + medium-confidence citation; shows in set page Sources |
 | E2-15 | Song fuzzy-match on setlist entry | todo | |
 | E2-16 | **Google Form fallback for submissions** | todo | **Day 1. Insurance against build slip** |
 
