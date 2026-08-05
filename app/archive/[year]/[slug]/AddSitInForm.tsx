@@ -18,6 +18,7 @@ export function AddSitInForm({ setId, year, setSlug }: { setId: string; year: nu
   const [name, setName] = useState("");
   const [role, setRole] = useState<GuestRole>("sit_in");
   const [instruments, setInstruments] = useState("");
+  const [sourceUrl, setSourceUrl] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [justAdded, setJustAdded] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -31,7 +32,7 @@ export function AddSitInForm({ setId, year, setSlug }: { setId: string; year: nu
       return;
     }
     startTransition(async () => {
-      const res = await addSitIn({ setId, year, setSlug, guestName: value, role, instruments });
+      const res = await addSitIn({ setId, year, setSlug, guestName: value, role, instruments, sourceUrl });
       if (!res.ok) {
         setError(res.error);
         return;
@@ -40,6 +41,7 @@ export function AddSitInForm({ setId, year, setSlug }: { setId: string; year: nu
       setName("");
       setInstruments("");
       setRole("sit_in");
+      setSourceUrl("");
     });
   }
 
@@ -72,6 +74,13 @@ export function AddSitInForm({ setId, year, setSlug }: { setId: string; year: nu
         value={instruments}
         onChange={(e) => setInstruments(e.target.value)}
         placeholder="Instruments (optional, comma-separated)"
+        className="mt-2 w-full rounded-xl border border-black/15 bg-white px-3 py-2 text-sm outline-none focus:border-black/40"
+      />
+      <input
+        type="url"
+        value={sourceUrl}
+        onChange={(e) => setSourceUrl(e.target.value)}
+        placeholder="Source link (optional) — where did you see this?"
         className="mt-2 w-full rounded-xl border border-black/15 bg-white px-3 py-2 text-sm outline-none focus:border-black/40"
       />
       <div className="mt-2 flex items-center gap-3">

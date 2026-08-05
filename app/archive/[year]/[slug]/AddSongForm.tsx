@@ -12,6 +12,7 @@ export function AddSongForm({ setId, year, setSlug }: { setId: string; year: num
   const [title, setTitle] = useState("");
   const [isCover, setIsCover] = useState(false);
   const [isEncore, setIsEncore] = useState(false);
+  const [sourceUrl, setSourceUrl] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [justAdded, setJustAdded] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -25,7 +26,7 @@ export function AddSongForm({ setId, year, setSlug }: { setId: string; year: num
       return;
     }
     startTransition(async () => {
-      const res = await addSong({ setId, year, setSlug, title: value, isCover, isEncore });
+      const res = await addSong({ setId, year, setSlug, title: value, isCover, isEncore, sourceUrl });
       if (!res.ok) {
         setError(res.error);
         return;
@@ -34,6 +35,7 @@ export function AddSongForm({ setId, year, setSlug }: { setId: string; year: num
       setTitle("");
       setIsCover(false);
       setIsEncore(false);
+      setSourceUrl("");
     });
   }
 
@@ -68,6 +70,13 @@ export function AddSongForm({ setId, year, setSlug }: { setId: string; year: num
           Encore
         </label>
       </div>
+      <input
+        type="url"
+        value={sourceUrl}
+        onChange={(e) => setSourceUrl(e.target.value)}
+        placeholder="Source link (optional) — where did you see this?"
+        className="mt-2 w-full rounded-xl border border-black/15 bg-white px-3 py-2 text-sm outline-none focus:border-black/40"
+      />
       {error ? <p className="mt-2 text-sm text-red-700">{error}</p> : null}
       {justAdded ? <p className="mt-2 text-sm text-emerald-700">Added “{justAdded}.” Thanks!</p> : null}
     </form>
