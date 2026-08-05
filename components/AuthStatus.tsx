@@ -20,8 +20,16 @@ export async function AuthStatus() {
     );
   }
 
+  const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
+  const isMod = profile?.role === "moderator" || profile?.role === "admin";
+
   return (
     <div className="flex items-center gap-2 text-sm">
+      {isMod ? (
+        <Link href="/moderate" className="rounded-full bg-black/5 px-3 py-1 font-bold hover:bg-black/10">
+          Moderate
+        </Link>
+      ) : null}
       <span className="opacity-60">{user.email}</span>
       <form action="/auth/signout" method="post">
         <button type="submit" className="rounded-full bg-black/5 px-3 py-1 font-bold hover:bg-black/10">

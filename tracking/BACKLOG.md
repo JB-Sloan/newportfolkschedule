@@ -59,10 +59,10 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E2-07 | Views: appearances, sit-in graph, heard songs | done | `0004_...sql` |
 | E2-08 | **Seed 2026 edition: events, stages, sets** | done | `0010_seed_2026_edition.sql`. 1 edition, 5 events (3 days + 2 aftershows), 79 sets. Added Bike stage + Jane Pickens venue |
 | E2-09 | Set page UI | done | `/archive/[year]/[slug]` shows performers by role + stage/time; edition pages link to it. Setlist/media/reviews attach next |
-| E2-10 | Setlist editor with revision history + revert | wip | Add-song contribution shipped (`/archive/[year]/[slug]`); revision-history/revert UI still todo |
+| E2-10 | Setlist editor with revision history + revert | done | Add-song contribution shipped; revision-history/revert UI descoped per decision (2026-08-05) as excessive |
 | E2-11 | Sit-in submission with instrument + song tagging | wip | Guest+role+instruments submission shipped (`/archive/[year]/[slug]`, pending until confirmed); per-song tagging still todo |
 | E2-12 | Confirm/dispute UI with "confirmed by N" | done | Vote controls on set page; recompute_performance_status trigger auto-promotes (trusted/mod confirm, high citation, or net +3) |
-| E2-13 | Review + rating UI | todo | |
+| E2-13 | Review + rating UI | cut | Tabled indefinitely per decision (2026-08-05) |
 | E2-14 | Citation attachment UI | done | Optional source URL on song/sit-in submissions → sources + medium-confidence citation; shows in set page Sources |
 | E2-15 | Song fuzzy-match on setlist entry | todo | |
 | E2-16 | **Google Form fallback for submissions** | todo | **Day 1. Insurance against build slip** |
