@@ -4,15 +4,15 @@
 
 ## Overall
 
-`██████████░░░░░░░░░░░░░░░░░░░░` **33%** (43/129 tasks)
+`██████████░░░░░░░░░░░░░░░░░░░░` **35%** (45/129 tasks)
 
 | Status | Count |
 |---|---|
-| ✅ done | 43 |
-| 🔨 wip | 3 |
+| ✅ done | 45 |
+| 🔨 wip | 2 |
 | ⛔ blocked | 0 |
-| ⬜ todo | 83 |
-| 🚫 cut | 2 |
+| ⬜ todo | 82 |
+| 🚫 cut | 3 |
 
 ## By epic
 
@@ -20,7 +20,7 @@
 |---|---|---|---|---|---|
 | **E0** Foundation | Phase 0 | `████████░░░░` 63% | 12 | 7 | 0 |
 | **E1** Music Graph | Phase 0 | `████████░░░░` 62% | 5 | 3 | 0 |
-| **E2** Set Pages & Core UGC | Phase 0 | `████████░░░░` 69% | 11 | 5 | 0 |
+| **E2** Set Pages & Core UGC | Phase 0 | `██████████░░` 81% | 13 | 3 | 0 |
 | **E3** Media Embeds | Phase 0 | `██░░░░░░░░░░` 20% | 1 | 4 | 0 |
 | **E4** Message Board | Phase 1 | `███░░░░░░░░░` 29% | 2 | 5 | 0 |
 | **E5** The Wire | Phase 1 | `█░░░░░░░░░░░` 11% | 1 | 8 | 0 |
@@ -37,7 +37,6 @@
 
 ## In progress
 
-- 🔨 **E2-10** Setlist editor with revision history + revert
 - 🔨 **E2-11** Sit-in submission with instrument + song tagging
 - 🔨 **E12-08** Moderator review queue for mined claims
 
@@ -61,7 +60,6 @@
 - ⬜ E1-07 Artist search with trigram + alias matching
 
 **E2 Set Pages & Core UGC**
-- ⬜ E2-13 Review + rating UI
 - ⬜ E2-15 Song fuzzy-match on setlist entry
 - ⬜ E2-16 **Google Form fallback for submissions**
 

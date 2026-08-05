@@ -64,6 +64,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E2-12 | Confirm/dispute UI with "confirmed by N" | done | Vote controls on set page; recompute_performance_status trigger auto-promotes (trusted/mod confirm, high citation, or net +3) |
 | E2-13 | Review + rating UI | cut | Tabled indefinitely per decision (2026-08-05) |
 | E2-14 | Citation attachment UI | done | Optional source URL on song/sit-in submissions → sources + medium-confidence citation; shows in set page Sources |
+| E2-15 | Moderation dashboard (pending queue) | done | `/moderate`, moderator-gated; confirm (mod vote)/reject; migration 0017 locks perf updates to moderators |
 | E2-15 | Song fuzzy-match on setlist entry | todo | |
 | E2-16 | **Google Form fallback for submissions** | todo | **Day 1. Insurance against build slip** |
 
