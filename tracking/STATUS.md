@@ -4,21 +4,21 @@
 
 ## Overall
 
-`███████████░░░░░░░░░░░░░░░░░░░` **36%** (46/129 tasks)
+`███████████░░░░░░░░░░░░░░░░░░░` **36%** (47/129 tasks)
 
 | Status | Count |
 |---|---|
-| ✅ done | 46 |
+| ✅ done | 47 |
 | 🔨 wip | 3 |
 | ⛔ blocked | 0 |
-| ⬜ todo | 80 |
+| ⬜ todo | 79 |
 | 🚫 cut | 3 |
 
 ## By epic
 
 | Epic | Phase | Progress | Done | Open | Blocked |
 |---|---|---|---|---|---|
-| **E0** Foundation | Phase 0 | `████████░░░░` 63% | 12 | 7 | 0 |
+| **E0** Foundation | Phase 0 | `████████░░░░` 68% | 13 | 6 | 0 |
 | **E1** Music Graph | Phase 0 | `████████░░░░` 62% | 5 | 3 | 0 |
 | **E2** Set Pages & Core UGC | Phase 0 | `██████████░░` 81% | 13 | 3 | 0 |
 | **E3** Media Embeds | Phase 0 | `██░░░░░░░░░░` 20% | 1 | 4 | 0 |
@@ -43,7 +43,6 @@
 
 ## Critical path / warnings
 
-- ⬜ **E0-11** GitHub Actions keepalive cron — **Free tier pauses after 7 days idle**
 - ⬜ **E2-16** **Google Form fallback for submissions** — **Day 1. Insurance against build slip**
 - ⬜ **E6-04** **Weekly snapshot job** — **Start immediately — cannot be backfilled**
 - ⬜ **E12-04** **Post in the Inforoo community explaining the project** — **Do this before any scraping.** Highest-leverage 5 min in the epic
@@ -52,8 +51,8 @@
 
 **E0 Foundation**
 - ⬜ E0-10 Handle reservation + profanity/impersonation blocklist
-- ⬜ E0-11 GitHub Actions keepalive cron
 - ⬜ E0-13 Sentry + basic analytics (Plausible/Umami self-host)
+- ⬜ E0-14 Moderation queue UI
 
 **E1 Music Graph**
 - ⬜ E1-04 MusicBrainz lookup + import service

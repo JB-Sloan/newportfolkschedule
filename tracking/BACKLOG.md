@@ -22,7 +22,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E0-08 | Migration: `sources`, `citations` | done | `0001_foundation.sql` |
 | E0-09 | Migration: RLS policies across all tables | done | `0006` + `0009` hardening. Applied & verified |
 | E0-10 | Handle reservation + profanity/impersonation blocklist | todo | |
-| E0-11 | GitHub Actions keepalive cron | todo | **Free tier pauses after 7 days idle** |
+| E0-11 | GitHub Actions keepalive cron | done | `.github/workflows/keepalive.yml` pings force-dynamic /archive every 3 days (hits Supabase); no secrets |
 | E0-12 | Next.js scaffold on Vercel Hobby + Supabase client | done | `@supabase/ssr` clients in `lib/supabase/{client,server}.ts`, generated `database.types.ts`, `/archive` proof page reads seeded data. Set `NEXT_PUBLIC_SUPABASE_*` in Vercel |
 | E0-13 | Sentry + basic analytics (Plausible/Umami self-host) | todo | |
 | E0-14 | Moderation queue UI | todo | Ships Phase 0, not later |
