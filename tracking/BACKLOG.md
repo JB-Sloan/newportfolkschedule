@@ -181,7 +181,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 
 | ID | Task | Status | Notes |
 |---|---|---|---|
-| E12-01 | Per-edition completeness meters | todo | Visible gaps recruit contributors |
+| E12-01 | Per-edition completeness meters | done | `v_edition_completeness` (0018); % bar per edition on archive index + edition-page banner with contribute nudge |
 | E12-02 | Contribution leaderboard | todo | |
 | E12-03 | setlist.fm import for prior editions | todo | Check licensing |
 | E12-04 | **Post in the Inforoo community explaining the project** | todo | **Do this before any scraping.** Highest-leverage 5 min in the epic |

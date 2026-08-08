@@ -1,17 +1,17 @@
 # Status
 
-*Generated 2026-08-05 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
+*Generated 2026-08-07 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
 
 ## Overall
 
-`██████████░░░░░░░░░░░░░░░░░░░░` **35%** (45/129 tasks)
+`███████████░░░░░░░░░░░░░░░░░░░` **36%** (46/129 tasks)
 
 | Status | Count |
 |---|---|
-| ✅ done | 45 |
+| ✅ done | 46 |
 | 🔨 wip | 2 |
 | ⛔ blocked | 0 |
-| ⬜ todo | 82 |
+| ⬜ todo | 81 |
 | 🚫 cut | 3 |
 
 ## By epic
@@ -30,7 +30,7 @@
 | **E9** Profiles, Attendance & Badges | Phase 1 | `███░░░░░░░░░` 29% | 2 | 5 | 0 |
 | **E10** Announcement Tracker | Phase 3 | `███░░░░░░░░░` 25% | 1 | 3 | 0 |
 | **E11** Schedule Builder | Phase 3 | `█░░░░░░░░░░░` 11% | 1 | 8 | 0 |
-| **E12** Historical Backfill | Phase 1, ongoing | `██░░░░░░░░░░` 20% | 2 | 8 | 0 |
+| **E12** Historical Backfill | Phase 1, ongoing | `████░░░░░░░░` 30% | 3 | 7 | 0 |
 | **E13** Merch | Phase 4 | `███░░░░░░░░░` 25% | 1 | 3 | 0 |
 | **E14** Logistics & Meetups | Phase 4 | `░░░░░░░░░░░░` 0% | 0 | 3 | 0 |
 | **E15** Live Mode | Phase 4 | `░░░░░░░░░░░░` 0% | 0 | 5 | 0 |
@@ -109,9 +109,9 @@
 - ⬜ E11-04 **Walking-time conflict detection via `stage_transits`**
 
 **E12 Historical Backfill**
-- ⬜ E12-01 Per-edition completeness meters
 - ⬜ E12-02 Contribution leaderboard
 - ⬜ E12-03 setlist.fm import for prior editions
+- ⬜ E12-04 **Post in the Inforoo community explaining the project**
 
 **E13 Merch**
 - ⬜ E13-02 Merch archive by year with designer credits

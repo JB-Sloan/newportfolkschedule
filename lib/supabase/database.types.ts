@@ -1,6 +1,3 @@
-// Generated from Supabase project uczitvfcazcujzbhjetj via generate_typescript_types.
-// Regenerate with: npx supabase gen types typescript --project-id uczitvfcazcujzbhjetj
-
 export type Json =
   | string
   | number
@@ -49,6 +46,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "editions"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "announcement_waves_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
           },
         ]
       }
@@ -126,6 +130,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "editions"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "artist_feature_snapshots_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
           },
           {
             foreignKeyName: "artist_feature_snapshots_feature_key_fkey"
@@ -300,6 +311,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "artist_requests_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
+          },
+          {
             foreignKeyName: "artist_requests_source_id_fkey"
             columns: ["source_id"]
             isOneToOne: false
@@ -461,6 +479,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "editions"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bingo_cards_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
           },
           {
             foreignKeyName: "bingo_cards_user_id_fkey"
@@ -687,6 +712,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "events_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
+          },
+          {
             foreignKeyName: "events_venue_id_fkey"
             columns: ["venue_id"]
             isOneToOne: false
@@ -788,6 +820,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "editions"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lineup_announcements_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
           },
           {
             foreignKeyName: "lineup_announcements_wave_id_fkey"
@@ -929,6 +968,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "editions"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "merch_items_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
           },
         ]
       }
@@ -1392,6 +1438,13 @@ export type Database = {
             referencedRelation: "editions"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "prediction_outcomes_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
+          },
         ]
       }
       predictions: {
@@ -1442,6 +1495,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "editions"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "predictions_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
           },
         ]
       }
@@ -2269,6 +2329,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "topics_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
+          },
+          {
             foreignKeyName: "topics_set_id_fkey"
             columns: ["set_id"]
             isOneToOne: false
@@ -2436,6 +2503,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "user_schedules_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
+          },
+          {
             foreignKeyName: "user_schedules_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
@@ -2581,6 +2655,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "bingo_cards_edition_id_fkey"
+            columns: ["edition_id"]
+            isOneToOne: false
+            referencedRelation: "v_edition_completeness"
+            referencedColumns: ["edition_id"]
+          },
+          {
             foreignKeyName: "bingo_squares_artist_id_fkey"
             columns: ["artist_id"]
             isOneToOne: false
@@ -2588,6 +2669,17 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      v_edition_completeness: {
+        Row: {
+          edition_id: string | null
+          enriched_sets: number | null
+          sets_with_guests: number | null
+          sets_with_setlist: number | null
+          total_sets: number | null
+          year: number | null
+        }
+        Relationships: []
       }
       v_sit_in_graph: {
         Row: {
@@ -2977,3 +3069,4 @@ export const Constants = {
     },
   },
 } as const
+

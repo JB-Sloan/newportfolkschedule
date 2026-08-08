@@ -190,6 +190,14 @@ export default async function EditionPage({ params }: { params: { year: string }
   // Group timeline-eligible sets by festival day.
   const days = [...new Set(scheduled.map((s) => s.events!.date))].sort();
 
+  // Completeness: how many sets carry a setlist or a guest (recruits contributors).
+  const { data: comp } = await supabase
+    .from("v_edition_completeness")
+    .select("total_sets, enriched_sets")
+    .eq("year", year)
+    .maybeSingle<{ total_sets: number; enriched_sets: number }>();
+  const pct = comp && comp.total_sets > 0 ? Math.round((comp.enriched_sets / comp.total_sets) * 100) : 0;
+
   return (
     <main className="mx-auto max-w-5xl p-6">
       <Link href="/archive" className="text-xs font-bold uppercase tracking-widest opacity-50 hover:opacity-80">
@@ -200,6 +208,23 @@ export default async function EditionPage({ params }: { params: { year: string }
         {edition.is_cancelled ? "Cancelled" : `${billed.length} sets`}
         {guests.length ? ` · ${guests.length} guests/surprises` : ""}
       </p>
+
+      {!edition.is_cancelled && comp ? (
+        <div className="mt-4 rounded-2xl border border-black/10 p-3">
+          <div className="flex items-baseline justify-between gap-3">
+            <span className="text-xs font-bold uppercase tracking-wide opacity-55">Documented</span>
+            <span className="text-xs font-bold tabular-nums opacity-55">
+              {comp.enriched_sets} / {comp.total_sets} sets · {pct}%
+            </span>
+          </div>
+          <span className="mt-2 block h-1.5 overflow-hidden rounded-full bg-black/10">
+            <span className="block h-full rounded-full bg-emerald-500" style={{ width: `${pct}%` }} />
+          </span>
+          <p className="mt-2 text-xs opacity-55">
+            Know a setlist or a sit-in from this year? Open a set and add what you saw — every detail helps fill the archive.
+          </p>
+        </div>
+      ) : null}
 
       {days.map((date) => (
         <DayTimeline key={date} year={year} date={date} sets={scheduled.filter((s) => s.events!.date === date)} />
