@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { AuthStatus } from "@/components/AuthStatus";
+import { SearchBox } from "@/components/SearchBox";
 
 /**
  * The Archive index: every edition we hold, newest first, with set counts.
@@ -48,6 +49,9 @@ export default async function ArchiveIndexPage() {
         {editions.length} editions · {totalSets.toLocaleString()} sets · 1959–2026 ·{" "}
         {totalEnriched.toLocaleString()} with community detail
       </p>
+      <div className="mt-4">
+        <SearchBox />
+      </div>
       <nav className="mt-3 flex flex-wrap gap-2 text-sm font-bold">
         <Link href="/setlists" className="rounded-full bg-black/5 px-3 py-1 hover:bg-black/10">♪ Setlists</Link>
         <Link href="/sit-ins" className="rounded-full bg-black/5 px-3 py-1 hover:bg-black/10">Sit-in graph</Link>

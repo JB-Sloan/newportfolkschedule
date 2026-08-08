@@ -1,6 +1,6 @@
 # Status
 
-*Generated 2026-08-07 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
+*Generated 2026-08-08 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
 
 ## Overall
 
@@ -9,9 +9,9 @@
 | Status | Count |
 |---|---|
 | ✅ done | 46 |
-| 🔨 wip | 2 |
+| 🔨 wip | 3 |
 | ⛔ blocked | 0 |
-| ⬜ todo | 81 |
+| ⬜ todo | 80 |
 | 🚫 cut | 3 |
 
 ## By epic
@@ -37,6 +37,7 @@
 
 ## In progress
 
+- 🔨 **E1-07** Artist search with trigram + alias matching
 - 🔨 **E2-11** Sit-in submission with instrument + song tagging
 - 🔨 **E12-08** Moderator review queue for mined claims
 
@@ -57,7 +58,6 @@
 **E1 Music Graph**
 - ⬜ E1-04 MusicBrainz lookup + import service
 - ⬜ E1-05 Artist merge/dedupe tool for moderators
-- ⬜ E1-07 Artist search with trigram + alias matching
 
 **E2 Set Pages & Core UGC**
 - ⬜ E2-15 Song fuzzy-match on setlist entry

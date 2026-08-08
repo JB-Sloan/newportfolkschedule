@@ -43,7 +43,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E1-04 | MusicBrainz lookup + import service | todo | 1 req/sec, real User-Agent |
 | E1-05 | Artist merge/dedupe tool for moderators | todo | You will need this sooner than you think |
 | E1-06 | Artist page: appearances, memberships, releases | done | `/artist/[slug]` ships appearance history from `v_artist_appearances`. Memberships/releases await that data |
-| E1-07 | Artist search with trigram + alias matching | todo | |
+| E1-07 | Artist search with trigram + alias matching | wip | `/search` + SearchBox on archive; substring ILIKE with JS relevance re-rank. Trigram/alias matching still todo |
 | E1-08 | Seed instruments + reference data | done | Applied. 22 instruments, 5 stages, 20 transits |
 
 ## E2 — Set Pages & Core UGC · Phase 0
