@@ -3,9 +3,30 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { slugify } from "@/lib/slug";
+import { notifyAdmin, setUrl, MODERATE_URL } from "@/lib/notify";
 import type { Database } from "@/lib/supabase/database.types";
 
 type SourceKind = Database["public"]["Enums"]["source_kind"];
+
+/**
+ * Simple per-user rate limit: how many rows the user has created in `table`
+ * in the last minute. Cheap COUNT; the abuse surface is row/artist creation,
+ * so votes (PK-limited to one per performance) aren't gated here.
+ */
+async function submittingTooFast(
+  supabase: Client,
+  table: "setlist_entries" | "performances",
+  userId: string,
+  maxPerMinute: number
+): Promise<boolean> {
+  const since = new Date(Date.now() - 60_000).toISOString();
+  const { count } = await supabase
+    .from(table)
+    .select("*", { count: "exact", head: true })
+    .eq("submitted_by", userId)
+    .gte("created_at", since);
+  return (count ?? 0) >= maxPerMinute;
+}
 
 export type AddSongResult = { ok: true } | { ok: false; error: string };
 
@@ -96,6 +117,10 @@ export async function addSong(input: {
   } = await supabase.auth.getUser();
   if (!user) return { ok: false, error: "Please sign in first." };
 
+  if (await submittingTooFast(supabase, "setlist_entries", user.id, 30)) {
+    return { ok: false, error: "You're adding songs very quickly — take a breather and try again in a minute." };
+  }
+
   // Resolve or create the song row.
   const slug = slugify(title);
   let songId: string | null = null;
@@ -142,6 +167,14 @@ export async function addSong(input: {
   if (sourceUrl) {
     await attachCitation(supabase, { url: sourceUrl, entityTable: "setlist_entries", entityId: entry.id, userId: user.id });
   }
+
+  await notifyAdmin(`Setlist: “${title}” added`, [
+    `${user.email ?? "A signed-in user"} added a song to a setlist.`,
+    ``,
+    `Song: ${title}${input.isCover ? " (cover)" : ""}`,
+    `Set: ${setUrl(input.year, input.setSlug)}`,
+    sourceUrl ? `Source: ${sourceUrl}` : ``
+  ]);
 
   revalidatePath(`/archive/${input.year}/${input.setSlug}`);
   return { ok: true };
@@ -222,6 +255,10 @@ export async function addSitIn(input: {
   } = await supabase.auth.getUser();
   if (!user) return { ok: false, error: "Please sign in first." };
 
+  if (await submittingTooFast(supabase, "performances", user.id, 15)) {
+    return { ok: false, error: "You're submitting sit-ins very quickly — take a breather and try again in a minute." };
+  }
+
   // Resolve or create the guest artist.
   let artistId: string;
   const { data: existing } = await supabase.from("artists").select("id").eq("slug", slug).maybeSingle();
@@ -270,6 +307,16 @@ export async function addSitIn(input: {
   if (sourceUrl) {
     await attachCitation(supabase, { url: sourceUrl, entityTable: "performances", entityId: perf.id, userId: user.id });
   }
+
+  await notifyAdmin(`Sit-in submitted: ${name}`, [
+    `${user.email ?? "A signed-in user"} submitted a guest appearance (pending review).`,
+    ``,
+    `Guest: ${name} — ${input.role.replace("_", " ")}${instruments.length ? ` (${instruments.join(", ")})` : ""}`,
+    `Set: ${setUrl(input.year, input.setSlug)}`,
+    sourceUrl ? `Source: ${sourceUrl}` : ``,
+    ``,
+    `Review the queue: ${MODERATE_URL}`
+  ]);
 
   revalidatePath(`/archive/${input.year}/${input.setSlug}`);
   return { ok: true };

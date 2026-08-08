@@ -26,7 +26,8 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E0-12 | Next.js scaffold on Vercel Hobby + Supabase client | done | `@supabase/ssr` clients in `lib/supabase/{client,server}.ts`, generated `database.types.ts`, `/archive` proof page reads seeded data. Set `NEXT_PUBLIC_SUPABASE_*` in Vercel |
 | E0-13 | Sentry + basic analytics (Plausible/Umami self-host) | todo | |
 | E0-14 | Moderation queue UI | todo | Ships Phase 0, not later |
-| E0-15 | Rate limiting on write endpoints | todo | |
+| E0-15 | Rate limiting on write endpoints | done | Per-user recent-row count in the submission actions (songs 30/min, sit-ins 15/min); votes are PK-limited |
+| E0-21 | Admin email on new submission | done | `lib/notify.ts` (Resend API, best-effort) fires on song + sit-in submit; needs RESEND_API_KEY / NOTIFY_FROM / NOTIFY_TO env vars in Vercel |
 | E0-16 | Recruit 3 volunteer moderators | todo | Do this before you need them |
 | E0-17 | Apply all migrations to production | done | 0001–0009 live on `uczitvfcazcujzbhjetj` |
 | E0-18 | End-to-end smoke test of verification pipeline | done | Wilco/Nels scenario passing |

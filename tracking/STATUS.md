@@ -4,21 +4,21 @@
 
 ## Overall
 
-`███████████░░░░░░░░░░░░░░░░░░░` **36%** (47/129 tasks)
+`███████████░░░░░░░░░░░░░░░░░░░` **38%** (49/130 tasks)
 
 | Status | Count |
 |---|---|
-| ✅ done | 47 |
+| ✅ done | 49 |
 | 🔨 wip | 3 |
 | ⛔ blocked | 0 |
-| ⬜ todo | 79 |
+| ⬜ todo | 78 |
 | 🚫 cut | 3 |
 
 ## By epic
 
 | Epic | Phase | Progress | Done | Open | Blocked |
 |---|---|---|---|---|---|
-| **E0** Foundation | Phase 0 | `████████░░░░` 68% | 13 | 6 | 0 |
+| **E0** Foundation | Phase 0 | `█████████░░░` 75% | 15 | 5 | 0 |
 | **E1** Music Graph | Phase 0 | `████████░░░░` 62% | 5 | 3 | 0 |
 | **E2** Set Pages & Core UGC | Phase 0 | `██████████░░` 81% | 13 | 3 | 0 |
 | **E3** Media Embeds | Phase 0 | `██░░░░░░░░░░` 20% | 1 | 4 | 0 |
