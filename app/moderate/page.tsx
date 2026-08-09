@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { ModerateActions } from "./ModerateActions";
+import { ReportActions } from "./ReportActions";
 
 /**
  * Moderation queue: pending and disputed guest performances awaiting review.
@@ -26,6 +27,19 @@ type Row = {
   dispute_count: number;
   artists: { name: string; slug: string } | null;
   sets: { billed_name: string; slug: string; events: { date: string; editions: { year: number } | null } | null } | null;
+};
+type ReportRow = {
+  id: string;
+  entity_table: string;
+  entity_id: string;
+  reason: string;
+  details: string | null;
+  created_at: string;
+};
+type PerfMeta = {
+  id: string;
+  artists: { name: string } | null;
+  sets: { slug: string; events: { editions: { year: number } | null } | null } | null;
 };
 
 export default async function ModeratePage() {
@@ -80,6 +94,32 @@ export default async function ModeratePage() {
       .in("entity_id", rows.map((r) => r.id))
       .returns<{ entity_id: string }[]>();
     for (const c of cites ?? []) cited.add(c.entity_id);
+  }
+
+  // Open reports (any entity). For performance reports, resolve the guest+set.
+  const { data: reportData } = await supabase
+    .from("reports")
+    .select("id, entity_table, entity_id, reason, details, created_at")
+    .eq("status", "open")
+    .order("created_at", { ascending: true })
+    .returns<ReportRow[]>();
+  const reports = reportData ?? [];
+
+  const perfMeta = new Map<string, { name: string; year?: number; slug?: string }>();
+  const perfReportIds = reports.filter((r) => r.entity_table === "performances").map((r) => r.entity_id);
+  if (perfReportIds.length) {
+    const { data: perfs } = await supabase
+      .from("performances")
+      .select("id, artists(name), sets(slug, events(editions(year)))")
+      .in("id", perfReportIds)
+      .returns<PerfMeta[]>();
+    for (const p of perfs ?? []) {
+      perfMeta.set(p.id, {
+        name: p.artists?.name ?? "Unknown",
+        year: p.sets?.events?.editions?.year,
+        slug: p.sets?.slug
+      });
+    }
   }
 
   return (
@@ -138,6 +178,47 @@ export default async function ModeratePage() {
                     <span className="opacity-60"> · ✓ {r.confirm_count} ✗ {r.dispute_count}</span>
                   </p>
                   <ModerateActions performanceId={r.id} />
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+
+      <h2 className="mt-10 text-2xl font-black">Reports</h2>
+      <p className="mt-1 text-sm opacity-70">
+        {reports.length} open {reports.length === 1 ? "report" : "reports"} from the community.
+      </p>
+      {reports.length === 0 ? (
+        <p className="mt-4 rounded-2xl border border-black/10 p-4 text-sm opacity-70">No open reports.</p>
+      ) : (
+        <ul className="mt-4 space-y-3">
+          {reports.map((rep) => {
+            const meta = rep.entity_table === "performances" ? perfMeta.get(rep.entity_id) : undefined;
+            return (
+              <li key={rep.id} className="rounded-2xl border border-black/10 p-3">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-bold capitalize text-red-800">
+                    {rep.reason.replace("_", " ")}
+                  </span>
+                  {meta ? (
+                    meta.year && meta.slug ? (
+                      <Link href={`/archive/${meta.year}/${meta.slug}`} className="font-bold underline decoration-black/20 hover:decoration-black">
+                        {meta.name}
+                      </Link>
+                    ) : (
+                      <span className="font-bold">{meta.name}</span>
+                    )
+                  ) : (
+                    <span className="text-sm opacity-60">
+                      {rep.entity_table} · {rep.entity_id.slice(0, 8)}
+                    </span>
+                  )}
+                  {meta?.year ? <span className="text-sm opacity-55">{meta.year}</span> : null}
+                </div>
+                {rep.details ? <p className="mt-1 text-sm opacity-75">“{rep.details}”</p> : null}
+                <div className="mt-2">
+                  <ReportActions reportId={rep.id} />
                 </div>
               </li>
             );

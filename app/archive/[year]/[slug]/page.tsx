@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { AddSongForm } from "./AddSongForm";
 import { AddSitInForm } from "./AddSitInForm";
 import { PerformanceVote } from "./PerformanceVote";
+import { ReportButton } from "./ReportButton";
 
 // Guest roles the vote trigger can promote (everything but billed / band member).
 const VOTABLE = (role: string) => role !== "billed" && role !== "band_member";
@@ -190,7 +191,7 @@ export default async function SetPage({ params }: { params: { year: string; slug
                   <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">confirmed</span>
                 ) : null}
                 {VOTABLE(p.role) ? (
-                  <span className="ml-auto">
+                  <span className="ml-auto flex flex-wrap items-center gap-2">
                     <PerformanceVote
                       performanceId={p.id}
                       year={year}
@@ -200,6 +201,7 @@ export default async function SetPage({ params }: { params: { year: string; slug
                       myVote={myVotes.get(p.id) ?? 0}
                       signedIn={!!user}
                     />
+                    {user ? <ReportButton performanceId={p.id} year={year} setSlug={params.slug} /> : null}
                   </span>
                 ) : null}
               </li>

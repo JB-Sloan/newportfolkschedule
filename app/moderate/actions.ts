@@ -53,3 +53,22 @@ export async function moderatePerformance(input: {
   revalidatePath("/moderate");
   return { ok: true };
 }
+
+/** Resolve a report: mark it actioned (handled) or dismissed (no action). */
+export async function resolveReport(input: {
+  reportId: string;
+  status: "actioned" | "dismissed";
+}): Promise<ModResult> {
+  const supabase = createClient();
+  const gate = await requireModerator(supabase);
+  if ("error" in gate) return { ok: false, error: gate.error };
+
+  const { error } = await supabase
+    .from("reports")
+    .update({ status: input.status, resolved_by: gate.userId, resolved_at: new Date().toISOString() })
+    .eq("id", input.reportId);
+  if (error) return { ok: false, error: error.message };
+
+  revalidatePath("/moderate");
+  return { ok: true };
+}

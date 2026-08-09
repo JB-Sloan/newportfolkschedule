@@ -1,14 +1,14 @@
 # Status
 
-*Generated 2026-08-08 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
+*Generated 2026-08-09 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
 
 ## Overall
 
-`███████████░░░░░░░░░░░░░░░░░░░` **38%** (49/130 tasks)
+`███████████░░░░░░░░░░░░░░░░░░░` **38%** (50/131 tasks)
 
 | Status | Count |
 |---|---|
-| ✅ done | 49 |
+| ✅ done | 50 |
 | 🔨 wip | 3 |
 | ⛔ blocked | 0 |
 | ⬜ todo | 78 |
@@ -20,7 +20,7 @@
 |---|---|---|---|---|---|
 | **E0** Foundation | Phase 0 | `█████████░░░` 75% | 15 | 5 | 0 |
 | **E1** Music Graph | Phase 0 | `████████░░░░` 62% | 5 | 3 | 0 |
-| **E2** Set Pages & Core UGC | Phase 0 | `██████████░░` 81% | 13 | 3 | 0 |
+| **E2** Set Pages & Core UGC | Phase 0 | `██████████░░` 82% | 14 | 3 | 0 |
 | **E3** Media Embeds | Phase 0 | `██░░░░░░░░░░` 20% | 1 | 4 | 0 |
 | **E4** Message Board | Phase 1 | `███░░░░░░░░░` 29% | 2 | 5 | 0 |
 | **E5** The Wire | Phase 1 | `█░░░░░░░░░░░` 11% | 1 | 8 | 0 |

@@ -68,6 +68,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E2-15 | Moderation dashboard (pending queue) | done | `/moderate`, moderator-gated; confirm (mod vote)/reject; migration 0017 locks perf updates to moderators |
 | E2-15 | Song fuzzy-match on setlist entry | todo | |
 | E2-16 | **Google Form fallback for submissions** | todo | **Day 1. Insurance against build slip** |
+| E2-17 | Report content + reports in moderation queue | done | ReportButton on guest perfs → `reports` (open); `/moderate` Reports section with actioned/dismiss + admin email |
 
 ## E3 — Media Embeds · Phase 0
 

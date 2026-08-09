@@ -220,6 +220,63 @@ export async function voteOnPerformance(input: {
   return { ok: true };
 }
 
+const REPORT_REASONS = ["spam", "harassment", "misinformation", "copyright", "off_topic", "scam", "other"] as const;
+export type ReportReason = (typeof REPORT_REASONS)[number];
+
+/**
+ * File a report on a piece of content (currently a guest performance). Lands
+ * as status 'open' in the moderator queue. RLS requires reporter_id =
+ * auth.uid(); one open report per user per entity (dupes are folded).
+ */
+export async function reportContent(input: {
+  entityTable: "performances";
+  entityId: string;
+  reason: ReportReason;
+  details: string;
+  year: number;
+  setSlug: string;
+}): Promise<AddSongResult> {
+  if (!REPORT_REASONS.includes(input.reason)) return { ok: false, error: "Pick a reason." };
+  const details = input.details.trim().slice(0, 1000);
+
+  const supabase = createClient();
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "Please sign in first." };
+
+  // Fold duplicate open reports from the same user on the same entity.
+  const { data: existing } = await supabase
+    .from("reports")
+    .select("id")
+    .eq("entity_table", input.entityTable)
+    .eq("entity_id", input.entityId)
+    .eq("reporter_id", user.id)
+    .eq("status", "open")
+    .maybeSingle();
+  if (existing) return { ok: true };
+
+  const { error } = await supabase.from("reports").insert({
+    entity_table: input.entityTable,
+    entity_id: input.entityId,
+    reason: input.reason,
+    details: details || null,
+    reporter_id: user.id
+  });
+  if (error) return { ok: false, error: error.message };
+
+  await notifyAdmin(`Report: ${input.reason.replace("_", " ")}`, [
+    `${user.email ?? "A signed-in user"} reported a ${input.entityTable.replace(/s$/, "")}.`,
+    details ? `Details: ${details}` : ``,
+    ``,
+    `Set: ${setUrl(input.year, input.setSlug)}`,
+    `Review: ${MODERATE_URL}`
+  ]);
+
+  revalidatePath(`/archive/${input.year}/${input.setSlug}`);
+  return { ok: true };
+}
+
 const GUEST_ROLES = ["sit_in", "guest_vocal", "surprise_guest"] as const;
 export type GuestRole = (typeof GUEST_ROLES)[number];
 
