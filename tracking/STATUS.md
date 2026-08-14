@@ -1,17 +1,17 @@
 # Status
 
-*Generated 2026-08-09 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
+*Generated 2026-08-14 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
 
 ## Overall
 
-`███████████░░░░░░░░░░░░░░░░░░░` **38%** (50/131 tasks)
+`████████████░░░░░░░░░░░░░░░░░░` **39%** (51/131 tasks)
 
 | Status | Count |
 |---|---|
-| ✅ done | 50 |
-| 🔨 wip | 3 |
+| ✅ done | 51 |
+| 🔨 wip | 4 |
 | ⛔ blocked | 0 |
-| ⬜ todo | 78 |
+| ⬜ todo | 76 |
 | 🚫 cut | 3 |
 
 ## By epic
@@ -24,7 +24,7 @@
 | **E3** Media Embeds | Phase 0 | `██░░░░░░░░░░` 20% | 1 | 4 | 0 |
 | **E4** Message Board | Phase 1 | `███░░░░░░░░░` 29% | 2 | 5 | 0 |
 | **E5** The Wire | Phase 1 | `█░░░░░░░░░░░` 11% | 1 | 8 | 0 |
-| **E6** The Oracle | Phase 2 | `██░░░░░░░░░░` 20% | 2 | 8 | 0 |
+| **E6** The Oracle | Phase 2 | `████░░░░░░░░` 30% | 3 | 7 | 0 |
 | **E7** Bingo | Phase 2 | `██░░░░░░░░░░` 12% | 1 | 7 | 0 |
 | **E8** The Wishlist | Phase 2 | `██░░░░░░░░░░` 20% | 1 | 4 | 0 |
 | **E9** Profiles, Attendance & Badges | Phase 1 | `███░░░░░░░░░` 29% | 2 | 5 | 0 |
@@ -39,12 +39,12 @@
 
 - 🔨 **E1-07** Artist search with trigram + alias matching
 - 🔨 **E2-11** Sit-in submission with instrument + song tagging
+- 🔨 **E6-05** Feature computers F01–F23
 - 🔨 **E12-08** Moderator review queue for mined claims
 
 ## Critical path / warnings
 
 - ⬜ **E2-16** **Google Form fallback for submissions** — **Day 1. Insurance against build slip**
-- ⬜ **E6-04** **Weekly snapshot job** — **Start immediately — cannot be backfilled**
 - ⬜ **E12-04** **Post in the Inforoo community explaining the project** — **Do this before any scraping.** Highest-leverage 5 min in the epic
 
 ## Next up
@@ -79,8 +79,8 @@
 
 **E6 The Oracle**
 - ⬜ E6-03 Candidate universe builder
-- ⬜ E6-04 **Weekly snapshot job**
-- ⬜ E6-05 Feature computers F01–F23
+- ⬜ E6-06 Scoring + tier assignment
+- ⬜ E6-07 Public odds board with visible weights
 
 **E7 Bingo**
 - ⬜ E7-02 Card builder UI with artist autocomplete

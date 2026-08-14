@@ -72,7 +72,11 @@ export default async function ArchiveIndexPage() {
               >
                 <span className="text-2xl font-black tabular-nums">{e.year}</span>
                 <span className="text-xs opacity-60">
-                  {e.is_cancelled ? "Cancelled" : `${setCount(e)} sets`}
+                  {e.is_cancelled
+                    ? "Cancelled"
+                    : setCount(e) === 0
+                      ? "Upcoming · lineup TBA"
+                      : `${setCount(e)} sets`}
                 </span>
                 {!e.is_cancelled && c ? (
                   <span className="mt-2" title={`${c.enriched} of ${c.total} sets have a setlist or guest`}>

@@ -112,9 +112,9 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 |---|---|---|---|
 | E6-01 | Migration: features, snapshots, predictions, outcomes | done | `0005_...sql` |
 | E6-02 | Seed feature weights | done | Applied. 23 features live |
-| E6-03 | Candidate universe builder | todo | |
-| E6-04 | **Weekly snapshot job** | todo | **Start immediately — cannot be backfilled** |
-| E6-05 | Feature computers F01–F23 | todo | One per feature; F03 first |
+| E6-03 | Candidate universe builder | todo | Provisional universe (alums ∪ fan-demand artists) is implicit in `take_oracle_snapshot()`; a real builder adding non-alum candidates from E5 ingestion still needed |
+| E6-04 | **Weekly snapshot job** | done | `0019`/`0020`: `take_oracle_snapshot()` (SECURITY DEFINER) + pg_cron `oracle-weekly-snapshot` Mondays 09:07 UTC → `artist_feature_snapshots` for the 2027 target edition. Baseline captured (1,368 rows). Target = nearest non-cancelled edition with no sets (`oracle_target_edition()`) |
+| E6-05 | Feature computers F01–F23 | wip | 4 live in `take_oracle_snapshot()`: F01 prior-history + F21 recency-cooldown (from `v_artist_appearances`), F06 orbit-centrality (`v_sit_in_graph`), F20 crowd demand (`v_artist_demand`, forum proxy until bingo/wishlist). Remaining 19 need E5 ingestion or manual entry |
 | E6-06 | Scoring + tier assignment | todo | Ranks/tiers only until calibrated |
 | E6-07 | Public odds board with visible weights | todo | |
 | E6-08 | Per-artist explanation view | todo | Interpretability *is* the product |

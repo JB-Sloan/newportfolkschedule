@@ -205,9 +205,20 @@ export default async function EditionPage({ params }: { params: { year: string }
       </Link>
       <h1 className="mt-1 text-3xl font-black">{edition.name ?? `Newport Folk ${year}`}</h1>
       <p className="mt-1 text-sm opacity-70">
-        {edition.is_cancelled ? "Cancelled" : `${billed.length} sets`}
+        {edition.is_cancelled
+          ? "Cancelled"
+          : sets.length === 0
+            ? "Upcoming · lineup to be announced"
+            : `${billed.length} sets`}
         {guests.length ? ` · ${guests.length} guests/surprises` : ""}
       </p>
+
+      {!edition.is_cancelled && sets.length === 0 ? (
+        <div className="mt-4 rounded-2xl border border-black/10 p-4 text-sm opacity-75">
+          The {year} lineup hasn&apos;t been announced yet. Until it is, this edition is where
+          the Oracle&apos;s predictions live — check back as waves drop.
+        </div>
+      ) : null}
 
       {!edition.is_cancelled && comp ? (
         <div className="mt-4 rounded-2xl border border-black/10 p-3">
