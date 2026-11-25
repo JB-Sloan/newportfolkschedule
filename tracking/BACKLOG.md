@@ -126,10 +126,10 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | ID | Task | Status | Notes |
 |---|---|---|---|
 | E7-01 | Migration: cards, squares, lock trigger, pick-rate view | done | `0005_...sql` |
-| E7-02 | Card builder UI with artist autocomplete | wip | Built: `/bingo` builder (autocomplete, write-ins, drafts) + `/bingo/card/[id]` locked card. `0023` applied; needs deploy + a real sign-in check |
+| E7-02 | Card builder UI with artist autocomplete | wip | Built: `/bingo` builder (autocomplete, write-ins, drafts) + `/bingo/card/[id]` locked card. `0023` applied, deployed 2026-11-25; needs a real sign-in check |
 | E7-03 | Lock enforcement + deadline before wave 1 | done | `0023_bingo_card_builder.sql`: all writes via `save_bingo_draft()` / `lock_bingo_card()`; closes at the first `announcement_waves` row (moderator-only). Closed the 0005 hole where owners could unlock or self-score. Applied to production 2026-11-25 |
 | E7-04 | Public card gallery | todo | |
-| E7-05 | Wave-based incremental scoring | todo | |
+| E7-05 | Wave-based incremental scoring | todo | Score only cards with `locked_at` before the first wave's `announced_at`; a wave may be recorded after it was announced |
 | E7-06 | Leaderboards: overall, boldest, most contrarian | todo | |
 | E7-07 | Wire `crowd_pick_rate` into F20 | todo | The game feeds the model |
 | E7-08 | Confirm free-entry/no-prize framing in rules copy | todo | Line is on `/bingo` (free, one card, no prizes); confirm wording. Keeps it out of sweepstakes regulation |
@@ -161,7 +161,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | ID | Task | Status | Notes |
 |---|---|---|---|
 | E10-01 | Migration: waves, lineup_announcements | done | `0005_...sql` |
-| E10-02 | Wave entry tool for moderators | todo | |
+| E10-02 | Wave entry tool for moderators | wip | Built: `/moderate/waves` records waves (wave 1 closes bingo), matches pasted artists to the archive, edit/delete, counts cards locked after the announcement. Deployed 2026-11-25; needs a real moderator sign-in check |
 | E10-03 | Trigger bingo scoring + Oracle resolution on wave | todo | |
 | E10-04 | Countdown / "next wave" UI + push | todo | |
 

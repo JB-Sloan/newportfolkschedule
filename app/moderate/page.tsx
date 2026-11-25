@@ -131,6 +131,9 @@ export default async function ModeratePage() {
       <p className="mt-1 text-sm opacity-70">
         {rows.length} {rows.length === 1 ? "claim" : "claims"} awaiting review (pending or disputed guest performances).
       </p>
+      <Link href="/moderate/waves" className="mt-3 inline-block rounded-full bg-black/5 px-3 py-1 text-sm font-bold hover:bg-black/10">
+        Announcement waves
+      </Link>
 
       {rows.length === 0 ? (
         <p className="mt-6 rounded-2xl border border-black/10 p-4 text-sm opacity-70">

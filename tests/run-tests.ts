@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { countPicks, emptySlots, FREE_POSITION, isBingoOpen, nextEmpty, sanitizeSlots, shuffleSlots } from "@/lib/bingo";
 import { findConflicts } from "@/lib/conflicts";
+import { indexArtists, parseLineup, suggestArtists } from "@/lib/lineup";
 import { generateIcs } from "@/lib/ics";
 import { decodeSharePlan, encodeSharePlan } from "@/lib/share-plan";
 import { buildSocialPost } from "@/lib/social-post";
@@ -566,7 +567,30 @@ function testBingo() {
   assert.equal(isBingoOpen({ ...edition, is_cancelled: true }, false, "2026-11-25"), false);
 }
 
+function testLineup() {
+  assert.deepEqual(parseLineup("  - Big Thief\r\n\n2) Dawes\n• big  thief\n10,000 Maniacs\n!!!\n100 Gecs"), [
+    "Big Thief",
+    "Dawes",
+    "10,000 Maniacs",
+    "100 Gecs"
+  ]);
+
+  const archive = [
+    { id: "1", name: "The Lumineers", slug: "the-lumineers" },
+    { id: "2", name: "Nathaniel Rateliff & The Night Sweats", slug: "nathaniel-rateliff-and-the-night-sweats" },
+    { id: "3", name: "Watchhouse", slug: "watchhouse" },
+    { id: "4", name: "Peter Rowan", slug: "peter-rowan" }
+  ];
+  const index = indexArtists(archive);
+  assert.equal(index.get("lumineers")?.id, "1", "leading The is ignored on both sides");
+  assert.equal(index.get("rowan"), undefined, "no substring matches");
+  assert.equal(suggestArtists("Nathaniel Rateliff", archive)[0]?.id, "2");
+  assert.equal(suggestArtists("Watchouse", archive)[0]?.id, "3", "typos get a suggestion");
+  assert.deepEqual(suggestArtists("Brandi Carlile", archive), []);
+}
+
 testBingo();
+testLineup();
 testSurpriseScoring();
 testWeather();
 testHistory();

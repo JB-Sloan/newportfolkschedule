@@ -3,7 +3,9 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { countPicks, isUuid, MAX_TITLE, PICKS_NEEDED, sanitizeSlots, type Slots } from "@/lib/bingo";
+import { indexArtists } from "@/lib/lineup";
 import { slugify } from "@/lib/slug";
+import { loadArtists } from "@/lib/supabase/artists";
 
 export type BingoInput = { editionId: string; title: string; isPublic: boolean; slots: Slots };
 export type BingoResult = { ok: true; cardId: string } | { ok: false; error: string };
@@ -28,7 +30,7 @@ export async function saveBingoDraft(input: BingoInput): Promise<BingoResult> {
 }
 
 /**
- * Lock the card for good. Write-ins are resolved to an existing artist by slug
+ * Lock the card for good. Write-ins are resolved to an existing artist by name
  * or created here, not while drafting, so half-typed names never reach the
  * archive. lock_bingo_card() enforces the rules; the checks before artist
  * creation only stop a doomed lock from leaving new artists behind.
@@ -58,9 +60,13 @@ export async function lockBingoCard(input: BingoInput): Promise<BingoResult> {
 
   const idBySlug = new Map<string, string>();
   if (writeIns.size) {
-    const { data: existing, error } = await supabase.from("artists").select("id, slug").in("slug", [...writeIns.keys()]);
-    if (error) return { ok: false, error: error.message };
-    for (const a of existing ?? []) idBySlug.set(String(a.slug).toLowerCase(), a.id);
+    const loaded = await loadArtists(supabase);
+    if ("error" in loaded) return { ok: false, error: loaded.error };
+    const index = indexArtists(loaded.artists);
+    for (const slug of writeIns.keys()) {
+      const match = index.get(slug);
+      if (match) idBySlug.set(slug, match.id);
+    }
   }
 
   // A write-in can turn out to be an artist already picked from search.

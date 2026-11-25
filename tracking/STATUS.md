@@ -9,9 +9,9 @@
 | Status | Count |
 |---|---|
 | ✅ done | 52 |
-| 🔨 wip | 6 |
+| 🔨 wip | 7 |
 | ⛔ blocked | 0 |
-| ⬜ todo | 73 |
+| ⬜ todo | 72 |
 | 🚫 cut | 3 |
 
 ## By epic
@@ -42,6 +42,7 @@
 - 🔨 **E2-11** Sit-in submission with instrument + song tagging
 - 🔨 **E6-05** Feature computers F01–F23
 - 🔨 **E7-02** Card builder UI with artist autocomplete
+- 🔨 **E10-02** Wave entry tool for moderators
 - 🔨 **E12-08** Moderator review queue for mined claims
 
 ## Critical path / warnings
@@ -100,7 +101,6 @@
 - ⬜ E9-05 Nightly badge evaluator
 
 **E10 Announcement Tracker**
-- ⬜ E10-02 Wave entry tool for moderators
 - ⬜ E10-03 Trigger bingo scoring + Oracle resolution on wave
 - ⬜ E10-04 Countdown / "next wave" UI + push
 
