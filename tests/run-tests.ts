@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { countPicks, emptySlots, FREE_POSITION, isBingoOpen, nextEmpty, sanitizeSlots, shuffleSlots } from "@/lib/bingo";
 import { findConflicts } from "@/lib/conflicts";
 import { generateIcs } from "@/lib/ics";
 import { decodeSharePlan, encodeSharePlan } from "@/lib/share-plan";
@@ -530,6 +531,42 @@ function testWeather() {
   assert.deepEqual(normalizeForecast({}), []);
 }
 
+function testBingo() {
+  const full = Array.from({ length: 25 }, (_, i) => ({ name: `Artist ${i}` }));
+  const card = sanitizeSlots(full);
+  assert.equal(card[FREE_POSITION], null, "the center is always free");
+  assert.equal(countPicks(card), 24);
+  assert.equal(nextEmpty(card), -1);
+
+  const messy = sanitizeSlots([
+    { name: "  Big   Thief " },
+    { name: "big thief" },
+    { id: "not-a-uuid", name: "Dawes" },
+    { name: 7 },
+    "junk",
+    null
+  ]);
+  assert.deepEqual(messy[0], { name: "Big Thief" });
+  assert.equal(messy[1], null, "case-insensitive duplicates are dropped");
+  assert.deepEqual(messy[2], { name: "Dawes" }, "a malformed id degrades to a write-in");
+  assert.equal(countPicks(messy), 2);
+  assert.equal(nextEmpty(messy, 24), 24);
+  assert.deepEqual(sanitizeSlots("nope"), emptySlots());
+
+  const shuffled = shuffleSlots(card);
+  assert.equal(shuffled.length, 25);
+  assert.equal(shuffled[FREE_POSITION], null);
+  assert.deepEqual(new Set(shuffled.map((s) => s?.name)), new Set(card.map((s) => s?.name)));
+
+  const edition = { year: 2027, start_date: null, is_cancelled: false };
+  assert.equal(isBingoOpen(edition, false, "2026-11-25"), true);
+  assert.equal(isBingoOpen(edition, true, "2026-11-25"), false, "the first wave closes bingo");
+  assert.equal(isBingoOpen(edition, false, "2027-07-01"), false);
+  assert.equal(isBingoOpen({ ...edition, start_date: "2027-07-23" }, false, "2027-07-22"), true);
+  assert.equal(isBingoOpen({ ...edition, is_cancelled: true }, false, "2026-11-25"), false);
+}
+
+testBingo();
 testSurpriseScoring();
 testWeather();
 testHistory();

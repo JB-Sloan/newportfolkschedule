@@ -216,7 +216,10 @@ export default async function EditionPage({ params }: { params: { year: string }
       {!edition.is_cancelled && sets.length === 0 ? (
         <div className="mt-4 rounded-2xl border border-black/10 p-4 text-sm opacity-75">
           The {year} lineup hasn&apos;t been announced yet. Until it is, this edition is where
-          the Oracle&apos;s predictions live — check back as waves drop.
+          the Oracle&apos;s predictions live — check back as waves drop.{" "}
+          <Link href="/bingo" className="font-bold underline">
+            Make your bingo card
+          </Link>
         </div>
       ) : null}
 

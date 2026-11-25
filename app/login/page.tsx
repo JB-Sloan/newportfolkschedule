@@ -22,6 +22,11 @@ export default function LoginPage() {
     e.preventDefault();
     setError(null);
     setBusy(true);
+    // Carried in a cookie because emailRedirectTo must match the auth allowlist exactly.
+    const next = new URLSearchParams(window.location.search).get("next");
+    if (next && /^\/(?!\/)/.test(next)) {
+      document.cookie = `login_next=${encodeURIComponent(next)}; path=/; max-age=3600; samesite=lax`;
+    }
     const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: redirectTo } });
     setBusy(false);
     if (error) setError(error.message);
@@ -35,7 +40,7 @@ export default function LoginPage() {
       </Link>
       <h1 className="mt-2 text-3xl font-black">Sign in</h1>
       <p className="mt-1 text-sm opacity-70">
-        To submit setlists, sit-ins, and corrections to the archive. Reading stays open to everyone.
+        To submit setlists, sit-ins, and corrections, or to lock a bingo card. Reading stays open to everyone.
       </p>
 
       {sent ? (

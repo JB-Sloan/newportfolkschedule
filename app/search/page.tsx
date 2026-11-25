@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { SearchBox } from "@/components/SearchBox";
+import { escapeLike, rankByName } from "@/lib/artist-search";
 
 /**
  * Artist search. Substring match on artist name (case-insensitive), re-ranked
@@ -10,33 +11,19 @@ export const dynamic = "force-dynamic";
 
 type Artist = { slug: string; name: string; artist_type: string; is_newport_alum: boolean };
 
-function rank(rows: Artist[], q: string): Artist[] {
-  const lc = q.toLowerCase();
-  const score = (name: string) => {
-    const n = name.toLowerCase();
-    if (n === lc) return 0;
-    if (n.startsWith(lc)) return 1;
-    if (n.includes(` ${lc}`)) return 2; // word-boundary hit
-    return 3;
-  };
-  return [...rows].sort((a, b) => score(a.name) - score(b.name) || a.name.localeCompare(b.name));
-}
-
 export default async function SearchPage({ searchParams }: { searchParams: { q?: string } }) {
   const q = (searchParams.q ?? "").trim();
   const supabase = createClient();
 
   let results: Artist[] = [];
   if (q) {
-    // Escape LIKE metacharacters so a stray % or _ isn't treated as a wildcard.
-    const esc = q.replace(/[\\%_]/g, (c) => "\\" + c);
     const { data } = await supabase
       .from("artists")
       .select("slug, name, artist_type, is_newport_alum")
-      .ilike("name", `%${esc}%`)
+      .ilike("name", `%${escapeLike(q)}%`)
       .limit(60)
       .returns<Artist[]>();
-    results = rank(data ?? [], q);
+    results = rankByName(data ?? [], q);
   }
 
   return (

@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
@@ -9,14 +10,17 @@ import { createClient } from "@/lib/supabase/server";
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
-  const next = searchParams.get("next") ?? "/";
+  const next = searchParams.get("next") ?? cookies().get("login_next")?.value ?? "/";
   // Only allow same-site relative redirects.
-  const dest = next.startsWith("/") ? next : "/";
+  const dest = /^\/(?!\/)/.test(next) ? next : "/";
 
   if (code) {
     const supabase = createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
-    if (!error) return NextResponse.redirect(`${origin}${dest}`);
+    if (!error) {
+      cookies().delete("login_next");
+      return NextResponse.redirect(`${origin}${dest}`);
+    }
   }
 
   return NextResponse.redirect(`${origin}/login?error=auth`);

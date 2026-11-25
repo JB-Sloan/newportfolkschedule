@@ -41,7 +41,7 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | E1-01 | Migration: `artists`, aliases, memberships, instruments | done | `0002_music_graph.sql` |
 | E1-02 | Migration: `organizations`, `artist_org_links` | done | `0002_music_graph.sql` |
 | E1-03 | Migration: `releases`, `release_credits` | done | `0002_music_graph.sql` |
-| E1-04 | MusicBrainz lookup + import service | todo | 1 req/sec, real User-Agent |
+| E1-04 | MusicBrainz lookup + import service | wip | Resolver pipeline built (`scripts/musicbrainz/`): rate-limited client + auto/review/none classifier + apply.ts migration generator. Full pass over 1,092 artists: **758 auto / 333 review / 1 none**. `0022_link_musicbrainz.sql` (758 auto-links) generated, not yet applied. Remaining: apply links, work `out/review.tsv` (333), build enrich.ts (memberships/releases + type fixes) |
 | E1-05 | Artist merge/dedupe tool for moderators | todo | You will need this sooner than you think |
 | E1-06 | Artist page: appearances, memberships, releases | done | `/artist/[slug]` ships appearance history from `v_artist_appearances`. Memberships/releases await that data |
 | E1-07 | Artist search with trigram + alias matching | wip | `/search` + SearchBox on archive; substring ILIKE with JS relevance re-rank. Trigram/alias matching still todo |
@@ -126,13 +126,13 @@ Valid statuses: `todo` · `wip` · `blocked` · `done` · `cut`
 | ID | Task | Status | Notes |
 |---|---|---|---|
 | E7-01 | Migration: cards, squares, lock trigger, pick-rate view | done | `0005_...sql` |
-| E7-02 | Card builder UI with artist autocomplete | todo | User picks their own 24 |
-| E7-03 | Lock enforcement + deadline before wave 1 | todo | Game is meaningless without it |
+| E7-02 | Card builder UI with artist autocomplete | wip | Built: `/bingo` builder (autocomplete, write-ins, drafts) + `/bingo/card/[id]` locked card. `0023` applied; needs deploy + a real sign-in check |
+| E7-03 | Lock enforcement + deadline before wave 1 | done | `0023_bingo_card_builder.sql`: all writes via `save_bingo_draft()` / `lock_bingo_card()`; closes at the first `announcement_waves` row (moderator-only). Closed the 0005 hole where owners could unlock or self-score. Applied to production 2026-11-25 |
 | E7-04 | Public card gallery | todo | |
 | E7-05 | Wave-based incremental scoring | todo | |
 | E7-06 | Leaderboards: overall, boldest, most contrarian | todo | |
 | E7-07 | Wire `crowd_pick_rate` into F20 | todo | The game feeds the model |
-| E7-08 | Confirm free-entry/no-prize framing in rules copy | todo | Keeps it out of sweepstakes regulation |
+| E7-08 | Confirm free-entry/no-prize framing in rules copy | todo | Line is on `/bingo` (free, one card, no prizes); confirm wording. Keeps it out of sweepstakes regulation |
 
 ## E8 — The Wishlist · Phase 2
 

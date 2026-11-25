@@ -444,32 +444,38 @@ export type Database = {
       bingo_cards: {
         Row: {
           created_at: string
+          draft: Json | null
           edition_id: string
           id: string
           is_public: boolean
           locked_at: string | null
           score: number
           title: string | null
+          updated_at: string
           user_id: string
         }
         Insert: {
           created_at?: string
+          draft?: Json | null
           edition_id: string
           id?: string
           is_public?: boolean
           locked_at?: string | null
           score?: number
           title?: string | null
+          updated_at?: string
           user_id: string
         }
         Update: {
           created_at?: string
+          draft?: Json | null
           edition_id?: string
           id?: string
           is_public?: boolean
           locked_at?: string | null
           score?: number
           title?: string | null
+          updated_at?: string
           user_id?: string
         }
         Relationships: [
@@ -2734,12 +2740,31 @@ export type Database = {
       }
     }
     Functions: {
+      bingo_is_open: { Args: { p_edition_id: string }; Returns: boolean }
       current_role_level: {
         Args: never
         Returns: Database["public"]["Enums"]["user_role"]
       }
       is_active_user: { Args: never; Returns: boolean }
       is_moderator: { Args: never; Returns: boolean }
+      lock_bingo_card: {
+        Args: {
+          p_artist_ids: string[]
+          p_edition_id: string
+          p_is_public: boolean
+          p_title: string
+        }
+        Returns: string
+      }
+      save_bingo_draft: {
+        Args: {
+          p_draft: Json
+          p_edition_id: string
+          p_is_public: boolean
+          p_title: string
+        }
+        Returns: string
+      }
       show_limit: { Args: never; Returns: number }
       show_trgm: { Args: { "": string }; Returns: string[] }
     }

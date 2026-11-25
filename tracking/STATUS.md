@@ -1,17 +1,17 @@
 # Status
 
-*Generated 2026-08-14 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
+*Generated 2026-11-25 by `scripts/status.py`. Do not edit by hand — edit `BACKLOG.md`.*
 
 ## Overall
 
-`████████████░░░░░░░░░░░░░░░░░░` **39%** (51/131 tasks)
+`████████████░░░░░░░░░░░░░░░░░░` **40%** (52/131 tasks)
 
 | Status | Count |
 |---|---|
-| ✅ done | 51 |
-| 🔨 wip | 4 |
+| ✅ done | 52 |
+| 🔨 wip | 6 |
 | ⛔ blocked | 0 |
-| ⬜ todo | 76 |
+| ⬜ todo | 73 |
 | 🚫 cut | 3 |
 
 ## By epic
@@ -25,7 +25,7 @@
 | **E4** Message Board | Phase 1 | `███░░░░░░░░░` 29% | 2 | 5 | 0 |
 | **E5** The Wire | Phase 1 | `█░░░░░░░░░░░` 11% | 1 | 8 | 0 |
 | **E6** The Oracle | Phase 2 | `████░░░░░░░░` 30% | 3 | 7 | 0 |
-| **E7** Bingo | Phase 2 | `██░░░░░░░░░░` 12% | 1 | 7 | 0 |
+| **E7** Bingo | Phase 2 | `███░░░░░░░░░` 25% | 2 | 6 | 0 |
 | **E8** The Wishlist | Phase 2 | `██░░░░░░░░░░` 20% | 1 | 4 | 0 |
 | **E9** Profiles, Attendance & Badges | Phase 1 | `███░░░░░░░░░` 29% | 2 | 5 | 0 |
 | **E10** Announcement Tracker | Phase 3 | `███░░░░░░░░░` 25% | 1 | 3 | 0 |
@@ -37,13 +37,16 @@
 
 ## In progress
 
+- 🔨 **E1-04** MusicBrainz lookup + import service
 - 🔨 **E1-07** Artist search with trigram + alias matching
 - 🔨 **E2-11** Sit-in submission with instrument + song tagging
 - 🔨 **E6-05** Feature computers F01–F23
+- 🔨 **E7-02** Card builder UI with artist autocomplete
 - 🔨 **E12-08** Moderator review queue for mined claims
 
 ## Critical path / warnings
 
+- 🔨 **E1-04** MusicBrainz lookup + import service — Resolver pipeline built (`scripts/musicbrainz/`): rate-limited client + auto/review/none classifier + apply.ts migration generator. Full pass over 1,092 artists: **758 auto / 333 review / 1 none**. `0022_link_musicbrainz.sql` (758 auto-links) generated, not yet applied. Remaining: apply links, work `out/review.tsv` (333), build enrich.ts (memberships/releases + type fixes)
 - ⬜ **E2-16** **Google Form fallback for submissions** — **Day 1. Insurance against build slip**
 - ⬜ **E12-04** **Post in the Inforoo community explaining the project** — **Do this before any scraping.** Highest-leverage 5 min in the epic
 
@@ -55,7 +58,6 @@
 - ⬜ E0-14 Moderation queue UI
 
 **E1 Music Graph**
-- ⬜ E1-04 MusicBrainz lookup + import service
 - ⬜ E1-05 Artist merge/dedupe tool for moderators
 
 **E2 Set Pages & Core UGC**
@@ -83,9 +85,9 @@
 - ⬜ E6-07 Public odds board with visible weights
 
 **E7 Bingo**
-- ⬜ E7-02 Card builder UI with artist autocomplete
-- ⬜ E7-03 Lock enforcement + deadline before wave 1
 - ⬜ E7-04 Public card gallery
+- ⬜ E7-05 Wave-based incremental scoring
+- ⬜ E7-06 Leaderboards: overall, boldest, most contrarian
 
 **E8 The Wishlist**
 - ⬜ E8-02 Wishlist UI with voting

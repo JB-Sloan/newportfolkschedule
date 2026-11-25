@@ -56,6 +56,7 @@ export default async function ArchiveIndexPage() {
         <Link href="/setlists" className="rounded-full bg-black/5 px-3 py-1 hover:bg-black/10">♪ Setlists</Link>
         <Link href="/sit-ins" className="rounded-full bg-black/5 px-3 py-1 hover:bg-black/10">Sit-in graph</Link>
         <Link href="/wishlists" className="rounded-full bg-black/5 px-3 py-1 hover:bg-black/10">Fan wishlists</Link>
+        <Link href="/bingo" className="rounded-full bg-black/5 px-3 py-1 hover:bg-black/10">Newport Bingo</Link>
       </nav>
 
       {error ? <p className="mt-4 rounded-lg bg-red-100 p-3 text-sm text-red-800">{error.message}</p> : null}
